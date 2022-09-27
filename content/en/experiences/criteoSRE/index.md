@@ -12,7 +12,7 @@ contributors: ["UpCreid"]
 
 ## Tasks
 
-#### Criteo Webapps scope
+### Criteo Webapps scope
 
 - Criteo Client API
 - C# dev
