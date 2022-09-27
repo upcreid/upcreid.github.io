@@ -1,10 +1,10 @@
 ---
 title: "Criteo"
 description: "Criteo"
-lead: "Escalation Engineer"
-date: 2018-02-11T09:19:42+01:00
+lead: "SRE Engineer"
+date: 2022-01-01T09:19:42+01:00
 lastmod: 2021-04-11T09:19:42+01:00
-enddate: 2022-01-01T09:19:42+01:00
+enddate: now
 draft: false
 weight: 50
 contributors: ["UpCreid"]
@@ -12,16 +12,13 @@ contributors: ["UpCreid"]
 
 ## Tasks
 
-- Stop the Flood
-- Protect the business
-- Handle Incident
-- Support Dev Team
-- Sync people with each other
-- Dev what you can !
-
-## Interview
-
-[Medium Article](https://medium.com/@s.lebreton/f11608526983)
+Criteo Webapps scope
+- Criteo Client API
+- C# dev
+- Golang dev
+- Python dev
+- Flink Migration
+- Continuous Deployment integration
 
 ## Environnement Technique
 
