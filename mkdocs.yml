@@ -4,6 +4,7 @@ theme:
   name: material
 
 nav:
+  - Home: index.md
   - 'Blog':
       - './blog/gitlabAndgithub/index.md'
       - './blog/git-two-accounts-alias/index.md'
@@ -19,13 +20,3 @@ nav:
     - './cheat-sheet/tmux/index.md'
     - './cheat-sheet/vagrant/index.md'
     - './cheat-sheet/vscode/index.md'
-  - 'Experiences':
-      - './experiences/accor/index.md'
-      - './experiences/bosch/index.md'
-      - './experiences/caissedesdepots/index.md'
-      - './experiences/criteo/index.md'
-      - './experiences/criteoSRE/index.md'
-      - './experiences/opera/index.md'
-      - './experiences/towercast/index.md'
-      - './experiences/veolia2013/index.md'
-      - './experiences/veolia2017/index.md'
