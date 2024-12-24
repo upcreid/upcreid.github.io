@@ -1,0 +1,31 @@
+site_name: My Docs
+site_url: https://sitename.exampleß
+theme:
+  name: material
+
+nav:
+  - 'Blog':
+      - './blog/gitlabAndgithub/index.md'
+      - './blog/git-two-accounts-alias/index.md'
+      - './blog/rustTerminal/index.md'
+      - './blog/theMove/index.md'
+  - './starcraft2/starcraft2.md'
+  - 'CheatSheet':
+    - './cheat-sheet/ansible/index.md'
+    - './cheat-sheet/docker/index.md'
+    - './cheat-sheet/git/index.md'
+    - './cheat-sheet/shell/index.md'
+    - './cheat-sheet/sql/index.md'
+    - './cheat-sheet/tmux/index.md'
+    - './cheat-sheet/vagrant/index.md'
+    - './cheat-sheet/vscode/index.md'
+  - 'Experiences':
+      - './experiences/accor/index.md'
+      - './experiences/bosch/index.md'
+      - './experiences/caissedesdepots/index.md'
+      - './experiences/criteo/index.md'
+      - './experiences/criteoSRE/index.md'
+      - './experiences/opera/index.md'
+      - './experiences/towercast/index.md'
+      - './experiences/veolia2013/index.md'
+      - './experiences/veolia2017/index.md'

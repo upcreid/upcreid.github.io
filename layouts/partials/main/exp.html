@@ -1,7 +1,0 @@
-<small>from {{ .PublishDate.Format "January 2, 2006" }} → 
-    {{ if eq (.Params.enddate) "now" }} 
-        {{ .Params.enddate }} 
-    {{ else }}
-        {{ .Params.enddate | time.Format "January 2, 2006" }} 
-    {{ end }}
-</small><br>
