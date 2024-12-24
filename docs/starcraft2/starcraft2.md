@@ -1,20 +1,5 @@
 # Starcraft 2
 
----
-title: "starcraft2 params"
-description: "starcraft2 params"
-lead: "starcraft2 params."
-date: 2020-10-13T15:21:01+02:00
-lastmod: 2020-10-13T15:21:01+02:00
-draft: false
-images: []
-menu:
-  starcraft:
-    parent: "starcraft"
-weight: 130
-toc: true
----
-
 *sc2 params thanks to: [www.TerranCraft.com](https://terrancraft.com/the-elementary-series/)*
 
 - [Graphics](#graphics)
