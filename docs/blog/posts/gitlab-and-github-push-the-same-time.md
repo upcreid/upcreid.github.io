@@ -42,7 +42,7 @@ And also because it's fun, at least i think it's fun :)
 let's pretend our repo name is `upcreid.gitlab.io` and it's a [hugo](https://gohugo.io/) static website.
 Let's create it and make it public
 
-![glrepocreation](glrepocreation.png)
+![glrepocreation](gitlabAndgithub/glrepocreation.png)
 
 then the usual stuff:
 
@@ -156,7 +156,7 @@ Now, let's handle github.
 
 ### create our static website repo
 
-![ghrepocreation](ghrepocreation.png)
+![ghrepocreation](gitlabAndgithub/ghrepocreation.png)
 
 ### Branch configuration
 
