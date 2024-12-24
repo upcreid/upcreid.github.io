@@ -1,4 +1,4 @@
-# Starcraft 2
+# Params Starcraft 2
 
 *sc2 params thanks to: [www.TerranCraft.com](https://terrancraft.com/the-elementary-series/)*
 

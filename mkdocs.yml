@@ -2,15 +2,32 @@ site_name: UpCreid
 site_url: https://upcreid.github.io
 theme:
   name: material
+  palette:
+    - scheme: slate
+  features:
+    - search.suggest
+    - navigation.instant
+    - navigation.top
+    - navigation.sections
+    - navigation.tabs
+    - # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
 
+plugins:
+  - search
+  - blog:
+      blog_dir: blog
 nav:
   - Home: index.md
-  - 'Blog':
-      - './blog/gitlabAndgithub/index.md'
-      - './blog/git-two-accounts-alias/index.md'
-      - './blog/rustTerminal/index.md'
-      - './blog/theMove/index.md'
-  - './starcraft2/starcraft2.md'
+  - Blog:
+    - blog/index.md
+  - 'StarCraft 2':
+    - './starcraft2/params/starcraft2.md'
   - 'CheatSheet':
     - './cheat-sheet/ansible/index.md'
     - './cheat-sheet/docker/index.md'
