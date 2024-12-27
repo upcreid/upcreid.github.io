@@ -40,10 +40,10 @@ plugins:
 
 nav:
   - Home: index.md
+
   - Blog:
       - blog/index.md
-  - "StarCraft 2":
-    - Params: starcraft2/params/starcraft2.md
+
   - CheatSheet:
     - Ansible: cheat-sheet/ansible/ansible.md
     - Docker: cheat-sheet/docker/docker.md
@@ -53,3 +53,9 @@ nav:
     - Tmux: cheat-sheet/tmux/tmux.md
     - Vagrant: cheat-sheet/vagrant/vagrant.md
     - VsCode: cheat-sheet/vscode/vscode.md
+
+  - Games:
+    - "StarCraft 2":
+      - Params: games/starcraft2/params/starcraft2.md
+    - Path of Exile 2:
+        - Params: games/poe2/params/poe2_params.md
