@@ -9,6 +9,13 @@ weight: 50
 contributors: ["UpCreid"]
 ---
 
+Rust is awesome.
+
+Recently i found some great application for the terminal.
+
+<!-- more -->
+
+
 ## `fd`
 
 [find alternative](https://github.com/sharkdp/fd)

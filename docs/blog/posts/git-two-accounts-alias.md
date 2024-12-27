@@ -1,13 +1,6 @@
 ---
-title: "GiTips 👨‍💻"
 description: "Handling two Git accounts"
-lead: "GiTips 👨‍💻"
-date: 2019-05-09T09:19:42+01:00
-lastmod: 2020-11-04T09:19:42+01:00
-draft: false
-weight: 50
-images: ["say-hello-to-doks.png"]
-contributors: ["UpCreid"]
+date: 2019-05-09
 ---
 
 Hello,
@@ -19,6 +12,8 @@ Yes, I know that working on personal things with work materials is a bad habit .
 
 So, to get rid of just that (I did not invent anything, there are a lot of tutorials on the web), you will need to create a separate directory.
 One for work, one for the person.
+
+<!-- more -->
 
 Regarding git, you will have to manage your \ $ HOME .gitconfig like this:
 

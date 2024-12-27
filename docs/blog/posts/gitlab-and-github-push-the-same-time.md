@@ -10,18 +10,6 @@ weight: 50
 contributors: ["UpCreid"]
 ---
 
-- [Gitlab - Master](#gitlab---master)
-  - [create our static website repo](#create-our-static-website-repo)
-  - [create gh-pages branch](#create-gh-pages-branch)
-  - [add web stuff inside the repo](#add-web-stuff-inside-the-repo)
-  - [configure CI](#configure-ci)
-- [Github - Mirror](#github---mirror)
-  - [create our static website repo](#create-our-static-website-repo-1)
-  - [Branch configuration](#branch-configuration)
-  - [Git mirror](#git-mirror)
-  - [configure CI](#configure-ci-1)
-- [Conclusion](#conclusion)
-
 Hello,
 
 This small blog is as you may know hosted by github page or gitlab pages, it depends where you are :)
@@ -30,6 +18,8 @@ Gonna tell you a small trick to have your static website hosted on github + gitl
 
 Why ? If one fall of course ! :D
 And also because it's fun, at least i think it's fun :)
+
+<!-- more -->
 
 ## Gitlab - Master
 

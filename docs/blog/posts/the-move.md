@@ -11,6 +11,8 @@ contributors: ["UpCreid"]
 
 I've quit Paris recently, to a more little City.
 
+<!-- more -->
+
 Because of the Covid stuff, but mainly to be closer to the nature.
 
 It was in my mind since a long time, and the actual crisis, and my work, give me the opportunity to move away.

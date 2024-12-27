@@ -5,35 +5,51 @@ theme:
   palette:
     - scheme: slate
   features:
-    - search.suggest
-    - navigation.instant
-    - navigation.top
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.footnote.tooltips
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
     - navigation.sections
     - navigation.tabs
-    - # - navigation.tabs.sticky
+    # - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
     - search.share
     - search.suggest
     - toc.follow
+    # - toc.integrate
 
 plugins:
-  - search
-  - blog:
-      blog_dir: blog
+  - blog
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
 nav:
   - Home: index.md
   - Blog:
-    - blog/index.md
-  - 'StarCraft 2':
-    - './starcraft2/params/starcraft2.md'
-  - 'CheatSheet':
-    - './cheat-sheet/ansible/index.md'
-    - './cheat-sheet/docker/index.md'
-    - './cheat-sheet/git/index.md'
-    - './cheat-sheet/shell/index.md'
-    - './cheat-sheet/sql/index.md'
-    - './cheat-sheet/tmux/index.md'
-    - './cheat-sheet/vagrant/index.md'
-    - './cheat-sheet/vscode/index.md'
+      - blog/index.md
+  - "StarCraft 2":
+    - Params: starcraft2/params/starcraft2.md
+  - CheatSheet:
+    - Ansible: cheat-sheet/ansible/ansible.md
+    - Docker: cheat-sheet/docker/docker.md
+    - Git: cheat-sheet/git/git.md
+    - Shell: cheat-sheet/shell/shell.md
+    - SQL: cheat-sheet/sql/sql.md
+    - Tmux: cheat-sheet/tmux/tmux.md
+    - Vagrant: cheat-sheet/vagrant/vagrant.md
+    - VsCode: cheat-sheet/vscode/vscode.md
