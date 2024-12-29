@@ -2,9 +2,10 @@ site_name: UpCreid
 site_url: https://upcreid.github.io
 theme:
   name: material
-
+  logo: assets/logo.png
+  favicon: assets/logo.png
   palette:
-    primary: teal
+    primary: indigo
     scheme: slate
   font:
     text: Roboto
