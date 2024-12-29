@@ -2,8 +2,12 @@ site_name: UpCreid
 site_url: https://upcreid.github.io
 theme:
   name: material
+
   palette:
-    - scheme: slate
+    primary: teal
+    scheme: slate
+  font:
+    text: Roboto
   features:
     - announce.dismiss
     - content.action.edit
