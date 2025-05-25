@@ -71,6 +71,3 @@ nav:
       - Params: games/starcraft2/params/starcraft2.md
     - Path of Exile 2:
         - Params: games/poe2/params/poe2_params.md
-        - Builds:
-            - "Frost Nova Elementalist": games/poe2/builds/frost_nova_elementalist.md
-            - "Bombarding Minions Infernalist": games/poe2/builds/poe2_bombarding_minion_infernalist.md
