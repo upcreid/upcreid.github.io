@@ -17,10 +17,10 @@ toc: true
 select * from table where u > 1;
 ```
 
-## mcd designer:
+## MCD Designer:
 
 [http://ondras.zarovi.cz/sql/demo/](http://ondras.zarovi.cz/sql/demo/)
 
-## sqlZoo, if you loose your mind !!!:
+## sqlZoo, if you're stuck !!!:
 
 [http://sqlzoo.net/wiki/SQL_Tutorial](http://sqlzoo.net/wiki/SQL_Tutorial)

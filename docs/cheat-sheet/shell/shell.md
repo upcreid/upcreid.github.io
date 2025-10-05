@@ -53,11 +53,11 @@ toc: true
 
 [Famous awk one-liners explained](http://www.catonmat.net/blog/awk-one-liners-explained-part-one/)
 
-## Motivation/Philospophy:
+## Motivation/Philosophy:
 
 John Cook on [Greg Grothaus on awk](http://www.johndcook.com/blog/2010/09/29/a-little-awk/)
 
-## General command-line introduction:
+## General Command-Line Introduction:
 
 [The Geek Stuff – 50 Linux Commands](http://www.thegeekstuff.com/2010/11/50-linux-commands/)
 
