@@ -1,6 +1,6 @@
-site_name: uPCREiD Documentation
-site_description: uPCREiD's personal documentation - Guides, cheat sheets and technical resources
-site_author: uPCREiD
+site_name: /void !
+site_description:  personal documentation - Guides, cheat sheets and technical resources
+site_author: upcreid
 site_url: https://upcreid.github.io/
 
 repo_url: https://github.com/upcreid/upcreid.github.io
@@ -164,10 +164,13 @@ nav:
   - CheatSheet:
     - Overview: cheat-sheet/index.md
     - Ansible: cheat-sheet/ansible/ansible.md
+    - C# & .NET: cheat-sheet/csharp-dotnet/csharp-dotnet.md
+    - curl: cheat-sheet/curl/curl.md
     - Docker: cheat-sheet/docker/docker.md
     - Git: cheat-sheet/git/git.md
     - K9s: cheat-sheet/k9s/k9s.md
     - Kubectl: cheat-sheet/kubectl/kubectl.md
+    - Python Build: cheat-sheet/python-build/python-build.md
     - Shell: cheat-sheet/shell/shell.md
     - SQL: cheat-sheet/sql/sql.md
     - Tmux: cheat-sheet/tmux/tmux.md
