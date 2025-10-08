@@ -163,18 +163,29 @@ nav:
     - Overview: blog/index.md
   - CheatSheet:
     - Overview: cheat-sheet/index.md
-    - Ansible: cheat-sheet/ansible/ansible.md
-    - C# & .NET: cheat-sheet/csharp-dotnet/csharp-dotnet.md
-    - curl: cheat-sheet/curl/curl.md
-    - Docker: cheat-sheet/docker/docker.md
-    - Git: cheat-sheet/git/git.md
-    - K9s: cheat-sheet/k9s/k9s.md
-    - Kubectl: cheat-sheet/kubectl/kubectl.md
     - Python Build: cheat-sheet/python-build/python-build.md
+    - FastAPI: cheat-sheet/fastapi/fastapi.md
+    - Go (Golang): cheat-sheet/golang/golang.md
+    - Hugo: cheat-sheet/hugo/hugo.md
+    - C# & .NET: cheat-sheet/csharp-dotnet/csharp-dotnet.md
+    - Docker: cheat-sheet/docker/docker.md
+    - Kubectl: cheat-sheet/kubectl/kubectl.md
+    - K9s: cheat-sheet/k9s/k9s.md
+    - Git: cheat-sheet/git/git.md
+    - Grafana: cheat-sheet/grafana/grafana.md
+    - Prometheus: cheat-sheet/prometheus/prometheus.md
+    - Linux File System: cheat-sheet/linux-filesystem/linux-filesystem.md
     - Shell: cheat-sheet/shell/shell.md
+    - curl: cheat-sheet/curl/curl.md
+    - netcat: cheat-sheet/netcat/netcat.md
+    - Ansible: cheat-sheet/ansible/ansible.md
+    - Slidev: cheat-sheet/slidev/slidev.md
     - SQL: cheat-sheet/sql/sql.md
     - Tmux: cheat-sheet/tmux/tmux.md
     - Vagrant: cheat-sheet/vagrant/vagrant.md
+    - Terraform: cheat-sheet/terraform/terraform.md
+    - Vim: cheat-sheet/vim/vim.md
+    - Macos File System: cheat-sheet/macos-filesystem/macos-filesystem.md
   - Games:
     - Overview: games/index.md
     - Path of Exile 2:
