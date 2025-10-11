@@ -12,9 +12,7 @@ contributors: ["UpCreid"]
 
 Hello,
 
-This small blog is as you may know hosted by github page or gitlab pages, it depends where you are :)
-
-Gonna tell you a small trick to have your static website hosted on github + gitlab, with the same source code.
+A small trick to have your static website hosted on github + gitlab, with the same source code.
 
 Why ? If one fall of course ! :D
 And also because it's fun, at least i think it's fun :)
