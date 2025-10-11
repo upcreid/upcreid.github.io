@@ -192,6 +192,8 @@ nav:
       - games/poe2/index.md
       - Build Guides:
         - Ballista Banner Tactician: games/poe2/builds/ballista-banner-tactician.md
+      - Bosses:
+        - Pinnacles: games/poe2/bosses/pinnacles.md
       - Parameters: games/poe2/params/poe2_params.md
     - StarCraft2:
       - games/starcraft2/index.md
