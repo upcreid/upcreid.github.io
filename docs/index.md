@@ -10,7 +10,6 @@ Welcome to my personal documentation! Here you'll find a collection of guides, c
 
 ## Sections
 
-* **[Learning Machine](learning_machine/index.md)** - Structured learning paths, starting with C# and .NET.
 * **[CheatSheet](cheat-sheet/index.md)** - Quick reference guides for tools and technologies.
 * **[Games](games/index.md)** - Game guides, builds, and configurations.
 
