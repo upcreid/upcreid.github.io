@@ -47,7 +47,6 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
     - navigation.path
     - navigation.top
     - navigation.footer
@@ -186,6 +185,450 @@ nav:
     - Terraform: cheat-sheet/terraform/terraform.md
     - Vim: cheat-sheet/vim/vim.md
     - Macos File System: cheat-sheet/macos-filesystem/macos-filesystem.md
+  - Learning Machine:
+    - Overview: learning_machine/index.md
+    - C#:
+      - Overview: learning_machine/csharp/index.md
+      - Lessons:
+        - "Overview": 'learning_machine/csharp/lessons/index.md'
+        - "10 - Exercises":
+          - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/index.md'
+          - "EX01 - Sum Array":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX01 - Sum Array/index.md'
+            - "EX01 - Sum Array - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX01 - Sum Array/EX01 - Sum Array - Solution.md'
+          - "EX02 - Count Target Occurrences":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX02 - Count Target Occurrences/index.md'
+            - "EX02 - Count Target Occurrences - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX02 - Count Target Occurrences/EX02 - Count Target Occurrences - Solution.md'
+          - "EX03 - Max Consecutive Ones":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX03 - Max Consecutive Ones/index.md'
+            - "EX03 - Max Consecutive Ones - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX03 - Max Consecutive Ones/EX03 - Max Consecutive Ones - Solution.md'
+          - "EX04 - Binary Search":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX04 - Binary Search/index.md'
+            - "EX04 - Binary Search - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX04 - Binary Search/EX04 - Binary Search - Solution.md'
+          - "EX05 - Search Insert Position":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX05 - Search Insert Position/index.md'
+            - "EX05 - Search Insert Position - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX05 - Search Insert Position/EX05 - Search Insert Position - Solution.md'
+          - "EX06 - Search Range":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX06 - Search Range/index.md'
+            - "EX06 - Search Range - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX06 - Search Range/EX06 - Search Range - Solution.md'
+          - "EX07 - Rotated Sorted Array":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX07 - Rotated Sorted Array/index.md'
+            - "EX07 - Rotated Sorted Array - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX07 - Rotated Sorted Array/EX07 - Rotated Sorted Array - Solution.md'
+          - "EX08 - Palindrome Two Pointers":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX08 - Palindrome Two Pointers/index.md'
+            - "EX08 - Palindrome Two Pointers - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX08 - Palindrome Two Pointers/EX08 - Palindrome Two Pointers - Solution.md'
+          - "EX09 - Two Pointers":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX09 - Two Pointers/index.md'
+            - "EX09 - Two Pointers - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX09 - Two Pointers/EX09 - Two Pointers - Solution.md'
+          - "EX10 - Fixed Size Sliding Window":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX10 - Fixed Size Sliding Window/index.md'
+            - "EX10 - Fixed Size Sliding Window - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX10 - Fixed Size Sliding Window/EX10 - Fixed Size Sliding Window - Solution.md'
+          - "EX11 - Sliding Window":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX11 - Sliding Window/index.md'
+            - "EX11 - Sliding Window - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX11 - Sliding Window/EX11 - Sliding Window - Solution.md'
+          - "EX12 - Prefix Sums":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX12 - Prefix Sums/index.md'
+            - "EX12 - Prefix Sums - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX12 - Prefix Sums/EX12 - Prefix Sums - Solution.md'
+          - "EX13 - Contains Duplicate":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX13 - Contains Duplicate/index.md'
+            - "EX13 - Contains Duplicate - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX13 - Contains Duplicate/EX13 - Contains Duplicate - Solution.md'
+          - "EX14 - Hash Maps":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX14 - Hash Maps/index.md'
+            - "EX14 - Hash Maps - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX14 - Hash Maps/EX14 - Hash Maps - Solution.md'
+          - "EX15 - Valid Parentheses":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX15 - Valid Parentheses/index.md'
+            - "EX15 - Valid Parentheses - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX15 - Valid Parentheses/EX15 - Valid Parentheses - Solution.md'
+          - "EX16 - Monotonic Stack":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX16 - Monotonic Stack/index.md'
+            - "EX16 - Monotonic Stack - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX16 - Monotonic Stack/EX16 - Monotonic Stack - Solution.md'
+          - "EX17 - Merge Sorted Intervals":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX17 - Merge Sorted Intervals/index.md'
+            - "EX17 - Merge Sorted Intervals - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX17 - Merge Sorted Intervals/EX17 - Merge Sorted Intervals - Solution.md'
+          - "EX18 - Intervals":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX18 - Intervals/index.md'
+            - "EX18 - Intervals - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX18 - Intervals/EX18 - Intervals - Solution.md'
+          - "EX19 - Kth Largest Element":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX19 - Kth Largest Element/index.md'
+            - "EX19 - Kth Largest Element - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX19 - Kth Largest Element/EX19 - Kth Largest Element - Solution.md'
+          - "EX20 - Heap Priority Queue":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX20 - Heap Priority Queue/index.md'
+            - "EX20 - Heap Priority Queue - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX20 - Heap Priority Queue/EX20 - Heap Priority Queue - Solution.md'
+          - "EX21 - BFS Shortest Path":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX21 - BFS Shortest Path/index.md'
+            - "EX21 - BFS Shortest Path - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX21 - BFS Shortest Path/EX21 - BFS Shortest Path - Solution.md'
+          - "EX22 - BFS Grid Search":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX22 - BFS Grid Search/index.md'
+            - "EX22 - BFS Grid Search - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX22 - BFS Grid Search/EX22 - BFS Grid Search - Solution.md'
+          - "EX23 - Connected Components":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX23 - Connected Components/index.md'
+            - "EX23 - Connected Components - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX23 - Connected Components/EX23 - Connected Components - Solution.md'
+          - "EX24 - DFS Graph Traversal":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX24 - DFS Graph Traversal/index.md'
+            - "EX24 - DFS Graph Traversal - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX24 - DFS Graph Traversal/EX24 - DFS Graph Traversal - Solution.md'
+          - "EX25 - Course Schedule Cycle":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX25 - Course Schedule Cycle/index.md'
+            - "EX25 - Course Schedule Cycle - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX25 - Course Schedule Cycle/EX25 - Course Schedule Cycle - Solution.md'
+          - "EX26 - Topological Sort":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX26 - Topological Sort/index.md'
+            - "EX26 - Topological Sort - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX26 - Topological Sort/EX26 - Topological Sort - Solution.md'
+          - "EX27 - Weighted Graph Adjacency":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX27 - Weighted Graph Adjacency/index.md'
+            - "EX27 - Weighted Graph Adjacency - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX27 - Weighted Graph Adjacency/EX27 - Weighted Graph Adjacency - Solution.md'
+          - "EX28 - Dijkstra Basics":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX28 - Dijkstra Basics/index.md'
+            - "EX28 - Dijkstra Basics - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX28 - Dijkstra Basics/EX28 - Dijkstra Basics - Solution.md'
+          - "EX29 - Dijkstra Path Reconstruction":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX29 - Dijkstra Path Reconstruction/index.md'
+            - "EX29 - Dijkstra Path Reconstruction - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX29 - Dijkstra Path Reconstruction/EX29 - Dijkstra Path Reconstruction - Solution.md'
+          - "EX30 - Union Find Connectivity":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX30 - Union Find Connectivity/index.md'
+            - "EX30 - Union Find Connectivity - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX30 - Union Find Connectivity/EX30 - Union Find Connectivity - Solution.md'
+          - "EX31 - Union Find":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX31 - Union Find/index.md'
+            - "EX31 - Union Find - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX31 - Union Find/EX31 - Union Find - Solution.md'
+          - "EX32 - Climbing Stairs":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX32 - Climbing Stairs/index.md'
+            - "EX32 - Climbing Stairs - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX32 - Climbing Stairs/EX32 - Climbing Stairs - Solution.md'
+          - "EX33 - Dynamic Programming 1D":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX33 - Dynamic Programming 1D/index.md'
+            - "EX33 - Dynamic Programming 1D - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX33 - Dynamic Programming 1D/EX33 - Dynamic Programming 1D - Solution.md'
+          - "EX34 - House Robber":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX34 - House Robber/index.md'
+            - "EX34 - House Robber - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX34 - House Robber/EX34 - House Robber - Solution.md'
+          - "EX35 - Dynamic Programming 2D":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX35 - Dynamic Programming 2D/index.md'
+            - "EX35 - Dynamic Programming 2D - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX35 - Dynamic Programming 2D/EX35 - Dynamic Programming 2D - Solution.md'
+          - "EX36 - Longest Common Subsequence":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX36 - Longest Common Subsequence/index.md'
+            - "EX36 - Longest Common Subsequence - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX36 - Longest Common Subsequence/EX36 - Longest Common Subsequence - Solution.md'
+          - "EX37 - Knapsack Style DP":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX37 - Knapsack Style DP/index.md'
+            - "EX37 - Knapsack Style DP - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX37 - Knapsack Style DP/EX37 - Knapsack Style DP - Solution.md'
+          - "EX38 - Coin Change":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX38 - Coin Change/index.md'
+            - "EX38 - Coin Change - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX38 - Coin Change/EX38 - Coin Change - Solution.md'
+          - "EX39 - State Expanded Shortest Path":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX39 - State Expanded Shortest Path/index.md'
+            - "EX39 - State Expanded Shortest Path - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX39 - State Expanded Shortest Path/EX39 - State Expanded Shortest Path - Solution.md'
+          - "EX40 - Shortest Path With Coupons":
+            - "Overview": 'learning_machine/csharp/lessons/10 - Exercises/EX40 - Shortest Path With Coupons/index.md'
+            - "EX40 - Shortest Path With Coupons - Solution": 'learning_machine/csharp/lessons/10 - Exercises/EX40 - Shortest Path With Coupons/EX40 - Shortest Path With Coupons - Solution.md'
+        - "20 - Dotnet Ecosystem":
+          - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/index.md'
+          - "20.10 - Ecosystem Exercises":
+            - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/index.md'
+            - "ECO01 - Inspect SDK Runtime":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO01 - Inspect SDK Runtime/index.md'
+              - "ECO01 - Inspect SDK Runtime - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO01 - Inspect SDK Runtime/ECO01 - Inspect SDK Runtime - Solution.md'
+            - "ECO02 - Create Solution And Projects":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO02 - Create Solution And Projects/index.md'
+              - "ECO02 - Create Solution And Projects - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO02 - Create Solution And Projects/ECO02 - Create Solution And Projects - Solution.md'
+            - "ECO03 - Read csproj Anatomy":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO03 - Read csproj Anatomy/index.md'
+              - "ECO03 - Read csproj Anatomy - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO03 - Read csproj Anatomy/ECO03 - Read csproj Anatomy - Solution.md'
+            - "ECO04 - Namespace Assembly Using":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO04 - Namespace Assembly Using/index.md'
+              - "ECO04 - Namespace Assembly Using - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO04 - Namespace Assembly Using/ECO04 - Namespace Assembly Using - Solution.md'
+            - "ECO05 - Add NuGet Package":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO05 - Add NuGet Package/index.md'
+              - "ECO05 - Add NuGet Package - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO05 - Add NuGet Package/ECO05 - Add NuGet Package - Solution.md'
+            - "ECO06 - Build Test Run Loop":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO06 - Build Test Run Loop/index.md'
+              - "ECO06 - Build Test Run Loop - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO06 - Build Test Run Loop/ECO06 - Build Test Run Loop - Solution.md'
+            - "ECO07 - Config Logging DI Mini Host":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO07 - Config Logging DI Mini Host/index.md'
+              - "ECO07 - Config Logging DI Mini Host - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO07 - Config Logging DI Mini Host/ECO07 - Config Logging DI Mini Host - Solution.md'
+            - "ECO08 - Publish And Inspect Artifact":
+              - "Overview": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO08 - Publish And Inspect Artifact/index.md'
+              - "ECO08 - Publish And Inspect Artifact - Solution": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.10 - Ecosystem Exercises/ECO08 - Publish And Inspect Artifact/ECO08 - Publish And Inspect Artifact - Solution.md'
+          - "20.01 - Mental Model Python to Dotnet": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.01 - Mental Model Python to Dotnet.md'
+          - "20.02 - SDK CLI Solution Project": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.02 - SDK CLI Solution Project.md'
+          - "20.03 - csproj MSBuild Target Frameworks": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.03 - csproj MSBuild Target Frameworks.md'
+          - "20.04 - Namespaces Assemblies Usings": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.04 - Namespaces Assemblies Usings.md'
+          - "20.05 - NuGet Packages Restore": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.05 - NuGet Packages Restore.md'
+          - "20.06 - Build Test Run Debug Loop": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.06 - Build Test Run Debug Loop.md'
+          - "20.07 - Configuration Logging Dependency Injection": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.07 - Configuration Logging Dependency Injection.md'
+          - "20.08 - Publish Runtime Deployment": 'learning_machine/csharp/lessons/20 - Dotnet Ecosystem/20.08 - Publish Runtime Deployment.md'
+        - "30 - C# Language Deep Dive":
+          - "Overview": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/index.md'
+          - "30.10 - C# Language Exercises": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.10 - C# Language Exercises.md'
+          - "30.20 - Errors Equality Generics": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.20 - Errors Equality Generics.md'
+          - "30.25 - LINQ Fundamentals": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.25 - LINQ Fundamentals.md'
+          - "30.30 - Collections Memory Performance": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.30 - Collections Memory Performance.md'
+          - "30.40 - Async Concurrency Resource Lifetime": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.40 - Async Concurrency Resource Lifetime.md'
+          - "30.50 - Serialization Date Time Modern Idioms": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.50 - Serialization Date Time Modern Idioms.md'
+          - "30.60 - Language Mastery Capstone": 'learning_machine/csharp/lessons/30 - C# Language Deep Dive/30.60 - Language Mastery Capstone.md'
+        - "35 - Architecture Design Fundamentals":
+          - "Overview": 'learning_machine/csharp/lessons/35 - Architecture Design Fundamentals/index.md'
+          - "35.10 - Architecture Design Exercises": 'learning_machine/csharp/lessons/35 - Architecture Design Fundamentals/35.10 - Architecture Design Exercises.md'
+        - "40 - ASP.NET Core APIs":
+          - "Overview": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/index.md'
+          - "40.20 - Markdown Blog API Capstone":
+            - "Overview": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/index.md'
+            - "40.20.01 - Project Setup and API Contract": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.01 - Project Setup and API Contract.md'
+            - "40.20.02 - Domain DTOs and Validation": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.02 - Domain DTOs and Validation.md'
+            - "40.20.03 - Markdown File Storage": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.03 - Markdown File Storage.md'
+            - "40.20.04 - GET all blog posts": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.04 - GET all blog posts.md'
+            - "40.20.05 - GET blog post by id": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.05 - GET blog post by id.md'
+            - "40.20.06 - POST create blog post": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.06 - POST create blog post.md'
+            - "40.20.07 - PUT update blog post": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.07 - PUT update blog post.md'
+            - "40.20.08 - DELETE and Integration Review": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.20 - Markdown Blog API Capstone/40.20.08 - DELETE and Integration Review.md'
+          - "40.10 - ASP.NET Core API Exercises": 'learning_machine/csharp/lessons/40 - ASP.NET Core APIs/40.10 - ASP.NET Core API Exercises.md'
+        - "45 - API Niveau Pro Blog Platform":
+          - "Overview": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/index.md'
+          - "45.00 - Overview and Professional API Expectations": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.00 - Overview and Professional API Expectations.md'
+          - "45.01 - Project Architecture and Boundaries": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.01 - Project Architecture and Boundaries.md'
+          - "45.02 - Domain Model and Business Rules": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.02 - Domain Model and Business Rules.md'
+          - "45.03 - Database with EF Core": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.03 - Database with EF Core.md'
+          - "45.04 - Users and Authentication": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.04 - Users and Authentication.md'
+          - "45.05 - Authorization Policies and Ownership": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.05 - Authorization Policies and Ownership.md'
+          - "45.06 - Blog Post Lifecycle": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.06 - Blog Post Lifecycle.md'
+          - "45.07 - Query API Pagination Filtering Sorting": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.07 - Query API Pagination Filtering Sorting.md'
+          - "45.08 - Comments and Moderation": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.08 - Comments and Moderation.md'
+          - "45.09 - Error Contract with ProblemDetails": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.09 - Error Contract with ProblemDetails.md'
+          - "45.10 - Transactions and Concurrency": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.10 - Transactions and Concurrency.md'
+          - "45.11 - Security Hardening": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.11 - Security Hardening.md'
+          - "45.12 - Testing Pro": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.12 - Testing Pro.md'
+          - "45.13 - Observability Health Logs Metrics": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.13 - Observability Health Logs Metrics.md'
+          - "45.14 - API Versioning and Contract Lifecycle": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.14 - API Versioning and Contract Lifecycle.md'
+          - "45.15 - Production Delivery": 'learning_machine/csharp/lessons/45 - API Niveau Pro Blog Platform/45.15 - Production Delivery.md'
+        - "50 - Data Access with EF Core":
+          - "Overview": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/index.md'
+          - "50.20 - SQLite EF Core Blog API Capstone":
+            - "Overview": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/index.md'
+            - "50.20.01 - EF Core Mental Model": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.01 - EF Core Mental Model.md'
+            - "50.20.02 - Add SQLite and DbContext": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.02 - Add SQLite and DbContext.md'
+            - "50.20.03 - Create the First Migration": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.03 - Create the First Migration.md'
+            - "50.20.04 - Replace Markdown Repository with EF Repository": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.04 - Replace Markdown Repository with EF Repository.md'
+            - "50.20.05 - Querying Pagination and AsNoTracking": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.05 - Querying Pagination and AsNoTracking.md'
+            - "50.20.06 - Update Delete and Change Tracking": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.06 - Update Delete and Change Tracking.md'
+            - "50.20.07 - SQLite Integration Tests and Review": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.20 - SQLite EF Core Blog API Capstone/50.20.07 - SQLite Integration Tests and Review.md'
+          - "50.10 - EF Core Exercises": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.10 - EF Core Exercises.md'
+          - "50.15 - LINQ to Entities and SQL Translation": 'learning_machine/csharp/lessons/50 - Data Access with EF Core/50.15 - LINQ to Entities and SQL Translation.md'
+        - "60 - Testing and Quality":
+          - "Overview": 'learning_machine/csharp/lessons/60 - Testing and Quality/index.md'
+          - "60.10 - Testing Quality Exercises": 'learning_machine/csharp/lessons/60 - Testing and Quality/60.10 - Testing Quality Exercises.md'
+        - "70 - Production Dotnet":
+          - "Overview": 'learning_machine/csharp/lessons/70 - Production Dotnet/index.md'
+          - "70.10 - Production Dotnet Exercises": 'learning_machine/csharp/lessons/70 - Production Dotnet/70.10 - Production Dotnet Exercises.md'
+        - "72 - Containers Delivery":
+          - "Overview": 'learning_machine/csharp/lessons/72 - Containers Delivery/index.md'
+          - "72.10 - Containers Delivery Exercises": 'learning_machine/csharp/lessons/72 - Containers Delivery/72.10 - Containers Delivery Exercises.md'
+        - "75 - Security Identity":
+          - "Overview": 'learning_machine/csharp/lessons/75 - Security Identity/index.md'
+          - "75.10 - Security Identity Exercises": 'learning_machine/csharp/lessons/75 - Security Identity/75.10 - Security Identity Exercises.md'
+        - "80 - Integration Resilience":
+          - "Overview": 'learning_machine/csharp/lessons/80 - Integration Resilience/index.md'
+          - "80.10 - Integration Resilience Exercises": 'learning_machine/csharp/lessons/80 - Integration Resilience/80.10 - Integration Resilience Exercises.md'
+        - "82 - Observability OpenTelemetry":
+          - "Overview": 'learning_machine/csharp/lessons/82 - Observability OpenTelemetry/index.md'
+          - "82.10 - Observability OpenTelemetry Exercises": 'learning_machine/csharp/lessons/82 - Observability OpenTelemetry/82.10 - Observability OpenTelemetry Exercises.md'
+        - "83 - Caching Application Performance":
+          - "Overview": 'learning_machine/csharp/lessons/83 - Caching Application Performance/index.md'
+          - "83.10 - Caching Performance Exercises": 'learning_machine/csharp/lessons/83 - Caching Application Performance/83.10 - Caching Performance Exercises.md'
+        - "84 - API Contract Lifecycle":
+          - "Overview": 'learning_machine/csharp/lessons/84 - API Contract Lifecycle/index.md'
+          - "84.10 - API Contract Lifecycle Exercises": 'learning_machine/csharp/lessons/84 - API Contract Lifecycle/84.10 - API Contract Lifecycle Exercises.md'
+        - "85 - Runtime Performance Diagnostics":
+          - "Overview": 'learning_machine/csharp/lessons/85 - Runtime Performance Diagnostics/index.md'
+          - "85.10 - Runtime Diagnostics Exercises": 'learning_machine/csharp/lessons/85 - Runtime Performance Diagnostics/85.10 - Runtime Diagnostics Exercises.md'
+        - "86 - gRPC Streaming Realtime":
+          - "Overview": 'learning_machine/csharp/lessons/86 - gRPC Streaming Realtime/index.md'
+          - "86.10 - gRPC Streaming Realtime Exercises": 'learning_machine/csharp/lessons/86 - gRPC Streaming Realtime/86.10 - gRPC Streaming Realtime Exercises.md'
+        - "87 - Search Indexing":
+          - "Overview": 'learning_machine/csharp/lessons/87 - Search Indexing/index.md'
+          - "87.10 - Search Indexing Exercises": 'learning_machine/csharp/lessons/87 - Search Indexing/87.10 - Search Indexing Exercises.md'
+        - "88 - Messaging Background Processing":
+          - "Overview": 'learning_machine/csharp/lessons/88 - Messaging Background Processing/index.md'
+          - "88.10 - Messaging Background Exercises": 'learning_machine/csharp/lessons/88 - Messaging Background Processing/88.10 - Messaging Background Exercises.md'
+        - "89 - Library Design NuGet Publishing":
+          - "Overview": 'learning_machine/csharp/lessons/89 - Library Design NuGet Publishing/index.md'
+          - "89.10 - Library NuGet Exercises": 'learning_machine/csharp/lessons/89 - Library Design NuGet Publishing/89.10 - Library NuGet Exercises.md'
+        - "90 - Glossary":
+          - "Overview": 'learning_machine/csharp/lessons/90 - Glossary/index.md'
+          - "90.10 - Observability Caching Contracts Search Glossary": 'learning_machine/csharp/lessons/90 - Glossary/90.10 - Observability Caching Contracts Search Glossary.md'
+        - "95 - SRE Dotnet Operational Labs":
+          - "Overview": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/index.md'
+          - "100 - Definition of Ready Done": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/100 - Definition of Ready Done.md'
+          - "101 - Anti-patterns SRE Dotnet": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/101 - Anti-patterns SRE Dotnet.md'
+          - "102 - Validation Orale SRE Dotnet": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/102 - Validation Orale SRE Dotnet.md'
+          - "90 - SLO Alerting": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/90 - SLO Alerting.md'
+          - "91 - On-Call Incident Management": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/91 - On-Call Incident Management.md'
+          - "92 - Kubernetes Operations": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/92 - Kubernetes Operations.md'
+          - "93 - Load Capacity": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/93 - Load Capacity.md'
+          - "94 - CI CD Failures": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/94 - CI CD Failures.md'
+          - "95 - Service Catalog Dependency Map": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/95 - Service Catalog Dependency Map.md'
+          - "95.10 - Incident Labs": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/95.10 - Incident Labs.md'
+          - "96 - Configuration Failures": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/96 - Configuration Failures.md'
+          - "97 - Database Operations": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/97 - Database Operations.md'
+          - "98 - Maturity Matrix": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/98 - Maturity Matrix.md'
+          - "99 - Parcours Recommandes": 'learning_machine/csharp/lessons/95 - SRE Dotnet Operational Labs/99 - Parcours Recommandes.md'
+        - "00 - Roadmap": 'learning_machine/csharp/lessons/00 - Roadmap.md'
+        - "01 - C# Algorithm Toolkit": 'learning_machine/csharp/lessons/01 - C# Algorithm Toolkit.md'
+        - "02 - How to Solve an Algo Problem": 'learning_machine/csharp/lessons/02 - How to Solve an Algo Problem.md'
+        - "25 - Dotnet C# Growth Plan": 'learning_machine/csharp/lessons/25 - Dotnet C# Growth Plan.md'
+        - "99 - Progress Tracker": 'learning_machine/csharp/lessons/99 - Progress Tracker.md'
+      - Exo:
+        - "Overview": 'learning_machine/csharp/exo/index.md'
+        - "docs":
+          - "incident-labs":
+            - "Overview": 'learning_machine/csharp/exo/docs/incident-labs/index.md'
+            - "postmortem-template": 'learning_machine/csharp/exo/docs/incident-labs/postmortem-template.md'
+          - "progress":
+            - "sre-dotnet-track": 'learning_machine/csharp/exo/docs/progress/sre-dotnet-track.md'
+          - "runbooks":
+            - "blogpro": 'learning_machine/csharp/exo/docs/runbooks/blogpro.md'
+            - "on-call": 'learning_machine/csharp/exo/docs/runbooks/on-call.md'
+            - "release-checklist": 'learning_machine/csharp/exo/docs/runbooks/release-checklist.md'
+          - "service-catalog":
+            - "blogpro": 'learning_machine/csharp/exo/docs/service-catalog/blogpro.md'
+          - "slo":
+            - "alert-template": 'learning_machine/csharp/exo/docs/slo/alert-template.md'
+            - "blogpro-slo": 'learning_machine/csharp/exo/docs/slo/blogpro-slo.md'
+          - "superpowers":
+            - "plans":
+              - "2026-05-28-sre-dotnet-track-foundation": 'learning_machine/csharp/exo/docs/superpowers/plans/2026-05-28-sre-dotnet-track-foundation.md'
+            - "specs":
+              - "2026-05-28-sre-dotnet-track-design": 'learning_machine/csharp/exo/docs/superpowers/specs/2026-05-28-sre-dotnet-track-design.md'
+        - "exercises":
+          - "EX01_SumArray":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX01_SumArray/index.md'
+          - "EX02_CountTargetOccurrences":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX02_CountTargetOccurrences/index.md'
+          - "EX03_MaxConsecutiveOnes":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX03_MaxConsecutiveOnes/index.md'
+          - "EX04_BinarySearch":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX04_BinarySearch/index.md'
+          - "EX05_SearchInsertPosition":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX05_SearchInsertPosition/index.md'
+          - "EX06_SearchRange":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX06_SearchRange/index.md'
+          - "EX07_RotatedSortedArray":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX07_RotatedSortedArray/index.md'
+          - "EX08_PalindromeTwoPointers":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX08_PalindromeTwoPointers/index.md'
+          - "EX09_TwoPointers":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX09_TwoPointers/index.md'
+          - "EX10_FixedSizeSlidingWindow":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX10_FixedSizeSlidingWindow/index.md'
+          - "EX11_SlidingWindow":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX11_SlidingWindow/index.md'
+          - "EX12_PrefixSums":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX12_PrefixSums/index.md'
+          - "EX13_ContainsDuplicate":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX13_ContainsDuplicate/index.md'
+          - "EX14_HashMaps":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX14_HashMaps/index.md'
+          - "EX15_ValidParentheses":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX15_ValidParentheses/index.md'
+          - "EX16_MonotonicStack":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX16_MonotonicStack/index.md'
+          - "EX17_MergeSortedIntervals":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX17_MergeSortedIntervals/index.md'
+          - "EX18_Intervals":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX18_Intervals/index.md'
+          - "EX19_KthLargestElement":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX19_KthLargestElement/index.md'
+          - "EX20_HeapPriorityQueue":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX20_HeapPriorityQueue/index.md'
+          - "EX21_BfsShortestPath":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX21_BfsShortestPath/index.md'
+          - "EX22_BfsGridSearch":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX22_BfsGridSearch/index.md'
+          - "EX23_ConnectedComponents":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX23_ConnectedComponents/index.md'
+          - "EX24_DfsGraphTraversal":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX24_DfsGraphTraversal/index.md'
+          - "EX25_CourseScheduleCycle":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX25_CourseScheduleCycle/index.md'
+          - "EX26_TopologicalSort":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX26_TopologicalSort/index.md'
+          - "EX27_WeightedGraphAdjacency":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX27_WeightedGraphAdjacency/index.md'
+          - "EX28_DijkstraBasics":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX28_DijkstraBasics/index.md'
+          - "EX29_DijkstraPathReconstruction":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX29_DijkstraPathReconstruction/index.md'
+          - "EX30_UnionFindConnectivity":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX30_UnionFindConnectivity/index.md'
+          - "EX31_UnionFind":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX31_UnionFind/index.md'
+          - "EX32_ClimbingStairs":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX32_ClimbingStairs/index.md'
+          - "EX33_DynamicProgramming1D":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX33_DynamicProgramming1D/index.md'
+          - "EX34_HouseRobber":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX34_HouseRobber/index.md'
+          - "EX35_DynamicProgramming2D":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX35_DynamicProgramming2D/index.md'
+          - "EX36_LongestCommonSubsequence":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX36_LongestCommonSubsequence/index.md'
+          - "EX37_KnapsackStyleDP":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX37_KnapsackStyleDP/index.md'
+          - "EX38_CoinChange":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX38_CoinChange/index.md'
+          - "EX39_StateExpandedShortestPath":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX39_StateExpandedShortestPath/index.md'
+          - "EX40_ShortestPathWithCoupons":
+            - "Overview": 'learning_machine/csharp/exo/exercises/EX40_ShortestPathWithCoupons/index.md'
+        - "labs":
+          - "Overview": 'learning_machine/csharp/exo/labs/index.md'
+          - "100-lab-ready-done":
+            - "Overview": 'learning_machine/csharp/exo/labs/100-lab-ready-done/index.md'
+          - "101-sre-dotnet-antipatterns":
+            - "Overview": 'learning_machine/csharp/exo/labs/101-sre-dotnet-antipatterns/index.md'
+          - "102-validation-orale":
+            - "Overview": 'learning_machine/csharp/exo/labs/102-validation-orale/index.md'
+          - "20-dotnet-ecosystem":
+            - "Overview": 'learning_machine/csharp/exo/labs/20-dotnet-ecosystem/index.md'
+          - "30-csharp-language":
+            - "Overview": 'learning_machine/csharp/exo/labs/30-csharp-language/index.md'
+          - "40-api-basics":
+            - "Overview": 'learning_machine/csharp/exo/labs/40-api-basics/index.md'
+          - "45-blogpro-capstone":
+            - "Overview": 'learning_machine/csharp/exo/labs/45-blogpro-capstone/index.md'
+          - "50-ef-core":
+            - "Overview": 'learning_machine/csharp/exo/labs/50-ef-core/index.md'
+          - "60-testing-quality":
+            - "Overview": 'learning_machine/csharp/exo/labs/60-testing-quality/index.md'
+          - "70-production-dotnet":
+            - "Overview": 'learning_machine/csharp/exo/labs/70-production-dotnet/index.md'
+          - "72-containers-delivery":
+            - "Overview": 'learning_machine/csharp/exo/labs/72-containers-delivery/index.md'
+          - "75-security-identity":
+            - "Overview": 'learning_machine/csharp/exo/labs/75-security-identity/index.md'
+          - "80-integration-resilience":
+            - "Overview": 'learning_machine/csharp/exo/labs/80-integration-resilience/index.md'
+          - "82-observability-otel":
+            - "Overview": 'learning_machine/csharp/exo/labs/82-observability-otel/index.md'
+          - "83-caching-performance":
+            - "Overview": 'learning_machine/csharp/exo/labs/83-caching-performance/index.md'
+          - "84-api-contract-lifecycle":
+            - "Overview": 'learning_machine/csharp/exo/labs/84-api-contract-lifecycle/index.md'
+          - "85-runtime-diagnostics":
+            - "Overview": 'learning_machine/csharp/exo/labs/85-runtime-diagnostics/index.md'
+          - "88-messaging-background":
+            - "Overview": 'learning_machine/csharp/exo/labs/88-messaging-background/index.md'
+          - "90-slo-alerting":
+            - "Overview": 'learning_machine/csharp/exo/labs/90-slo-alerting/index.md'
+          - "91-oncall-incident-management":
+            - "Overview": 'learning_machine/csharp/exo/labs/91-oncall-incident-management/index.md'
+          - "92-kubernetes-operations":
+            - "Overview": 'learning_machine/csharp/exo/labs/92-kubernetes-operations/index.md'
+          - "93-load-capacity":
+            - "Overview": 'learning_machine/csharp/exo/labs/93-load-capacity/index.md'
+          - "94-ci-cd-failures":
+            - "Overview": 'learning_machine/csharp/exo/labs/94-ci-cd-failures/index.md'
+          - "95-service-catalog-dependency-map":
+            - "Overview": 'learning_machine/csharp/exo/labs/95-service-catalog-dependency-map/index.md'
+          - "96-configuration-failures":
+            - "Overview": 'learning_machine/csharp/exo/labs/96-configuration-failures/index.md'
+          - "97-database-operations":
+            - "Overview": 'learning_machine/csharp/exo/labs/97-database-operations/index.md'
+          - "98-maturity-matrix":
+            - "Overview": 'learning_machine/csharp/exo/labs/98-maturity-matrix/index.md'
+          - "99-learning-paths":
+            - "Overview": 'learning_machine/csharp/exo/labs/99-learning-paths/index.md'
   - Games:
     - Overview: games/index.md
     - Path of Exile 2:

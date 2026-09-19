@@ -8,6 +8,11 @@
 
 Welcome to my personal documentation! Here you'll find a collection of guides, cheat sheets, and technical resources to streamline your development workflow.
 
+## Sections
+
+* **[Learning Machine](learning_machine/index.md)** - Structured learning paths, starting with C# and .NET.
+* **[CheatSheet](cheat-sheet/index.md)** - Quick reference guides for tools and technologies.
+* **[Games](games/index.md)** - Game guides, builds, and configurations.
 
 <div style="text-align: center; margin-top: 3rem; opacity: 0.7;">
   <p>Regularly updated documentation • Built with MkDocs Material</p>
