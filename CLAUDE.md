@@ -31,7 +31,7 @@ This builds the site and pushes it to the `gh-pages` branch.
 ### Content Structure
 - `docs/` - All markdown content and assets
   - `cheat-sheet/` - Technical cheat sheets (Ansible, Docker, Git, K9s, Kubectl, Shell, SQL, Tmux, Vagrant, VSCode)
-  - `games/` - Gaming guides (Path of Exile 2, StarCraft 2)
+  - `games/` - Gaming guides (StarCraft 2)
   - `blog/` - Blog posts
   - `assets/` - Images and static assets
   - `javascripts/` - Custom JavaScript (currently only MathJax configuration)
@@ -100,7 +100,7 @@ The repository uses a simple main branch (`master`) workflow:
 
 ## File Naming Conventions
 
-- Markdown files use lowercase with hyphens (e.g., `path-of-exile-2.md`)
+- Markdown files use lowercase with hyphens (e.g., `starcraft-2.md`)
 - Directory names use lowercase with hyphens
 - Asset files stored in `docs/assets/`
 
