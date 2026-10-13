@@ -1,29 +1,45 @@
 name: ci
+
 on:
   push:
     branches:
-      - master
       - main
+      - master
+  workflow_dispatch:
+
 permissions:
   contents: write
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure Git Credentials
+
+      - name: Install Zola
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+          curl -sSfL -o /tmp/zola.tar.gz \
+            https://github.com/getzola/zola/releases/download/v0.23.6/zola-v0.23.6-x86_64-unknown-linux-gnu.tar.gz
+          echo "8f5132b3522412d04e395e0b25f6d68613ad272a873e54a2b3ebf664873024a4  /tmp/zola.tar.gz" \
+            | sha256sum -c -
+          tar xzf /tmp/zola.tar.gz -C /tmp
+          sudo install -m 755 /tmp/zola /usr/local/bin/zola
+          zola --version
+
+      - name: Check links
+        run: zola check
+
+      - name: Build
+        run: zola build
+
+      - name: Deploy to gh-pages
+        run: |
+          cd public
+          git init -q -b gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "deploy: ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
