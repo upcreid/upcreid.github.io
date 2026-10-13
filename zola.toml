@@ -1,0 +1,150 @@
+base_url = "https://upcreid.github.io"
+title = "/void !"
+description = "Documentation personnelle - Guides, aide-memoire et ressources techniques"
+default_language = "fr"
+author = "upcreid"
+
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+feed_limit = 20
+
+build_search_index = true
+generate_sitemap = true
+generate_robots_txt = true
+compile_sass = false
+minify_html = false
+hard_link_static = true
+exclude_paginated_pages_in_sitemap = "all"
+skip_content_templating = ["**"]
+
+[markdown]
+smart_punctuation = true
+render_emoji = true
+insert_anchor_links = "right"
+bottom_footnotes = true
+lazy_async_image = true
+github_alerts = true
+external_links_target_blank = true
+external_links_no_referrer = true
+
+[markdown.highlighting]
+light_theme = "github-light"
+dark_theme = "github-dark"
+add_color_scheme = false
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+index_format = "elasticlunr_json"
+truncate_content = true
+
+[link_checker]
+internal_level = "warn"
+external_level = "warn"
+skip_prefixes = ["http://www.teamliquid.net/"]
+
+[extra]
+repo_url = "https://github.com/upcreid/upcreid.github.io"
+logo = "logo.png"
+favicon = "logo.png"
+edit_base = ""
+search_sources = ["/search_index.fr.json", "/search_index.en.json"]
+
+[[extra.langs]]
+code = "fr"
+name = "Français"
+home = "/"
+
+[[extra.langs]]
+code = "en"
+name = "English"
+home = "/en/"
+
+[[extra.nav]]
+key = "nav_overview"
+path = "@/_index.md"
+prefix = ""
+
+[[extra.nav]]
+key = "nav_blog"
+path = "@/blog/_index.md"
+prefix = "blog/"
+
+[[extra.nav]]
+key = "nav_cheatsheet"
+path = "@/cheat-sheet/_index.md"
+prefix = "cheat-sheet/"
+
+[[extra.nav]]
+key = "nav_games"
+path = "@/games/_index.md"
+prefix = "games/"
+
+[translations]
+date_format = "d MMMM y"
+nav_overview = "Accueil"
+nav_blog = "Blog"
+nav_cheatsheet = "Aide-mémoire"
+nav_games = "Jeux"
+menu = "Menu"
+search = "Rechercher"
+search_placeholder = "Rechercher…"
+search_no_results = "Aucun résultat"
+search_results = "résultat(s)"
+toc = "Sur cette page"
+edit = "Modifier cette page"
+view_source = "Voir la source"
+prev = "Précédent"
+next = "Suivant"
+back_to_blog = "Retour au blog"
+back_home = "Retour à l'accueil"
+read_more = "Lire la suite"
+reading_time = "min de lecture"
+language = "Langue"
+theme_toggle = "Changer de thème"
+published_on = "Publié le"
+updated_on = "Mis à jour le"
+not_found_title = "Page introuvable"
+not_found = "404"
+not_found_text = "La page demandée n'existe pas ou a été déplacée."
+pagination_newer = "Plus récents"
+pagination_older = "Plus anciens"
+docs_language_note = "Ces guides techniques sont rédigés en anglais."
+
+[languages.en]
+title = "/void !"
+description = "Personal documentation - Guides, cheat sheets and technical resources"
+generate_feeds = true
+build_search_index = true
+
+[languages.en.translations]
+date_format = "MMMM d, y"
+nav_overview = "Home"
+nav_blog = "Blog"
+nav_cheatsheet = "CheatSheet"
+nav_games = "Games"
+menu = "Menu"
+search = "Search"
+search_placeholder = "Search…"
+search_no_results = "No results"
+search_results = "result(s)"
+toc = "On this page"
+edit = "Edit this page"
+view_source = "View source"
+prev = "Previous"
+next = "Next"
+back_to_blog = "Back to blog"
+back_home = "Back to home"
+read_more = "Read more"
+reading_time = "min read"
+language = "Language"
+theme_toggle = "Change theme"
+published_on = "Published on"
+updated_on = "Updated on"
+not_found_title = "Page not found"
+not_found = "404"
+not_found_text = "The requested page does not exist or has been moved."
+pagination_newer = "Newer"
+pagination_older = "Older"
+docs_language_note = "These technical guides are written in English."

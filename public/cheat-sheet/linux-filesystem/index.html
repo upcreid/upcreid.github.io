@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Linux File System · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="/en/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/linux-filesystem/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/en/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">Aide-mémoire</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+      
+    
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">Aide-mémoire</a>
+      
+    
+  </nav>
+
+  <h1>Linux File System</h1>
+
+  <p class="page-meta">
+    
+    <span>2 min de lecture</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>The Linux filesystem follows the Filesystem Hierarchy Standard (FHS), which defines the directory structure and contents in Unix-like operating systems.</p>
+<p><strong>Key Principles:</strong></p>
+<ul>
+<li>Everything is a file (including devices)</li>
+<li>Single root directory (/)</li>
+<li>Case-sensitive filenames</li>
+<li>Hidden files start with dot (.)</li>
+<li>No file extensions required</li>
+</ul>
+<h2 id="filesystem-hierarchy-standard-fhs">Filesystem Hierarchy Standard (FHS)<a class="zola-anchor" href="#filesystem-hierarchy-standard-fhs" aria-label="Anchor link for: filesystem-hierarchy-standard-fhs">🔗</a></h2>
+<h3 id="root-directory">Root Directory (/)<a class="zola-anchor" href="#root-directory" aria-label="Anchor link for: root-directory">🔗</a></h3>
+<p>The top-level directory from which all other directories branch.</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> bin</span><span>     -</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> usr/bin</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Essential user binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> boot</span><span style="color: light-dark(#6A737D, #6A737D);">                  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Boot loader files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> dev</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Device files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> etc</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> System configuration files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> home</span><span style="color: light-dark(#6A737D, #6A737D);">                  #</span><span style="color: light-dark(#6A737D, #6A737D);"> User home directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> lib</span><span>     -</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> usr/lib</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Shared libraries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> media</span><span style="color: light-dark(#6A737D, #6A737D);">                 #</span><span style="color: light-dark(#6A737D, #6A737D);"> Mount points for removable media</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> mnt</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Temporary mount points</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> opt</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Optional/third-party software</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> proc</span><span style="color: light-dark(#6A737D, #6A737D);">                  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Process and kernel information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> root</span><span style="color: light-dark(#6A737D, #6A737D);">                  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Root user home directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> run</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Runtime data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> sbin</span><span>    -</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> usr/sbin</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> System binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> srv</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Service data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> sys</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Kernel and system information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> tmp</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Temporary files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> usr</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> User programs and data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> var</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Variable data files</span></span></code></pre><h3 id="bin-essential-user-binaries">/bin - Essential User Binaries<a class="zola-anchor" href="#bin-essential-user-binaries" aria-label="Anchor link for: bin-essential-user-binaries">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Symlinked to /usr/bin on modern systems</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#032F62, #9ECBFF);"> /bin</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Common binaries: bash, cat, cp, ls, mv, rm, echo, grep, etc.</span></span></code></pre><h3 id="boot-boot-loader-files">/boot - Boot Loader Files<a class="zola-anchor" href="#boot-boot-loader-files" aria-label="Anchor link for: boot-boot-loader-files">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/boot/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> vmlinuz-</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Linux kernel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> initrd.img-</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Initial RAM disk</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> grub/</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> GRUB bootloader</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> config-</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Kernel configuration</span></span></code></pre><h3 id="dev-device-files">/dev - Device Files<a class="zola-anchor" href="#dev-device-files" aria-label="Anchor link for: dev-device-files">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/dev/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> sda,</span><span style="color: light-dark(#032F62, #9ECBFF);"> sdb</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> SATA/SCSI disks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> sda1,</span><span style="color: light-dark(#032F62, #9ECBFF);"> sda2</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Disk partitions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> nvme0n1</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> NVMe drives</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> tty</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Terminals</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> null</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Null device (discards all data)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> zero</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Zero device (provides zeros)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> random,</span><span style="color: light-dark(#032F62, #9ECBFF);"> urandom</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Random number generators</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> loop</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Loop devices</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sda</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> View disk device</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/tty1</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> View terminal device</span></span></code></pre><h3 id="etc-system-configuration">/etc - System Configuration<a class="zola-anchor" href="#etc-system-configuration" aria-label="Anchor link for: etc-system-configuration">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/etc/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> passwd</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> User account information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> shadow</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Encrypted passwords</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> group</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Group information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> fstab</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Filesystem mount table</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> hosts</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Static hostname lookup</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> hostname</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> System hostname</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> resolv.conf</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> DNS resolver configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> network/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Network configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> ssh/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> SSH configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> systemd/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Systemd configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> APT configuration (Debian/Ubuntu)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> yum/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> YUM configuration (RHEL/CentOS)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> cron.d/</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Cron job configurations</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /etc/passwd</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> View user accounts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /etc/hosts</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> View hostname mappings</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /etc/fstab</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> View filesystem mounts</span></span></code></pre><h3 id="home-user-home-directories">/home - User Home Directories<a class="zola-anchor" href="#home-user-home-directories" aria-label="Anchor link for: home-user-home-directories">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/home/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> user1/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> .bashrc</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> Bash configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> .profile</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Shell profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> .ssh/</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> SSH keys</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> Documents/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> Downloads/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> .local/</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> User-specific data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> user2/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> User home directory shortcut</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span> $</span><span>HOME</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> /home/username</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">cd</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Go to home directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">cd</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/Documents</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Go to Documents</span></span></code></pre><h3 id="lib-shared-libraries">/lib - Shared Libraries<a class="zola-anchor" href="#lib-shared-libraries" aria-label="Anchor link for: lib-shared-libraries">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Symlinked to /usr/lib on modern systems</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/lib/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> modules/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Kernel modules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> firmware/</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Hardware firmware</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#005CC5, #79B8FF);"> *</span><span style="color: light-dark(#032F62, #9ECBFF);">.so</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Shared library files</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#032F62, #9ECBFF);"> /lib/modules/</span><span>$(</span><span style="color: light-dark(#6F42C1, #B392F0);">uname</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span>)</span><span style="color: light-dark(#032F62, #9ECBFF);">/</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Current kernel modules</span></span></code></pre><h3 id="media-removable-media">/media - Removable Media<a class="zola-anchor" href="#media-removable-media" aria-label="Anchor link for: media-removable-media">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/media/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> username/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> USB_DRIVE/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> CDROM/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Auto-mounted removable devices</span></span></code></pre><h3 id="mnt-temporary-mounts">/mnt - Temporary Mounts<a class="zola-anchor" href="#mnt-temporary-mounts" aria-label="Anchor link for: mnt-temporary-mounts">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Manual mount point for temporary filesystems</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mount</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> umount</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span></code></pre><h3 id="opt-optional-software">/opt - Optional Software<a class="zola-anchor" href="#opt-optional-software" aria-label="Anchor link for: opt-optional-software">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/opt/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> google/</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Google Chrome</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> teamviewer/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> custom-app/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Third-party applications that don&#39;t follow FHS</span></span></code></pre><h3 id="proc-process-information">/proc - Process Information<a class="zola-anchor" href="#proc-process-information" aria-label="Anchor link for: proc-process-information">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/proc/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> 1234/</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Process ID directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> cpuinfo</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> CPU information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> meminfo</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Memory information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> version</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Kernel version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> uptime</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> System uptime</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /proc/cpuinfo</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> View CPU info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /proc/meminfo</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> View memory info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /proc/version</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> View kernel version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#032F62, #9ECBFF);"> /proc/1/</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> View init process info</span></span></code></pre><h3 id="root-root-home-directory">/root - Root Home Directory<a class="zola-anchor" href="#root-root-home-directory" aria-label="Anchor link for: root-root-home-directory">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Home directory for root user</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/root/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> .bashrc</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> .ssh/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> scripts/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Access</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#6A737D, #6A737D);">                #</span><span style="color: light-dark(#6A737D, #6A737D);"> Switch to root</span></span></code></pre><h3 id="run-runtime-data">/run - Runtime Data<a class="zola-anchor" href="#run-runtime-data" aria-label="Anchor link for: run-runtime-data">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/run/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> systemd/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Systemd runtime data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> user/</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> User runtime directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> lock/</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Lock files</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Cleared on reboot</span></span></code></pre><h3 id="srv-service-data">/srv - Service Data<a class="zola-anchor" href="#srv-service-data" aria-label="Anchor link for: srv-service-data">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/srv/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> www/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Web server data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> ftp/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> FTP server data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> git/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Git repositories</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Data for services provided by the system</span></span></code></pre><h3 id="sys-kernel-hardware-info">/sys - Kernel/Hardware Info<a class="zola-anchor" href="#sys-kernel-hardware-info" aria-label="Anchor link for: sys-kernel-hardware-info">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/sys/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> block/</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Block devices</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> bus/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Bus types</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> class/</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Device classes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> devices/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Physical devices</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> module/</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Kernel modules</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /sys/class/power_supply/BAT0/capacity</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Battery level</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#032F62, #9ECBFF);"> /sys/class/thermal/thermal_zone0/temp</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> CPU temperature</span></span></code></pre><h3 id="tmp-temporary-files">/tmp - Temporary Files<a class="zola-anchor" href="#tmp-temporary-files" aria-label="Anchor link for: tmp-temporary-files">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/tmp/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Cleared periodically (usually on reboot)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> World-writable with sticky bit</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create temp file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">mktemp</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp/myfile.XXXXXX</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">ld</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> drwxrwxrwt (sticky bit set)</span></span></code></pre><h3 id="usr-user-programs">/usr - User Programs<a class="zola-anchor" href="#usr-user-programs" aria-label="Anchor link for: usr-user-programs">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/usr/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> bin/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> User commands</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> sbin/</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> System administration commands</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> lib/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Libraries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> share/</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Architecture-independent data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> man/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Manual pages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> doc/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Documentation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> applications/</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Desktop entries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> local/</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Locally installed software</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> bin/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> lib/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> share/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> include/</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> C header files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> src/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Source code</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#032F62, #9ECBFF);"> /usr/bin</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> User binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">man</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">k</span><span style="color: light-dark(#032F62, #9ECBFF);"> keyword</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Search man pages</span></span></code></pre><h3 id="var-variable-data">/var - Variable Data<a class="zola-anchor" href="#var-variable-data" aria-label="Anchor link for: var-variable-data">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/var/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> log/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Log files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> syslog</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> System log</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> auth.log</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Authentication log</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> kern.log</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Kernel log</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> apache2/</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Apache logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> cache/</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Application cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> tmp/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Temporary files (preserved across reboots)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> spool/</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Spool files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> cron/</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Cron jobs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> mail/</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Mail queue</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> lib/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Variable state information</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   ├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> dpkg/</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Package manager database</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">│</span><span style="color: light-dark(#032F62, #9ECBFF);">   └──</span><span style="color: light-dark(#032F62, #9ECBFF);"> mysql/</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> MySQL databases</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">├──</span><span style="color: light-dark(#032F62, #9ECBFF);"> www/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Web server files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">└──</span><span style="color: light-dark(#032F62, #9ECBFF);"> run/</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Runtime data (symlink to /run)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">tail</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);"> /var/log/syslog</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Monitor system log</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#032F62, #9ECBFF);"> /var/cache/apt/archives/</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> APT package cache</span></span></code></pre><h2 id="file-permissions">File Permissions<a class="zola-anchor" href="#file-permissions" aria-label="Anchor link for: file-permissions">🔗</a></h2>
+<h3 id="permission-types">Permission Types<a class="zola-anchor" href="#permission-types" aria-label="Anchor link for: permission-types">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Format: type|owner|group|others</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> drwxr-xr-x</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> d = directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> rwx = read, write, execute for owner</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> r-x = read, execute for group</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> r-x = read, execute for others</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Permission values</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">r</span><span> (read</span><span>)    = 4</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">w</span><span> (write</span><span>)   = 2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">x</span><span> (execute</span><span>) = 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">-</span><span> (none</span><span>)    = 0</span></span></code></pre><h3 id="viewing-permissions">Viewing Permissions<a class="zola-anchor" href="#viewing-permissions" aria-label="Anchor link for: viewing-permissions">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Long listing</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> -rw-r--r-- 1 user group 1234 Jan 15 10:00 file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Just permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">stat</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">%A</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> -rw-r--r--</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Numeric permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">stat</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">%a</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 644</span></span></code></pre><h3 id="chmod-change-mode">chmod - Change Mode<a class="zola-anchor" href="#chmod-change-mode" aria-label="Anchor link for: chmod-change-mode">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Symbolic mode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> u+x</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.sh</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Add execute for user</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> g-w</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove write for group</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> o+r</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Add read for others</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> a+x</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.sh</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Add execute for all</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> u=rw,g=r,o=r</span><span style="color: light-dark(#032F62, #9ECBFF);"> file</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Set exact permissions</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Numeric mode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 755</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.sh</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> rwxr-xr-x</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 644</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> rw-r--r--</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 600</span><span style="color: light-dark(#032F62, #9ECBFF);"> private.key</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> rw-------</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 777</span><span style="color: light-dark(#032F62, #9ECBFF);"> script.sh</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> rwxrwxrwx (avoid!)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Recursive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">R</span><span style="color: light-dark(#005CC5, #79B8FF);"> 755</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory/</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Apply to directory and contents</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Common permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 755</span><span style="color: light-dark(#032F62, #9ECBFF);"> script.sh</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> Executable script</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 644</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Regular file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 600</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/.ssh/id_rsa</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Private key</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 700</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/.ssh</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> SSH directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1777</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Sticky bit directory</span></span></code></pre><h3 id="chown-change-ownership">chown - Change Ownership<a class="zola-anchor" href="#chown-change-ownership" aria-label="Anchor link for: chown-change-ownership">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Change owner</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chown</span><span style="color: light-dark(#032F62, #9ECBFF);"> user</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Change owner and group</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chown</span><span style="color: light-dark(#032F62, #9ECBFF);"> user:group</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Change only group</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chown</span><span style="color: light-dark(#032F62, #9ECBFF);"> :group</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> or</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chgrp</span><span style="color: light-dark(#032F62, #9ECBFF);"> group</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Recursive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chown</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">R</span><span style="color: light-dark(#032F62, #9ECBFF);"> user:group</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chown</span><span style="color: light-dark(#032F62, #9ECBFF);"> www-data:www-data</span><span style="color: light-dark(#032F62, #9ECBFF);"> /var/www/html/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chown</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">R</span><span> $</span><span>USER</span><span style="color: light-dark(#032F62, #9ECBFF);">:</span><span>$</span><span>USER</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/project/</span></span></code></pre><h3 id="special-permissions">Special Permissions<a class="zola-anchor" href="#special-permissions" aria-label="Anchor link for: special-permissions">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Setuid (4) - Execute as file owner</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> u+s</span><span style="color: light-dark(#032F62, #9ECBFF);"> file</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> or chmod 4755 file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Example: /usr/bin/passwd</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Setgid (2) - Execute as group / inherit directory group</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> g+s</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> or chmod 2755 directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Files created inherit directory group</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Sticky bit (1) - Only owner can delete</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> +t</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> or chmod 1777 directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Example: /tmp</span></span></code></pre><h3 id="umask-default-permissions">umask - Default Permissions<a class="zola-anchor" href="#umask-default-permissions" aria-label="Anchor link for: umask-default-permissions">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View current umask</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">umask</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 0022</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set umask</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">umask</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0027</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Files: 640, Directories: 750</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Calculate default permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Files: 666 - umask</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Directories: 777 - umask</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">umask</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0022</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Files: 644, Dirs: 755 (default user)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">umask</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0077</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Files: 600, Dirs: 700 (private)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">umask</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0002</span><span style="color: light-dark(#6A737D, #6A737D);">               #</span><span style="color: light-dark(#6A737D, #6A737D);"> Files: 664, Dirs: 775 (group writable)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set permanently in ~/.bashrc</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">umask 0027</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/.bashrc</span></span></code></pre><h2 id="access-control-lists-acl">Access Control Lists (ACL)<a class="zola-anchor" href="#access-control-lists-acl" aria-label="Anchor link for: access-control-lists-acl">🔗</a></h2>
+<h3 id="view-acl">View ACL<a class="zola-anchor" href="#view-acl" aria-label="Anchor link for: view-acl">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Check if ACL is supported</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">mount</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> grep</span><span style="color: light-dark(#032F62, #9ECBFF);"> acl</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View ACL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">getfacl</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span></code></pre><h3 id="set-acl">Set ACL<a class="zola-anchor" href="#set-acl" aria-label="Anchor link for: set-acl">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Give user read/write</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> u:username:rw</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Give group read</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> g:groupname:r</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set default ACL for directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> u:username:rwx</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove ACL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">x</span><span style="color: light-dark(#032F62, #9ECBFF);"> u:username</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove all ACL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Recursive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">R</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> u:username:rwx</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Copy ACL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">getfacl</span><span style="color: light-dark(#032F62, #9ECBFF);"> file1</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> setfacl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-set-file=-</span><span style="color: light-dark(#032F62, #9ECBFF);"> file2</span></span></code></pre><h2 id="filesystem-types">Filesystem Types<a class="zola-anchor" href="#filesystem-types" aria-label="Anchor link for: filesystem-types">🔗</a></h2>
+<h3 id="common-filesystems">Common Filesystems<a class="zola-anchor" href="#common-filesystems" aria-label="Anchor link for: common-filesystems">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ext4 - Fourth Extended Filesystem (default on most Linux)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> xfs - XFS filesystem (default on RHEL/CentOS 7+)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> btrfs - B-tree filesystem (CoW, snapshots)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> f2fs - Flash-Friendly Filesystem (for SSDs)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> zfs - ZFS filesystem (advanced features)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> vfat/exfat - FAT filesystems (Windows compatibility)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ntfs - NTFS filesystem (Windows)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Check filesystem type</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">df</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">T</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">lsblk</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">blkid</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sda1</span></span></code></pre><h3 id="mount-unmount">Mount/Unmount<a class="zola-anchor" href="#mount-unmount" aria-label="Anchor link for: mount-unmount">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mount filesystem</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mount</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mount</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">t</span><span style="color: light-dark(#032F62, #9ECBFF);"> ext4</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mount with options</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mount</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> ro</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Read-only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mount</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> rw,noexec</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> No execution</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Unmount</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> umount</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> umount</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Force unmount</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> umount</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> umount</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span><span style="color: light-dark(#6A737D, #6A737D);">                        #</span><span style="color: light-dark(#6A737D, #6A737D);"> Lazy unmount</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Check what&#39;s using the mount</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">lsof</span><span style="color: light-dark(#032F62, #9ECBFF);"> +D</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">fuser</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> /mnt</span></span></code></pre><h3 id="etc-fstab-permanent-mounts">/etc/fstab - Permanent Mounts<a class="zola-anchor" href="#etc-fstab-permanent-mounts" aria-label="Anchor link for: etc-fstab-permanent-mounts">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Format: device  mountpoint  type  options  dump  pass</span></span>
+<span class="giallo-l"><span>UUID</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">x</span><span style="color: light-dark(#032F62, #9ECBFF);">x</span><span style="color: light-dark(#032F62, #9ECBFF);">x</span><span style="color: light-dark(#6F42C1, #B392F0);">  /data</span><span style="color: light-dark(#032F62, #9ECBFF);">  ext4</span><span style="color: light-dark(#032F62, #9ECBFF);">  defaults</span><span style="color: light-dark(#005CC5, #79B8FF);">  0</span><span style="color: light-dark(#005CC5, #79B8FF);">  2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">/dev/sdb1</span><span style="color: light-dark(#032F62, #9ECBFF);">  /backup</span><span style="color: light-dark(#032F62, #9ECBFF);">  ext4</span><span style="color: light-dark(#032F62, #9ECBFF);">  defaults,noatime</span><span style="color: light-dark(#005CC5, #79B8FF);">  0</span><span style="color: light-dark(#005CC5, #79B8FF);">  2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">//server/share</span><span style="color: light-dark(#032F62, #9ECBFF);">  /mnt/smb</span><span style="color: light-dark(#032F62, #9ECBFF);">  cifs</span><span style="color: light-dark(#032F62, #9ECBFF);">  credentials=/root/.smbcred</span><span style="color: light-dark(#005CC5, #79B8FF);">  0</span><span style="color: light-dark(#005CC5, #79B8FF);">  0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">tmpfs</span><span style="color: light-dark(#032F62, #9ECBFF);">  /tmp</span><span style="color: light-dark(#032F62, #9ECBFF);">  tmpfs</span><span style="color: light-dark(#032F62, #9ECBFF);">  defaults,noatime,mode=</span><span style="color: light-dark(#005CC5, #79B8FF);">1777</span><span style="color: light-dark(#005CC5, #79B8FF);">  0</span><span style="color: light-dark(#005CC5, #79B8FF);">  0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mount all from fstab</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mount</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">a</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Reload systemd after fstab changes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> systemctl</span><span style="color: light-dark(#032F62, #9ECBFF);"> daemon-reload</span></span></code></pre><h2 id="disk-management">Disk Management<a class="zola-anchor" href="#disk-management" aria-label="Anchor link for: disk-management">🔗</a></h2>
+<h3 id="disk-information">Disk Information<a class="zola-anchor" href="#disk-information" aria-label="Anchor link for: disk-information">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List block devices</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">lsblk</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">lsblk</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> With filesystem info</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Disk usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">df</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">h</span><span style="color: light-dark(#6A737D, #6A737D);">                      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Human-readable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">df</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#6A737D, #6A737D);">                      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Inode usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">df</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">T</span><span style="color: light-dark(#6A737D, #6A737D);">                      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Filesystem type</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Directory size</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">du</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">sh</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory/</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Summary</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">du</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">h</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-max-depth=1</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> First level subdirs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">du</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">hac</span><span style="color: light-dark(#032F62, #9ECBFF);"> directory/</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> All with total</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Largest directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">du</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">hx</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> sort</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">rh</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> head</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">20</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Find large files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#032F62, #9ECBFF);"> f</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">size</span><span style="color: light-dark(#032F62, #9ECBFF);"> +100M</span><span style="color: light-dark(#D73A49, #F97583);"> 2</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">/dev/null</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#032F62, #9ECBFF);"> f</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">size</span><span style="color: light-dark(#032F62, #9ECBFF);"> +1G</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">exec</span><span style="color: light-dark(#032F62, #9ECBFF);"> ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">lh</span><span style="color: light-dark(#032F62, #9ECBFF);"> {}</span><span style="color: light-dark(#005CC5, #79B8FF);"> \;</span><span style="color: light-dark(#D73A49, #F97583);"> 2</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">/dev/null</span></span></code></pre><h3 id="partition-management">Partition Management<a class="zola-anchor" href="#partition-management" aria-label="Anchor link for: partition-management">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List partitions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> fdisk</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> parted</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">lsblk</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create partition (fdisk)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> fdisk</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> n (new), p (primary), w (write)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create partition (parted)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> parted</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> mklabel gpt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> mkpart primary ext4 0% 100%</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Format partition</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mkfs.ext4</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mkfs.xfs</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> mkfs.vfat</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">F</span><span style="color: light-dark(#005CC5, #79B8FF);"> 32</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sdb1</span></span></code></pre><h3 id="filesystem-check-and-repair">Filesystem Check and Repair<a class="zola-anchor" href="#filesystem-check-and-repair" aria-label="Anchor link for: filesystem-check-and-repair">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Check filesystem (unmounted!)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> fsck</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sda1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> e2fsck</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sda1</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> ext2/3/4</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> xfs_repair</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sda1</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> XFS</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Force check on next reboot</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> touch</span><span style="color: light-dark(#032F62, #9ECBFF);"> /forcefsck</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Disk check with badblocks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> badblocks</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">v</span><span style="color: light-dark(#032F62, #9ECBFF);"> /dev/sda</span></span></code></pre><h2 id="symbolic-and-hard-links">Symbolic and Hard Links<a class="zola-anchor" href="#symbolic-and-hard-links" aria-label="Anchor link for: symbolic-and-hard-links">🔗</a></h2>
+<h3 id="symbolic-links-soft-links">Symbolic Links (Soft Links)<a class="zola-anchor" href="#symbolic-links-soft-links" aria-label="Anchor link for: symbolic-links-soft-links">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create symlink</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ln</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path/to/original</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path/to/link</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ln</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);"> /usr/bin/python3</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/bin/python</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ln</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);"> /var/www/html</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/www</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ln</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);"> ../../../file.txt</span><span style="color: light-dark(#032F62, #9ECBFF);"> relative-link.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View symlink</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> link</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> lrwxrwxrwx 1 user group 15 Jan 15 10:00 link -&gt; /path/to/original</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Read symlink target</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">readlink</span><span style="color: light-dark(#032F62, #9ECBFF);"> link</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">readlink</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);"> link</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Follow all symlinks</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove symlink</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> link</span><span style="color: light-dark(#6A737D, #6A737D);">                    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Don&#39;t use trailing slash!</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">unlink</span><span style="color: light-dark(#032F62, #9ECBFF);"> link</span></span></code></pre><h3 id="hard-links">Hard Links<a class="zola-anchor" href="#hard-links" aria-label="Anchor link for: hard-links">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create hard link</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ln</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path/to/original</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path/to/link</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View inode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">li</span><span style="color: light-dark(#032F62, #9ECBFF);"> file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1234567 -rw-r--r-- 2 user group 100 Jan 15 10:00 file</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Hard link count in ls output</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">ls</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> -rw-r--r-- 2 user group ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">            ^ link count</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Find all hard links to file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">inum</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1234567</span><span style="color: light-dark(#D73A49, #F97583);"> 2</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">/dev/null</span></span></code></pre><h3 id="differences">Differences<a class="zola-anchor" href="#differences" aria-label="Anchor link for: differences">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Symbolic Link:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Can link to directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Can cross filesystems</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Breaks if original is deleted</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Shows -&gt; in ls output</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Hard Link:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Cannot link to directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Must be on same filesystem</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - Remains valid if original is deleted</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> - All links are equal (no &quot;original&quot;)</span></span></code></pre><h2 id="file-attributes">File Attributes<a class="zola-anchor" href="#file-attributes" aria-label="Anchor link for: file-attributes">🔗</a></h2>
+<h3 id="extended-attributes">Extended Attributes<a class="zola-anchor" href="#extended-attributes" aria-label="Anchor link for: extended-attributes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">lsattr</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chattr</span><span style="color: light-dark(#032F62, #9ECBFF);"> +i</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Immutable (can&#39;t modify/delete)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chattr</span><span style="color: light-dark(#032F62, #9ECBFF);"> +a</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Append only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> chattr</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove immutable</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Common attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> i = immutable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> a = append only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> A = no atime update</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> d = no dump</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> s = secure deletion</span></span></code></pre><h3 id="file-capabilities">File Capabilities<a class="zola-anchor" href="#file-capabilities" aria-label="Anchor link for: file-capabilities">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View capabilities</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">getcap</span><span style="color: light-dark(#032F62, #9ECBFF);"> /usr/bin/ping</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set capability</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> setcap</span><span style="color: light-dark(#032F62, #9ECBFF);"> cap_net_raw+ep</span><span style="color: light-dark(#032F62, #9ECBFF);"> /usr/bin/ping</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove capability</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> setcap</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> /usr/bin/ping</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Common capabilities</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> cap_net_raw = raw network access</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> cap_net_admin = network admin</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> cap_sys_admin = system admin</span></span></code></pre><h2 id="finding-files">Finding Files<a class="zola-anchor" href="#finding-files" aria-label="Anchor link for: finding-files">🔗</a></h2>
+<h3 id="find-command">find Command<a class="zola-anchor" href="#find-command" aria-label="Anchor link for: find-command">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> By name</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">name</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">*.txt</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">iname</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">*.TXT</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Case-insensitive</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> By type</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#032F62, #9ECBFF);"> f</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#032F62, #9ECBFF);"> d</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#032F62, #9ECBFF);"> l</span><span style="color: light-dark(#6A737D, #6A737D);">             #</span><span style="color: light-dark(#6A737D, #6A737D);"> Symlinks</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> By size</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">size</span><span style="color: light-dark(#032F62, #9ECBFF);"> +100M</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Larger than 100MB</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">size</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">1M</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Smaller than 1MB</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> By modification time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">mtime</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">7</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Modified in last 7 days</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">mtime</span><span style="color: light-dark(#032F62, #9ECBFF);"> +30</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Modified more than 30 days ago</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">mmin</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">60</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Modified in last 60 minutes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> By permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">perm</span><span style="color: light-dark(#005CC5, #79B8FF);"> 644</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">perm</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u+w</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> User writable</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> By owner</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">user</span><span style="color: light-dark(#032F62, #9ECBFF);"> username</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">group</span><span style="color: light-dark(#032F62, #9ECBFF);"> groupname</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Execute command</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">name</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">*.log</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">exec</span><span style="color: light-dark(#032F62, #9ECBFF);"> rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> {}</span><span style="color: light-dark(#005CC5, #79B8FF);"> \;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">name</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">*.txt</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">delete</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Combine conditions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span style="color: light-dark(#032F62, #9ECBFF);"> /path</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">name</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">*.log</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">size</span><span style="color: light-dark(#032F62, #9ECBFF);"> +10M</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">mtime</span><span style="color: light-dark(#032F62, #9ECBFF);"> +30</span></span></code></pre><h3 id="locate-command">locate Command<a class="zola-anchor" href="#locate-command" aria-label="Anchor link for: locate-command">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Update database</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> updatedb</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Search</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">locate</span><span style="color: light-dark(#032F62, #9ECBFF);"> filename</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">locate</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> filename</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Case-insensitive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">locate</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">n</span><span style="color: light-dark(#005CC5, #79B8FF);"> 10</span><span style="color: light-dark(#032F62, #9ECBFF);"> filename</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Limit results</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Count matches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">locate</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> filename</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="permissions">Permissions<a class="zola-anchor" href="#permissions" aria-label="Anchor link for: permissions">🔗</a></h3>
+<ul>
+<li>Use least privilege principle</li>
+<li>Avoid 777 permissions</li>
+<li>Use ACL for fine-grained control</li>
+<li>Protect sensitive files (600 or 400)</li>
+<li>Use sticky bit on shared directories</li>
+</ul>
+<h3 id="organization">Organization<a class="zola-anchor" href="#organization" aria-label="Anchor link for: organization">🔗</a></h3>
+<ul>
+<li>Follow FHS standards</li>
+<li>Keep user data in /home</li>
+<li>Use /opt for third-party software</li>
+<li>Store logs in /var/log</li>
+<li>Use /tmp for temporary files</li>
+</ul>
+<h3 id="security">Security<a class="zola-anchor" href="#security" aria-label="Anchor link for: security">🔗</a></h3>
+<ul>
+<li>Regularly check permissions on sensitive files</li>
+<li>Monitor /etc for unauthorized changes</li>
+<li>Use immutable attribute on critical files</li>
+<li>Audit setuid/setgid binaries</li>
+<li>Keep /tmp with noexec option</li>
+</ul>
+<h3 id="maintenance">Maintenance<a class="zola-anchor" href="#maintenance" aria-label="Anchor link for: maintenance">🔗</a></h3>
+<ul>
+<li>Monitor disk usage regularly</li>
+<li>Clean old logs from /var/log</li>
+<li>Remove unused packages</li>
+<li>Check for orphaned files</li>
+<li>Backup /etc configuration</li>
+</ul>
+<h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li>FHS 3.0: https://refspecs.linuxfoundation.org/FHS_3.0/</li>
+<li>Linux Documentation Project: https://tldp.org/</li>
+<li>Arch Wiki: https://wiki.archlinux.org/</li>
+<li>man pages: <code>man hier</code>, <code>man chmod</code>, <code>man mount</code></li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/shell/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">Shell</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/prometheus/">
+          <span class="siblings__label">Suivant →</span>
+          <span class="siblings__title">Prometheus</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#filesystem-hierarchy-standard-fhs">Filesystem Hierarchy Standard (FHS)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#root-directory">Root Directory (/)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#bin-essential-user-binaries">/bin - Essential User Binaries</a></li>
+                  
+                    <li class="toc__subitem"><a href="#boot-boot-loader-files">/boot - Boot Loader Files</a></li>
+                  
+                    <li class="toc__subitem"><a href="#dev-device-files">/dev - Device Files</a></li>
+                  
+                    <li class="toc__subitem"><a href="#etc-system-configuration">/etc - System Configuration</a></li>
+                  
+                    <li class="toc__subitem"><a href="#home-user-home-directories">/home - User Home Directories</a></li>
+                  
+                    <li class="toc__subitem"><a href="#lib-shared-libraries">/lib - Shared Libraries</a></li>
+                  
+                    <li class="toc__subitem"><a href="#media-removable-media">/media - Removable Media</a></li>
+                  
+                    <li class="toc__subitem"><a href="#mnt-temporary-mounts">/mnt - Temporary Mounts</a></li>
+                  
+                    <li class="toc__subitem"><a href="#opt-optional-software">/opt - Optional Software</a></li>
+                  
+                    <li class="toc__subitem"><a href="#proc-process-information">/proc - Process Information</a></li>
+                  
+                    <li class="toc__subitem"><a href="#root-root-home-directory">/root - Root Home Directory</a></li>
+                  
+                    <li class="toc__subitem"><a href="#run-runtime-data">/run - Runtime Data</a></li>
+                  
+                    <li class="toc__subitem"><a href="#srv-service-data">/srv - Service Data</a></li>
+                  
+                    <li class="toc__subitem"><a href="#sys-kernel-hardware-info">/sys - Kernel/Hardware Info</a></li>
+                  
+                    <li class="toc__subitem"><a href="#tmp-temporary-files">/tmp - Temporary Files</a></li>
+                  
+                    <li class="toc__subitem"><a href="#usr-user-programs">/usr - User Programs</a></li>
+                  
+                    <li class="toc__subitem"><a href="#var-variable-data">/var - Variable Data</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#file-permissions">File Permissions</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#permission-types">Permission Types</a></li>
+                  
+                    <li class="toc__subitem"><a href="#viewing-permissions">Viewing Permissions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#chmod-change-mode">chmod - Change Mode</a></li>
+                  
+                    <li class="toc__subitem"><a href="#chown-change-ownership">chown - Change Ownership</a></li>
+                  
+                    <li class="toc__subitem"><a href="#special-permissions">Special Permissions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#umask-default-permissions">umask - Default Permissions</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#access-control-lists-acl">Access Control Lists (ACL)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#view-acl">View ACL</a></li>
+                  
+                    <li class="toc__subitem"><a href="#set-acl">Set ACL</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#filesystem-types">Filesystem Types</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#common-filesystems">Common Filesystems</a></li>
+                  
+                    <li class="toc__subitem"><a href="#mount-unmount">Mount/Unmount</a></li>
+                  
+                    <li class="toc__subitem"><a href="#etc-fstab-permanent-mounts">/etc/fstab - Permanent Mounts</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#disk-management">Disk Management</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#disk-information">Disk Information</a></li>
+                  
+                    <li class="toc__subitem"><a href="#partition-management">Partition Management</a></li>
+                  
+                    <li class="toc__subitem"><a href="#filesystem-check-and-repair">Filesystem Check and Repair</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#symbolic-and-hard-links">Symbolic and Hard Links</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#symbolic-links-soft-links">Symbolic Links (Soft Links)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#hard-links">Hard Links</a></li>
+                  
+                    <li class="toc__subitem"><a href="#differences">Differences</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#file-attributes">File Attributes</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#extended-attributes">Extended Attributes</a></li>
+                  
+                    <li class="toc__subitem"><a href="#file-capabilities">File Capabilities</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#finding-files">Finding Files</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#find-command">find Command</a></li>
+                  
+                    <li class="toc__subitem"><a href="#locate-command">locate Command</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#permissions">Permissions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#organization">Organization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#security">Security</a></li>
+                  
+                    <li class="toc__subitem"><a href="#maintenance">Maintenance</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

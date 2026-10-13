@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Git · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/git/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/cheat-sheet/git/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="/en/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/git/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/en/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">Aide-mémoire</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+      
+    
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">Aide-mémoire</a>
+      
+    
+  </nav>
+
+  <h1>Git</h1>
+
+  <p class="page-meta">
+    
+    <span>1 min de lecture</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <p>Git is a powerful and flexible distributed version control system, essential for any modern developer.</p>
+<h2 id="installation">Installation<a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">🔗</a></h2>
+<h3 id="linux-ubuntu-debian">Linux (Ubuntu/Debian)<a class="zola-anchor" href="#linux-ubuntu-debian" aria-label="Anchor link for: linux-ubuntu-debian">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt</span><span style="color: light-dark(#032F62, #9ECBFF);"> update</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> git</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-version</span></span></code></pre><h3 id="macos">macOS<a class="zola-anchor" href="#macos" aria-label="Anchor link for: macos">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">brew</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> git</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or via Xcode Command Line Tools</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">xcode-select</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-install</span></span></code></pre><h3 id="windows">Windows<a class="zola-anchor" href="#windows" aria-label="Anchor link for: windows">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="powershell"><span class="giallo-l"><span>choco install git</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or download from https://git-scm.com/download/win</span></span></code></pre><h2 id="initial-configuration">Initial Configuration<a class="zola-anchor" href="#initial-configuration" aria-label="Anchor link for: initial-configuration">🔗</a></h2>
+<h3 id="identity">Identity<a class="zola-anchor" href="#identity" aria-label="Anchor link for: identity">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> user.name</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Your Name</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> user.email</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">email@example.com</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Verify</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-list</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#032F62, #9ECBFF);"> user.name</span></span></code></pre><h3 id="editor-and-tools">Editor and Tools<a class="zola-anchor" href="#editor-and-tools" aria-label="Anchor link for: editor-and-tools">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> core.editor</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">vim</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> core.editor</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">code --wait</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> VS Code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff.tool</span><span style="color: light-dark(#032F62, #9ECBFF);"> vimdiff</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge.tool</span><span style="color: light-dark(#032F62, #9ECBFF);"> vimdiff</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> color.ui</span><span style="color: light-dark(#032F62, #9ECBFF);"> auto</span></span></code></pre><h3 id="multi-account-management">Multi-Account Management<a class="zola-anchor" href="#multi-account-management" aria-label="Anchor link for: multi-account-management">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ~/.gitconfig</span></span>
+<span class="giallo-l"><span>[</span><span>includeIf </span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">gitdir:~/perso/</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    path</span><span style="color: light-dark(#032F62, #9ECBFF);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/perso/.gitconfig</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span>includeIf </span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">gitdir:~/work/</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    path</span><span style="color: light-dark(#032F62, #9ECBFF);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/work/.gitconfig</span></span></code></pre><pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ~/perso/.gitconfig</span></span>
+<span class="giallo-l"><span>[</span><span>user</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    email</span><span style="color: light-dark(#032F62, #9ECBFF);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> perso@example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    name</span><span style="color: light-dark(#032F62, #9ECBFF);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> Personal</span><span style="color: light-dark(#032F62, #9ECBFF);"> Name</span></span></code></pre><h3 id="useful-aliases">Useful Aliases<a class="zola-anchor" href="#useful-aliases" aria-label="Anchor link for: useful-aliases">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.st</span><span style="color: light-dark(#032F62, #9ECBFF);"> status</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.co</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.br</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.ci</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.unstage</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">reset HEAD --</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.last</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">log -1 HEAD</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.lg</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">log --graph --pretty=tformat:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset&#39; --abbrev-commit</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> alias.amend</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">commit --amend --no-edit</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h2 id="basic-commands">Basic Commands<a class="zola-anchor" href="#basic-commands" aria-label="Anchor link for: basic-commands">🔗</a></h2>
+<h3 id="initialization">Initialization<a class="zola-anchor" href="#initialization" aria-label="Anchor link for: initialization">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-project</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clone</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clone</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-folder</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clone</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-depth</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> Shallow clone</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clone</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> develop</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span></span></code></pre><h3 id="status-and-differences">Status and Differences<a class="zola-anchor" href="#status-and-differences" aria-label="Anchor link for: status-and-differences">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> status</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> status</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">s</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Short format</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#6A737D, #6A737D);">                   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Unstaged modifications</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-staged</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Staged modifications</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> All modifications</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#032F62, #9ECBFF);"> main..develop</span><span style="color: light-dark(#6A737D, #6A737D);">     #</span><span style="color: light-dark(#6A737D, #6A737D);"> Between branches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-stat</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> Statistics</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-color-words</span><span style="color: light-dark(#6A737D, #6A737D);">     #</span><span style="color: light-dark(#6A737D, #6A737D);"> Word-by-word differences</span></span></code></pre><h3 id="staging-and-commits">Staging and Commits<a class="zola-anchor" href="#staging-and-commits" aria-label="Anchor link for: staging-and-commits">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#005CC5, #79B8FF);"> *</span><span style="color: light-dark(#032F62, #9ECBFF);">.js</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">A</span><span style="color: light-dark(#6A737D, #6A737D);">                 #</span><span style="color: light-dark(#6A737D, #6A737D);"> All (additions, modifications, deletions)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#6A737D, #6A737D);">                 #</span><span style="color: light-dark(#6A737D, #6A737D);"> Only modifications/deletions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#6A737D, #6A737D);">                 #</span><span style="color: light-dark(#6A737D, #6A737D);"> Interactive mode</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reset</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> restore</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-staged</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Message</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">am</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Message</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Add + commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-amend</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Modify the last commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-amend</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-edit</span></span></code></pre><h2 id="advanced-interactive-rebase">Advanced Interactive Rebase<a class="zola-anchor" href="#advanced-interactive-rebase" aria-label="Anchor link for: advanced-interactive-rebase">🔗</a></h2>
+<h3 id="basic-syntax">Basic Syntax<a class="zola-anchor" href="#basic-syntax" aria-label="Anchor link for: basic-syntax">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Rebase the last N commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Available actions:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick   = use commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> reword = modify the message</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> edit   = stop to amend</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> squash = merge with previous</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> fixup  = like squash but ignore the message</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> drop   = delete the commit</span></span></code></pre><h3 id="complete-interactive-rebase-example">Complete Interactive Rebase Example<a class="zola-anchor" href="#complete-interactive-rebase-example" aria-label="Anchor link for: complete-interactive-rebase-example">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Situation: 5 commits to clean up</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-oneline</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> abc123 Fix typo</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> def456 Add feature X</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ghi789 WIP</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> jkl012 Add tests</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> mno345 Update docs</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Start the rebase</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~5</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> In the editor:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pick</span><span style="color: light-dark(#032F62, #9ECBFF);"> mno345</span><span style="color: light-dark(#032F62, #9ECBFF);"> Update</span><span style="color: light-dark(#032F62, #9ECBFF);"> docs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">reword</span><span style="color: light-dark(#032F62, #9ECBFF);"> jkl012</span><span style="color: light-dark(#032F62, #9ECBFF);"> Add</span><span style="color: light-dark(#032F62, #9ECBFF);"> tests</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Modify the message</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">squash</span><span style="color: light-dark(#032F62, #9ECBFF);"> ghi789</span><span style="color: light-dark(#032F62, #9ECBFF);"> WIP</span><span style="color: light-dark(#6A737D, #6A737D);">                    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Merge with jkl012</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">fixup</span><span style="color: light-dark(#032F62, #9ECBFF);"> def456</span><span style="color: light-dark(#032F62, #9ECBFF);"> Add</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature</span><span style="color: light-dark(#032F62, #9ECBFF);"> X</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Merge with ghi789 without message</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">drop</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span><span style="color: light-dark(#032F62, #9ECBFF);"> Fix</span><span style="color: light-dark(#032F62, #9ECBFF);"> typo</span><span style="color: light-dark(#6A737D, #6A737D);">                 #</span><span style="color: light-dark(#6A737D, #6A737D);"> Delete this commit</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Result: 2 clean commits instead of 5</span></span></code></pre><h3 id="squashing-merging-commits">Squashing - Merging Commits<a class="zola-anchor" href="#squashing-merging-commits" aria-label="Anchor link for: squashing-merging-commits">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Method 1: Interactive rebase</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mark commits with &#39;squash&#39; or &#39;fixup&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Method 2: Soft reset</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reset</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-soft</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Single message for the 3 commits</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Method 3: Merge --squash</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-squash</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature-branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Feature: complete description</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h3 id="splitting-separating-a-commit">Splitting - Separating a Commit<a class="zola-anchor" href="#splitting-separating-a-commit" aria-label="Anchor link for: splitting-separating-a-commit">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Split a large commit into several smaller ones</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~3</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mark the commit with &#39;edit&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> When the rebase stops:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reset</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD^</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Undo the commit, keep the changes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create several commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> file1.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">First part: file1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> file2.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Second part: file2</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> file3.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Third part: file3</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-continue</span></span></code></pre><h3 id="editing-modifying-a-commit">Editing - Modifying a Commit<a class="zola-anchor" href="#editing-modifying-a-commit" aria-label="Anchor link for: editing-modifying-a-commit">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~5</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mark with &#39;edit&#39; the commit to modify</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> The rebase stops on this commit</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Make the modifications</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> modified-file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-amend</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or add a new commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> new-file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Forgotten addition</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-continue</span></span></code></pre><h3 id="reordering-reorganizing-commits">Reordering - Reorganizing Commits<a class="zola-anchor" href="#reordering-reorganizing-commits" aria-label="Anchor link for: reordering-reorganizing-commits">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~5</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> In the editor, change the order of lines:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Before:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick abc123 Commit A</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick def456 Commit B</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick ghi789 Commit C</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> After (reversed order):</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick ghi789 Commit C</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick def456 Commit B</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> pick abc123 Commit A</span></span></code></pre><h3 id="fixup-and-autosquash">Fixup and Autosquash<a class="zola-anchor" href="#fixup-and-autosquash" aria-label="Anchor link for: fixup-and-autosquash">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create a fixup commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-fixup</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Automatic message: &quot;fixup! Message of commit HEAD~2&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create a squash commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-squash</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Rebase with autosquash</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-autosquash</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~10</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> The fixup/squash commits are automatically placed</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Enable autosquash by default</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase.autosquash</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Complete workflow</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1. Make a commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Add feature</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 2. Find a bug in this commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> fix.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-fixup</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 3. Make other commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Other work</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 4. Clean up the history</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-autosquash</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD~10</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> The fixup will be automatically merged with the right commit</span></span></code></pre><h3 id="rebasing-with-conflict-resolution">Rebasing with Conflict Resolution<a class="zola-anchor" href="#rebasing-with-conflict-resolution" aria-label="Anchor link for: rebasing-with-conflict-resolution">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> If conflict:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> status</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> See conflicting files</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Manually resolve the files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> (edit the markers &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, &gt;&gt;&gt;&gt;&gt;&gt;&gt;)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> resolved-file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-continue</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or abort</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-abort</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or skip the problematic commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-skip</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Resolution strategies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> theirs</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Take their version in case of conflict</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> ours</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Take our version</span></span></code></pre><h3 id="rebase-onto-complex-cases">Rebase –onto (Complex Cases)<a class="zola-anchor" href="#rebase-onto-complex-cases" aria-label="Anchor link for: rebase-onto-complex-cases">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Syntax: git rebase --onto &lt;newbase&gt; &lt;upstream&gt; &lt;branch&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Example 1: Move a branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> State: main &lt;- featureA &lt;- featureB</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Goal: main &lt;- featureB (without commits from featureA)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-onto</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span><span style="color: light-dark(#032F62, #9ECBFF);"> featureA</span><span style="color: light-dark(#032F62, #9ECBFF);"> featureB</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Example 2: Remove intermediate commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove commits between abc123 and def456</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-onto</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span><span style="color: light-dark(#032F62, #9ECBFF);"> def456</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Example 3: Move a series of commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Move commits E-F from D to C</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">     A - B - C        (main)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">      \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">       D - E - F      (topic)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-onto</span><span style="color: light-dark(#032F62, #9ECBFF);"> C</span><span style="color: light-dark(#032F62, #9ECBFF);"> D</span><span style="color: light-dark(#032F62, #9ECBFF);"> F</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Result:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);">     A - B - C - E&#39; - F&#39;</span></span></code></pre><h3 id="cherry-picking-and-rebase">Cherry-picking and Rebase<a class="zola-anchor" href="#cherry-picking-and-rebase" aria-label="Anchor link for: cherry-picking-and-rebase">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Cherry-pick a specific commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span><span style="color: light-dark(#032F62, #9ECBFF);"> def456</span><span style="color: light-dark(#6A737D, #6A737D);">     #</span><span style="color: light-dark(#6A737D, #6A737D);"> Multiple</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123^..def456</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Range</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Without automatic commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">n</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Edit the message</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With signature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">x</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> In case of conflict</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-continue</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> cherry-pick</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-abort</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Cherry-pick a series via rebase</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rebase</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-onto</span><span style="color: light-dark(#032F62, #9ECBFF);"> target-branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> start-commit</span><span style="color: light-dark(#032F62, #9ECBFF);"> end-commit</span></span></code></pre><h2 id="git-workflows">Git Workflows<a class="zola-anchor" href="#git-workflows" aria-label="Anchor link for: git-workflows">🔗</a></h2>
+<h3 id="github-flow">GitHub Flow<a class="zola-anchor" href="#github-flow" aria-label="Anchor link for: github-flow">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1. Create a branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> pull</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature/new-feature</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 2. Commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">feat: new feature</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature/new-feature</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 3. Pull Request</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">gh</span><span style="color: light-dark(#032F62, #9ECBFF);"> pr</span><span style="color: light-dark(#032F62, #9ECBFF);"> create</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-title</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">New feature</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 4. Review and merge</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">gh</span><span style="color: light-dark(#032F62, #9ECBFF);"> pr</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-squash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 5. Cleanup</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> pull</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature/new-feature</span></span></code></pre><h3 id="gitflow">Gitflow<a class="zola-anchor" href="#gitflow" aria-label="Anchor link for: gitflow">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Branches: main, develop, feature/*, release/*, hotfix/*</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Feature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> develop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature/my-feature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ... development ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> develop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-ff</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature/my-feature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature/my-feature</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Release</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> develop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> release/1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ... bump version ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-ff</span><span style="color: light-dark(#032F62, #9ECBFF);"> release/1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Version 1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> develop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-ff</span><span style="color: light-dark(#032F62, #9ECBFF);"> release/1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> release/1.0.0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Hotfix</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> hotfix/critical-bug</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ... fix ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-ff</span><span style="color: light-dark(#032F62, #9ECBFF);"> hotfix/critical-bug</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.1</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Hotfix 1.0.1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> develop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-ff</span><span style="color: light-dark(#032F62, #9ECBFF);"> hotfix/critical-bug</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> hotfix/critical-bug</span></span></code></pre><h2 id="history-and-investigation">History and Investigation<a class="zola-anchor" href="#history-and-investigation" aria-label="Anchor link for: history-and-investigation">🔗</a></h2>
+<h3 id="advanced-git-log">Advanced git log<a class="zola-anchor" href="#advanced-git-log" aria-label="Anchor link for: advanced-git-log">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Formats</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-oneline</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-graph</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-oneline</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-all</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-stat</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#6A737D, #6A737D);">                 #</span><span style="color: light-dark(#6A737D, #6A737D);"> With diffs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">2</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Last 2 with diffs</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Time filters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-since=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">2 weeks ago</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-since=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">2024-01-01</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-until=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">2024-02-01</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Author filters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-author=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Name</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-committer=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Name</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Message filters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-grep=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">fix</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-grep=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">bug</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-grep=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">issue</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-all-match</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> File filters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-follow</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Follow renames</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">*.js</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Content filters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">S</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">function</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> Commits modifying this text</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">G</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">regex.*pattern</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Custom format</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-pretty=format:</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">%h - %an, %ar : %s</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-pretty=format:</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">%C(yellow)%h%Creset %C(blue)%ad%Creset | %s %C(green)[%an]%Creset</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-date=short</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Log between branches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#032F62, #9ECBFF);"> main..develop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#032F62, #9ECBFF);"> main...develop</span></span></code></pre><h3 id="git-reflog-recovery">git reflog - Recovery<a class="zola-anchor" href="#git-reflog-recovery" aria-label="Anchor link for: git-reflog-recovery">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View complete history of movements</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reflog</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reflog</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Recover a &quot;lost&quot; commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reflog</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD@{</span><span style="color: light-dark(#005CC5, #79B8FF);">5</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> recovered-branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD@{</span><span style="color: light-dark(#005CC5, #79B8FF);">5</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Recover a deleted branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reflog</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> recovered-branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Undo a failed rebase</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reflog</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reset</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-hard</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD@{</span><span style="color: light-dark(#005CC5, #79B8FF);">5</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Clean up</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reflog</span><span style="color: light-dark(#032F62, #9ECBFF);"> expire</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-expire=90.days.ago</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-all</span></span></code></pre><h3 id="git-bisect-finding-a-bug">git bisect - Finding a Bug<a class="zola-anchor" href="#git-bisect-finding-a-bug" aria-label="Anchor link for: git-bisect-finding-a-bug">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Start binary search</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> start</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> bad</span><span style="color: light-dark(#6A737D, #6A737D);">                #</span><span style="color: light-dark(#6A737D, #6A737D);"> Current commit is bad</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> good</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> v1.0.0 was good</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Test each commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Git automatically checks out the middle</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> good</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> or</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> bad</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Git finds the faulty commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Result: &quot;abc123 is the first bad commit&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> reset</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> Finish</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Automated bisect</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> start</span><span style="color: light-dark(#032F62, #9ECBFF);"> HEAD</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> bisect</span><span style="color: light-dark(#032F62, #9ECBFF);"> run</span><span style="color: light-dark(#032F62, #9ECBFF);"> ./test.sh</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> test.sh must return:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 0 = good</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1-127 (except 125) = bad</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 125 = skip (not testable)</span></span></code></pre><h3 id="git-blame-annotations">git blame - Annotations<a class="zola-anchor" href="#git-blame-annotations" aria-label="Anchor link for: git-blame-annotations">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Who modified each line</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Specific lines</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">L</span><span style="color: light-dark(#032F62, #9ECBFF);"> 10,20</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With more info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Full SHA</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Emails</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">w</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Ignore whitespace</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Track movements</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">M</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Within the file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">C</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Within the commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">C</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">C</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Since creation</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> At a specific commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Ignore commits (reformatting)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-ignore-rev</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#032F62, #9ECBFF);"> blame.ignoreRevsFile</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git-blame-ignore-revs</span></span></code></pre><h2 id="branches-and-merges">Branches and Merges<a class="zola-anchor" href="#branches-and-merges" aria-label="Anchor link for: branches-and-merges">🔗</a></h2>
+<h3 id="branch-management">Branch Management<a class="zola-anchor" href="#branch-management" aria-label="Anchor link for: branch-management">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> new-branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> new-branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> switch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> new-branch</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> New syntax</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">a</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> All (local + remote)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">v</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> With last commit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">vv</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> With tracking</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Switch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> switch</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Rename</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> old-name</span><span style="color: light-dark(#032F62, #9ECBFF);"> new-name</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Delete</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> If merged</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">D</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Force</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-delete</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Tracking</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> local-branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin/remote-branch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin/remote-branch</span></span></code></pre><h3 id="merges">Merges<a class="zola-anchor" href="#merges" aria-label="Anchor link for: merges">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Basic merge</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Without fast-forward</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-ff</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With squash</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-squash</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Merge feature</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Strategies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> ours</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> theirs</span><span style="color: light-dark(#032F62, #9ECBFF);"> feature</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Undo</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> merge</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-abort</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> reset</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-merge</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Merged branches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-merged</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-no-merged</span></span></code></pre><h3 id="conflict-resolution">Conflict Resolution<a class="zola-anchor" href="#conflict-resolution" aria-label="Anchor link for: conflict-resolution">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Conflicting files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> status</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> diff</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-name-only</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-diff-filter=U</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Choose a version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-ours</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-theirs</span><span style="color: light-dark(#032F62, #9ECBFF);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Mergetool</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> mergetool</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> mergetool</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-tool=vimdiff</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> After resolution</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> resolved-file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span></span></code></pre><h2 id="stashing">Stashing<a class="zola-anchor" href="#stashing" aria-label="Anchor link for: stashing">🔗</a></h2>
+<h3 id="usage">Usage<a class="zola-anchor" href="#usage" aria-label="Anchor link for: usage">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Save</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> save</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Message</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Message</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With untracked files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-include-untracked</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> list</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Apply</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> apply</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> apply</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash@{</span><span style="color: light-dark(#005CC5, #79B8FF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> pop</span><span style="color: light-dark(#6A737D, #6A737D);">              #</span><span style="color: light-dark(#6A737D, #6A737D);"> Apply and remove</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> drop</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash@{</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> clear</span></span></code></pre><h3 id="advanced-stashing">Advanced Stashing<a class="zola-anchor" href="#advanced-stashing" aria-label="Anchor link for: advanced-stashing">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Specific files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Msg</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);"> file1.txt</span><span style="color: light-dark(#032F62, #9ECBFF);"> file2.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Interactive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View content</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create branch from stash</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> new-branch</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash@{</span><span style="color: light-dark(#005CC5, #79B8FF);">0</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Stash only staged</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-keep-index</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> stash</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-staged</span></span></code></pre><h2 id="git-hooks">Git Hooks<a class="zola-anchor" href="#git-hooks" aria-label="Anchor link for: git-hooks">🔗</a></h2>
+<h3 id="pre-commit">Pre-commit<a class="zola-anchor" href="#pre-commit" aria-label="Anchor link for: pre-commit">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git/hooks/pre-commit</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">#!/bin/bash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">echo &quot;Running linter...&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">npm run lint</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">if [ $? -ne 0 ]; then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    echo &quot;Linting failed&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    exit 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">fi</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">echo &quot;Running tests...&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">npm test</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">if [ $? -ne 0 ]; then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    echo &quot;Tests failed&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    exit 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">fi</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> +x</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git/hooks/pre-commit</span></span></code></pre><h3 id="commit-msg">Commit-msg<a class="zola-anchor" href="#commit-msg" aria-label="Anchor link for: commit-msg">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git/hooks/commit-msg</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">#!/bin/bash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">commit_msg=$(cat &quot;$1&quot;)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">if ! echo &quot;$commit_msg&quot; | grep -qE &quot;^(feat|fix|docs|style|refactor|test|chore): .+&quot;; then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    echo &quot;Error: Required format: type: description&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    exit 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">fi</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> +x</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git/hooks/commit-msg</span></span></code></pre><h3 id="pre-push">Pre-push<a class="zola-anchor" href="#pre-push" aria-label="Anchor link for: pre-push">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git/hooks/pre-push</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">#!/bin/bash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">branch=$(git symbolic-ref HEAD | sed -e &#39;s,.*/\(.*\),\1,&#39;)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">if [[ $branch =~ ^(main|master|develop)$ ]]; then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    read -p &quot;Push to $branch. Continue? [y|n] &quot; -n 1 -r &lt; /dev/tty</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    echo</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    if [[ ! $REPLY =~ ^[Yy]$ ]]; then</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        exit 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    fi</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">fi</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">chmod</span><span style="color: light-dark(#032F62, #9ECBFF);"> +x</span><span style="color: light-dark(#032F62, #9ECBFF);"> .git/hooks/pre-push</span></span></code></pre><h3 id="husky-node-js">Husky (Node.js)<a class="zola-anchor" href="#husky-node-js" aria-label="Anchor link for: husky-node-js">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">npm</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-save-dev</span><span style="color: light-dark(#032F62, #9ECBFF);"> husky</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">npx</span><span style="color: light-dark(#032F62, #9ECBFF);"> husky</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">npm</span><span style="color: light-dark(#032F62, #9ECBFF);"> set-script</span><span style="color: light-dark(#032F62, #9ECBFF);"> prepare</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">husky install</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">npx</span><span style="color: light-dark(#032F62, #9ECBFF);"> husky</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> .husky/pre-commit</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">npm test</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">npx</span><span style="color: light-dark(#032F62, #9ECBFF);"> husky</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> .husky/commit-msg</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">npx --no -- commitlint --edit &quot;$1&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="commit-messages">Commit Messages<a class="zola-anchor" href="#commit-messages" aria-label="Anchor link for: commit-messages">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Conventional Commits Format</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">&lt;</span><span>type</span><span style="color: light-dark(#032F62, #9ECBFF);">&gt;(</span><span style="color: light-dark(#D73A49, #F97583);">&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">scope</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#032F62, #9ECBFF);">)</span><span>: </span><span style="color: light-dark(#D73A49, #F97583);">&lt;</span><span>subject</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Types:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> feat     : new feature</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> fix      : bug fix</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> docs     : documentation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> style    : formatting</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> refactor : refactoring</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> test     : tests</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> chore    : maintenance</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> perf     : performance</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ci       : CI/CD</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Examples:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">feat(auth): add JWT authentication</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">fix(api): handle null pointer in user service</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">docs(readme): update installation instructions</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With body and footer:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">feat(shopping-cart): add quantity selector</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">- Add increment/decrement buttons</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">- Update cart total in real-time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">- Validate maximum quantity</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">Closes #123</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Breaking changes:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">feat(api): change auth endpoint</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">BREAKING CHANGE: /auth renamed to /authenticate</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h3 id="golden-rules">Golden Rules<a class="zola-anchor" href="#golden-rules" aria-label="Anchor link for: golden-rules">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1. Atomic commits</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> One commit = one logical change</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 2. Clear messages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ✅ &quot;fix(login): prevent SQL injection&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ❌ &quot;fix stuff&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 3. Imperative</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ✅ &quot;add feature&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> ❌ &quot;added feature&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 4. Size</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Subject &lt;= 50 characters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Body &lt;= 72 characters/line</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 5. Explain the WHY</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Not the WHAT (visible in the diff)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 6. Reference issues</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> &quot;Fixes #456&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> &quot;Related to #123&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 7. No secrets</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Use .gitignore</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 8. Commit regularly</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Small frequent commits &gt; large rare commits</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 9. Squash before merge</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Clean up with rebase -i</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 10. Rebase or merge?</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Rebase: personal branches, clean history</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Merge: public branches, preserve history</span></span></code></pre><h3 id="commit-template">Commit Template<a class="zola-anchor" href="#commit-template" aria-label="Anchor link for: commit-template">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">cat</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/.gitmessage</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;&lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">#</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># &lt;body&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">#</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># &lt;footer&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">#</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># Types: feat, fix, docs, style, refactor, test, chore</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># Scope: auth, api, ui, db</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># Subject: &lt;= 50 chars</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># Body: why, &lt;= 72 chars/line</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);"># Footer: Fixes #123, BREAKING CHANGE</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">EOF</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> config</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-global</span><span style="color: light-dark(#032F62, #9ECBFF);"> commit.template</span><span style="color: light-dark(#032F62, #9ECBFF);"> ~/.gitmessage</span></span></code></pre><h2 id="cleanup-and-maintenance">Cleanup and Maintenance<a class="zola-anchor" href="#cleanup-and-maintenance" aria-label="Anchor link for: cleanup-and-maintenance">🔗</a></h2>
+<h3 id="cleanup">Cleanup<a class="zola-anchor" href="#cleanup" aria-label="Anchor link for: cleanup">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Untracked files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clean</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">n</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Dry run</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clean</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#6A737D, #6A737D);">           #</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clean</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">fd</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Files and directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clean</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">fX</span><span style="color: light-dark(#6A737D, #6A737D);">          #</span><span style="color: light-dark(#6A737D, #6A737D);"> Only ignored</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Garbage collection</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> gc</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> gc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-aggressive</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-prune=now</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Verify integrity</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> fsck</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Used space</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> count-objects</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">vH</span></span></code></pre><h3 id="search">Search<a class="zola-anchor" href="#search" aria-label="Anchor link for: search">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> In code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> grep</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">function</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> grep</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">n</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">function</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#6A737D, #6A737D);">     #</span><span style="color: light-dark(#6A737D, #6A737D);"> With line</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> grep</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">function</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#6A737D, #6A737D);">     #</span><span style="color: light-dark(#6A737D, #6A737D);"> Case insensitive</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> In history</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">S</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">function</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> log</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">G</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">regex</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Author stats</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> shortlog</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">sn</span></span></code></pre><h2 id="tags">Tags<a class="zola-anchor" href="#tags" aria-label="Anchor link for: tags">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Version 1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);"> abc123</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Version 1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">v1.*</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Push</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-tags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-follow-tags</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Delete</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> tag</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-delete</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Checkout</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> checkout</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">b</span><span style="color: light-dark(#032F62, #9ECBFF);"> branch-from-tag</span><span style="color: light-dark(#032F62, #9ECBFF);"> v1.0.0</span></span></code></pre><h2 id="remotes">Remotes<a class="zola-anchor" href="#remotes" aria-label="Anchor link for: remotes">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Add</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> remote</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> remote</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">v</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Multiple remotes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> remote</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> gitlab</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://gitlab.com/user/repo.git</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Push to multiple</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#032F62, #9ECBFF);"> gitlab</span><span style="color: light-dark(#032F62, #9ECBFF);"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or configure multiple URLs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> remote</span><span style="color: light-dark(#032F62, #9ECBFF);"> set-url</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-add</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> remote</span><span style="color: light-dark(#032F62, #9ECBFF);"> set-url</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-add</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-push</span><span style="color: light-dark(#032F62, #9ECBFF);"> origin</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://gitlab.com/user/repo.git</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Fetch from all</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> fetch</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-all</span></span></code></pre><h2 id="submodules">Submodules<a class="zola-anchor" href="#submodules" aria-label="Anchor link for: submodules">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Add</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span><span style="color: light-dark(#032F62, #9ECBFF);"> path/to/submodule</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Clone with submodules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> clone</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-recurse-submodules</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://github.com/user/repo.git</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or after clone</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> update</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Update</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> update</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-remote</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> update</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-remote</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-merge</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Command in all submodules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> foreach</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">git pull origin main</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Remove</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> submodule</span><span style="color: light-dark(#032F62, #9ECBFF);"> deinit</span><span style="color: light-dark(#032F62, #9ECBFF);"> path/to/submodule</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">git</span><span style="color: light-dark(#032F62, #9ECBFF);"> rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> path/to/submodule</span></span></code></pre><h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li><strong>Documentation</strong>: https://git-scm.com/doc</li>
+<li><strong>Pro Git Book</strong>: https://git-scm.com/book/en/v2</li>
+<li><strong>Learn Git Branching</strong>: https://learngitbranching.js.org/</li>
+<li><strong>Conventional Commits</strong>: https://www.conventionalcommits.org/</li>
+<li><strong>Oh Shit Git</strong>: https://ohshitgit.com/</li>
+</ul>
+<hr />
+<p><em>This complete Git guide covers all advanced rebasing techniques, modern workflows, history management, and best practices. Mastering these concepts is essential for professional development.</em></p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/grafana/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">Grafana</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/k9s/">
+          <span class="siblings__label">Suivant →</span>
+          <span class="siblings__title">K9s</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#installation">Installation</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#linux-ubuntu-debian">Linux (Ubuntu/Debian)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#macos">macOS</a></li>
+                  
+                    <li class="toc__subitem"><a href="#windows">Windows</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#initial-configuration">Initial Configuration</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#identity">Identity</a></li>
+                  
+                    <li class="toc__subitem"><a href="#editor-and-tools">Editor and Tools</a></li>
+                  
+                    <li class="toc__subitem"><a href="#multi-account-management">Multi-Account Management</a></li>
+                  
+                    <li class="toc__subitem"><a href="#useful-aliases">Useful Aliases</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#basic-commands">Basic Commands</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#initialization">Initialization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#status-and-differences">Status and Differences</a></li>
+                  
+                    <li class="toc__subitem"><a href="#staging-and-commits">Staging and Commits</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#advanced-interactive-rebase">Advanced Interactive Rebase</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-syntax">Basic Syntax</a></li>
+                  
+                    <li class="toc__subitem"><a href="#complete-interactive-rebase-example">Complete Interactive Rebase Example</a></li>
+                  
+                    <li class="toc__subitem"><a href="#squashing-merging-commits">Squashing - Merging Commits</a></li>
+                  
+                    <li class="toc__subitem"><a href="#splitting-separating-a-commit">Splitting - Separating a Commit</a></li>
+                  
+                    <li class="toc__subitem"><a href="#editing-modifying-a-commit">Editing - Modifying a Commit</a></li>
+                  
+                    <li class="toc__subitem"><a href="#reordering-reorganizing-commits">Reordering - Reorganizing Commits</a></li>
+                  
+                    <li class="toc__subitem"><a href="#fixup-and-autosquash">Fixup and Autosquash</a></li>
+                  
+                    <li class="toc__subitem"><a href="#rebasing-with-conflict-resolution">Rebasing with Conflict Resolution</a></li>
+                  
+                    <li class="toc__subitem"><a href="#rebase-onto-complex-cases">Rebase –onto (Complex Cases)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#cherry-picking-and-rebase">Cherry-picking and Rebase</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#git-workflows">Git Workflows</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#github-flow">GitHub Flow</a></li>
+                  
+                    <li class="toc__subitem"><a href="#gitflow">Gitflow</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#history-and-investigation">History and Investigation</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#advanced-git-log">Advanced git log</a></li>
+                  
+                    <li class="toc__subitem"><a href="#git-reflog-recovery">git reflog - Recovery</a></li>
+                  
+                    <li class="toc__subitem"><a href="#git-bisect-finding-a-bug">git bisect - Finding a Bug</a></li>
+                  
+                    <li class="toc__subitem"><a href="#git-blame-annotations">git blame - Annotations</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#branches-and-merges">Branches and Merges</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#branch-management">Branch Management</a></li>
+                  
+                    <li class="toc__subitem"><a href="#merges">Merges</a></li>
+                  
+                    <li class="toc__subitem"><a href="#conflict-resolution">Conflict Resolution</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#stashing">Stashing</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#usage">Usage</a></li>
+                  
+                    <li class="toc__subitem"><a href="#advanced-stashing">Advanced Stashing</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#git-hooks">Git Hooks</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#pre-commit">Pre-commit</a></li>
+                  
+                    <li class="toc__subitem"><a href="#commit-msg">Commit-msg</a></li>
+                  
+                    <li class="toc__subitem"><a href="#pre-push">Pre-push</a></li>
+                  
+                    <li class="toc__subitem"><a href="#husky-node-js">Husky (Node.js)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#commit-messages">Commit Messages</a></li>
+                  
+                    <li class="toc__subitem"><a href="#golden-rules">Golden Rules</a></li>
+                  
+                    <li class="toc__subitem"><a href="#commit-template">Commit Template</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#cleanup-and-maintenance">Cleanup and Maintenance</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#cleanup">Cleanup</a></li>
+                  
+                    <li class="toc__subitem"><a href="#search">Search</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#tags">Tags</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#remotes">Remotes</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#submodules">Submodules</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

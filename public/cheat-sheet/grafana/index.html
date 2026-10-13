@@ -1,0 +1,1328 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Grafana · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/grafana/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/cheat-sheet/grafana/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="/en/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/grafana/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/en/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">Aide-mémoire</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+      
+    
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">Aide-mémoire</a>
+      
+    
+  </nav>
+
+  <h1>Grafana</h1>
+
+  <p class="page-meta">
+    
+    <span>4 min de lecture</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>Grafana is an open-source observability platform for visualizing metrics, logs, and traces from multiple data sources.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Multi-source data visualization</li>
+<li>Interactive dashboards</li>
+<li>Alerting and notifications</li>
+<li>Support for 150+ data sources</li>
+<li>Template variables for dynamic dashboards</li>
+<li>Panel library and sharing</li>
+</ul>
+<h2 id="installation">Installation<a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">🔗</a></h2>
+<h3 id="docker">Docker<a class="zola-anchor" href="#docker" aria-label="Anchor link for: docker">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">docker</span><span style="color: light-dark(#032F62, #9ECBFF);"> run</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#032F62, #9ECBFF);"> 3000:3000</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-name=grafana</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana/grafana</span></span></code></pre><h3 id="docker-with-persistent-storage">Docker with persistent storage<a class="zola-anchor" href="#docker-with-persistent-storage" aria-label="Anchor link for: docker-with-persistent-storage">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">docker</span><span style="color: light-dark(#032F62, #9ECBFF);"> run</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#032F62, #9ECBFF);"> 3000:3000</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">-name=grafana</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">v</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana-storage:/var/lib/grafana</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  grafana/grafana</span></span></code></pre><h3 id="docker-compose">Docker Compose<a class="zola-anchor" href="#docker-compose" aria-label="Anchor link for: docker-compose">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">v</span><span style="color: light-dark(#22863A, #85E89D);">ersion</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">3</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">s</span><span style="color: light-dark(#22863A, #85E89D);">ervices</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  g</span><span style="color: light-dark(#22863A, #85E89D);">rafana</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    i</span><span style="color: light-dark(#22863A, #85E89D);">mage</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> g</span><span style="color: light-dark(#032F62, #9ECBFF);">rafana/grafana:latest</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    p</span><span style="color: light-dark(#22863A, #85E89D);">orts</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">3000:3000</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    v</span><span style="color: light-dark(#22863A, #85E89D);">olumes</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#032F62, #9ECBFF);"> g</span><span style="color: light-dark(#032F62, #9ECBFF);">rafana-data:/var/lib/grafana</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    e</span><span style="color: light-dark(#22863A, #85E89D);">nvironment</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#032F62, #9ECBFF);"> G</span><span style="color: light-dark(#032F62, #9ECBFF);">F_SECURITY_ADMIN_PASSWORD=admin</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#032F62, #9ECBFF);"> G</span><span style="color: light-dark(#032F62, #9ECBFF);">F_USERS_ALLOW_SIGN_UP=false</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">v</span><span style="color: light-dark(#22863A, #85E89D);">olumes</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">  g</span><span style="color: light-dark(#22863A, #85E89D);">rafana-data</span><span>:</span></span></code></pre><h3 id="kubernetes-with-helm">Kubernetes (with Helm)<a class="zola-anchor" href="#kubernetes-with-helm" aria-label="Anchor link for: kubernetes-with-helm">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">helm</span><span style="color: light-dark(#032F62, #9ECBFF);"> repo</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://grafana.github.io/helm-charts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">helm</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana/grafana</span></span></code></pre><h3 id="linux-debian-ubuntu">Linux (Debian/Ubuntu)<a class="zola-anchor" href="#linux-debian-ubuntu" aria-label="Anchor link for: linux-debian-ubuntu">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt-get</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">y</span><span style="color: light-dark(#032F62, #9ECBFF);"> software-properties-common</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> add-apt-repository</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">deb https://packages.grafana.com/oss/deb stable main</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">wget</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">q</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">O</span><span style="color: light-dark(#032F62, #9ECBFF);"> -</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://packages.grafana.com/gpg.key</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt-key</span><span style="color: light-dark(#032F62, #9ECBFF);"> add</span><span style="color: light-dark(#032F62, #9ECBFF);"> -</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt-get</span><span style="color: light-dark(#032F62, #9ECBFF);"> update</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> apt-get</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> systemctl</span><span style="color: light-dark(#032F62, #9ECBFF);"> start</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana-server</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">sudo</span><span style="color: light-dark(#032F62, #9ECBFF);"> systemctl</span><span style="color: light-dark(#032F62, #9ECBFF);"> enable</span><span style="color: light-dark(#032F62, #9ECBFF);"> grafana-server</span></span></code></pre><h3 id="default-credentials">Default Credentials<a class="zola-anchor" href="#default-credentials" aria-label="Anchor link for: default-credentials">🔗</a></h3>
+<ul>
+<li>URL: http://localhost:3000</li>
+<li>Username: <code>admin</code></li>
+<li>Password: <code>admin</code> (change on first login)</li>
+</ul>
+<h2 id="configuration">Configuration<a class="zola-anchor" href="#configuration" aria-label="Anchor link for: configuration">🔗</a></h2>
+<h3 id="main-configuration-file">Main Configuration File<a class="zola-anchor" href="#main-configuration-file" aria-label="Anchor link for: main-configuration-file">🔗</a></h3>
+<p>Location: <code>/etc/grafana/grafana.ini</code> (Linux) or <code>conf/defaults.ini</code></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="ini"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">server</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">http_port</span><span> =</span><span> 3000</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">domain</span><span> =</span><span> localhost</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">root_url</span><span> =</span><span> %(protocol)s://%(domain)s:%(http_port)s/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">database</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">type</span><span> =</span><span> sqlite3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">path</span><span> =</span><span> grafana.db</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">security</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">admin_user</span><span> =</span><span> admin</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">admin_password</span><span> =</span><span> admin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">users</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">allow_sign_up</span><span> =</span><span> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">allow_org_create</span><span> =</span><span> false</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">auth.anonymous</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">enabled</span><span> =</span><span> false</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">smtp</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">enabled</span><span> =</span><span> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">host</span><span> =</span><span> smtp.gmail.com:587</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">user</span><span> =</span><span> your-email@gmail.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">password</span><span> =</span><span> your-password</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">from_address</span><span> =</span><span> grafana@yourdomain.com</span></span></code></pre><h3 id="environment-variables">Environment Variables<a class="zola-anchor" href="#environment-variables" aria-label="Anchor link for: environment-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set admin password</span></span>
+<span class="giallo-l"><span>GF_SECURITY_ADMIN_PASSWORD</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);">y</span><span style="color: light-dark(#032F62, #9ECBFF);">p</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);">w</span><span style="color: light-dark(#032F62, #9ECBFF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);">d</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Disable anonymous access</span></span>
+<span class="giallo-l"><span>GF_AUTH_ANONYMOUS_ENABLED</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);">e</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Set SMTP</span></span>
+<span class="giallo-l"><span>GF_SMTP_ENABLED</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">t</span><span style="color: light-dark(#032F62, #9ECBFF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);">u</span><span style="color: light-dark(#032F62, #9ECBFF);">e</span></span>
+<span class="giallo-l"><span>GF_SMTP_HOST</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);">t</span><span style="color: light-dark(#032F62, #9ECBFF);">p</span><span style="color: light-dark(#032F62, #9ECBFF);">.</span><span style="color: light-dark(#032F62, #9ECBFF);">g</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);">.</span><span style="color: light-dark(#032F62, #9ECBFF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);">:</span><span style="color: light-dark(#032F62, #9ECBFF);">5</span><span style="color: light-dark(#032F62, #9ECBFF);">8</span><span style="color: light-dark(#032F62, #9ECBFF);">7</span></span>
+<span class="giallo-l"><span>GF_SMTP_USER</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">i</span><span style="color: light-dark(#032F62, #9ECBFF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);">@</span><span style="color: light-dark(#032F62, #9ECBFF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);">x</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);">p</span><span style="color: light-dark(#032F62, #9ECBFF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);">.</span><span style="color: light-dark(#032F62, #9ECBFF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span></span>
+<span class="giallo-l"><span>GF_SMTP_PASSWORD</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">p</span><span style="color: light-dark(#032F62, #9ECBFF);">a</span><span style="color: light-dark(#032F62, #9ECBFF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);">s</span><span style="color: light-dark(#032F62, #9ECBFF);">w</span><span style="color: light-dark(#032F62, #9ECBFF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);">d</span></span></code></pre><h2 id="data-sources">Data Sources<a class="zola-anchor" href="#data-sources" aria-label="Anchor link for: data-sources">🔗</a></h2>
+<h3 id="add-prometheus-data-source">Add Prometheus Data Source<a class="zola-anchor" href="#add-prometheus-data-source" aria-label="Anchor link for: add-prometheus-data-source">🔗</a></h3>
+<p><strong>Via UI:</strong></p>
+<ol>
+<li>Configuration → Data Sources → Add data source</li>
+<li>Select Prometheus</li>
+<li>URL: <code>http://prometheus:9090</code></li>
+<li>Click “Save &amp; Test”</li>
+</ol>
+<p><strong>Via provisioning</strong> (<code>/etc/grafana/provisioning/datasources/prometheus.yml</code>):</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">d</span><span style="color: light-dark(#22863A, #85E89D);">atasources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> P</span><span style="color: light-dark(#032F62, #9ECBFF);">rometheus</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">rometheus</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    a</span><span style="color: light-dark(#22863A, #85E89D);">ccess</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">roxy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">ttp://prometheus:9090</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    i</span><span style="color: light-dark(#22863A, #85E89D);">sDefault</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    e</span><span style="color: light-dark(#22863A, #85E89D);">ditable</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span></code></pre><h3 id="add-mysql-data-source">Add MySQL Data Source<a class="zola-anchor" href="#add-mysql-data-source" aria-label="Anchor link for: add-mysql-data-source">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">d</span><span style="color: light-dark(#22863A, #85E89D);">atasources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> M</span><span style="color: light-dark(#032F62, #9ECBFF);">ySQL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">ysql</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">ysql-host:3306</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    d</span><span style="color: light-dark(#22863A, #85E89D);">atabase</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">ydb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">ser</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> g</span><span style="color: light-dark(#032F62, #9ECBFF);">rafana</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">ecureJsonData</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      p</span><span style="color: light-dark(#22863A, #85E89D);">assword</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">password</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="add-postgresql-data-source">Add PostgreSQL Data Source<a class="zola-anchor" href="#add-postgresql-data-source" aria-label="Anchor link for: add-postgresql-data-source">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">d</span><span style="color: light-dark(#22863A, #85E89D);">atasources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> P</span><span style="color: light-dark(#032F62, #9ECBFF);">ostgreSQL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">ostgres</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">ostgres-host:5432</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    d</span><span style="color: light-dark(#22863A, #85E89D);">atabase</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">ydb</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">ser</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> g</span><span style="color: light-dark(#032F62, #9ECBFF);">rafana</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">ecureJsonData</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      p</span><span style="color: light-dark(#22863A, #85E89D);">assword</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">password</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    j</span><span style="color: light-dark(#22863A, #85E89D);">sonData</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      s</span><span style="color: light-dark(#22863A, #85E89D);">slmode</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> d</span><span style="color: light-dark(#032F62, #9ECBFF);">isable</span></span></code></pre><h3 id="add-loki-data-source">Add Loki Data Source<a class="zola-anchor" href="#add-loki-data-source" aria-label="Anchor link for: add-loki-data-source">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">d</span><span style="color: light-dark(#22863A, #85E89D);">atasources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> L</span><span style="color: light-dark(#032F62, #9ECBFF);">oki</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> l</span><span style="color: light-dark(#032F62, #9ECBFF);">oki</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    a</span><span style="color: light-dark(#22863A, #85E89D);">ccess</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">roxy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">ttp://loki:3100</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    j</span><span style="color: light-dark(#22863A, #85E89D);">sonData</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      m</span><span style="color: light-dark(#22863A, #85E89D);">axLines</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1000</span></span></code></pre><h3 id="add-elasticsearch-data-source">Add Elasticsearch Data Source<a class="zola-anchor" href="#add-elasticsearch-data-source" aria-label="Anchor link for: add-elasticsearch-data-source">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">d</span><span style="color: light-dark(#22863A, #85E89D);">atasources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> E</span><span style="color: light-dark(#032F62, #9ECBFF);">lasticsearch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> e</span><span style="color: light-dark(#032F62, #9ECBFF);">lasticsearch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    a</span><span style="color: light-dark(#22863A, #85E89D);">ccess</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">roxy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">ttp://elasticsearch:9200</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    d</span><span style="color: light-dark(#22863A, #85E89D);">atabase</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">[logs-]YYYY.MM.DD</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    j</span><span style="color: light-dark(#22863A, #85E89D);">sonData</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      e</span><span style="color: light-dark(#22863A, #85E89D);">sVersion</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">7.10.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      t</span><span style="color: light-dark(#22863A, #85E89D);">imeField</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">@timestamp</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h2 id="dashboards">Dashboards<a class="zola-anchor" href="#dashboards" aria-label="Anchor link for: dashboards">🔗</a></h2>
+<h3 id="create-dashboard-via-ui">Create Dashboard via UI<a class="zola-anchor" href="#create-dashboard-via-ui" aria-label="Anchor link for: create-dashboard-via-ui">🔗</a></h3>
+<ol>
+<li>Click “+” → Dashboard</li>
+<li>Click “Add new panel”</li>
+<li>Configure query and visualization</li>
+<li>Click “Apply”</li>
+<li>Click “Save dashboard”</li>
+</ol>
+<h3 id="import-dashboard">Import Dashboard<a class="zola-anchor" href="#import-dashboard" aria-label="Anchor link for: import-dashboard">🔗</a></h3>
+<ol>
+<li>Click “+” → Import</li>
+<li>Enter dashboard ID or JSON</li>
+<li>Select data source</li>
+<li>Click “Import”</li>
+</ol>
+<p><strong>Popular Dashboard IDs:</strong></p>
+<ul>
+<li>Node Exporter Full: <code>1860</code></li>
+<li>Kubernetes Cluster Monitoring: <code>7249</code></li>
+<li>Docker Dashboard: <code>893</code></li>
+<li>MySQL Overview: <code>7362</code></li>
+<li>NGINX: <code>12708</code></li>
+</ul>
+<h3 id="export-dashboard">Export Dashboard<a class="zola-anchor" href="#export-dashboard" aria-label="Anchor link for: export-dashboard">🔗</a></h3>
+<ol>
+<li>Dashboard Settings (gear icon) → JSON Model</li>
+<li>Copy JSON or click “Save to file”</li>
+</ol>
+<h3 id="dashboard-provisioning">Dashboard Provisioning<a class="zola-anchor" href="#dashboard-provisioning" aria-label="Anchor link for: dashboard-provisioning">🔗</a></h3>
+<p>Create <code>/etc/grafana/provisioning/dashboards/dashboard.yml</code>:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">p</span><span style="color: light-dark(#22863A, #85E89D);">roviders</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">Default</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    f</span><span style="color: light-dark(#22863A, #85E89D);">older</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> f</span><span style="color: light-dark(#032F62, #9ECBFF);">ile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    d</span><span style="color: light-dark(#22863A, #85E89D);">isableDeletion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">pdateIntervalSeconds</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 10</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    o</span><span style="color: light-dark(#22863A, #85E89D);">ptions</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      p</span><span style="color: light-dark(#22863A, #85E89D);">ath</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">var/lib/grafana/dashboards</span></span></code></pre>
+<p>Place dashboard JSON files in <code>/var/lib/grafana/dashboards/</code></p>
+<h3 id="dashboard-json-example">Dashboard JSON Example<a class="zola-anchor" href="#dashboard-json-example" aria-label="Anchor link for: dashboard-json-example">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">dashboard</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">title</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">My Dashboard</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">panels</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>      {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">id</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">graph</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">title</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">CPU Usage</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>          {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">            &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">100 - (avg(rate(node_cpu_seconds_total{mode=</span><span style="color: light-dark(#005CC5, #79B8FF);">\&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">idle</span><span style="color: light-dark(#005CC5, #79B8FF);">\&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">}[5m])) * 100)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">            &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">refId</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">A</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>          }</span></span>
+<span class="giallo-l"><span>        ]</span></span>
+<span class="giallo-l"><span>      }</span></span>
+<span class="giallo-l"><span>    ]</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">time</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">from</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">now-6h</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">to</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">now</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">refresh</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">5s</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h2 id="panels-visualizations">Panels &amp; Visualizations<a class="zola-anchor" href="#panels-visualizations" aria-label="Anchor link for: panels-visualizations">🔗</a></h2>
+<h3 id="panel-types">Panel Types<a class="zola-anchor" href="#panel-types" aria-label="Anchor link for: panel-types">🔗</a></h3>
+<h4 id="time-series-graph">Time Series (Graph)<a class="zola-anchor" href="#time-series-graph" aria-label="Anchor link for: time-series-graph">🔗</a></h4>
+<p>Best for: Metrics over time</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">timeseries</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">rate(http_requests_total[5m])</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="stat">Stat<a class="zola-anchor" href="#stat" aria-label="Anchor link for: stat">🔗</a></h4>
+<p>Best for: Single numeric value</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">stat</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">sum(up)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">options</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">graphMode</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">area</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">colorMode</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">value</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="gauge">Gauge<a class="zola-anchor" href="#gauge" aria-label="Anchor link for: gauge">🔗</a></h4>
+<p>Best for: Percentage or threshold visualization</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">gauge</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">fieldConfig</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">defaults</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">max</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 100</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">min</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">thresholds</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">steps</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>          {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">green</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span>          {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">yellow</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 70</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span>          {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">red</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 90</span><span>}</span></span>
+<span class="giallo-l"><span>        ]</span></span>
+<span class="giallo-l"><span>      }</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="bar-chart">Bar Chart<a class="zola-anchor" href="#bar-chart" aria-label="Anchor link for: bar-chart">🔗</a></h4>
+<p>Best for: Comparing values across categories</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">barchart</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">sum(http_requests_total) by (method)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="table">Table<a class="zola-anchor" href="#table" aria-label="Anchor link for: table">🔗</a></h4>
+<p>Best for: Tabular data display</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">table</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">up</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">format</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">table</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="heatmap">Heatmap<a class="zola-anchor" href="#heatmap" aria-label="Anchor link for: heatmap">🔗</a></h4>
+<p>Best for: Distribution over time</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">heatmap</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">rate(http_request_duration_seconds_bucket[5m])</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="pie-chart">Pie Chart<a class="zola-anchor" href="#pie-chart" aria-label="Anchor link for: pie-chart">🔗</a></h4>
+<p>Best for: Part-to-whole relationships</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">piechart</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">sum(http_requests_total) by (status_code)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="logs-panel">Logs Panel<a class="zola-anchor" href="#logs-panel" aria-label="Anchor link for: logs-panel">🔗</a></h4>
+<p>Best for: Log entries from Loki</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">logs</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">datasource</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Loki</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">targets</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">expr</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">{job=</span><span style="color: light-dark(#005CC5, #79B8FF);">\&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">varlogs</span><span style="color: light-dark(#005CC5, #79B8FF);">\&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">}</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="panel-options">Panel Options<a class="zola-anchor" href="#panel-options" aria-label="Anchor link for: panel-options">🔗</a></h3>
+<h4 id="thresholds">Thresholds<a class="zola-anchor" href="#thresholds" aria-label="Anchor link for: thresholds">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">thresholds</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">mode</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">absolute</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">    &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">steps</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>      {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 0</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">green</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span>      {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 80</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">yellow</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span>      {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 100</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">red</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span></span>
+<span class="giallo-l"><span>    ]</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="value-mappings">Value Mappings<a class="zola-anchor" href="#value-mappings" aria-label="Anchor link for: value-mappings">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">mappings</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">type</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">value</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">options</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">0</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">text</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Down</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">red</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">1</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">text</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Up</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">color</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">green</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span></span>
+<span class="giallo-l"><span>      }</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h4 id="overrides">Overrides<a class="zola-anchor" href="#overrides" aria-label="Anchor link for: overrides">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">overrides</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">matcher</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">id</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">byName</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">options</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Series 1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">properties</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>        {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">id</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">color</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">value</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">mode</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">fixed</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">fixedColor</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">blue</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span><span>}</span></span>
+<span class="giallo-l"><span>      ]</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h2 id="variables">Variables<a class="zola-anchor" href="#variables" aria-label="Anchor link for: variables">🔗</a></h2>
+<h3 id="query-variable">Query Variable<a class="zola-anchor" href="#query-variable" aria-label="Anchor link for: query-variable">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Name: instance</span></span>
+<span class="giallo-l"><span>Type: Query</span></span>
+<span class="giallo-l"><span>Data source: Prometheus</span></span>
+<span class="giallo-l"><span>Query: label_values(up, instance)</span></span>
+<span class="giallo-l"><span>Refresh: On Dashboard Load</span></span></code></pre>
+<p><strong>Usage in query:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>up{instance=&quot;$instance&quot;}</span></span></code></pre><h3 id="custom-variable">Custom Variable<a class="zola-anchor" href="#custom-variable" aria-label="Anchor link for: custom-variable">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Name: environment</span></span>
+<span class="giallo-l"><span>Type: Custom</span></span>
+<span class="giallo-l"><span>Values: production,staging,development</span></span></code></pre><h3 id="interval-variable">Interval Variable<a class="zola-anchor" href="#interval-variable" aria-label="Anchor link for: interval-variable">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Name: interval</span></span>
+<span class="giallo-l"><span>Type: Interval</span></span>
+<span class="giallo-l"><span>Values: 1m,5m,10m,30m,1h</span></span>
+<span class="giallo-l"><span>Auto: enabled</span></span></code></pre>
+<p><strong>Usage in query:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>rate(http_requests_total[$interval])</span></span></code></pre><h3 id="constant-variable">Constant Variable<a class="zola-anchor" href="#constant-variable" aria-label="Anchor link for: constant-variable">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Name: threshold</span></span>
+<span class="giallo-l"><span>Type: Constant</span></span>
+<span class="giallo-l"><span>Value: 80</span></span></code></pre><h3 id="data-source-variable">Data Source Variable<a class="zola-anchor" href="#data-source-variable" aria-label="Anchor link for: data-source-variable">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Name: datasource</span></span>
+<span class="giallo-l"><span>Type: Data source</span></span>
+<span class="giallo-l"><span>Type: Prometheus</span></span></code></pre>
+<p><strong>Usage:</strong>
+Select data source: <code>${datasource}</code></p>
+<h3 id="chained-variables">Chained Variables<a class="zola-anchor" href="#chained-variables" aria-label="Anchor link for: chained-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Variable 1:</span></span>
+<span class="giallo-l"><span>Name: region</span></span>
+<span class="giallo-l"><span>Query: label_values(up, region)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>Variable 2:</span></span>
+<span class="giallo-l"><span>Name: instance</span></span>
+<span class="giallo-l"><span>Query: label_values(up{region=&quot;$region&quot;}, instance)</span></span></code></pre><h3 id="multi-value-variables">Multi-value Variables<a class="zola-anchor" href="#multi-value-variables" aria-label="Anchor link for: multi-value-variables">🔗</a></h3>
+<p>Enable “Multi-value” option to select multiple values.</p>
+<p><strong>Usage in query:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>up{instance=~&quot;$instance&quot;}</span></span></code></pre><h2 id="transformations">Transformations<a class="zola-anchor" href="#transformations" aria-label="Anchor link for: transformations">🔗</a></h2>
+<h3 id="common-transformations">Common Transformations<a class="zola-anchor" href="#common-transformations" aria-label="Anchor link for: common-transformations">🔗</a></h3>
+<h4 id="filter-by-name">Filter by name<a class="zola-anchor" href="#filter-by-name" aria-label="Anchor link for: filter-by-name">🔗</a></h4>
+<p>Filter series by name pattern.</p>
+<h4 id="rename-by-regex">Rename by regex<a class="zola-anchor" href="#rename-by-regex" aria-label="Anchor link for: rename-by-regex">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Regex: (.*)_total</span></span>
+<span class="giallo-l"><span>Replace: $1</span></span></code></pre><h4 id="organize-fields">Organize fields<a class="zola-anchor" href="#organize-fields" aria-label="Anchor link for: organize-fields">🔗</a></h4>
+<p>Reorder, hide, or rename fields.</p>
+<h4 id="join-by-field">Join by field<a class="zola-anchor" href="#join-by-field" aria-label="Anchor link for: join-by-field">🔗</a></h4>
+<p>Combine data from multiple queries.</p>
+<h4 id="add-field-from-calculation">Add field from calculation<a class="zola-anchor" href="#add-field-from-calculation" aria-label="Anchor link for: add-field-from-calculation">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Mode: Reduce row</span></span>
+<span class="giallo-l"><span>Calculation: Mean</span></span>
+<span class="giallo-l"><span>Alias: average</span></span></code></pre><h4 id="filter-data-by-value">Filter data by value<a class="zola-anchor" href="#filter-data-by-value" aria-label="Anchor link for: filter-data-by-value">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Match: All conditions</span></span>
+<span class="giallo-l"><span>Condition: temperature &gt; 30</span></span></code></pre><h4 id="group-by">Group by<a class="zola-anchor" href="#group-by" aria-label="Anchor link for: group-by">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Group by: hostname</span></span>
+<span class="giallo-l"><span>Aggregation: Mean</span></span></code></pre><h3 id="transformation-example">Transformation Example<a class="zola-anchor" href="#transformation-example" aria-label="Anchor link for: transformation-example">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">transformations</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">id</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">filterByName</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">options</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">include</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">          &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">pattern</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">^temp.*</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"><span>      }</span></span>
+<span class="giallo-l"><span>    }</span><span>,</span></span>
+<span class="giallo-l"><span>    {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">id</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">organize</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">      &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">options</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">excludeByName</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">indexByName</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">        &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">renameByName</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">          &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">temp_celsius</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Temperature (°C)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>        }</span></span>
+<span class="giallo-l"><span>      }</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  ]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h2 id="alerting">Alerting<a class="zola-anchor" href="#alerting" aria-label="Anchor link for: alerting">🔗</a></h2>
+<h3 id="create-alert-rule">Create Alert Rule<a class="zola-anchor" href="#create-alert-rule" aria-label="Anchor link for: create-alert-rule">🔗</a></h3>
+<p><strong>Via UI:</strong></p>
+<ol>
+<li>Panel → Alert tab</li>
+<li>Create alert rule</li>
+<li>Define query and conditions</li>
+<li>Set evaluation interval</li>
+<li>Configure notifications</li>
+</ol>
+<p><strong>Alert Rule Example:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">g</span><span style="color: light-dark(#22863A, #85E89D);">roups</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> m</span><span style="color: light-dark(#032F62, #9ECBFF);">y-alerts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    f</span><span style="color: light-dark(#22863A, #85E89D);">older</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">lerts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    i</span><span style="color: light-dark(#22863A, #85E89D);">nterval</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> 1</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">ules</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> u</span><span style="color: light-dark(#22863A, #85E89D);">id</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">lert1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        t</span><span style="color: light-dark(#22863A, #85E89D);">itle</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> H</span><span style="color: light-dark(#032F62, #9ECBFF);">igh CPU Usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        c</span><span style="color: light-dark(#22863A, #85E89D);">ondition</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> A</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        d</span><span style="color: light-dark(#22863A, #85E89D);">ata</span><span>:</span></span>
+<span class="giallo-l"><span>          -</span><span style="color: light-dark(#22863A, #85E89D);"> r</span><span style="color: light-dark(#22863A, #85E89D);">efId</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> A</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">            d</span><span style="color: light-dark(#22863A, #85E89D);">atasourceUid</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">rometheus-uid</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">            m</span><span style="color: light-dark(#22863A, #85E89D);">odel</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              e</span><span style="color: light-dark(#22863A, #85E89D);">xpr</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> 1</span><span style="color: light-dark(#032F62, #9ECBFF);">00 - (avg(rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">              r</span><span style="color: light-dark(#22863A, #85E89D);">efId</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> A</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        n</span><span style="color: light-dark(#22863A, #85E89D);">oDataState</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> N</span><span style="color: light-dark(#032F62, #9ECBFF);">oData</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        e</span><span style="color: light-dark(#22863A, #85E89D);">xecErrState</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> A</span><span style="color: light-dark(#032F62, #9ECBFF);">lerting</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        f</span><span style="color: light-dark(#22863A, #85E89D);">or</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> 5</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        a</span><span style="color: light-dark(#22863A, #85E89D);">nnotations</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          d</span><span style="color: light-dark(#22863A, #85E89D);">escription</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> C</span><span style="color: light-dark(#032F62, #9ECBFF);">PU usage is above 80%</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        l</span><span style="color: light-dark(#22863A, #85E89D);">abels</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          s</span><span style="color: light-dark(#22863A, #85E89D);">everity</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> w</span><span style="color: light-dark(#032F62, #9ECBFF);">arning</span></span></code></pre><h3 id="notification-channels">Notification Channels<a class="zola-anchor" href="#notification-channels" aria-label="Anchor link for: notification-channels">🔗</a></h3>
+<h4 id="email">Email<a class="zola-anchor" href="#email" aria-label="Anchor link for: email">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">n</span><span style="color: light-dark(#22863A, #85E89D);">otifiers</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> E</span><span style="color: light-dark(#032F62, #9ECBFF);">mail</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> e</span><span style="color: light-dark(#032F62, #9ECBFF);">mail</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">id</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> e</span><span style="color: light-dark(#032F62, #9ECBFF);">mail1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    s</span><span style="color: light-dark(#22863A, #85E89D);">ettings</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      a</span><span style="color: light-dark(#22863A, #85E89D);">ddresses</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> a</span><span style="color: light-dark(#032F62, #9ECBFF);">dmin@example.com;ops@example.com</span></span></code></pre><h4 id="slack">Slack<a class="zola-anchor" href="#slack" aria-label="Anchor link for: slack">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">c</span><span style="color: light-dark(#22863A, #85E89D);">ontactPoints</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> S</span><span style="color: light-dark(#032F62, #9ECBFF);">lack</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">eceivers</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> u</span><span style="color: light-dark(#22863A, #85E89D);">id</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">lack1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">lack</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        s</span><span style="color: light-dark(#22863A, #85E89D);">ettings</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">ttps://hooks.slack.com/services/YOUR/WEBHOOK/URL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          t</span><span style="color: light-dark(#22863A, #85E89D);">ext</span><span>:</span><span style="color: light-dark(#D73A49, #F97583);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            {{ range .Alerts }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            Alert: {{ .Labels.alertname }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            Status: {{ .Status }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            {{ end }}</span></span></code></pre><h4 id="pagerduty">PagerDuty<a class="zola-anchor" href="#pagerduty" aria-label="Anchor link for: pagerduty">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">c</span><span style="color: light-dark(#22863A, #85E89D);">ontactPoints</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> P</span><span style="color: light-dark(#032F62, #9ECBFF);">agerDuty</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">eceivers</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> u</span><span style="color: light-dark(#22863A, #85E89D);">id</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">d1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">agerduty</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        s</span><span style="color: light-dark(#22863A, #85E89D);">ettings</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          i</span><span style="color: light-dark(#22863A, #85E89D);">ntegrationKey</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> Y</span><span style="color: light-dark(#032F62, #9ECBFF);">OUR_INTEGRATION_KEY</span></span></code></pre><h4 id="webhook">Webhook<a class="zola-anchor" href="#webhook" aria-label="Anchor link for: webhook">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">c</span><span style="color: light-dark(#22863A, #85E89D);">ontactPoints</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> W</span><span style="color: light-dark(#032F62, #9ECBFF);">ebhook</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">eceivers</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> u</span><span style="color: light-dark(#22863A, #85E89D);">id</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> w</span><span style="color: light-dark(#032F62, #9ECBFF);">ebhook1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> w</span><span style="color: light-dark(#032F62, #9ECBFF);">ebhook</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        s</span><span style="color: light-dark(#22863A, #85E89D);">ettings</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">ttps://api.example.com/alerts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">          h</span><span style="color: light-dark(#22863A, #85E89D);">ttpMethod</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> P</span><span style="color: light-dark(#032F62, #9ECBFF);">OST</span></span></code></pre><h3 id="notification-policy">Notification Policy<a class="zola-anchor" href="#notification-policy" aria-label="Anchor link for: notification-policy">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">p</span><span style="color: light-dark(#22863A, #85E89D);">olicies</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">eceiver</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> d</span><span style="color: light-dark(#032F62, #9ECBFF);">efault-email</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">roup_by</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">alertname</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">cluster</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span><span>]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">roup_wait</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> 3</span><span style="color: light-dark(#032F62, #9ECBFF);">0s</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    g</span><span style="color: light-dark(#22863A, #85E89D);">roup_interval</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> 5</span><span style="color: light-dark(#032F62, #9ECBFF);">m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">epeat_interval</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> 4</span><span style="color: light-dark(#032F62, #9ECBFF);">h</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    r</span><span style="color: light-dark(#22863A, #85E89D);">outes</span><span>:</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> r</span><span style="color: light-dark(#22863A, #85E89D);">eceiver</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">lack</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        m</span><span style="color: light-dark(#22863A, #85E89D);">atchers</span><span>:</span></span>
+<span class="giallo-l"><span>          -</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">everity = critical</span></span>
+<span class="giallo-l"><span>      -</span><span style="color: light-dark(#22863A, #85E89D);"> r</span><span style="color: light-dark(#22863A, #85E89D);">eceiver</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">agerduty</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">        m</span><span style="color: light-dark(#22863A, #85E89D);">atchers</span><span>:</span></span>
+<span class="giallo-l"><span>          -</span><span style="color: light-dark(#032F62, #9ECBFF);"> s</span><span style="color: light-dark(#032F62, #9ECBFF);">everity = critical</span></span>
+<span class="giallo-l"><span>          -</span><span style="color: light-dark(#032F62, #9ECBFF);"> t</span><span style="color: light-dark(#032F62, #9ECBFF);">eam = ops</span></span></code></pre><h2 id="annotations">Annotations<a class="zola-anchor" href="#annotations" aria-label="Anchor link for: annotations">🔗</a></h2>
+<h3 id="create-annotation">Create Annotation<a class="zola-anchor" href="#create-annotation" aria-label="Anchor link for: create-annotation">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="json"><span class="giallo-l"><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">dashboardId</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">panelId</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">time</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1609459200000</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">text</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Deployment v2.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  &quot;</span><span style="color: light-dark(#005CC5, #79B8FF);">tags</span><span style="color: light-dark(#005CC5, #79B8FF);">&quot;</span><span>:</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">deployment</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">release</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="query-annotations-from-prometheus">Query Annotations from Prometheus<a class="zola-anchor" href="#query-annotations-from-prometheus" aria-label="Anchor link for: query-annotations-from-prometheus">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>Data source: Prometheus</span></span>
+<span class="giallo-l"><span>Query: ALERTS{alertname=&quot;InstanceDown&quot;}</span></span>
+<span class="giallo-l"><span>Title field: alertname</span></span>
+<span class="giallo-l"><span>Text field: summary</span></span>
+<span class="giallo-l"><span>Tags field: severity</span></span></code></pre><h2 id="api-examples">API Examples<a class="zola-anchor" href="#api-examples" aria-label="Anchor link for: api-examples">🔗</a></h2>
+<h3 id="authentication">Authentication<a class="zola-anchor" href="#authentication" aria-label="Anchor link for: authentication">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> API key (recommended)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Basic auth</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#032F62, #9ECBFF);"> admin:password</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/...</span></span></code></pre><h3 id="create-api-key">Create API Key<a class="zola-anchor" href="#create-api-key" aria-label="Anchor link for: create-api-key">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://admin:admin@localhost:3000/api/auth/keys</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;name&quot;: &quot;mykey&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;role&quot;: &quot;Admin&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="get-all-dashboards">Get All Dashboards<a class="zola-anchor" href="#get-all-dashboards" aria-label="Anchor link for: get-all-dashboards">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  http://localhost:3000/api/search?type=dash-db</span></span></code></pre><h3 id="get-dashboard-by-uid">Get Dashboard by UID<a class="zola-anchor" href="#get-dashboard-by-uid" aria-label="Anchor link for: get-dashboard-by-uid">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  http://localhost:3000/api/dashboards/uid/DASHBOARD_UID</span></span></code></pre><h3 id="create-update-dashboard">Create/Update Dashboard<a class="zola-anchor" href="#create-update-dashboard" aria-label="Anchor link for: create-update-dashboard">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/dashboards/db</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;dashboard&quot;: {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      &quot;title&quot;: &quot;My Dashboard&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      &quot;panels&quot;: []</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    },</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;overwrite&quot;: true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="delete-dashboard">Delete Dashboard<a class="zola-anchor" href="#delete-dashboard" aria-label="Anchor link for: delete-dashboard">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> DELETE</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/dashboards/uid/DASHBOARD_UID</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h3 id="get-data-sources">Get Data Sources<a class="zola-anchor" href="#get-data-sources" aria-label="Anchor link for: get-data-sources">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  http://localhost:3000/api/datasources</span></span></code></pre><h3 id="create-data-source">Create Data Source<a class="zola-anchor" href="#create-data-source" aria-label="Anchor link for: create-data-source">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/datasources</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;name&quot;: &quot;Prometheus&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;type&quot;: &quot;prometheus&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;url&quot;: &quot;http://prometheus:9090&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;access&quot;: &quot;proxy&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;isDefault&quot;: true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="query-data-source">Query Data Source<a class="zola-anchor" href="#query-data-source" aria-label="Anchor link for: query-data-source">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/ds/query</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;queries&quot;: [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;datasource&quot;: {&quot;type&quot;: &quot;prometheus&quot;},</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;expr&quot;: &quot;up&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;refId&quot;: &quot;A&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    ],</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;from&quot;: &quot;now-1h&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;to&quot;: &quot;now&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="create-organization">Create Organization<a class="zola-anchor" href="#create-organization" aria-label="Anchor link for: create-organization">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/orgs</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{&quot;name&quot;: &quot;New Org&quot;}</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="create-user">Create User<a class="zola-anchor" href="#create-user" aria-label="Anchor link for: create-user">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/admin/users</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;name&quot;: &quot;John Doe&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;email&quot;: &quot;john@example.com&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;login&quot;: &quot;john&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;password&quot;: &quot;password&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h3 id="get-current-user">Get Current User<a class="zola-anchor" href="#get-current-user" aria-label="Anchor link for: get-current-user">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  http://localhost:3000/api/user</span></span></code></pre><h3 id="create-snapshot">Create Snapshot<a class="zola-anchor" href="#create-snapshot" aria-label="Anchor link for: create-snapshot">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">curl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">X</span><span style="color: light-dark(#032F62, #9ECBFF);"> POST</span><span style="color: light-dark(#032F62, #9ECBFF);"> http://localhost:3000/api/snapshots</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Authorization: Bearer YOUR_API_KEY</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">H</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Content-Type: application/json</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">  -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;dashboard&quot;: ,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;name&quot;: &quot;My Snapshot&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;expires&quot;: 3600</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">  }</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span></code></pre><h2 id="provisioning">Provisioning<a class="zola-anchor" href="#provisioning" aria-label="Anchor link for: provisioning">🔗</a></h2>
+<h3 id="directory-structure">Directory Structure<a class="zola-anchor" href="#directory-structure" aria-label="Anchor link for: directory-structure">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>/etc/grafana/provisioning/</span></span>
+<span class="giallo-l"><span>├── dashboards/</span></span>
+<span class="giallo-l"><span>│   ├── dashboard.yml</span></span>
+<span class="giallo-l"><span>│   └── my-dashboard.json</span></span>
+<span class="giallo-l"><span>├── datasources/</span></span>
+<span class="giallo-l"><span>│   └── datasource.yml</span></span>
+<span class="giallo-l"><span>├── notifiers/</span></span>
+<span class="giallo-l"><span>│   └── notifier.yml</span></span>
+<span class="giallo-l"><span>└── alerting/</span></span>
+<span class="giallo-l"><span>    ├── alert-rules.yml</span></span>
+<span class="giallo-l"><span>    └── notification-policies.yml</span></span></code></pre><h3 id="complete-example">Complete Example<a class="zola-anchor" href="#complete-example" aria-label="Anchor link for: complete-example">🔗</a></h3>
+<p><strong>datasources/prometheus.yml:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">d</span><span style="color: light-dark(#22863A, #85E89D);">atasources</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> P</span><span style="color: light-dark(#032F62, #9ECBFF);">rometheus</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">rometheus</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    a</span><span style="color: light-dark(#22863A, #85E89D);">ccess</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> p</span><span style="color: light-dark(#032F62, #9ECBFF);">roxy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    u</span><span style="color: light-dark(#22863A, #85E89D);">rl</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> h</span><span style="color: light-dark(#032F62, #9ECBFF);">ttp://prometheus:9090</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    i</span><span style="color: light-dark(#22863A, #85E89D);">sDefault</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span></code></pre>
+<p><strong>dashboards/default.yml:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">a</span><span style="color: light-dark(#22863A, #85E89D);">piVersion</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">p</span><span style="color: light-dark(#22863A, #85E89D);">roviders</span><span>:</span></span>
+<span class="giallo-l"><span>  -</span><span style="color: light-dark(#22863A, #85E89D);"> n</span><span style="color: light-dark(#22863A, #85E89D);">ame</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">Default</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    o</span><span style="color: light-dark(#22863A, #85E89D);">rgId</span><span>:</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    f</span><span style="color: light-dark(#22863A, #85E89D);">older</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &#39;</span><span style="color: light-dark(#032F62, #9ECBFF);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    t</span><span style="color: light-dark(#22863A, #85E89D);">ype</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> f</span><span style="color: light-dark(#032F62, #9ECBFF);">ile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">    o</span><span style="color: light-dark(#22863A, #85E89D);">ptions</span><span>:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#22863A, #85E89D);">      p</span><span style="color: light-dark(#22863A, #85E89D);">ath</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> /</span><span style="color: light-dark(#032F62, #9ECBFF);">var/lib/grafana/dashboards</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="dashboard-design">Dashboard Design<a class="zola-anchor" href="#dashboard-design" aria-label="Anchor link for: dashboard-design">🔗</a></h3>
+<ul>
+<li>Use consistent time ranges</li>
+<li>Group related panels</li>
+<li>Use appropriate visualizations</li>
+<li>Add descriptions to panels</li>
+<li>Use template variables for flexibility</li>
+<li>Keep dashboards focused (single purpose)</li>
+</ul>
+<h3 id="performance">Performance<a class="zola-anchor" href="#performance" aria-label="Anchor link for: performance">🔗</a></h3>
+<ul>
+<li>Limit time ranges for heavy queries</li>
+<li>Use recording rules in Prometheus</li>
+<li>Avoid too many panels per dashboard (&lt; 20)</li>
+<li>Use appropriate refresh intervals</li>
+<li>Cache query results when possible</li>
+</ul>
+<h3 id="organization">Organization<a class="zola-anchor" href="#organization" aria-label="Anchor link for: organization">🔗</a></h3>
+<ul>
+<li>Use folders to organize dashboards</li>
+<li>Tag dashboards appropriately</li>
+<li>Use naming conventions</li>
+<li>Document complex queries</li>
+<li>Version control dashboard JSON</li>
+</ul>
+<h3 id="security">Security<a class="zola-anchor" href="#security" aria-label="Anchor link for: security">🔗</a></h3>
+<ul>
+<li>Use API keys instead of passwords</li>
+<li>Implement role-based access control</li>
+<li>Enable HTTPS</li>
+<li>Regular backups</li>
+<li>Update Grafana regularly</li>
+</ul>
+<h3 id="alerting-1">Alerting<a class="zola-anchor" href="#alerting-1" aria-label="Anchor link for: alerting-1">🔗</a></h3>
+<ul>
+<li>Set appropriate thresholds</li>
+<li>Avoid alert fatigue (don’t over-alert)</li>
+<li>Group related alerts</li>
+<li>Use meaningful alert names</li>
+<li>Include context in notifications</li>
+<li>Test alerts before production</li>
+</ul>
+<h2 id="keyboard-shortcuts">Keyboard Shortcuts<a class="zola-anchor" href="#keyboard-shortcuts" aria-label="Anchor link for: keyboard-shortcuts">🔗</a></h2>
+<table><thead><tr><th>Shortcut</th><th>Action</th></tr></thead><tbody>
+<tr><td><code>g + h</code></td><td>Go to home dashboard</td></tr>
+<tr><td><code>g + p</code></td><td>Go to profile</td></tr>
+<tr><td><code>g + e</code></td><td>Open explore</td></tr>
+<tr><td><code>s</code></td><td>Open search</td></tr>
+<tr><td><code>f</code></td><td>Open dashboard finder</td></tr>
+<tr><td><code>d + k</code></td><td>Toggle kiosk mode</td></tr>
+<tr><td><code>d + e</code></td><td>Expand all rows</td></tr>
+<tr><td><code>d + s</code></td><td>Dashboard settings</td></tr>
+<tr><td><code>d + v</code></td><td>Toggle in-active/active panel</td></tr>
+<tr><td><code>Ctrl + S</code></td><td>Save dashboard</td></tr>
+<tr><td><code>Esc</code></td><td>Exit panel edit/settings</td></tr>
+<tr><td><code>?</code></td><td>Show keyboard shortcuts</td></tr>
+</tbody></table>
+<h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li>Official documentation: https://grafana.com/docs/</li>
+<li>Community dashboards: https://grafana.com/grafana/dashboards/</li>
+<li>Plugins: https://grafana.com/grafana/plugins/</li>
+<li>Tutorials: https://grafana.com/tutorials/</li>
+<li>Community forum: https://community.grafana.com/</li>
+<li>GitHub: https://github.com/grafana/grafana</li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/prometheus/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">Prometheus</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/git/">
+          <span class="siblings__label">Suivant →</span>
+          <span class="siblings__title">Git</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#installation">Installation</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#docker">Docker</a></li>
+                  
+                    <li class="toc__subitem"><a href="#docker-with-persistent-storage">Docker with persistent storage</a></li>
+                  
+                    <li class="toc__subitem"><a href="#docker-compose">Docker Compose</a></li>
+                  
+                    <li class="toc__subitem"><a href="#kubernetes-with-helm">Kubernetes (with Helm)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#linux-debian-ubuntu">Linux (Debian/Ubuntu)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#default-credentials">Default Credentials</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#configuration">Configuration</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#main-configuration-file">Main Configuration File</a></li>
+                  
+                    <li class="toc__subitem"><a href="#environment-variables">Environment Variables</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#data-sources">Data Sources</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#add-prometheus-data-source">Add Prometheus Data Source</a></li>
+                  
+                    <li class="toc__subitem"><a href="#add-mysql-data-source">Add MySQL Data Source</a></li>
+                  
+                    <li class="toc__subitem"><a href="#add-postgresql-data-source">Add PostgreSQL Data Source</a></li>
+                  
+                    <li class="toc__subitem"><a href="#add-loki-data-source">Add Loki Data Source</a></li>
+                  
+                    <li class="toc__subitem"><a href="#add-elasticsearch-data-source">Add Elasticsearch Data Source</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#dashboards">Dashboards</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-dashboard-via-ui">Create Dashboard via UI</a></li>
+                  
+                    <li class="toc__subitem"><a href="#import-dashboard">Import Dashboard</a></li>
+                  
+                    <li class="toc__subitem"><a href="#export-dashboard">Export Dashboard</a></li>
+                  
+                    <li class="toc__subitem"><a href="#dashboard-provisioning">Dashboard Provisioning</a></li>
+                  
+                    <li class="toc__subitem"><a href="#dashboard-json-example">Dashboard JSON Example</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#panels-visualizations">Panels &amp; Visualizations</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#panel-types">Panel Types</a></li>
+                  
+                    <li class="toc__subitem"><a href="#panel-options">Panel Options</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#variables">Variables</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#query-variable">Query Variable</a></li>
+                  
+                    <li class="toc__subitem"><a href="#custom-variable">Custom Variable</a></li>
+                  
+                    <li class="toc__subitem"><a href="#interval-variable">Interval Variable</a></li>
+                  
+                    <li class="toc__subitem"><a href="#constant-variable">Constant Variable</a></li>
+                  
+                    <li class="toc__subitem"><a href="#data-source-variable">Data Source Variable</a></li>
+                  
+                    <li class="toc__subitem"><a href="#chained-variables">Chained Variables</a></li>
+                  
+                    <li class="toc__subitem"><a href="#multi-value-variables">Multi-value Variables</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#transformations">Transformations</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#common-transformations">Common Transformations</a></li>
+                  
+                    <li class="toc__subitem"><a href="#transformation-example">Transformation Example</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#alerting">Alerting</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-alert-rule">Create Alert Rule</a></li>
+                  
+                    <li class="toc__subitem"><a href="#notification-channels">Notification Channels</a></li>
+                  
+                    <li class="toc__subitem"><a href="#notification-policy">Notification Policy</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#annotations">Annotations</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-annotation">Create Annotation</a></li>
+                  
+                    <li class="toc__subitem"><a href="#query-annotations-from-prometheus">Query Annotations from Prometheus</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#api-examples">API Examples</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#authentication">Authentication</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-api-key">Create API Key</a></li>
+                  
+                    <li class="toc__subitem"><a href="#get-all-dashboards">Get All Dashboards</a></li>
+                  
+                    <li class="toc__subitem"><a href="#get-dashboard-by-uid">Get Dashboard by UID</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-update-dashboard">Create/Update Dashboard</a></li>
+                  
+                    <li class="toc__subitem"><a href="#delete-dashboard">Delete Dashboard</a></li>
+                  
+                    <li class="toc__subitem"><a href="#get-data-sources">Get Data Sources</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-data-source">Create Data Source</a></li>
+                  
+                    <li class="toc__subitem"><a href="#query-data-source">Query Data Source</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-organization">Create Organization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-user">Create User</a></li>
+                  
+                    <li class="toc__subitem"><a href="#get-current-user">Get Current User</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-snapshot">Create Snapshot</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#provisioning">Provisioning</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#directory-structure">Directory Structure</a></li>
+                  
+                    <li class="toc__subitem"><a href="#complete-example">Complete Example</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#dashboard-design">Dashboard Design</a></li>
+                  
+                    <li class="toc__subitem"><a href="#performance">Performance</a></li>
+                  
+                    <li class="toc__subitem"><a href="#organization">Organization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#security">Security</a></li>
+                  
+                    <li class="toc__subitem"><a href="#alerting-1">Alerting</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#keyboard-shortcuts">Keyboard Shortcuts</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

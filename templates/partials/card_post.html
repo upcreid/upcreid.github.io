@@ -1,0 +1,12 @@
+<article class="card card--post">
+  <h3 class="card__title"><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
+  <p class="card__meta">
+    <time datetime="{{ post.date }}">{{ post.date | date(format=trans(key="date_format", lang=lang), locale=lang) }}</time>
+    <span class="card__sep">·</span>
+    <span>{{ post.reading_time }} {{ trans(key="reading_time", lang=lang) }}</span>
+  </p>
+  {% if post.description %}
+    <p class="card__excerpt">{{ post.description }}</p>
+  {% endif %}
+  <a class="card__more" href="{{ post.permalink }}">{{ trans(key="read_more", lang=lang) }} →</a>
+</article>

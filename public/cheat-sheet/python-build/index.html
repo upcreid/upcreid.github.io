@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Python Build · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/python-build/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/cheat-sheet/python-build/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="/en/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/python-build/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/en/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">Aide-mémoire</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+      
+    
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">Aide-mémoire</a>
+      
+    
+  </nav>
+
+  <h1>Python Build</h1>
+
+  <p class="page-meta">
+    
+    <span>3 min de lecture</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>This guide covers the various tools and methods for building, packaging, and distributing Python applications.</p>
+<h2 id="distribution-formats">Distribution Formats<a class="zola-anchor" href="#distribution-formats" aria-label="Anchor link for: distribution-formats">🔗</a></h2>
+<h3 id="wheel-whl">Wheel (.whl)<a class="zola-anchor" href="#wheel-whl" aria-label="Anchor link for: wheel-whl">🔗</a></h3>
+<p>Standard binary distribution format for Python. Wheels are faster to install than source archives.</p>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>ZIP format with <code>.whl</code> extension</li>
+<li>No compilation needed during installation</li>
+<li>Can contain compiled C extensions</li>
+<li>Name format: <code>{distribution}-{version}(-{build})?-{python}-{abi}-{platform}.whl</code></li>
+</ul>
+<p><strong>Create a wheel:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With build (recommended - modern)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-wheel</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With setuptools (legacy)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#032F62, #9ECBFF);"> setup.py</span><span style="color: light-dark(#032F62, #9ECBFF);"> bdist_wheel</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With pip</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> wheel</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span></span></code></pre>
+<p><strong>Install a wheel:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> package-1.0.0-py3-none-any.whl</span></span></code></pre><h3 id="source-distribution-tar-gz">Source Distribution (.tar.gz)<a class="zola-anchor" href="#source-distribution-tar-gz" aria-label="Anchor link for: source-distribution-tar-gz">🔗</a></h3>
+<p>Source archive that requires compilation/build during installation.</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Create a source distribution</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-sdist</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Legacy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#032F62, #9ECBFF);"> setup.py</span><span style="color: light-dark(#032F62, #9ECBFF);"> sdist</span></span></code></pre><h2 id="build-tools">Build Tools<a class="zola-anchor" href="#build-tools" aria-label="Anchor link for: build-tools">🔗</a></h2>
+<h3 id="build-modern-pep-517"><code>build</code> (Modern - PEP 517)<a class="zola-anchor" href="#build-modern-pep-517" aria-label="Anchor link for: build-modern-pep-517">🔗</a></h3>
+<p>Standard recommended tool for building Python packages.</p>
+<p><strong>Installation:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span></span></code></pre>
+<p><strong>Usage:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Build wheel + sdist</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Wheel only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-wheel</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Source distribution only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-sdist</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Specify output directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-outdir</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/</span></span></code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Follows PEP 517/518 standard</li>
+<li>Build isolation in a virtual environment</li>
+<li>Compatible with all build systems (setuptools, flit, poetry, etc.)</li>
+<li>No pollution of current environment</li>
+</ul>
+<h3 id="setuptools-legacy-but-still-used"><code>setuptools</code> (Legacy but still used)<a class="zola-anchor" href="#setuptools-legacy-but-still-used" aria-label="Anchor link for: setuptools-legacy-but-still-used">🔗</a></h3>
+<p>Traditional build system for Python.</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Installation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> setuptools</span><span style="color: light-dark(#032F62, #9ECBFF);"> wheel</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#032F62, #9ECBFF);"> setup.py</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#032F62, #9ECBFF);"> setup.py</span><span style="color: light-dark(#032F62, #9ECBFF);"> sdist</span><span style="color: light-dark(#032F62, #9ECBFF);"> bdist_wheel</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Development (editable install)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span></span></code></pre><h2 id="configuration-files">Configuration Files<a class="zola-anchor" href="#configuration-files" aria-label="Anchor link for: configuration-files">🔗</a></h2>
+<h3 id="pyproject-toml-modern-pep-518"><code>pyproject.toml</code> (Modern - PEP 518)<a class="zola-anchor" href="#pyproject-toml-modern-pep-518" aria-label="Anchor link for: pyproject-toml-modern-pep-518">🔗</a></h3>
+<p>Standard configuration file for modern Python projects.</p>
+<p><strong>Minimal structure:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools&gt;=45</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">wheel</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools.build_meta</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">project</span><span>]</span></span>
+<span class="giallo-l"><span>name</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-package</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>version</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>description</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Package description</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>readme</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">README.md</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>requires-python</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&gt;=3.8</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>license</span><span> =</span><span> {</span><span>text</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">MIT</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span></span>
+<span class="giallo-l"><span>authors</span><span> =</span><span> [</span></span>
+<span class="giallo-l"><span>    {</span><span>name</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Your Name</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span> email</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">email@example.com</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span></span>
+<span class="giallo-l"><span>]</span></span>
+<span class="giallo-l"><span>dependencies</span><span> =</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">requests&gt;=2.28.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">numpy&gt;=1.20.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">project</span><span>.</span><span style="color: light-dark(#6F42C1, #B392F0);">optional-dependencies</span><span>]</span></span>
+<span class="giallo-l"><span>dev</span><span> =</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">pytest&gt;=7.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">    &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">black&gt;=22.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">project</span><span>.</span><span style="color: light-dark(#6F42C1, #B392F0);">scripts</span><span>]</span></span>
+<span class="giallo-l"><span>my-cli</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my_package.cli:main</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">tool</span><span>.</span><span style="color: light-dark(#6F42C1, #B392F0);">setuptools</span><span>.</span><span style="color: light-dark(#6F42C1, #B392F0);">packages</span><span>.</span><span style="color: light-dark(#6F42C1, #B392F0);">find</span><span>]</span></span>
+<span class="giallo-l"><span>where</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">src</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span></code></pre>
+<p><strong>With different backends:</strong></p>
+<h4 id="setuptools">setuptools<a class="zola-anchor" href="#setuptools" aria-label="Anchor link for: setuptools">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools&gt;=61.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">wheel</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools.build_meta</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h4 id="flit">flit<a class="zola-anchor" href="#flit" aria-label="Anchor link for: flit">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">flit_core&gt;=3.2</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">flit_core.buildapi</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h4 id="poetry">poetry<a class="zola-anchor" href="#poetry" aria-label="Anchor link for: poetry">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">poetry-core&gt;=1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">poetry.core.masonry.api</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h4 id="hatchling">hatchling<a class="zola-anchor" href="#hatchling" aria-label="Anchor link for: hatchling">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">hatchling</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">hatchling.build</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h3 id="setup-py-legacy"><code>setup.py</code> (Legacy)<a class="zola-anchor" href="#setup-py-legacy" aria-label="Anchor link for: setup-py-legacy">🔗</a></h3>
+<p>Python script for package configuration. Still supported but <code>pyproject.toml</code> is preferred.</p>
+<p><strong>Minimal example:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">from</span><span> setuptools</span><span style="color: light-dark(#D73A49, #F97583);"> import</span><span> setup</span><span>,</span><span> find_packages</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>setup</span><span>(</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    name</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-package</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    version</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    description</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Package description</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    author</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Your Name</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    author_email</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">email@example.com</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    packages</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>find_packages</span><span>(</span><span style="color: light-dark(#E36209, #FFAB70);">where</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">src</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>)</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    package_dir</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>{</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>:</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">src</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>}</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    python_requires</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&gt;=3.8</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    install_requires</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>[</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">requests&gt;=2.28.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">numpy&gt;=1.20.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>    ]</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    extras_require</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">dev</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">pytest&gt;=7.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">black&gt;=22.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>        ]</span><span>,</span></span>
+<span class="giallo-l"><span>    }</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    entry_points</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">console_scripts</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>:</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">            &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-cli=my_package.cli:main</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>        ]</span><span>,</span></span>
+<span class="giallo-l"><span>    }</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    classifiers</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>[</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Development Status :: 4 - Beta</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Intended Audience :: Developers</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">License :: OSI Approved :: MIT License</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Programming Language :: Python :: 3.8</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Programming Language :: Python :: 3.9</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Programming Language :: Python :: 3.10</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>    ]</span><span>,</span></span>
+<span class="giallo-l"><span>)</span></span></code></pre>
+<p><strong>With C extensions:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">from</span><span> setuptools</span><span style="color: light-dark(#D73A49, #F97583);"> import</span><span> setup</span><span>,</span><span> Extension</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>ext_modules</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span></span>
+<span class="giallo-l"><span>    Extension</span><span>(</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my_package.fast_module</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">        sources</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>[</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">src/my_package/fast_module.c</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">        include_dirs</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>[</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">src/my_package/include</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span><span>,</span></span>
+<span class="giallo-l"><span>    )</span></span>
+<span class="giallo-l"><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>setup</span><span>(</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    name</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-package</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    version</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    ext_modules</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>ext_modules</span><span>,</span></span>
+<span class="giallo-l"><span>)</span></span></code></pre><h3 id="setup-cfg-intermediate"><code>setup.cfg</code> (Intermediate)<a class="zola-anchor" href="#setup-cfg-intermediate" aria-label="Anchor link for: setup-cfg-intermediate">🔗</a></h3>
+<p>Declarative alternative to <code>setup.py</code>, often used with a minimal <code>setup.py</code>.</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="ini"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">metadata</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">name</span><span> =</span><span> my-package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">version</span><span> =</span><span> 1.0.0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">description</span><span> =</span><span> Package description</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">author</span><span> =</span><span> Your Name</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">author_email</span><span> =</span><span> email@example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">license</span><span> =</span><span> MIT</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">classifiers</span><span> =</span></span>
+<span class="giallo-l"><span>    Programming Language :: Python :: 3.8</span></span>
+<span class="giallo-l"><span>    Programming Language :: Python :: 3.9</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">options</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">packages</span><span> =</span><span> find:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">package_dir</span><span> =</span></span>
+<span class="giallo-l"><span>    = src</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">python_requires</span><span> =</span><span> &gt;=3.8</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">install_requires</span><span> =</span></span>
+<span class="giallo-l"><span>    requests&gt;=2.28.0</span></span>
+<span class="giallo-l"><span>    numpy&gt;=1.20.0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">options.packages.find</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">where</span><span> =</span><span> src</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">options.extras_require</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">dev</span><span> =</span></span>
+<span class="giallo-l"><span>    pytest&gt;=7.0.0</span></span>
+<span class="giallo-l"><span>    black&gt;=22.0.0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">[</span><span style="color: light-dark(#6F42C1, #B392F0);">options.entry_points</span><span style="color: light-dark(#6F42C1, #B392F0);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">console_scripts</span><span> =</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">    my-cli</span><span> =</span><span> my_package.cli:main</span></span></code></pre><h2 id="pex-python-executable">PEX - Python EXecutable<a class="zola-anchor" href="#pex-python-executable" aria-label="Anchor link for: pex-python-executable">🔗</a></h2>
+<p>Tool for creating self-contained Python executable files.</p>
+<p><strong>Installation:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> pex</span></span></code></pre>
+<p><strong>Create a PEX:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Simple PEX with dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> requests</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> PEX with an entry point</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> requests</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_script.py</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> PEX with module and entry point</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_package</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_package.cli:main</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-cli.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> PEX with source files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">D</span><span style="color: light-dark(#032F62, #9ECBFF);"> src/</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_package.main</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> PEX with requirements.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Specify Python version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-python=python3.9</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Multi-platform PEX</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-platform</span><span style="color: light-dark(#032F62, #9ECBFF);"> linux-x86_64</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-platform</span><span style="color: light-dark(#032F62, #9ECBFF);"> macosx-x86_64</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span></code></pre>
+<p><strong>Use a PEX:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Execute directly</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">./my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With Python</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Pass arguments</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">./my-app.pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> arg1</span><span style="color: light-dark(#032F62, #9ECBFF);"> arg2</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-option=value</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Inspect contents</span></span>
+<span class="giallo-l"><span>PEX_TOOLS</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span style="color: light-dark(#032F62, #9ECBFF);">1</span><span style="color: light-dark(#6F42C1, #B392F0);"> ./my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Extract contents</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">unzip</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> extracted/</span></span></code></pre>
+<p><strong>Advanced options:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With custom shebang</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-python-shebang=</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">/usr/bin/env python3.9</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Compile to bytecode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-compile</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Disable cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-disable-cache</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Include resources</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-resources-directory</span><span style="color: light-dark(#032F62, #9ECBFF);"> resources/</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">r</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-app.pex</span></span></code></pre>
+<p><strong>PEX Advantages:</strong></p>
+<ul>
+<li>✅ Single executable file</li>
+<li>✅ Isolated and reproducible environment</li>
+<li>✅ No installation needed</li>
+<li>✅ Multi-platform</li>
+<li>✅ Dependency caching</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>❌ Larger file size</li>
+<li>❌ Slightly longer startup time</li>
+<li>❌ Complexity with some native dependencies</li>
+</ul>
+<h2 id="recommended-project-structure">Recommended Project Structure<a class="zola-anchor" href="#recommended-project-structure" aria-label="Anchor link for: recommended-project-structure">🔗</a></h2>
+<h3 id="modern-layout-src-layout">Modern layout (src-layout)<a class="zola-anchor" href="#modern-layout-src-layout" aria-label="Anchor link for: modern-layout-src-layout">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>my-project/</span></span>
+<span class="giallo-l"><span>├── src/</span></span>
+<span class="giallo-l"><span>│   └── my_package/</span></span>
+<span class="giallo-l"><span>│       ├── __init__.py</span></span>
+<span class="giallo-l"><span>│       ├── module1.py</span></span>
+<span class="giallo-l"><span>│       ├── module2.py</span></span>
+<span class="giallo-l"><span>│       └── cli.py</span></span>
+<span class="giallo-l"><span>├── tests/</span></span>
+<span class="giallo-l"><span>│   ├── __init__.py</span></span>
+<span class="giallo-l"><span>│   ├── test_module1.py</span></span>
+<span class="giallo-l"><span>│   └── test_module2.py</span></span>
+<span class="giallo-l"><span>├── docs/</span></span>
+<span class="giallo-l"><span>├── pyproject.toml</span></span>
+<span class="giallo-l"><span>├── README.md</span></span>
+<span class="giallo-l"><span>├── LICENSE</span></span>
+<span class="giallo-l"><span>└── .gitignore</span></span></code></pre>
+<p><strong>Src-layout advantages:</strong></p>
+<ul>
+<li>Avoids accidental imports from source directory</li>
+<li>Forces package installation for tests</li>
+<li>Better source/build separation</li>
+</ul>
+<h3 id="traditional-layout">Traditional layout<a class="zola-anchor" href="#traditional-layout" aria-label="Anchor link for: traditional-layout">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>my-project/</span></span>
+<span class="giallo-l"><span>├── my_package/</span></span>
+<span class="giallo-l"><span>│   ├── __init__.py</span></span>
+<span class="giallo-l"><span>│   ├── module1.py</span></span>
+<span class="giallo-l"><span>│   └── module2.py</span></span>
+<span class="giallo-l"><span>├── tests/</span></span>
+<span class="giallo-l"><span>├── setup.py</span></span>
+<span class="giallo-l"><span>├── pyproject.toml</span></span>
+<span class="giallo-l"><span>└── README.md</span></span></code></pre><h2 id="build-workflows">Build Workflows<a class="zola-anchor" href="#build-workflows" aria-label="Anchor link for: build-workflows">🔗</a></h2>
+<h3 id="local-development">Local development<a class="zola-anchor" href="#local-development" aria-label="Anchor link for: local-development">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Editable install (recommended for development)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With development dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">.[dev]</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> With pyproject.toml only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">.[dev,test]</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h3 id="build-for-distribution">Build for distribution<a class="zola-anchor" href="#build-for-distribution" aria-label="Anchor link for: build-for-distribution">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1. Clean previous builds</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">rm</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">rf</span><span style="color: light-dark(#032F62, #9ECBFF);"> build/</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/</span><span style="color: light-dark(#005CC5, #79B8FF);"> *</span><span style="color: light-dark(#032F62, #9ECBFF);">.egg-info</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 2. Build the package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 3. Check the package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> twine</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">twine</span><span style="color: light-dark(#032F62, #9ECBFF);"> check</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 4. Upload to PyPI</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">twine</span><span style="color: light-dark(#032F62, #9ECBFF);"> upload</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 4bis. Test on TestPyPI first</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">twine</span><span style="color: light-dark(#032F62, #9ECBFF);"> upload</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-repository</span><span style="color: light-dark(#032F62, #9ECBFF);"> testpypi</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/</span><span style="color: light-dark(#005CC5, #79B8FF);">*</span></span></code></pre><h3 id="build-with-pex-for-deployment">Build with PEX for deployment<a class="zola-anchor" href="#build-with-pex-for-deployment" aria-label="Anchor link for: build-with-pex-for-deployment">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 1. Build the wheel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-wheel</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> 2. Create PEX from wheel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/my_package-1.0.0-py3-none-any.whl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_package.cli:main</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-cli.pex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Or directly from installable package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_package.cli:main</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-cli.pex</span></span></code></pre><h2 id="useful-commands">Useful Commands<a class="zola-anchor" href="#useful-commands" aria-label="Anchor link for: useful-commands">🔗</a></h2>
+<h3 id="package-inspection">Package inspection<a class="zola-anchor" href="#package-inspection" aria-label="Anchor link for: package-inspection">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> List files in a wheel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">unzip</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#032F62, #9ECBFF);"> package.whl</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Extract a wheel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">unzip</span><span style="color: light-dark(#032F62, #9ECBFF);"> package.whl</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">d</span><span style="color: light-dark(#032F62, #9ECBFF);"> extracted/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View metadata</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#032F62, #9ECBFF);"> package-name</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> View dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">f</span><span style="color: light-dark(#032F62, #9ECBFF);"> package-name</span></span></code></pre><h3 id="dependency-management">Dependency management<a class="zola-anchor" href="#dependency-management" aria-label="Anchor link for: dependency-management">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Generate requirements.txt from environment</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> freeze</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Generate only direct dependencies (with pip-tools)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> pip-tools</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip-compile</span><span style="color: light-dark(#032F62, #9ECBFF);"> pyproject.toml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip-compile</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.in</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Update dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip-compile</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-upgrade</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Sync environment</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip-sync</span><span style="color: light-dark(#032F62, #9ECBFF);"> requirements.txt</span></span></code></pre><h3 id="tests-before-publication">Tests before publication<a class="zola-anchor" href="#tests-before-publication" aria-label="Anchor link for: tests-before-publication">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Install from local wheel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/package-1.0.0-py3-none-any.whl</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Install from TestPyPI</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-index-url</span><span style="color: light-dark(#032F62, #9ECBFF);"> https://test.pypi.org/simple/</span><span style="color: light-dark(#032F62, #9ECBFF);"> package-name</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Verify imports</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">import my_package; print(my_package.__version__)</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h2 id="approach-comparison">Approach Comparison<a class="zola-anchor" href="#approach-comparison" aria-label="Anchor link for: approach-comparison">🔗</a></h2>
+<table><thead><tr><th>Aspect</th><th>setup.py</th><th>pyproject.toml</th><th>PEX</th></tr></thead><tbody>
+<tr><td><strong>Standard</strong></td><td>Legacy</td><td>Modern (PEP 518)</td><td>Executable</td></tr>
+<tr><td><strong>Format</strong></td><td>Python</td><td>TOML</td><td>Binary ZIP</td></tr>
+<tr><td><strong>Flexibility</strong></td><td>+++++</td><td>+++</td><td>++</td></tr>
+<tr><td><strong>Simplicity</strong></td><td>++</td><td>++++</td><td>++++</td></tr>
+<tr><td><strong>Distribution</strong></td><td>PyPI</td><td>PyPI</td><td>Single file</td></tr>
+<tr><td><strong>Isolation</strong></td><td>No</td><td>No</td><td>Yes</td></tr>
+<tr><td><strong>Size</strong></td><td>Small</td><td>Small</td><td>Large</td></tr>
+</tbody></table>
+<h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="white-check-mark-recommendations">✅ Recommendations<a class="zola-anchor" href="#white-check-mark-recommendations" aria-label="Anchor link for: white-check-mark-recommendations">🔗</a></h3>
+<ol>
+<li><strong>Use <code>pyproject.toml</code></strong> as main configuration (PEP 518)</li>
+<li><strong>Use <code>python -m build</code></strong> to build packages</li>
+<li><strong>Adopt src-layout</strong> for new projects</li>
+<li><strong>Semantic versioning</strong> (SemVer: MAJOR.MINOR.PATCH)</li>
+<li><strong>Include README.md</strong> and LICENSE</li>
+<li><strong>Test package</strong> before publication (TestPyPI)</li>
+<li><strong>Use PEX</strong> for deployable CLI applications</li>
+<li><strong>Pin versions</strong> in requirements.txt, not in pyproject.toml</li>
+</ol>
+<h3 id="x-avoid">❌ Avoid<a class="zola-anchor" href="#x-avoid" aria-label="Anchor link for: x-avoid">🔗</a></h3>
+<ol>
+<li>❌ Mixing setup.py and pyproject.toml without reason</li>
+<li>❌ Using <code>python setup.py install</code> (deprecated)</li>
+<li>❌ Forgetting <code>__init__.py</code> in packages</li>
+<li>❌ Including secrets in package</li>
+<li>❌ Unpinned versions in production</li>
+</ol>
+<h2 id="complete-examples">Complete Examples<a class="zola-anchor" href="#complete-examples" aria-label="Anchor link for: complete-examples">🔗</a></h2>
+<h3 id="simple-cli-application">Simple CLI application<a class="zola-anchor" href="#simple-cli-application" aria-label="Anchor link for: simple-cli-application">🔗</a></h3>
+<p><strong>pyproject.toml:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools&gt;=61.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools.build_meta</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">project</span><span>]</span></span>
+<span class="giallo-l"><span>name</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-cli</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>version</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>dependencies</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">click&gt;=8.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">requests&gt;=2.28</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">project</span><span>.</span><span style="color: light-dark(#6F42C1, #B392F0);">scripts</span><span>]</span></span>
+<span class="giallo-l"><span>my-cli</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my_cli.main:cli</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre>
+<p><strong>Build and distribution:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Development</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">my-cli</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-help</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Production - Wheel</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pip</span><span style="color: light-dark(#032F62, #9ECBFF);"> install</span><span style="color: light-dark(#032F62, #9ECBFF);"> dist/my_cli-1.0.0-py3-none-any.whl</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Production - PEX</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pex</span><span style="color: light-dark(#032F62, #9ECBFF);"> .</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">c</span><span style="color: light-dark(#032F62, #9ECBFF);"> my_cli.main:cli</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">o</span><span style="color: light-dark(#032F62, #9ECBFF);"> my-cli.pex</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">./my-cli.pex</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">-help</span></span></code></pre><h3 id="library-with-c-extensions">Library with C extensions<a class="zola-anchor" href="#library-with-c-extensions" aria-label="Anchor link for: library-with-c-extensions">🔗</a></h3>
+<p><strong>pyproject.toml:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="toml"><span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">build-system</span><span>]</span></span>
+<span class="giallo-l"><span>requires</span><span> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools&gt;=61.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">wheel</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Cython&gt;=0.29</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>build-backend</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">setuptools.build_meta</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>[</span><span style="color: light-dark(#6F42C1, #B392F0);">project</span><span>]</span></span>
+<span class="giallo-l"><span>name</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-lib</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>version</span><span> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">2.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre>
+<p><strong>setup.py (required for C extensions):</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">from</span><span> setuptools</span><span style="color: light-dark(#D73A49, #F97583);"> import</span><span> setup</span><span>,</span><span> Extension</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D73A49, #F97583);">from</span><span> Cython</span><span>.</span><span>Build</span><span style="color: light-dark(#D73A49, #F97583);"> import</span><span> cythonize</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>extensions</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span></span>
+<span class="giallo-l"><span>    Extension</span><span>(</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">        &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my_lib.fast</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span>        [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">src/my_lib/fast.pyx</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span><span>,</span></span>
+<span class="giallo-l"><span>    )</span></span>
+<span class="giallo-l"><span>]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>setup</span><span>(</span></span>
+<span class="giallo-l"><span style="color: light-dark(#E36209, #FFAB70);">    ext_modules</span><span style="color: light-dark(#D73A49, #F97583);">=</span><span>cythonize</span><span>(</span><span>extensions</span><span>)</span><span>,</span></span>
+<span class="giallo-l"><span>)</span></span></code></pre>
+<p><strong>Build:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">python</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">m</span><span style="color: light-dark(#032F62, #9ECBFF);"> build</span></span></code></pre><h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://peps.python.org/pep-0517/">PEP 517 - Build Backend</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://peps.python.org/pep-0518/">PEP 518 - pyproject.toml</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://peps.python.org/pep-0621/">PEP 621 - Project Metadata</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://packaging.python.org/">Python Packaging Guide</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://pex.readthedocs.io/">PEX Documentation</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://setuptools.pypa.io/">setuptools Documentation</a></li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/fastapi/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">FastAPI</span>
+        </a>
+      
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#distribution-formats">Distribution Formats</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#wheel-whl">Wheel (.whl)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#source-distribution-tar-gz">Source Distribution (.tar.gz)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#build-tools">Build Tools</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#build-modern-pep-517">build (Modern - PEP 517)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#setuptools-legacy-but-still-used">setuptools (Legacy but still used)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#configuration-files">Configuration Files</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#pyproject-toml-modern-pep-518">pyproject.toml (Modern - PEP 518)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#setup-py-legacy">setup.py (Legacy)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#setup-cfg-intermediate">setup.cfg (Intermediate)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#pex-python-executable">PEX - Python EXecutable</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#recommended-project-structure">Recommended Project Structure</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#modern-layout-src-layout">Modern layout (src-layout)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#traditional-layout">Traditional layout</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#build-workflows">Build Workflows</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#local-development">Local development</a></li>
+                  
+                    <li class="toc__subitem"><a href="#build-for-distribution">Build for distribution</a></li>
+                  
+                    <li class="toc__subitem"><a href="#build-with-pex-for-deployment">Build with PEX for deployment</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#useful-commands">Useful Commands</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#package-inspection">Package inspection</a></li>
+                  
+                    <li class="toc__subitem"><a href="#dependency-management">Dependency management</a></li>
+                  
+                    <li class="toc__subitem"><a href="#tests-before-publication">Tests before publication</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#approach-comparison">Approach Comparison</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#white-check-mark-recommendations">✅ Recommendations</a></li>
+                  
+                    <li class="toc__subitem"><a href="#x-avoid">❌ Avoid</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#complete-examples">Complete Examples</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#simple-cli-application">Simple CLI application</a></li>
+                  
+                    <li class="toc__subitem"><a href="#library-with-c-extensions">Library with C extensions</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

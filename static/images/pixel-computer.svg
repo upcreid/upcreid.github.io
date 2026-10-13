@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Style pixelisé -->
+  <defs>
+    <style>
+      .pixel { shape-rendering: crispEdges; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="#1e1e2e"/>
+
+  <!-- Monitor Screen -->
+  <rect class="pixel" x="80" y="40" width="240" height="140" fill="#2d2d44"/>
+  <rect class="pixel" x="85" y="45" width="230" height="130" fill="#0f0f1a"/>
+
+  <!-- Screen content - terminal style -->
+  <rect class="pixel" x="90" y="50" width="4" height="8" fill="#00ff00"/>
+  <rect class="pixel" x="96" y="50" width="4" height="8" fill="#00ff00"/>
+  <rect class="pixel" x="102" y="50" width="4" height="8" fill="#00ff00"/>
+
+  <rect class="pixel" x="90" y="62" width="180" height="4" fill="#00ff00" opacity="0.7"/>
+  <rect class="pixel" x="90" y="70" width="160" height="4" fill="#00ff00" opacity="0.7"/>
+  <rect class="pixel" x="90" y="78" width="200" height="4" fill="#00ff00" opacity="0.7"/>
+  <rect class="pixel" x="90" y="86" width="140" height="4" fill="#00ff00" opacity="0.7"/>
+
+  <rect class="pixel" x="90" y="98" width="120" height="4" fill="#00ffff" opacity="0.8"/>
+  <rect class="pixel" x="90" y="106" width="180" height="4" fill="#00ffff" opacity="0.8"/>
+
+  <rect class="pixel" x="90" y="118" width="8" height="8" fill="#00ff00"/>
+  <rect class="pixel" x="100" y="118" width="8" height="8" fill="#00ff00" opacity="0.5"/>
+
+  <!-- Monitor stand -->
+  <rect class="pixel" x="180" y="180" width="40" height="20" fill="#2d2d44"/>
+  <rect class="pixel" x="160" y="200" width="80" height="8" fill="#2d2d44"/>
+
+  <!-- Keyboard base -->
+  <rect class="pixel" x="60" y="220" width="280" height="60" fill="#1a1a2e"/>
+  <rect class="pixel" x="65" y="225" width="270" height="50" fill="#2d2d44"/>
+
+  <!-- Keyboard keys - row 1 -->
+  <rect class="pixel" x="75" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="90" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="105" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="120" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="135" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="150" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="165" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="180" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="195" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="210" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="225" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="240" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="255" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="270" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="285" y="230" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="300" y="230" width="25" height="8" fill="#3d3d54"/>
+
+  <!-- Keyboard keys - row 2 -->
+  <rect class="pixel" x="75" y="242" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="94" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="109" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="124" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="139" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="154" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="169" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="184" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="199" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="214" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="229" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="244" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="259" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="274" y="242" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="289" y="242" width="36" height="8" fill="#3d3d54"/>
+
+  <!-- Keyboard keys - row 3 -->
+  <rect class="pixel" x="75" y="254" width="20" height="8" fill="#4d4d64"/>
+  <rect class="pixel" x="98" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="113" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="128" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="143" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="158" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="173" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="188" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="203" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="218" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="233" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="248" y="254" width="12" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="263" y="254" width="62" height="8" fill="#4d4d64"/>
+
+  <!-- Keyboard keys - row 4 (space bar row) -->
+  <rect class="pixel" x="75" y="266" width="24" height="8" fill="#4d4d64"/>
+  <rect class="pixel" x="102" y="266" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="121" y="266" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="140" y="266" width="80" height="8" fill="#5d5d74"/>
+  <rect class="pixel" x="223" y="266" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="242" y="266" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="261" y="266" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="280" y="266" width="16" height="8" fill="#3d3d54"/>
+  <rect class="pixel" x="299" y="266" width="26" height="8" fill="#4d4d64"/>
+
+  <!-- Desk surface -->
+  <rect class="pixel" x="0" y="280" width="400" height="20" fill="#16161e"/>
+
+  <!-- Pixel sparkles/accents -->
+  <rect class="pixel" x="20" y="60" width="4" height="4" fill="#00ffff" opacity="0.6"/>
+  <rect class="pixel" x="30" y="80" width="4" height="4" fill="#00ffff" opacity="0.4"/>
+  <rect class="pixel" x="360" y="70" width="4" height="4" fill="#00ff00" opacity="0.5"/>
+  <rect class="pixel" x="370" y="90" width="4" height="4" fill="#00ff00" opacity="0.7"/>
+  <rect class="pixel" x="25" y="200" width="4" height="4" fill="#ff00ff" opacity="0.5"/>
+  <rect class="pixel" x="375" y="195" width="4" height="4" fill="#ff00ff" opacity="0.6"/>
+</svg>

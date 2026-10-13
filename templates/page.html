@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{{ page.description | default(value=config.description) }}">
+{% endblock %}
+
+{% block layout_class %}{% set nav_parent = page.ancestors | last | default(value="") %}{% if nav_parent != "" %}{% set_global nav_section = get_section(path=nav_parent) %}{% if nav_section.extra.sidebar %} layout--with-sidebar{% endif %}{% endif %}{% if page.toc | length > 0 %} layout--with-toc{% endif %}{% endblock %}
+
+{% block sidebar %}
+  {% set parent_path = page.ancestors | last | default(value="") %}
+  {% if parent_path != "" %}
+    {% set_global parent = get_section(path=parent_path) %}
+    {% if parent.extra.sidebar %}
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">{{ parent.title }}</p>
+          <ul class="sidebar__list">
+            {% for p in parent.pages %}
+              <li>
+                <a class="sidebar__link{% if p.permalink == page.permalink %} sidebar__link--active{% endif %}"
+                   href="{{ p.permalink }}">{{ p.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </aside>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% set_global content_language = lang %}
+  {% set top_path = page.ancestors | last | default(value="") %}
+  {% if top_path != "" %}
+    {% set_global top_section = get_section(path=top_path) %}
+    {% if top_section.extra.pages_language %}
+      {% set_global content_language = top_section.extra.pages_language %}
+    {% endif %}
+  {% endif %}
+  {% for anc in page.ancestors %}
+    {% set_global anc_section = get_section(path=anc) %}
+    {% if anc_section.extra.pages_language %}
+      {% set_global content_language = anc_section.extra.pages_language %}
+    {% endif %}
+  {% endfor %}
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ get_url(path='@/_index.md') }}">{{ trans(key="nav_overview", lang=lang) }}</a>
+    {% for anc in page.ancestors %}
+      {% set_global anc_section = get_section(path=anc) %}
+      {% if anc_section.title and anc_section.components | length > 0 %}
+        <span class="breadcrumbs__sep">/</span>
+        <a href="{{ anc_section.permalink }}">{{ anc_section.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <h1>{{ page.title }}</h1>
+
+  <p class="page-meta">
+    {% if page.date %}
+      <time datetime="{{ page.date }}">{{ page.date | date(format=trans(key="date_format", lang=lang), locale=lang) }}</time>
+      <span class="card__sep">·</span>
+    {% endif %}
+    <span>{{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</span>
+    {% if page.extra.authors %}
+      <span class="card__sep">·</span>
+      <span>{{ page.extra.authors | join(sep=", ") }}</span>
+    {% endif %}
+    {% if page.updated and page.updated != page.date %}
+      <span class="card__sep">·</span>
+      <span>{{ trans(key="updated_on", lang=lang) }} {{ page.updated | date(format=trans(key="date_format", lang=lang), locale=lang) }}</span>
+    {% endif %}
+  </p>
+
+  {% if page.extra.lead %}
+    <p class="page-lead">{{ page.extra.lead }}</p>
+  {% endif %}
+
+  <div class="prose" lang="{{ content_language }}">
+    {{ page.content | safe }}
+  </div>
+
+  {% if config.extra.edit_base %}
+    <p class="page-edit">
+      <a href="{{ config.extra.edit_base }}{{ page.path }}">{{ trans(key="edit", lang=lang) }}</a>
+    </p>
+  {% endif %}
+
+  {% if page.lower or page.higher %}
+    <nav class="siblings" aria-label="Pagination">
+      {% if page.higher %}
+        <a class="siblings__link siblings__link--prev" href="{{ page.higher.permalink }}">
+          <span class="siblings__label">← {{ trans(key="prev", lang=lang) }}</span>
+          <span class="siblings__title">{{ page.higher.title }}</span>
+        </a>
+      {% endif %}
+      {% if page.lower %}
+        <a class="siblings__link siblings__link--next" href="{{ page.lower.permalink }}">
+          <span class="siblings__label">{{ trans(key="next", lang=lang) }} →</span>
+          <span class="siblings__title">{{ page.lower.title }}</span>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+
+  {% if page.ancestors | last == "blog/_index.md" %}
+    <p class="page-back"><a href="{{ get_url(path='@/blog/_index.md') }}">← {{ trans(key="back_to_blog", lang=lang) }}</a></p>
+  {% endif %}
+{% endblock %}
+
+{% block toc %}
+  {% if page.toc | length > 0 %}
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">{{ trans(key="toc", lang=lang) }}</p>
+        <ul class="toc__list">
+          {% for h in page.toc %}
+            <li class="toc__item">
+              <a href="#{{ h.id }}">{{ h.title }}</a>
+              {% if h.children %}
+                <ul class="toc__sublist">
+                  {% for c in h.children %}
+                    <li class="toc__subitem"><a href="#{{ c.id }}">{{ c.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {% if "$$" in page.content %}
+    <script>
+      window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] } };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {% endif %}
+  {% if "mermaid" in page.content %}
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: false });
+      await mermaid.run({ querySelector: ".mermaid" });
+    </script>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{ trans(key="not_found_title", lang=lang) }} · {{ config.title }}{% endblock %}
+
+{% block content %}
+  <div class="error-page">
+    <p class="error-page__code">404</p>
+    <h1>{{ trans(key="not_found_title", lang=lang) }}</h1>
+    <p>{{ trans(key="not_found_text", lang=lang) }}</p>
+    <p><a class="button" href="{{ home_url }}">{{ trans(key="back_home", lang=lang) }}</a></p>
+  </div>
+{% endblock %}

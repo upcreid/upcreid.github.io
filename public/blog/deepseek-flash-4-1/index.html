@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>DeepSeek Flash 4.1 : l&#39;open source qui met la pression sur les Américains · /void !</title>
+  
+  <meta name="description" content="Le dernier modèle de DeepSeek est ouvert, très peu cher et déjà très bon. De quoi sérieusement inquiéter les modèles américains fermés.">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/blog/deepseek-flash-4-1/">
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/blog/deepseek-flash-4-1/">
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/en/blog/deepseek-flash-4-1/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/blog/"
+             aria-current="page">Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/cheat-sheet/"
+             >Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/blog/deepseek-flash-4-1/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="https://upcreid.github.io/en/blog/deepseek-flash-4-1/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-toc">
+      
+  
+  
+    
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/blog/">Blog</a>
+      
+    
+  </nav>
+
+  <h1>DeepSeek Flash 4.1 : l&#39;open source qui met la pression sur les Américains</h1>
+
+  <p class="page-meta">
+    
+      <time datetime="2026-10-13T09:00:00+02:00">13 octobre 2026</time>
+      <span class="card__sep">·</span>
+    
+    <span>3 min de lecture</span>
+    
+      <span class="card__sep">·</span>
+      <span>UpCreid</span>
+    
+    
+  </p>
+
+  
+    <p class="page-lead">Un modèle ouvert, une facture minuscule, et des résultats qui tiennent la route. Voilà pourquoi Flash 4.1 dérange autant côté américain.</p>
+  
+
+  <div class="prose" lang="fr">
+    <p>Je vais être direct : le dernier modèle de DeepSeek, Flash 4.1, me laisse un peu sur le cul.</p>
+<p>On est habitués à voir DeepSeek sortir des modèles solides à des prix ridicules. Mais là, ils ont remis une couche, et pas des moindres.</p>
+<h3 id="open-source-vraiment">Open source, vraiment<a class="zola-anchor" href="#open-source-vraiment" aria-label="Anchor link for: open-source-vraiment">🔗</a></h3>
+<p>Le premier point, c’est que Flash 4.1 est <strong>open source</strong>. Pas « open weights à moitié », pas « open mais avec une licence qui t’interdit de t’en servir pour bosser ». Non : les poids sont là, tu peux le télécharger, l’héberger toi-même, le fine-tuner, le faire tourner sur ta propre infra.</p>
+<p>C’est une différence énorme. Quand tu dépends d’une API fermée, tu dépends de quelqu’un d’autre : ses prix, ses conditions, ses coupures, ses changements de modèle à la con qui te pètent ta prod du jour au lendemain. Là, tu gardes la main.</p>
+<h3 id="et-le-prix">Et le prix…<a class="zola-anchor" href="#et-le-prix" aria-label="Anchor link for: et-le-prix">🔗</a></h3>
+<p>C’est le deuxième point, et c’est sans doute le plus gênant pour la concurrence.</p>
+<p>Flash 4.1 coûte <strong>une fraction de ce que facturent les modèles américains</strong> pour un niveau de qualité qui, franchement, n’a plus grand-chose à leur envier sur la plupart des tâches du quotidien. Générer du code, rédiger, résumer, extraire des données, tenir une conversation : pour 90 % des usages réels, la différence est devenue difficile à justifier.</p>
+<p>Quand un modèle ouvert et quasiment gratuit fait le même boulot qu’un modèle fermé facturé dix fois plus cher, à un moment il faut avoir une vraie raison de payer. « C’est un modèle US » n’en est plus une.</p>
+<h3 id="une-vraie-concurrence-pour-les-modeles-americains">Une vraie concurrence pour les modèles américains<a class="zola-anchor" href="#une-vraie-concurrence-pour-les-modeles-americains" aria-label="Anchor link for: une-vraie-concurrence-pour-les-modeles-americains">🔗</a></h3>
+<p>C’est là que ça devient intéressant. Les gros acteurs américains (OpenAI, Anthropic, Google) ont construit leur business sur deux piliers : la performance, et le fait d’être les seuls à pouvoir la fournir.</p>
+<p>Le premier pilier tient encore, mais de moins en moins. Le second, lui, est en train de tomber.</p>
+<p>Parce que la stratégie de DeepSeek est redoutable : ils publient ouvertement, ils cassent les prix, et ils obligent tout le monde à revoir sa copie. Les autres labos doivent soit baisser leurs tarifs, soit justifier une valeur ajoutée qui n’existe plus pour la majorité des clients. C’est une pression énorme, et elle vient d’un acteur qui, il y a encore quelques années, n’était même pas dans la course.</p>
+<h3 id="ce-que-ca-change-pour-nous">Ce que ça change pour nous<a class="zola-anchor" href="#ce-que-ca-change-pour-nous" aria-label="Anchor link for: ce-que-ca-change-pour-nous">🔗</a></h3>
+<p>Concrètement, pour quelqu’un comme moi qui bricole des projets, qui écrit des scripts, qui se sert de l’IA pour dégrossir du boulot : ça veut dire qu’on peut arrêter de compter chaque token comme si c’était de l’or.</p>
+<p>On peut tester, se tromper, itérer, relancer des générations sans avoir mal au portefeuille. On peut aussi héberger le modèle soi-même si on a des données sensibles et qu’on ne veut pas les envoyer balader chez un fournisseur tiers. Bref, on récupère du contrôle.</p>
+<h3 id="attention-quand-meme">Attention, quand même<a class="zola-anchor" href="#attention-quand-meme" aria-label="Anchor link for: attention-quand-meme">🔗</a></h3>
+<p>Je ne vais pas non plus tomber dans le fanboyisme. Un modèle open source, ça veut dire que c’est <strong>à toi</strong> de gérer l’infra, les mises à jour, la sécurité. Ce n’est pas magique. Et sur les tâches les plus pointues, les modèles frontière américains gardent encore une longueur d’avance.</p>
+<p>Mais pour tout le reste, la question n’est plus « est-ce que l’open source est au niveau ? ». La question est devenue « pourquoi je paierais plein pot pour ça ? ».</p>
+<h3 id="en-resume">En résumé<a class="zola-anchor" href="#en-resume" aria-label="Anchor link for: en-resume">🔗</a></h3>
+<p>Flash 4.1 n’est pas juste un bon modèle. C’est un signal : la qualité se démocratise, les prix s’effondrent, et les modèles fermés américains vont devoir apprendre à vivre avec une concurrence qu’ils ne contrôlent plus.</p>
+<p>Et franchement, c’est une bonne nouvelle pour tout le monde. Sauf pour leurs marges.</p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/blog/code-monkey-to-systemic-orchestrator/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">Du « Code Monkey » à l’Orchestrateur Systémique : La mutation du métier de développeur</span>
+        </a>
+      
+      
+    </nav>
+  
+
+  
+    <p class="page-back"><a href="https://upcreid.github.io/blog/">← Retour au blog</a></p>
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#open-source-vraiment">Open source, vraiment</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#et-le-prix">Et le prix…</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#une-vraie-concurrence-pour-les-modeles-americains">Une vraie concurrence pour les modèles américains</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#ce-que-ca-change-pour-nous">Ce que ça change pour nous</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#attention-quand-meme">Attention, quand même</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#en-resume">En résumé</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

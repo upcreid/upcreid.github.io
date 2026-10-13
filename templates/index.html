@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}{{ config.title }}{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{{ config.description }}">
+{% endblock %}
+
+{% block hero %}
+<section class="hero">
+  <div class="hero__inner">
+    <h1 class="hero__title">{{ config.title }}</h1>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+  {{ section.content | safe }}
+
+  {% set blog = get_section(path="blog/_index.md", lang=lang) %}
+  {% if blog.pages | length > 0 %}
+    <h2 class="section-heading">{{ trans(key='nav_blog', lang=lang) }}</h2>
+    <div class="cards">
+      {% for post in blog.pages %}
+        {% if loop.index <= 3 %}
+          {% include "partials/card_post.html" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

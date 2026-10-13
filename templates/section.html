@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} · {{ config.title }}{% endblock %}
+
+{% block description %}
+  <meta name="description" content="{{ section.description | default(value=config.description) }}">
+{% endblock %}
+
+{% block layout_class %}{% if section.extra.sidebar %} layout--with-sidebar{% endif %}{% endblock %}
+
+{% block sidebar %}
+  {% set_global docs = section %}
+  {% if section.extra.docs_section %}
+    {% set_global docs = get_section(path=section.extra.docs_section, lang=section.extra.docs_lang) %}
+  {% endif %}
+  {% if section.extra.sidebar and docs.pages | length > 0 %}
+    <aside class="sidebar">
+      <nav class="sidebar__nav">
+        <p class="sidebar__title">{{ docs.title }}</p>
+        <ul class="sidebar__list">
+          {% for p in docs.pages %}
+            <li><a class="sidebar__link" href="{{ p.permalink }}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </aside>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <h1>{{ section.title }}</h1>
+  {{ section.content | safe }}
+
+  {% set_global docs = section %}
+  {% if section.extra.docs_section %}
+    {% set_global docs = get_section(path=section.extra.docs_section, lang=section.extra.docs_lang) %}
+  {% endif %}
+
+  {% if docs.subsections | length > 0 %}
+    <div class="cards">
+      {% for sub in docs.subsections %}
+        {% set_global item = get_section(path=sub) %}
+        {% include "partials/card_page.html" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if docs.pages | length > 0 %}
+    <div class="cards">
+      {% for p in docs.pages %}
+        {% set_global item = p %}
+        {% include "partials/card_page.html" %}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endblock %}

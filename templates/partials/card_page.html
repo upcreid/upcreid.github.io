@@ -1,0 +1,6 @@
+<a class="card card--link" href="{{ item.permalink }}">
+  <h3 class="card__title">{{ item.title }}</h3>
+  {% if item.description %}
+    <p class="card__excerpt">{{ item.description }}</p>
+  {% endif %}
+</a>

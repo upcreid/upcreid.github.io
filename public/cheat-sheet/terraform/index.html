@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Terraform · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/terraform/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/cheat-sheet/terraform/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="/en/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Accueil</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">Aide-mémoire</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Jeux</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Rechercher" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Changer de thème">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Langue" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/terraform/"
+                 hreflang="fr" aria-current="true">Français</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/en/"
+                 hreflang="en" >English</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.fr.json,/search_index.en.json"
+         data-search-empty="Aucun résultat" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Rechercher…" autocomplete="off" aria-label="Rechercher">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">Aide-mémoire</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+      
+    
+  
+  
+    
+    
+  
+    
+    
+      
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Accueil</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">Aide-mémoire</a>
+      
+    
+  </nav>
+
+  <h1>Terraform</h1>
+
+  <p class="page-meta">
+    
+    <span>3 min de lecture</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <blockquote>
+<p><strong>Filename suggestion:</strong> <code>TERRAFORM_CHEATSHEET.md</code><br />
+Quick reference for HashiCorp Terraform (HCL &amp; CLI). Covers commands, configuration patterns, state, modules, and best practices.</p>
+</blockquote>
+<hr />
+<h2 id="gear-cli-basics">⚙️ CLI Basics<a class="zola-anchor" href="#gear-cli-basics" aria-label="Anchor link for: gear-cli-basics">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> Initialize working directory (providers, backend)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> validate</span><span style="color: light-dark(#6A737D, #6A737D);">    #</span><span style="color: light-dark(#6A737D, #6A737D);"> Validate configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> fmt</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> Reformat files to canonical HCL style</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> plan</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> Show execution plan</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> apply</span><span style="color: light-dark(#6A737D, #6A737D);">       #</span><span style="color: light-dark(#6A737D, #6A737D);"> Apply changes (use -auto-approve to skip prompt)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> destroy</span><span style="color: light-dark(#6A737D, #6A737D);">     #</span><span style="color: light-dark(#6A737D, #6A737D);"> Destroy managed infrastructure</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> fmt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">recursive</span></span></code></pre>
+<p>Common flags:</p>
+<ul>
+<li><code>-var 'name=value'</code> pass variable on CLI</li>
+<li><code>-var-file="filename.tfvars"</code> pass variables file</li>
+<li><code>-target=resource</code> focus plan/apply to specific resource (use rarely)</li>
+<li><code>-out=tfplan</code> save plan to file</li>
+<li><code>-lock=false</code> disable state locking (careful)</li>
+</ul>
+<hr />
+<h2 id="file-layout-recommended">�️ File layout (recommended)<a class="zola-anchor" href="#file-layout-recommended" aria-label="Anchor link for: file-layout-recommended">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="plain"><span class="giallo-l"><span>.</span></span>
+<span class="giallo-l"><span>├── main.tf          # resources &amp; provider configuration</span></span>
+<span class="giallo-l"><span>├── variables.tf     # variable declarations</span></span>
+<span class="giallo-l"><span>├── outputs.tf       # outputs</span></span>
+<span class="giallo-l"><span>├── providers.tf     # provider blocks (optional split)</span></span>
+<span class="giallo-l"><span>├── versions.tf      # required Terraform and provider versions</span></span>
+<span class="giallo-l"><span>├── terraform.tfvars # default variable values (gitignored for secrets)</span></span>
+<span class="giallo-l"><span>└── modules/         # local modules</span></span></code></pre>
+<hr />
+<h2 id="hcl-basics">� HCL Basics<a class="zola-anchor" href="#hcl-basics" aria-label="Anchor link for: hcl-basics">🔗</a></h2>
+<h3 id="providers">Providers<a class="zola-anchor" href="#providers" aria-label="Anchor link for: providers">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span> {</span></span>
+<span class="giallo-l"><span>  required_version</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&gt;= 1.0.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  required_providers</span><span> {</span></span>
+<span class="giallo-l"><span>    aws</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> {</span></span>
+<span class="giallo-l"><span>      source</span><span style="color: light-dark(#D73A49, #F97583);">  =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">hashicorp/aws</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>      version</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">~&gt; 4.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">provider</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  region</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>region</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">resource</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_instance&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;web&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  ami</span><span style="color: light-dark(#D73A49, #F97583);">           =</span><span> var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>ami</span></span>
+<span class="giallo-l"><span>  instance_type</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">t3.micro</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>  tags</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> {</span></span>
+<span class="giallo-l"><span>    Name</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">web-</span><span style="color: light-dark(#D73A49, #F97583);">${</span><span>var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>env</span><span style="color: light-dark(#D73A49, #F97583);">}</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="data-sources">Data sources<a class="zola-anchor" href="#data-sources" aria-label="Anchor link for: data-sources">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">data</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_ami&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;ubuntu&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  most_recent</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"><span>  owners</span><span style="color: light-dark(#D73A49, #F97583);">      =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">099720109477</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span><span style="color: light-dark(#6A737D, #6A737D);"> #</span><span style="color: light-dark(#6A737D, #6A737D);"> Canonical</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  filter</span><span> {</span></span>
+<span class="giallo-l"><span>    name</span><span style="color: light-dark(#D73A49, #F97583);">   =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">name</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    values</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">ubuntu/images/*ubuntu-focal-20.04-amd64-server-*</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="variables">Variables<a class="zola-anchor" href="#variables" aria-label="Anchor link for: variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">variable</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;region&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  description</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">AWS region</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  type</span><span style="color: light-dark(#D73A49, #F97583);">        =</span><span style="color: light-dark(#D73A49, #F97583);"> string</span></span>
+<span class="giallo-l"><span>  default</span><span style="color: light-dark(#D73A49, #F97583);">     =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">eu-west-1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">variable</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;allowed_ips&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  type</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#D73A49, #F97583);"> list</span><span>(</span><span style="color: light-dark(#D73A49, #F97583);">string</span><span>)</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>Pass via <code>terraform.tfvars</code> or CLI:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span>region</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">eu-west-1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span></code></pre><h3 id="outputs">Outputs<a class="zola-anchor" href="#outputs" aria-label="Anchor link for: outputs">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">output</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;instance_ip&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  description</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">Public IP of web</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  value</span><span style="color: light-dark(#D73A49, #F97583);">       =</span><span> aws_instance</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>web</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>public_ip</span></span>
+<span class="giallo-l"><span>  sensitive</span><span style="color: light-dark(#D73A49, #F97583);">   =</span><span style="color: light-dark(#005CC5, #79B8FF);"> false</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<hr />
+<h2 id="expressions-interpolation-functions">� Expressions, Interpolation &amp; Functions<a class="zola-anchor" href="#expressions-interpolation-functions" aria-label="Anchor link for: expressions-interpolation-functions">🔗</a></h2>
+<ul>
+<li>String interpolation: <code>${var.name}</code> (HCL2 supports direct expressions: <code>var.name</code>)</li>
+<li>Conditionals: <code>count = var.create ? 1 : 0</code></li>
+<li>For expressions:<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span>tags</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> {</span><span style="color: light-dark(#D73A49, #F97583);"> for</span><span> k</span><span>,</span><span>v</span><span style="color: light-dark(#D73A49, #F97583);"> in</span><span> local</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>base_tags</span><span style="color: light-dark(#D73A49, #F97583);"> :</span><span> k</span><span style="color: light-dark(#D73A49, #F97583);"> =&gt;</span><span> v</span><span> }</span></span>
+<span class="giallo-l"><span>subnet_ids</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span><span style="color: light-dark(#D73A49, #F97583);">for</span><span> s</span><span style="color: light-dark(#D73A49, #F97583);"> in</span><span> aws_subnet</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>all</span><span style="color: light-dark(#D73A49, #F97583);"> :</span><span> s</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>id</span><span>]</span></span></code></pre></li>
+<li>Common functions: <code>lookup()</code>, <code>concat()</code>, <code>join()</code>, <code>split()</code>, <code>element()</code>, <code>length()</code>, <code>replace()</code>, <code>file()</code>, <code>filebase64()</code>, <code>terraform.workspace</code></li>
+</ul>
+<hr />
+<h2 id="count-for-each-dynamic-blocks">� Count, For_each, Dynamic Blocks<a class="zola-anchor" href="#count-for-each-dynamic-blocks" aria-label="Anchor link for: count-for-each-dynamic-blocks">🔗</a></h2>
+<h3 id="count"><code>count</code><a class="zola-anchor" href="#count" aria-label="Anchor link for: count">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">resource</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_instance&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;app&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  count</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>instance_count</span></span>
+<span class="giallo-l"><span>  ami</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>ami</span></span>
+<span class="giallo-l"><span>  instance_type</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">t3.micro</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  tags</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> {</span><span> Name</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">app-</span><span style="color: light-dark(#D73A49, #F97583);">${</span><span>count</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>index</span><span style="color: light-dark(#D73A49, #F97583);">}</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="for-each"><code>for_each</code><a class="zola-anchor" href="#for-each" aria-label="Anchor link for: for-each">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">resource</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_s3_bucket&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;b&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  for_each</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#005CC5, #79B8FF);"> toset</span><span>(</span><span>var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>bucket_names</span><span>)</span></span>
+<span class="giallo-l"><span>  bucket</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> each</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>value</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre><h3 id="dynamic-blocks">Dynamic blocks<a class="zola-anchor" href="#dynamic-blocks" aria-label="Anchor link for: dynamic-blocks">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">resource</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_security_group&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;sg&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  dynamic</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;ingress&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>    for_each</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>ingress_rules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    content</span><span> {</span></span>
+<span class="giallo-l"><span>      from_port</span><span style="color: light-dark(#D73A49, #F97583);">   =</span><span> ingress</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>value</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>from</span></span>
+<span class="giallo-l"><span>      to_port</span><span style="color: light-dark(#D73A49, #F97583);">     =</span><span> ingress</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>value</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>to</span></span>
+<span class="giallo-l"><span>      protocol</span><span style="color: light-dark(#D73A49, #F97583);">    =</span><span> ingress</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>value</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>protocol</span></span>
+<span class="giallo-l"><span>      cidr_blocks</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> ingress</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>value</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>cidr_blocks</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<hr />
+<h2 id="state-backends">� State &amp; Backends<a class="zola-anchor" href="#state-backends" aria-label="Anchor link for: state-backends">🔗</a></h2>
+<h3 id="local-state-default">Local state (default)<a class="zola-anchor" href="#local-state-default" aria-label="Anchor link for: local-state-default">🔗</a></h3>
+<p>State stored in <code>terraform.tfstate</code> (don’t commit to VCS).</p>
+<h3 id="remote-backends-recommended-for-teams">Remote backends (recommended for teams)<a class="zola-anchor" href="#remote-backends-recommended-for-teams" aria-label="Anchor link for: remote-backends-recommended-for-teams">🔗</a></h3>
+<p>Examples: S3 (AWS) with DynamoDB lock, Terraform Cloud, Azure Blob, GCS.</p>
+<p>Example S3 backend with locking:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  backend</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;s3&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>    bucket</span><span style="color: light-dark(#D73A49, #F97583);">         =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-terraform-state</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    key</span><span style="color: light-dark(#D73A49, #F97583);">            =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">prod/terraform.tfstate</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    region</span><span style="color: light-dark(#D73A49, #F97583);">         =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">eu-west-1</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    dynamodb_table</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">terraform-locks</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    encrypt</span><span style="color: light-dark(#D73A49, #F97583);">        =</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>Commands for remote state:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span><span style="color: light-dark(#6A737D, #6A737D);">            #</span><span style="color: light-dark(#6A737D, #6A737D);"> configure backend</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> state</span><span style="color: light-dark(#032F62, #9ECBFF);"> list</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> list resources in state</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> state</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#032F62, #9ECBFF);"> aws_instance.web</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> state</span><span style="color: light-dark(#032F62, #9ECBFF);"> pull</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> fetch remote state</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> state</span><span style="color: light-dark(#032F62, #9ECBFF);"> push</span><span style="color: light-dark(#6A737D, #6A737D);">      #</span><span style="color: light-dark(#6A737D, #6A737D);"> push state (use carefully)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> refresh</span><span style="color: light-dark(#6A737D, #6A737D);">         #</span><span style="color: light-dark(#6A737D, #6A737D);"> update state with real-world resources</span></span></code></pre>
+<hr />
+<h2 id="workspaces">� Workspaces<a class="zola-anchor" href="#workspaces" aria-label="Anchor link for: workspaces">🔗</a></h2>
+<ul>
+<li><code>terraform workspace list</code></li>
+<li><code>terraform workspace new dev</code></li>
+<li><code>terraform workspace select prod</code></li>
+<li><code>terraform.workspace</code> gives current workspace in expressions</li>
+</ul>
+<p>Workspaces are namespace for state — use with caution; not a substitute for separate environments when resources differ.</p>
+<hr />
+<h2 id="modules">� Modules<a class="zola-anchor" href="#modules" aria-label="Anchor link for: modules">🔗</a></h2>
+<p>Create reusable modules under <code>modules/</code> or use registry modules.</p>
+<p>Call a module:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">module</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;vpc&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  source</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">terraform-aws-modules/vpc/aws</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  version</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">&gt;= 3.0</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  name</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">my-vpc</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  cidr</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">10.0.0.0/16</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  azs</span><span style="color: light-dark(#D73A49, #F97583);">  =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">eu-west-1a</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">eu-west-1b</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>]</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>Local module:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">module</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;app&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>  source</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">./modules/app</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>  env</span><span style="color: light-dark(#D73A49, #F97583);">    =</span><span> var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>env</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<p>Best practices:</p>
+<ul>
+<li>Keep modules small and focused.</li>
+<li>Version registry modules via <code>version</code>.</li>
+<li>Use inputs/outputs; avoid hard-coded ARNs.</li>
+</ul>
+<hr />
+<h2 id="provisioners-last-resort">� Provisioners (last resort)<a class="zola-anchor" href="#provisioners-last-resort" aria-label="Anchor link for: provisioners-last-resort">🔗</a></h2>
+<p>Use <code>remote-exec</code> or <code>local-exec</code> only when necessary (immutable infra preferred).</p>
+<p>Example:</p>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">resource</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_instance&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;app&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  provisioner</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;remote-exec&quot;</span><span> {</span></span>
+<span class="giallo-l"><span>    inline</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">sudo apt update</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span>,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#032F62, #9ECBFF);">      &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">sudo apt install -y nginx</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>    ]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">    connection</span><span> {</span></span>
+<span class="giallo-l"><span>      type</span><span style="color: light-dark(#D73A49, #F97583);">        =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">ssh</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>      user</span><span style="color: light-dark(#D73A49, #F97583);">        =</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">ubuntu</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span></span>
+<span class="giallo-l"><span>      private_key</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#005CC5, #79B8FF);"> file</span><span>(</span><span>var</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>private_key_path</span><span>)</span></span>
+<span class="giallo-l"><span>      host</span><span style="color: light-dark(#D73A49, #F97583);">        =</span><span> self</span><span style="color: light-dark(#D73A49, #F97583);">.</span><span>public_ip</span></span>
+<span class="giallo-l"><span>    }</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<hr />
+<h2 id="importing-existing-resources">� Importing existing resources<a class="zola-anchor" href="#importing-existing-resources" aria-label="Anchor link for: importing-existing-resources">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> import</span><span style="color: light-dark(#032F62, #9ECBFF);"> aws_instance.web</span><span style="color: light-dark(#032F62, #9ECBFF);"> i-0123456789abcdef0</span></span></code></pre>
+<p>Then add the corresponding resource block to config and run <code>terraform plan</code> to align.</p>
+<hr />
+<h2 id="warning-lifecycle-meta-arguments">⚠️ Lifecycle meta-arguments<a class="zola-anchor" href="#warning-lifecycle-meta-arguments" aria-label="Anchor link for: warning-lifecycle-meta-arguments">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="hcl"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">resource</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;aws_instance&quot;</span><span style="color: light-dark(#005CC5, #79B8FF);"> &quot;db&quot;</span><span> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> ...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">  lifecycle</span><span> {</span></span>
+<span class="giallo-l"><span>    prevent_destroy</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span><span style="color: light-dark(#6A737D, #6A737D);">        #</span><span style="color: light-dark(#6A737D, #6A737D);"> protect resource from destroy</span></span>
+<span class="giallo-l"><span>    create_before_destroy</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span style="color: light-dark(#005CC5, #79B8FF);"> true</span><span style="color: light-dark(#6A737D, #6A737D);">  #</span><span style="color: light-dark(#6A737D, #6A737D);"> replace without downtime</span></span>
+<span class="giallo-l"><span>    ignore_changes</span><span style="color: light-dark(#D73A49, #F97583);"> =</span><span> [</span><span style="color: light-dark(#032F62, #9ECBFF);"> &quot;</span><span style="color: light-dark(#032F62, #9ECBFF);">tags</span><span style="color: light-dark(#032F62, #9ECBFF);">&quot;</span><span> ]</span><span style="color: light-dark(#6A737D, #6A737D);">   #</span><span style="color: light-dark(#6A737D, #6A737D);"> ignore specific attribute changes</span></span>
+<span class="giallo-l"><span>  }</span></span>
+<span class="giallo-l"><span>}</span></span></code></pre>
+<hr />
+<h2 id="locks-concurrency">� Locks &amp; Concurrency<a class="zola-anchor" href="#locks-concurrency" aria-label="Anchor link for: locks-concurrency">🔗</a></h2>
+<ul>
+<li>Use backend with locking (DynamoDB for S3, Terraform Cloud, etc.).</li>
+<li><code>terraform force-unlock LOCK_ID</code> to recover from stale locks.</li>
+</ul>
+<hr />
+<h2 id="debugging-logs">� Debugging &amp; Logs<a class="zola-anchor" href="#debugging-logs" aria-label="Anchor link for: debugging-logs">🔗</a></h2>
+<ul>
+<li><code>TF_LOG=TRACE terraform apply</code> (very verbose)</li>
+<li><code>TF_LOG=DEBUG</code> or <code>INFO</code> for less noise</li>
+<li><code>TF_CLI_ARGS_plan="-out=tfplan"</code> to persist plans</li>
+</ul>
+<hr />
+<h2 id="secrets-sensitive-data">� Secrets &amp; Sensitive Data<a class="zola-anchor" href="#secrets-sensitive-data" aria-label="Anchor link for: secrets-sensitive-data">🔗</a></h2>
+<ul>
+<li>Mark outputs/variables as <code>sensitive = true</code>.</li>
+<li>Avoid storing secrets in <code>terraform.tfstate</code> (state can contain secrets).</li>
+<li>Use secret stores: AWS Secrets Manager, Vault (HashiCorp Vault provider), SSM Parameter Store.</li>
+<li>Use environment variables for provider creds (<code>AWS_PROFILE</code>, <code>GOOGLE_APPLICATION_CREDENTIALS</code>, etc.).</li>
+</ul>
+<hr />
+<h2 id="white-check-mark-best-practices">✅ Best practices<a class="zola-anchor" href="#white-check-mark-best-practices" aria-label="Anchor link for: white-check-mark-best-practices">🔗</a></h2>
+<ul>
+<li>Keep <code>terraform.tfstate</code> in secure remote backend (not in Git).</li>
+<li>Use <code>terraform fmt</code> and <code>validate</code> in CI.</li>
+<li>Pin provider versions in <code>required_providers</code>.</li>
+<li>Break infra into small modules.</li>
+<li>Prefer immutable infra patterns (replace rather than mutate).</li>
+<li>Use <code>create_before_destroy</code> for critical resources needing replacement.</li>
+<li>Review plans (<code>terraform plan</code>) before <code>apply</code> in CI/CD.</li>
+</ul>
+<hr />
+<h2 id="ci-cd-tips">� CI/CD Tips<a class="zola-anchor" href="#ci-cd-tips" aria-label="Anchor link for: ci-cd-tips">🔗</a></h2>
+<ul>
+<li>In CI, run:</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">input=false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> plan</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">input=false</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">out=tfplan</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">no-color</span><span style="color: light-dark(#032F62, #9ECBFF);"> tfplan</span><span style="color: light-dark(#D73A49, #F97583);"> &gt;</span><span style="color: light-dark(#032F62, #9ECBFF);"> tfplan.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6A737D, #6A737D);">#</span><span style="color: light-dark(#6A737D, #6A737D);"> human review or automated checks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> apply</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">input=false</span><span style="color: light-dark(#032F62, #9ECBFF);"> tfplan</span></span></code></pre>
+<ul>
+<li>Consider Terraform Cloud or Atlantis for PR-driven workflows.</li>
+</ul>
+<hr />
+<h2 id="useful-commands-summary">� Useful Commands Summary<a class="zola-anchor" href="#useful-commands-summary" aria-label="Anchor link for: useful-commands-summary">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#24292E, #E1E4E8); background-color: light-dark(#FFFFFF, #24292E);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> init</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> fmt</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">recursive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> validate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> plan</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">out=tfplan</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> apply</span><span style="color: light-dark(#032F62, #9ECBFF);"> tfplan</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> apply</span><span style="color: light-dark(#005CC5, #79B8FF);"> -</span><span style="color: light-dark(#005CC5, #79B8FF);">auto-approve</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> destroy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> import</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">type.nam</span><span>e</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">i</span><span>d</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> state</span><span style="color: light-dark(#032F62, #9ECBFF);"> list</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> state</span><span style="color: light-dark(#032F62, #9ECBFF);"> show</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">addres</span><span>s</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> workspace</span><span style="color: light-dark(#032F62, #9ECBFF);"> list</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> workspace</span><span style="color: light-dark(#032F62, #9ECBFF);"> new</span><span style="color: light-dark(#D73A49, #F97583);"> &lt;</span><span style="color: light-dark(#032F62, #9ECBFF);">nam</span><span>e</span><span style="color: light-dark(#D73A49, #F97583);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#6F42C1, #B392F0);">terraform</span><span style="color: light-dark(#032F62, #9ECBFF);"> providers</span></span></code></pre>
+<hr />
+<h2 id="further-resources">� Further resources<a class="zola-anchor" href="#further-resources" aria-label="Anchor link for: further-resources">🔗</a></h2>
+<ul>
+<li>Official docs: https://developer.hashicorp.com/terraform</li>
+<li>Terraform Registry: https://registry.terraform.io</li>
+<li>Style guides &amp; community modules on the registry</li>
+</ul>
+<hr />
+<p><em>End of Terraform cheat sheet.</em></p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/vim/">
+          <span class="siblings__label">← Précédent</span>
+          <span class="siblings__title">Vim</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/vagrant/">
+          <span class="siblings__label">Suivant →</span>
+          <span class="siblings__title">Vagrant</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">Sur cette page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#gear-cli-basics">⚙️ CLI Basics</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#file-layout-recommended">�️ File layout (recommended)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#hcl-basics">� HCL Basics</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#providers">Providers</a></li>
+                  
+                    <li class="toc__subitem"><a href="#resources">Resources</a></li>
+                  
+                    <li class="toc__subitem"><a href="#data-sources">Data sources</a></li>
+                  
+                    <li class="toc__subitem"><a href="#variables">Variables</a></li>
+                  
+                    <li class="toc__subitem"><a href="#outputs">Outputs</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#expressions-interpolation-functions">� Expressions, Interpolation &amp; Functions</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#count-for-each-dynamic-blocks">� Count, For_each, Dynamic Blocks</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#count">count</a></li>
+                  
+                    <li class="toc__subitem"><a href="#for-each">for_each</a></li>
+                  
+                    <li class="toc__subitem"><a href="#dynamic-blocks">Dynamic blocks</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#state-backends">� State &amp; Backends</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#local-state-default">Local state (default)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#remote-backends-recommended-for-teams">Remote backends (recommended for teams)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#workspaces">� Workspaces</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#modules">� Modules</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#provisioners-last-resort">� Provisioners (last resort)</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#importing-existing-resources">� Importing existing resources</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#warning-lifecycle-meta-arguments">⚠️ Lifecycle meta-arguments</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#locks-concurrency">� Locks &amp; Concurrency</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#debugging-logs">� Debugging &amp; Logs</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#secrets-sensitive-data">� Secrets &amp; Sensitive Data</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#white-check-mark-best-practices">✅ Best practices</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#ci-cd-tips">� CI/CD Tips</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#useful-commands-summary">� Useful Commands Summary</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#further-resources">� Further resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>
