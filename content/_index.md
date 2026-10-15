@@ -1,21 +1,22 @@
 +++
-title = "Accueil"
+title = "Home"
 +++
 
 <div class="hero">
   <img src="/images/pixel-computer.svg" alt="Pixel Computer" class="hero-logo">
 </div>
 
-## 🚀 À propos
+## 🚀 About
 
-Bienvenue sur ma documentation personnelle !
+Welcome to my personal documentation!
 
-J'y rassemble mes aide-mémoire techniques, mes guides de jeu et un blog sur ce que je bricole au quotidien.
+This is where I keep my technical cheat sheets, game guides, and a blog about what I tinker with.
 
 ## Sections
 
-- **[Aide-mémoire](@/cheat-sheet/_index.md)** : guides de référence rapide pour les outils et technologies que j'utilise.
-- **[Jeux](@/games/_index.md)** : guides, builds et configurations de jeux.
-- **[Blog](@/blog/_index.md)** : notes, retours d'expérience et prises de position.
+- **[CheatSheet](@/cheat-sheet/_index.md)** : quick reference guides for the tools and technologies I use.
+- **[Games](@/games/_index.md)** : game guides, builds, and configurations.
+- **[Who?](@/who/_index.md)** : my background, professional experience and technical stack.
+- **[Blog](@/blog/_index.md)** : notes, feedback, and opinions.
 
-<p class="hero-footer">Documentation mise à jour régulièrement • Généré avec Zola</p>
+<p class="hero-footer">Regularly updated documentation • Built with Zola</p>

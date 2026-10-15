@@ -1,6 +1,6 @@
 +++
-title = "Herdr : le multiplexeur de terminal pour les agents IA 🤖"
-description = "Découverte de Herdr, le multiplexeur de terminal persistant conçu pour orchestrer et suivre vos agents de code IA."
+title = "Herdr: the terminal multiplexer built for AI agents 🤖"
+description = "Discovering Herdr, the persistent terminal multiplexer built to orchestrate and track your AI coding agents."
 slug = "herdr-terminal-multiplexer"
 date = 2026-09-19T14:30:00+02:00
 updated = 2026-09-19T14:30:00+02:00
@@ -8,23 +8,23 @@ draft = false
 aliases = ["/blog/2026/09/19/herdr-terminal-multiplexer/"]
 
 [extra]
-lead = "Orchestrer plusieurs agents IA dans votre terminal n'a jamais été aussi simple."
+lead = "Orchestrating several AI agents in your terminal has never been this simple."
 authors = ["UpCreid"]
 +++
 
-Avec l'avènement des agents de code IA (Claude Code, GitHub Copilot CLI, Cursor Agent...), la façon de travailler dans le terminal évolue rapidement. Faire tourner plusieurs agents en parallèle dans un multiplexeur classique (comme `tmux` ou `zellij`) peut vite devenir complexe quand il s'agit de suivre qui fait quoi. C'est là qu'intervient **Herdr**.
+With the rise of AI coding agents (Claude Code, GitHub Copilot CLI, Cursor Agent...), the way we work in the terminal is changing fast. Running several agents in parallel inside a classic multiplexer (like `tmux` or `zellij`) quickly becomes messy when you need to track who's doing what. That's where **Herdr** comes in.
 
-## Qu'est-ce que Herdr ?
+## What is Herdr?
 
-**Herdr** est un multiplexeur de terminal persistant spécialement pensé pour l'ère des agents IA. Il s'exécute sous forme de serveur en arrière-plan et apporte une couche de gestion intelligente (*agent-aware*) au-dessus de vos PTY habituels.
+**Herdr** is a persistent terminal multiplexer built specifically for the age of AI agents. It runs as a background server and adds an *agent-aware* management layer on top of your usual PTYs.
 
-## Les possibilités offertes par Herdr
+## What Herdr lets you do
 
-- 🚦 **Suivi d'état en temps réel** : Herdr détecte automatiquement l'état de chaque agent et l'affiche clairement (*en cours*, *en attente d'input*, *bloqué*, ou *terminé*). Plus besoin de scroller sans fin pour savoir si l'agent a besoin de votre intervention !
-- 🔄 **Persistance absolue** : Vos tâches continuent de tourner même si vous fermez votre fenêtre de terminal ou déconnectez une session SSH.
-- 🔌 **API & Automatisation** : Via sa CLI et son API socket, les agents peuvent eux-mêmes interagir avec le multiplexeur (ouvrir de nouveaux onglets, lancer des sous-tâches).
-- 🖥️ **Terminal Natif** : S'intègre harmonieusement avec votre émulateur de terminal favori en utilisant des PTY standard.
+- 🚦 **Real-time status tracking**: Herdr automatically detects each agent's state and displays it clearly (*running*, *waiting for input*, *blocked*, or *done*). No more endless scrolling to figure out whether an agent needs you!
+- 🔄 **Absolute persistence**: Your tasks keep running even if you close your terminal window or disconnect an SSH session.
+- 🔌 **API & automation**: Through its CLI and socket API, agents can themselves interact with the multiplexer (open new tabs, launch sub-tasks).
+- 🖥️ **Native terminal**: It integrates seamlessly with your favorite terminal emulator using standard PTYs.
 
-## En résumé
+## In short
 
-Si vous utilisez quotidiennement des agents IA en CLI pour vos projets et souhaitez maximiser votre productivité sans perdre le fil, **Herdr** est un outil à tester d'urgence.
+If you use AI agents in the CLI every day for your projects and want to maximize your productivity without losing track, **Herdr** is a tool you should try right away.

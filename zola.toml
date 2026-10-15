@@ -1,7 +1,7 @@
 base_url = "https://upcreid.github.io"
 title = "/void !"
-description = "Documentation personnelle - Guides, aide-memoire et ressources techniques"
-default_language = "fr"
+description = "Personal documentation - Guides, cheat sheets and technical resources"
+default_language = "en"
 author = "upcreid"
 
 generate_feeds = true
@@ -49,17 +49,17 @@ repo_url = "https://github.com/upcreid/upcreid.github.io"
 logo = "logo.png"
 favicon = "logo.png"
 edit_base = ""
-search_sources = ["/search_index.fr.json", "/search_index.en.json"]
-
-[[extra.langs]]
-code = "fr"
-name = "Français"
-home = "/"
+search_sources = ["/search_index.en.json", "/search_index.fr.json"]
 
 [[extra.langs]]
 code = "en"
 name = "English"
-home = "/en/"
+home = "/"
+
+[[extra.langs]]
+code = "fr"
+name = "Français"
+home = "/fr/"
 
 [[extra.nav]]
 key = "nav_overview"
@@ -81,49 +81,18 @@ key = "nav_games"
 path = "@/games/_index.md"
 prefix = "games/"
 
+[[extra.nav]]
+key = "nav_who"
+path = "@/who/_index.md"
+prefix = "who/"
+
 [translations]
-date_format = "d MMMM y"
-nav_overview = "Accueil"
-nav_blog = "Blog"
-nav_cheatsheet = "Aide-mémoire"
-nav_games = "Jeux"
-menu = "Menu"
-search = "Rechercher"
-search_placeholder = "Rechercher…"
-search_no_results = "Aucun résultat"
-search_results = "résultat(s)"
-toc = "Sur cette page"
-edit = "Modifier cette page"
-view_source = "Voir la source"
-prev = "Précédent"
-next = "Suivant"
-back_to_blog = "Retour au blog"
-back_home = "Retour à l'accueil"
-read_more = "Lire la suite"
-reading_time = "min de lecture"
-language = "Langue"
-theme_toggle = "Changer de thème"
-published_on = "Publié le"
-updated_on = "Mis à jour le"
-not_found_title = "Page introuvable"
-not_found = "404"
-not_found_text = "La page demandée n'existe pas ou a été déplacée."
-pagination_newer = "Plus récents"
-pagination_older = "Plus anciens"
-docs_language_note = "Ces guides techniques sont rédigés en anglais."
-
-[languages.en]
-title = "/void !"
-description = "Personal documentation - Guides, cheat sheets and technical resources"
-generate_feeds = true
-build_search_index = true
-
-[languages.en.translations]
 date_format = "MMMM d, y"
 nav_overview = "Home"
 nav_blog = "Blog"
 nav_cheatsheet = "CheatSheet"
 nav_games = "Games"
+nav_who = "Who?"
 menu = "Menu"
 search = "Search"
 search_placeholder = "Search…"
@@ -148,3 +117,41 @@ not_found_text = "The requested page does not exist or has been moved."
 pagination_newer = "Newer"
 pagination_older = "Older"
 docs_language_note = "These technical guides are written in English."
+
+[languages.fr]
+title = "/void !"
+description = "Documentation personnelle - Guides, aide-memoire et ressources techniques"
+generate_feeds = true
+build_search_index = true
+
+[languages.fr.translations]
+date_format = "d MMMM y"
+nav_overview = "Accueil"
+nav_blog = "Blog"
+nav_cheatsheet = "Aide-mémoire"
+nav_games = "Jeux"
+nav_who = "Who?"
+menu = "Menu"
+search = "Rechercher"
+search_placeholder = "Rechercher…"
+search_no_results = "Aucun résultat"
+search_results = "résultat(s)"
+toc = "Sur cette page"
+edit = "Modifier cette page"
+view_source = "Voir la source"
+prev = "Précédent"
+next = "Suivant"
+back_to_blog = "Retour au blog"
+back_home = "Retour à l'accueil"
+read_more = "Lire la suite"
+reading_time = "min de lecture"
+language = "Langue"
+theme_toggle = "Changer de thème"
+published_on = "Publié le"
+updated_on = "Mis à jour le"
+not_found_title = "Page introuvable"
+not_found = "404"
+not_found_text = "La page demandée n'existe pas ou a été déplacée."
+pagination_newer = "Plus récents"
+pagination_older = "Plus anciens"
+docs_language_note = "Ces guides techniques sont rédigés en anglais."

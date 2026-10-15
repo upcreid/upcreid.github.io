@@ -1,6 +1,6 @@
 +++
-title = "DeepSeek Flash 4.1 : l'open source qui met la pression sur les Américains"
-description = "Le dernier modèle de DeepSeek est ouvert, très peu cher et déjà très bon. De quoi sérieusement inquiéter les modèles américains fermés."
+title = "DeepSeek Flash 4.1: the open source model putting pressure on the American players"
+description = "DeepSeek's latest model is open, very cheap, and already very good. Enough to seriously worry the closed American models."
 slug = "deepseek-flash-4-1"
 date = 2026-10-13T09:00:00+02:00
 updated = 2026-10-13T09:00:00+02:00
@@ -8,50 +8,50 @@ draft = false
 aliases = ["/blog/2026/10/13/deepseek-flash-4-1/"]
 
 [extra]
-lead = "Un modèle ouvert, une facture minuscule, et des résultats qui tiennent la route. Voilà pourquoi Flash 4.1 dérange autant côté américain."
+lead = "An open model, a tiny bill, and results that hold up. Here's why Flash 4.1 bothers the American side so much."
 authors = ["UpCreid"]
 +++
 
-Je vais être direct : le dernier modèle de DeepSeek, Flash 4.1, me laisse un peu sur le cul.
+Let me be blunt: DeepSeek's latest model, Flash 4.1, kind of blew my mind.
 
-On est habitués à voir DeepSeek sortir des modèles solides à des prix ridicules. Mais là, ils ont remis une couche, et pas des moindres.
+We're used to DeepSeek shipping solid models at ridiculous prices. But this time, they went one step further, and not a small one.
 
-### Open source, vraiment
+### Open source, for real
 
-Le premier point, c'est que Flash 4.1 est **open source**. Pas « open weights à moitié », pas « open mais avec une licence qui t'interdit de t'en servir pour bosser ». Non : les poids sont là, tu peux le télécharger, l'héberger toi-même, le fine-tuner, le faire tourner sur ta propre infra.
+The first thing is that Flash 4.1 is **open source**. Not "half open weights", not "open but with a license that forbids you from using it for work". No: the weights are there, you can download them, host them yourself, fine-tune them, run them on your own infra.
 
-C'est une différence énorme. Quand tu dépends d'une API fermée, tu dépends de quelqu'un d'autre : ses prix, ses conditions, ses coupures, ses changements de modèle à la con qui te pètent ta prod du jour au lendemain. Là, tu gardes la main.
+That's a huge difference. When you depend on a closed API, you depend on someone else: their prices, their terms, their outages, their dumb model changes that break your production overnight. Here, you stay in control.
 
-### Et le prix...
+### And the price...
 
-C'est le deuxième point, et c'est sans doute le plus gênant pour la concurrence.
+That's the second point, and probably the most annoying one for the competition.
 
-Flash 4.1 coûte **une fraction de ce que facturent les modèles américains** pour un niveau de qualité qui, franchement, n'a plus grand-chose à leur envier sur la plupart des tâches du quotidien. Générer du code, rédiger, résumer, extraire des données, tenir une conversation : pour 90 % des usages réels, la différence est devenue difficile à justifier.
+Flash 4.1 costs **a fraction of what the American models charge**, for a level of quality that, honestly, has little left to envy them for on most everyday tasks. Generating code, writing, summarizing, extracting data, holding a conversation: for 90% of real use cases, the difference has become hard to justify.
 
-Quand un modèle ouvert et quasiment gratuit fait le même boulot qu'un modèle fermé facturé dix fois plus cher, à un moment il faut avoir une vraie raison de payer. « C'est un modèle US » n'en est plus une.
+When an open, nearly free model does the same job as a closed model billed ten times more, at some point you need a real reason to pay. "It's a US model" is no longer one.
 
-### Une vraie concurrence pour les modèles américains
+### Real competition for the American models
 
-C'est là que ça devient intéressant. Les gros acteurs américains (OpenAI, Anthropic, Google) ont construit leur business sur deux piliers : la performance, et le fait d'être les seuls à pouvoir la fournir.
+That's where it gets interesting. The big American players (OpenAI, Anthropic, Google) built their business on two pillars: performance, and being the only ones able to deliver it.
 
-Le premier pilier tient encore, mais de moins en moins. Le second, lui, est en train de tomber.
+The first pillar still holds, but less and less. The second one is collapsing.
 
-Parce que la stratégie de DeepSeek est redoutable : ils publient ouvertement, ils cassent les prix, et ils obligent tout le monde à revoir sa copie. Les autres labos doivent soit baisser leurs tarifs, soit justifier une valeur ajoutée qui n'existe plus pour la majorité des clients. C'est une pression énorme, et elle vient d'un acteur qui, il y a encore quelques années, n'était même pas dans la course.
+Because DeepSeek's strategy is brutal: they publish openly, they slash prices, and they force everyone to go back to the drawing board. Other labs now have to either lower their rates or justify added value that no longer exists for most customers. That's enormous pressure, and it comes from a player that, only a few years ago, wasn't even in the race.
 
-### Ce que ça change pour nous
+### What it changes for us
 
-Concrètement, pour quelqu'un comme moi qui bricole des projets, qui écrit des scripts, qui se sert de l'IA pour dégrossir du boulot : ça veut dire qu'on peut arrêter de compter chaque token comme si c'était de l'or.
+Concretely, for someone like me who tinkers with projects, writes scripts, and uses AI to rough out work: it means we can stop counting every token as if it were gold.
 
-On peut tester, se tromper, itérer, relancer des générations sans avoir mal au portefeuille. On peut aussi héberger le modèle soi-même si on a des données sensibles et qu'on ne veut pas les envoyer balader chez un fournisseur tiers. Bref, on récupère du contrôle.
+We can test, make mistakes, iterate, and re-run generations without it hurting our wallet. We can also host the model ourselves if we have sensitive data and don't want to send it off to a third-party provider. In short, we get control back.
 
-### Attention, quand même
+### Fair warning, though
 
-Je ne vais pas non plus tomber dans le fanboyisme. Un modèle open source, ça veut dire que c'est **à toi** de gérer l'infra, les mises à jour, la sécurité. Ce n'est pas magique. Et sur les tâches les plus pointues, les modèles frontière américains gardent encore une longueur d'avance.
+I'm not going to fall into fanboyism either. An open source model means **you** handle the infra, the updates, the security. It's not magic. And on the most demanding tasks, the American frontier models still keep a lead.
 
-Mais pour tout le reste, la question n'est plus « est-ce que l'open source est au niveau ? ». La question est devenue « pourquoi je paierais plein pot pour ça ? ».
+But for everything else, the question is no longer "is open source good enough?". The question has become "why would I pay full price for this?".
 
-### En résumé
+### In short
 
-Flash 4.1 n'est pas juste un bon modèle. C'est un signal : la qualité se démocratise, les prix s'effondrent, et les modèles fermés américains vont devoir apprendre à vivre avec une concurrence qu'ils ne contrôlent plus.
+Flash 4.1 isn't just a good model. It's a signal: quality is becoming commoditized, prices are collapsing, and the closed American models are going to have to learn to live with competition they no longer control.
 
-Et franchement, c'est une bonne nouvelle pour tout le monde. Sauf pour leurs marges.
+And honestly, that's good news for everyone. Except for their margins.

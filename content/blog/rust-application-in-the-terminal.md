@@ -5,7 +5,7 @@ slug = "rust-application-in-the-terminal"
 date = 2021-07-08T09:19:42+01:00
 updated = 2021-07-08T09:19:42+01:00
 draft = false
-aliases = ["/blog/2021/07/08/rust-app-in-terminal-/", "/en/blog/2021/07/08/rust-app-in-terminal-/"]
+aliases = ["/blog/2021/07/08/rust-app-in-terminal-/"]
 
 [extra]
 lead = "while lost on github, i've made some discovery"

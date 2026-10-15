@@ -5,7 +5,7 @@ slug = "the-move"
 date = 2021-04-08T09:19:42+01:00
 updated = 2021-04-08T09:19:42+01:00
 draft = false
-aliases = ["/blog/2021/04/08/themove-/", "/en/blog/2021/04/08/themove-/"]
+aliases = ["/blog/2021/04/08/themove-/"]
 
 [extra]
 lead = "TheMove 🛴."

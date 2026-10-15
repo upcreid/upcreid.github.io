@@ -3,7 +3,7 @@ title = "Git two accounts alias"
 description = "Handling two Git accounts"
 slug = "git-two-accounts-alias"
 date = 2019-05-09
-aliases = ["/blog/2019/05/09/git-two-accounts-alias/", "/en/blog/2019/05/09/git-two-accounts-alias/"]
+aliases = ["/blog/2019/05/09/git-two-accounts-alias/"]
 +++
 
 Hello,

@@ -1,11 +1,8 @@
 +++
-title = "Jeux"
-description = "Guides, builds et configurations de jeux."
+title = "Games"
+description = "Game guides, builds and configurations."
 weight = 20
 sort_by = "weight"
-
-[extra]
-pages_language = "en"
 +++
 
-Guides, builds et configurations pour différents jeux.
+Guides, builds and configurations for various games.

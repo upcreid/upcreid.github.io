@@ -5,7 +5,7 @@ slug = "gitlab-and-github-push-the-same-time"
 date = 2021-04-11T09:19:42+01:00
 updated = 2022-04-11T09:19:42+01:00
 draft = false
-aliases = ["/blog/2021/04/11/-gitlab-and-github-pages-handling-the-same-code-/", "/en/blog/2021/04/11/-gitlab-and-github-pages-handling-the-same-code-/"]
+aliases = ["/blog/2021/04/11/-gitlab-and-github-pages-handling-the-same-code-/"]
 
 [extra]
 lead = "🚧 Gitlab and Github pages handling the same code 🤓"

@@ -1,6 +1,6 @@
 +++
-title = "Du « Code Monkey » à l’Orchestrateur Systémique : La mutation du métier de développeur"
-description = "Comment l'IA transforme notre quotidien : moins de frappe au kilomètre, plus d'architecture, de relecture critique et de bon sens."
+title = "From « Code Monkey » to Systemic Orchestrator: how the developer job is changing"
+description = "How AI is changing our daily work: less code by the mile, more architecture, critical review, and common sense."
 slug = "code-monkey-to-systemic-orchestrator"
 date = 2026-09-19T15:30:00+02:00
 updated = 2026-09-19T15:30:00+02:00
@@ -8,34 +8,34 @@ draft = false
 aliases = ["/blog/2026/09/19/code-monkey-to-systemic-orchestrator/"]
 
 [extra]
-lead = "Pisser de la ligne n'a plus de valeur. Savoir quoi construire, pourquoi, et vérifier que ça tourne sans exploser : voilà le vrai métier."
+lead = "Typing lines no longer has any value. Knowing what to build, why, and making sure it runs without exploding: that's the real job."
 authors = ["UpCreid"]
 +++
 
-Pendant longtemps, le quotidien d'un dev se résumait souvent à une chose : transformer une idée en lignes de code à la main, boucle par boucle, point-virgule par point-virgule.
+For a long time, a developer's daily life often came down to one thing: turning an idea into lines of code by hand, loop by loop, semicolon by semicolon.
 
-Aujourd'hui, n'importe quel LLM peut générer une fonction ou une interface en trois secondes. Taper du code au kilomètre n'a plus de valeur. Le métier n'est pas mort pour autant, mais il change radicalement de focus.
+Today, any LLM can generate a function or a UI in three seconds. Typing code by the mile no longer has any value. The job isn't dead, but its focus is shifting radically.
 
-### Moins de syntaxe, plus de discernement
+### Less syntax, more judgment
 
-Générer du code est devenu gratuit. Le maintenir et le comprendre reste coûteux. Au quotidien, notre temps ne passe plus dans la recherche de syntaxe ou le code boilerplate, mais sur trois sujets essentiels :
+Generating code has become free. Maintaining and understanding it remains costly. Day to day, our time no longer goes into hunting for syntax or boilerplate code, but into three essential topics:
 
-1. **Exprimer clairement le besoin** : Si la consigne est floue, l'IA produit une mauvaise solution en un éclair. La précision dans la modélisation et les règles métier est plus cruciale que jamais.
-2. **Relire avec un œil critique** : Le code généré a souvent l'air propre au premier abord. C'est trompeur : les cas limites, les trous de sécurité ou les aberrations logiques s'y cachent facilement. Notre rôle principal est devenu celui d'un relecteur impitoyable.
-3. **Bétonner les tests** : Pour faire confiance à du code qu'on n'a pas tapé soi-même, il faut des tests solides (unitaires, intégration, typage strict). Le harnais de test devient notre filet de sécurité.
+1. **Expressing the need clearly**: If the instruction is vague, the AI produces a bad solution in a flash. Precision in modeling and business rules matters more than ever.
+2. **Reviewing with a critical eye**: Generated code often looks clean at first glance. That's misleading: edge cases, security holes, or logical nonsense hide easily inside it. Our main role has become that of a ruthless reviewer.
+3. **Hardening the tests**: To trust code you didn't type yourself, you need solid tests (unit, integration, strict typing). The test harness becomes our safety net.
 
-### La vision d'ensemble plutôt que la brique isolée
+### The big picture rather than the isolated brick
 
-L'IA est forte pour coder une fonction précise, mais elle a une mémoire courte et ne voit pas la photo d'ensemble. Le choix de l'architecture, la découpe des modules, la gestion des coûts d'infra et la cohérence de la base de données restent des décisions purement humaines.
+AI is good at coding one specific function, but it has a short memory and doesn't see the big picture. Architecture choices, module breakdown, infra cost management, and database consistency remain purely human decisions.
 
-Si on laisse des agents empiler du code sans contrôle, on se retrouve très vite avec une base de code ingérable que personne ne maîtrise : de la dette technique en pilote automatique.
+If you let agents stack code without any control, you quickly end up with an unmanageable codebase that nobody masters: tech debt on autopilot.
 
-### Et pour les débutants ?
+### What about beginners?
 
-C'est sans doute le vrai point de friction. On devenait senior en cassant des choses et en passant des nuits à chercher un bug dans son propre code.
+That's probably the real pain point. You used to become senior by breaking things and spending nights hunting for a bug in your own code.
 
-Pour un junior aujourd'hui, le piège est d'utiliser l'IA comme une béquille sans jamais comprendre ce qui tourne sous le capot. La clé de l'apprentissage se déplace : il s'agit moins d'écrire depuis une page blanche que d'apprendre à lire, débugger et challenger ce qui est généré.
+For a junior today, the trap is using AI as a crutch without ever understanding what runs under the hood. The key to learning is shifting: it's less about writing from a blank page than about learning to read, debug, and challenge what gets generated.
 
-### En résumé
+### In short
 
-Le métier ne disparaît pas, il se débarrasse de sa partie la plus mécanique. Moins de temps perdu sur la tuyauterie de base, plus d'énergie investie dans la conception, la robustesse et la valeur pour l'utilisateur.
+The job doesn't disappear, it sheds its most mechanical part. Less time wasted on basic plumbing, more energy invested in design, robustness, and value for the user.

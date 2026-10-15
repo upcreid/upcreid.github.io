@@ -1,36 +1,28 @@
 +++
 title = "StarCraft 2"
-description = "Guides, réglages et ressources pour progresser sur StarCraft 2."
+description = "Guides, settings and resources to improve at StarCraft 2."
 weight = 10
 sort_by = "weight"
 +++
 
-## Présentation
+## Overview
 
-StarCraft 2 est un jeu de stratégie en temps réel (RTS) développé par Blizzard Entertainment. Cette section rassemble des guides et des réglages pour améliorer vos performances.
+StarCraft 2 is a real-time strategy (RTS) game developed by Blizzard Entertainment. This section contains guides and configurations to improve your performance.
 
-## Contenu disponible
+## Available content
 
-- **[Réglages optimaux](@/games/starcraft2/params.md)** : configuration du jeu et réglages de performance.
+- **[Optimal Settings](@/games/starcraft2/params.md)** : game configuration and performance settings.
 
-## Ressources externes
+## External resources
 
-### Sites communautaires
+### Community sites
 
-- [Site officiel de StarCraft 2](https://starcraft2.com/)
-- [Liquipedia StarCraft 2](https://liquipedia.net/starcraft2/) : wiki complet du jeu
-- [Reddit StarCraft](https://www.reddit.com/r/starcraft/) : communauté active
+- [Official StarCraft 2 Website](https://starcraft2.com/)
+- [Liquipedia StarCraft 2](https://liquipedia.net/starcraft2/) : complete game wiki
+- [Reddit StarCraft](https://www.reddit.com/r/starcraft/) : active community
 
-### Outils d'entraînement
+### Training tools
 
-- **Build Orders** : ordres de construction optimisés
-- **Analyse de replays** : outils d'analyse
-- **Cartes d'entraînement** : cartes dédiées à la pratique
-
-> [!NOTE]
-> **Compétitif**
-> StarCraft 2 est l'un des jeux esport les plus exigeants. Une pratique régulière et des réglages optimisés sont indispensables pour progresser.
-
-> [!TIP]
-> **Débutants**
-> Commencez par maîtriser une seule race et concentrez-vous sur les fondamentaux : macro, micro et timings.
+- **Build orders**
+- **Replay analysis**
+- **Practice maps**

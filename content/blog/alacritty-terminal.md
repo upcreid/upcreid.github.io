@@ -1,6 +1,6 @@
 +++
-title = "Alacritty : mon terminal au quotidien ⚡"
-description = "Alacritty, l'émulateur de terminal rapide et robuste au quotidien."
+title = "Alacritty: my everyday terminal ⚡"
+description = "Alacritty, the fast and robust terminal emulator for everyday use."
 slug = "alacritty-terminal"
 date = 2026-09-19T15:00:00+02:00
 draft = false
@@ -10,14 +10,14 @@ aliases = ["/blog/2026/09/19/alacritty-terminal/"]
 authors = ["UpCreid"]
 +++
 
-Je fais de plus en plus de choses depuis le terminal. Pour cet usage quotidien, il me fallait un outil ultra performant : [Alacritty](https://alacritty.org/).
+I do more and more things from the terminal. For that everyday use, I needed an ultra-efficient tool: [Alacritty](https://alacritty.org/).
 
-Au quotidien, [Alacritty](https://github.com/alacritty/alacritty) est devenu indispensable. Écrit en Rust et accéléré par GPU, il va droit à l'essentiel.
+Day to day, [Alacritty](https://github.com/alacritty/alacritty) has become indispensable. Written in Rust and GPU-accelerated, it goes straight to the point.
 
-Ce qui me séduit :
+What wins me over:
 
-- 🛡️ **Robustesse** : Stabilité exemplaire, il ne plante jamais même sous fort flux.
-- ⚡ **Vitesse** : Le rendu GPU garantit une frappe instantanée.
-- ⚙️ **Simplicité** : Fichier de configuration minimaliste et clair.
+- 🛡️ **Robustness**: Exemplary stability, it never crashes even under heavy load.
+- ⚡ **Speed**: GPU rendering means instant keystrokes.
+- ⚙️ **Simplicity**: A minimalistic, clear configuration file.
 
-Un must-have quand on vit dans le terminal !
+A must-have when you live in the terminal!
