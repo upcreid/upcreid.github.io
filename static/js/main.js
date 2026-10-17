@@ -7,6 +7,10 @@
     themeToggle.addEventListener('click', function () {
       var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
       root.dataset.theme = next;
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = next === 'dark' ? '#24273a' : '#eff1f5';
+      }
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
   }

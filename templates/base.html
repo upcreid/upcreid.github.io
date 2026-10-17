@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ lang }}" data-theme="light">
+<html lang="{{ lang }}" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,14 +23,18 @@
     <link rel="alternate" hreflang="{{ l.code }}" href="{{ alt_url }}">
   {% endfor %}
   <link rel="icon" href="{{ get_url(path='images/logo.png') }}">
+  <meta name="theme-color" content="#24273a" data-theme-color>
   <link rel="stylesheet" href="{{ get_url(path='css/style.css') }}">
   <link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml') }}">
   <script>
     (function () {
       var stored = null;
       try { stored = localStorage.getItem('theme'); } catch (e) {}
-      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
     })();
   </script>
   {% block head %}{% endblock %}

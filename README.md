@@ -14,7 +14,7 @@ zola build          # génère le site dans public/
 zola check          # vérifie les liens internes et les liens externes
 ```
 
-Zola 0.23.6 est requis. `zola.toml` référence les thèmes de coloration `github-light` / `github-dark`.
+Zola 0.23.6 est requis. `zola.toml` référence les thèmes de coloration `catppuccin-latte` / `catppuccin-macchiato`.
 
 ## Structure
 
