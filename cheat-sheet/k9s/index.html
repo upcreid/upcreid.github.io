@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>K9s · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/k9s/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/cheat-sheet/k9s/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/k9s/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">CheatSheet</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">CheatSheet</a>
+      
+    
+  </nav>
+
+  <h1>K9s</h1>
+
+  <p class="page-meta">
+    
+    <span>3 min read</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <p>K9s is a terminal-based UI to interact with Kubernetes clusters, making it easier to navigate, observe, and manage deployed applications. It continuously watches Kubernetes for changes and offers commands to interact with resources.</p>
+<h2 id="cli-arguments">CLI Arguments<a class="zola-anchor" href="#cli-arguments" aria-label="Anchor link for: cli-arguments">🔗</a></h2>
+<h3 id="basic-commands">Basic Commands<a class="zola-anchor" href="#basic-commands" aria-label="Anchor link for: basic-commands">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Launch K9s</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show help and available options</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> help</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get info about K9s runtime (logs, configs, etc.)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> info</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run K9s in a specific namespace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-namespace</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Launch K9s directly in pod view</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> pod</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Start K9s in a different context</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-context</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-context</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Start K9s in readonly mode (no modifications allowed)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-readonly</span></span></code></pre><h2 id="essential-key-bindings">Essential Key Bindings<a class="zola-anchor" href="#essential-key-bindings" aria-label="Anchor link for: essential-key-bindings">🔗</a></h2>
+<h3 id="navigation-help">Navigation &amp; Help<a class="zola-anchor" href="#navigation-help" aria-label="Anchor link for: navigation-help">🔗</a></h3>
+<table><thead><tr><th>Key</th><th>Action</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>?</code></td><td>Show help</td><td>Display active keyboard shortcuts and help</td></tr>
+<tr><td><code>Ctrl+a</code></td><td>Show aliases</td><td>List all available resource aliases</td></tr>
+<tr><td><code>:q</code> or <code>Ctrl+c</code></td><td>Exit</td><td>Quit K9s</td></tr>
+<tr><td><code>Esc</code></td><td>Back/Cancel</td><td>Exit current view/command/filter mode</td></tr>
+</tbody></table>
+<h3 id="resource-navigation">Resource Navigation<a class="zola-anchor" href="#resource-navigation" aria-label="Anchor link for: resource-navigation">🔗</a></h3>
+<table><thead><tr><th>Command</th><th>Action</th><th>Example</th></tr></thead><tbody>
+<tr><td><code>:pod⏎</code></td><td>View pods</td><td>Shows all pods (accepts singular/plural/short names)</td></tr>
+<tr><td><code>:deploy⏎</code></td><td>View deployments</td><td>Shows all deployments</td></tr>
+<tr><td><code>:svc⏎</code></td><td>View services</td><td>Shows all services</td></tr>
+<tr><td><code>:ns⏎</code></td><td>View namespaces</td><td>Shows and allows switching namespaces</td></tr>
+<tr><td><code>:ctx⏎</code></td><td>View contexts</td><td>Shows and allows switching contexts</td></tr>
+</tbody></table>
+<h3 id="namespace-context-operations">Namespace &amp; Context Operations<a class="zola-anchor" href="#namespace-context-operations" aria-label="Anchor link for: namespace-context-operations">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View pods in specific namespace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pod</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-namespace⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View pods with specific context</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pod</span><span style="color: light-dark(#40A02B, #A6DA95);"> @my-context⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Switch to namespace and keep current view</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:ns</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-namespace⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Switch to context and keep current view  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:ctx</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-context⏎</span></span></code></pre><h3 id="filtering-search">Filtering &amp; Search<a class="zola-anchor" href="#filtering-search" aria-label="Anchor link for: filtering-search">🔗</a></h3>
+<table><thead><tr><th>Command</th><th>Action</th><th>Example</th></tr></thead><tbody>
+<tr><td><code>/filter⏎</code></td><td>Filter resources</td><td><code>/nginx⏎</code> shows resources containing “nginx”</td></tr>
+<tr><td><code>/!filter⏎</code></td><td>Inverse filter</td><td><code>/!system⏎</code> excludes resources containing “system”</td></tr>
+<tr><td><code>/-l label⏎</code></td><td>Filter by labels</td><td><code>/-l app=nginx⏎</code></td></tr>
+<tr><td><code>/-f filter⏎</code></td><td>Fuzzy search</td><td><code>/-f web⏎</code> fuzzy finds “web”</td></tr>
+</tbody></table>
+<h3 id="label-based-filtering">Label-based Filtering<a class="zola-anchor" href="#label-based-filtering" aria-label="Anchor link for: label-based-filtering">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View pods with specific labels</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pod</span><span style="color: light-dark(#40A02B, #A6DA95);"> app=nginx,env=prod⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View pods in namespace with labels</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pod</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-namespace</span><span style="color: light-dark(#40A02B, #A6DA95);"> app=web⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filter current view by labels</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/-l</span><span style="color: light-dark(#40A02B, #A6DA95);"> app=nginx,tier=frontend⏎</span></span></code></pre><h2 id="resource-management">Resource Management<a class="zola-anchor" href="#resource-management" aria-label="Anchor link for: resource-management">🔗</a></h2>
+<h3 id="common-resource-actions">Common Resource Actions<a class="zola-anchor" href="#common-resource-actions" aria-label="Anchor link for: common-resource-actions">🔗</a></h3>
+<table><thead><tr><th>Key</th><th>Action</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>d</code></td><td>Describe</td><td>Show detailed resource information</td></tr>
+<tr><td><code>v</code></td><td>View YAML</td><td>Display resource YAML definition</td></tr>
+<tr><td><code>e</code></td><td>Edit</td><td>Edit resource (opens in $KUBE_EDITOR)</td></tr>
+<tr><td><code>l</code></td><td>Logs</td><td>View container logs</td></tr>
+<tr><td><code>s</code></td><td>Shell</td><td>Shell into container</td></tr>
+<tr><td><code>f</code></td><td>Port-forward</td><td>Forward local port to pod</td></tr>
+</tbody></table>
+<h3 id="resource-lifecycle">Resource Lifecycle<a class="zola-anchor" href="#resource-lifecycle" aria-label="Anchor link for: resource-lifecycle">🔗</a></h3>
+<table><thead><tr><th>Key</th><th>Action</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>Ctrl+d</code></td><td>Delete</td><td>Delete resource (with confirmation)</td></tr>
+<tr><td><code>Ctrl+k</code></td><td>Kill</td><td>Force delete resource (no confirmation)</td></tr>
+<tr><td><code>r</code></td><td>Restart</td><td>Restart resource (deployments, etc.)</td></tr>
+</tbody></table>
+<h3 id="advanced-views">Advanced Views<a class="zola-anchor" href="#advanced-views" aria-label="Anchor link for: advanced-views">🔗</a></h3>
+<table><thead><tr><th>Command</th><th>Action</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>:pulses⏎</code> or <code>:pu⏎</code></td><td>Pulses view</td><td>Cluster dashboard overview</td></tr>
+<tr><td><code>:xray pod⏎</code></td><td>XRay view</td><td>Resource dependency visualization</td></tr>
+<tr><td><code>:screendump⏎</code> or <code>:sd⏎</code></td><td>Screen dump</td><td>View saved resources</td></tr>
+</tbody></table>
+<h2 id="configuration">Configuration<a class="zola-anchor" href="#configuration" aria-label="Anchor link for: configuration">🔗</a></h2>
+<h3 id="main-config-file">Main Config File<a class="zola-anchor" href="#main-config-file" aria-label="Anchor link for: main-config-file">🔗</a></h3>
+<p>Location: <code>$XDG_CONFIG_HOME/k9s/config.yaml</code> (usually <code>~/.config/k9s/config.yaml</code>)</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> ~/.config/k9s/config.yaml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">k</span><span style="color: light-dark(#1E66F5, #8AADF4);">9s</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> UI refresh rate in seconds</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  r</span><span style="color: light-dark(#1E66F5, #8AADF4);">efreshRate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 2</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Enable auto-refresh of resource views</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  l</span><span style="color: light-dark(#1E66F5, #8AADF4);">iveViewAutoRefresh</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> API server timeout</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  a</span><span style="color: light-dark(#1E66F5, #8AADF4);">piServerTimeout</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">5s</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Max connection retries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  m</span><span style="color: light-dark(#1E66F5, #8AADF4);">axConnRetry</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 5</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Disable modification commands</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  r</span><span style="color: light-dark(#1E66F5, #8AADF4);">eadOnly</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Default view on startup</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  d</span><span style="color: light-dark(#1E66F5, #8AADF4);">efaultView</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">pods</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Exit on Ctrl+C (false means use :quit command)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  n</span><span style="color: light-dark(#1E66F5, #8AADF4);">oExitOnCtrlC</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Port forward default address</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ortForwardAddress</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> l</span><span style="color: light-dark(#40A02B, #A6DA95);">ocalhost</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  u</span><span style="color: light-dark(#1E66F5, #8AADF4);">i</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Enable mouse support</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    e</span><span style="color: light-dark(#1E66F5, #8AADF4);">nableMouse</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>    </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Hide header/logo/crumbs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    h</span><span style="color: light-dark(#1E66F5, #8AADF4);">eadless</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    l</span><span style="color: light-dark(#1E66F5, #8AADF4);">ogoless</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">rumbsless</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>    </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Live update UI on config changes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">eactive</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>    </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Disable icons for unsupported terminals</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    n</span><span style="color: light-dark(#1E66F5, #8AADF4);">oIcons</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Skip version check</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">kipLatestRevCheck</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Logs configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  l</span><span style="color: light-dark(#1E66F5, #8AADF4);">ogger</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Number of log lines to show</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ail</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 100</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Total log buffer size</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    b</span><span style="color: light-dark(#1E66F5, #8AADF4);">uffer</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 5000</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> How far back to look in seconds (-1 for tail)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">inceSeconds</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 300</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Full screen logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    f</span><span style="color: light-dark(#1E66F5, #8AADF4);">ullScreen</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Wrap long lines</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    t</span><span style="color: light-dark(#1E66F5, #8AADF4);">extWrap</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show timestamps</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">howTime</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Resource thresholds for alerts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  t</span><span style="color: light-dark(#1E66F5, #8AADF4);">hresholds</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">pu</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ritical</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 90</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">arn</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 70</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    m</span><span style="color: light-dark(#1E66F5, #8AADF4);">emory</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ritical</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 90</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">arn</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 70</span></span></code></pre><h3 id="context-specific-configuration">Context-Specific Configuration<a class="zola-anchor" href="#context-specific-configuration" aria-label="Anchor link for: context-specific-configuration">🔗</a></h3>
+<p>Location: <code>$XDG_DATA_HOME/k9s/clusters/{cluster}/{context}/config.yaml</code></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Context-specific config</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">k</span><span style="color: light-dark(#1E66F5, #8AADF4);">9s</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  c</span><span style="color: light-dark(#1E66F5, #8AADF4);">luster</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">y-cluster</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  r</span><span style="color: light-dark(#1E66F5, #8AADF4);">eadOnly</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">kin</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">y_custom_skin</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  n</span><span style="color: light-dark(#1E66F5, #8AADF4);">amespace</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    a</span><span style="color: light-dark(#1E66F5, #8AADF4);">ctive</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> d</span><span style="color: light-dark(#40A02B, #A6DA95);">efault</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    l</span><span style="color: light-dark(#1E66F5, #8AADF4);">ockFavorites</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    f</span><span style="color: light-dark(#1E66F5, #8AADF4);">avorites</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ll</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> k</span><span style="color: light-dark(#40A02B, #A6DA95);">ube-system</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> d</span><span style="color: light-dark(#40A02B, #A6DA95);">efault</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">y-app</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  v</span><span style="color: light-dark(#1E66F5, #8AADF4);">iew</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    a</span><span style="color: light-dark(#1E66F5, #8AADF4);">ctive</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">ods</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  f</span><span style="color: light-dark(#1E66F5, #8AADF4);">eatureGates</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    n</span><span style="color: light-dark(#1E66F5, #8AADF4);">odeShell</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span></code></pre><h2 id="aliases">Aliases<a class="zola-anchor" href="#aliases" aria-label="Anchor link for: aliases">🔗</a></h2>
+<h3 id="creating-custom-aliases">Creating Custom Aliases<a class="zola-anchor" href="#creating-custom-aliases" aria-label="Anchor link for: creating-custom-aliases">🔗</a></h3>
+<p>File: <code>$XDG_CONFIG_HOME/k9s/aliases.yaml</code></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> ~/.config/k9s/aliases.yaml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">liases</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Resource aliases</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  p</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> v</span><span style="color: light-dark(#40A02B, #A6DA95);">1/pods</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use :pp instead of :pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  d</span><span style="color: light-dark(#1E66F5, #8AADF4);">ep</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">pps/v1/deployments</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">            #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use :dep instead of :deployments</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">vc</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> v</span><span style="color: light-dark(#40A02B, #A6DA95);">1/services</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use :svc instead of :services</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  i</span><span style="color: light-dark(#1E66F5, #8AADF4);">ng</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> n</span><span style="color: light-dark(#40A02B, #A6DA95);">etworking.k8s.io/v1/ingresses</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use :ing instead of :ingresses</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom resource aliases</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  f</span><span style="color: light-dark(#1E66F5, #8AADF4);">red</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">cme.io/v1alpha1/fredericks</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom CRD alias</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Command aliases with filters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eb-pods</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">od default app=web</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pods with app=web label</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ys-pods</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">od kube-system</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> All kube-system pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ginx-ing</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> i</span><span style="color: light-dark(#40A02B, #A6DA95);">ngress default app=nginx</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">            #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Nginx ingresses</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ritical-pods</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">od -l priority=critical</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">         #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> High priority pods</span></span></code></pre><h3 id="using-aliases">Using Aliases<a class="zola-anchor" href="#using-aliases" aria-label="Anchor link for: using-aliases">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use aliases in command mode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pp⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:dep⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List deployments  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:web-pods⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List web application pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:sys-pods⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List system pods</span></span></code></pre><h2 id="hotkeys">HotKeys<a class="zola-anchor" href="#hotkeys" aria-label="Anchor link for: hotkeys">🔗</a></h2>
+<h3 id="creating-custom-hotkeys">Creating Custom HotKeys<a class="zola-anchor" href="#creating-custom-hotkeys" aria-label="Anchor link for: creating-custom-hotkeys">🔗</a></h3>
+<p>File: <code>$XDG_DATA_HOME/k9s/hotkeys.yaml</code></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> ~/.local/share/k9s/hotkeys.yaml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">h</span><span style="color: light-dark(#1E66F5, #8AADF4);">otKeys</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Quick navigation shortcuts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-1</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> V</span><span style="color: light-dark(#40A02B, #A6DA95);">iew all pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">ods</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-2</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> V</span><span style="color: light-dark(#40A02B, #A6DA95);">iew deployments</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> d</span><span style="color: light-dark(#40A02B, #A6DA95);">eployments</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-3</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> V</span><span style="color: light-dark(#40A02B, #A6DA95);">iew services</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> s</span><span style="color: light-dark(#40A02B, #A6DA95);">ervices</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filtered views</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-w</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-w</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> W</span><span style="color: light-dark(#40A02B, #A6DA95);">eb application pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">ods app=web</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-s</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-s</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">ystem pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">ods kube-system</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> XRay views</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-x</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-x</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> X</span><span style="color: light-dark(#40A02B, #A6DA95);">Ray deployments</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> x</span><span style="color: light-dark(#40A02B, #A6DA95);">ray deploy</span></span>
+<span class="giallo-l"><span>  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom namespace shortcuts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hift-p</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">hortCut</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">hift-p</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> P</span><span style="color: light-dark(#40A02B, #A6DA95);">roduction namespace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ommand</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">ods production</span></span></code></pre><h2 id="advanced-features">Advanced Features<a class="zola-anchor" href="#advanced-features" aria-label="Anchor link for: advanced-features">🔗</a></h2>
+<h3 id="xray-views">XRay Views<a class="zola-anchor" href="#xray-views" aria-label="Anchor link for: xray-views">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Visualize resource dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:xray</span><span style="color: light-dark(#40A02B, #A6DA95);"> pod</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-namespace⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pod dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:xray</span><span style="color: light-dark(#40A02B, #A6DA95);"> svc⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Service dependencies  </span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:xray</span><span style="color: light-dark(#40A02B, #A6DA95);"> deploy⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Deployment dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:xray</span><span style="color: light-dark(#40A02B, #A6DA95);"> sts⏎</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> StatefulSet dependencies</span></span></code></pre><h3 id="pulses-dashboard">Pulses Dashboard<a class="zola-anchor" href="#pulses-dashboard" aria-label="Anchor link for: pulses-dashboard">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Launch cluster overview dashboard</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pulses⏎</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pu⏎</span></span></code></pre><h3 id="log-management">Log Management<a class="zola-anchor" href="#log-management" aria-label="Anchor link for: log-management">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View logs with different options</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">l</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View logs (from resource view)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Ctrl+t</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Toggle timestamp in logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Ctrl+w</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Toggle line wrap in logs</span></span></code></pre><h3 id="port-forwarding">Port Forwarding<a class="zola-anchor" href="#port-forwarding" aria-label="Anchor link for: port-forwarding">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Forward ports (from pod view)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">f</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Start port forward</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Then specify: local_port:remote_port</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">8080:80</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Forward local 8080 to pod port 80</span></span></code></pre><h3 id="shell-access">Shell Access<a class="zola-anchor" href="#shell-access" aria-label="Anchor link for: shell-access">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shell into containers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">s</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shell into container</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Select container if multiple containers in pod</span></span></code></pre><h2 id="environment-variables">Environment Variables<a class="zola-anchor" href="#environment-variables" aria-label="Anchor link for: environment-variables">🔗</a></h2>
+<h3 id="global-overrides">Global Overrides<a class="zola-anchor" href="#global-overrides" aria-label="Anchor link for: global-overrides">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Override default port forward address</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> K9S_DEFAULT_PF_ADDRESS</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#FE640B, #F5A97F);">127.0.0.1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Override node shell feature globally</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> K9S_FEATURE_GATE_NODE_SHELL</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>true</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set custom config directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> K9S_CONFIG_DIR</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>/</span><span>path</span><span>/</span><span>to</span><span>/</span><span>config</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set XDG directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> XDG_CONFIG_HOME</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>$</span><span>HOME</span><span>/.</span><span>config</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> XDG_DATA_HOME</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>$</span><span>HOME</span><span>/.</span><span>local</span><span>/</span><span>share</span></span></code></pre><h2 id="practical-examples">Practical Examples<a class="zola-anchor" href="#practical-examples" aria-label="Anchor link for: practical-examples">🔗</a></h2>
+<h3 id="daily-workflow-examples">Daily Workflow Examples<a class="zola-anchor" href="#daily-workflow-examples" aria-label="Anchor link for: daily-workflow-examples">🔗</a></h3>
+<h4 id="1-quick-pod-debugging">1. Quick Pod Debugging<a class="zola-anchor" href="#1-quick-pod-debugging" aria-label="Anchor link for: 1-quick-pod-debugging">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Launch K9s in pod view</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> pod</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filter to problematic pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/error⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Describe a pod</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">d</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">l</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shell into container</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">s</span></span></code></pre><h4 id="2-deployment-management">2. Deployment Management<a class="zola-anchor" href="#2-deployment-management" aria-label="Anchor link for: 2-deployment-management">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View deployments</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:deploy⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filter by namespace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:deploy</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-app⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Scale deployment (edit and change replicas)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">e</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Restart deployment</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">r</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View deployment logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">l</span></span></code></pre><h4 id="3-resource-monitoring">3. Resource Monitoring<a class="zola-anchor" href="#3-resource-monitoring" aria-label="Anchor link for: 3-resource-monitoring">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Launch pulses for cluster overview</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:pulses⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check resource usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:top</span><span style="color: light-dark(#40A02B, #A6DA95);"> node⏎</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:top</span><span style="color: light-dark(#40A02B, #A6DA95);"> pod⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filter high CPU usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/-l</span><span style="color: light-dark(#40A02B, #A6DA95);"> cp</span><span>u</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);">80⏎</span></span></code></pre><h4 id="4-multi-context-management">4. Multi-Context Management<a class="zola-anchor" href="#4-multi-context-management" aria-label="Anchor link for: 4-multi-context-management">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Switch contexts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:ctx⏎</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Select context from list</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View contexts with direct switch</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:ctx</span><span style="color: light-dark(#40A02B, #A6DA95);"> production⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Launch in specific context</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-context</span><span style="color: light-dark(#40A02B, #A6DA95);"> staging</span></span></code></pre><h3 id="troubleshooting-workflows">Troubleshooting Workflows<a class="zola-anchor" href="#troubleshooting-workflows" aria-label="Anchor link for: troubleshooting-workflows">🔗</a></h3>
+<h4 id="1-find-failing-pods">1. Find Failing Pods<a class="zola-anchor" href="#1-find-failing-pods" aria-label="Anchor link for: 1-find-failing-pods">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filter by status</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Error⏎</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/CrashLoop⏎</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Pending⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Or use labels to find specific app pods</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/-l</span><span style="color: light-dark(#40A02B, #A6DA95);"> app=myapp⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Describe to see events</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">d</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check logs for errors</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">l</span></span></code></pre><h4 id="2-resource-dependencies">2. Resource Dependencies<a class="zola-anchor" href="#2-resource-dependencies" aria-label="Anchor link for: 2-resource-dependencies">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use XRay to see dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:xray</span><span style="color: light-dark(#40A02B, #A6DA95);"> pod</span><span style="color: light-dark(#40A02B, #A6DA95);"> my-namespace⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Navigate through related resources</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Follow ingress -&gt; service -&gt; deployment -&gt; pod chain</span></span></code></pre><h4 id="3-network-debugging">3. Network Debugging<a class="zola-anchor" href="#3-network-debugging" aria-label="Anchor link for: 3-network-debugging">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View services</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:svc⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check endpoints</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:ep⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View ingresses</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">:ing⏎</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Port forward for testing</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">f</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Test: curl localhost:8080</span></span></code></pre><h2 id="tips-best-practices">Tips &amp; Best Practices<a class="zola-anchor" href="#tips-best-practices" aria-label="Anchor link for: tips-best-practices">🔗</a></h2>
+<h3 id="performance-tips">Performance Tips<a class="zola-anchor" href="#performance-tips" aria-label="Anchor link for: performance-tips">🔗</a></h3>
+<ul>
+<li>Use <code>liveViewAutoRefresh: false</code> for large clusters</li>
+<li>Adjust <code>refreshRate</code> based on cluster size</li>
+<li>Use filters to reduce displayed resources</li>
+<li>Enable <code>disablePodCounting</code> for very large clusters</li>
+</ul>
+<h3 id="security-tips">Security Tips<a class="zola-anchor" href="#security-tips" aria-label="Anchor link for: security-tips">🔗</a></h3>
+<ul>
+<li>Use <code>readOnly: true</code> for production environments</li>
+<li>Set context-specific readonly configs</li>
+<li>Use RBAC to limit K9s permissions</li>
+<li>Regularly audit your cluster access</li>
+</ul>
+<h3 id="customization-tips">Customization Tips<a class="zola-anchor" href="#customization-tips" aria-label="Anchor link for: customization-tips">🔗</a></h3>
+<ul>
+<li>Create aliases for frequently used commands</li>
+<li>Set up hotkeys for common workflows</li>
+<li>Use custom skins for different environments</li>
+<li>Configure context-specific settings</li>
+</ul>
+<h3 id="efficiency-tips">Efficiency Tips<a class="zola-anchor" href="#efficiency-tips" aria-label="Anchor link for: efficiency-tips">🔗</a></h3>
+<ul>
+<li>Learn regex patterns for complex filtering</li>
+<li>Use label selectors for precise filtering</li>
+<li>Master XRay views for dependency tracking</li>
+<li>Customize column views for important metrics</li>
+</ul>
+<h2 id="common-issues-solutions">Common Issues &amp; Solutions<a class="zola-anchor" href="#common-issues-solutions" aria-label="Anchor link for: common-issues-solutions">🔗</a></h2>
+<h3 id="terminal-issues">Terminal Issues<a class="zola-anchor" href="#terminal-issues" aria-label="Anchor link for: terminal-issues">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fix color issues</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> TERM</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>xterm-256color</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fix editor issues</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> KUBE_EDITOR</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>vim</span></span></code></pre><h3 id="permission-issues">Permission Issues<a class="zola-anchor" href="#permission-issues" aria-label="Anchor link for: permission-issues">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check K9s permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> info</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verify kubectl access</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">kubectl</span><span style="color: light-dark(#40A02B, #A6DA95);"> auth</span><span style="color: light-dark(#40A02B, #A6DA95);"> can-i</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-list</span></span></code></pre><h3 id="configuration-issues">Configuration Issues<a class="zola-anchor" href="#configuration-issues" aria-label="Anchor link for: configuration-issues">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check config location</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">k9s</span><span style="color: light-dark(#40A02B, #A6DA95);"> info</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Reset configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">rm</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">rf</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/.config/k9s</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">rm</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">rf</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/.local/share/k9s</span></span></code></pre><h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li><strong>Official Website</strong>: https://k9scli.io/</li>
+<li><strong>GitHub Repository</strong>: https://github.com/derailed/k9s</li>
+<li><strong>Community Slack</strong>: <a rel="noopener noreferrer external" target="_blank" href="https://k9sers.slack.com/">K9ers Slack</a></li>
+<li><strong>Documentation</strong>: https://k9scli.io/topics/</li>
+<li><strong>Video Tutorials</strong>: https://k9scli.io/topics/video/</li>
+</ul>
+<hr />
+<p><em>K9s makes Kubernetes cluster management intuitive and efficient through its terminal-based interface. Master these commands and configurations to significantly improve your Kubernetes workflow.</em></p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/git/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">Git</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/kubectl/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">Kubectl</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#cli-arguments">CLI Arguments</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-commands">Basic Commands</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#essential-key-bindings">Essential Key Bindings</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#navigation-help">Navigation &amp; Help</a></li>
+                  
+                    <li class="toc__subitem"><a href="#resource-navigation">Resource Navigation</a></li>
+                  
+                    <li class="toc__subitem"><a href="#namespace-context-operations">Namespace &amp; Context Operations</a></li>
+                  
+                    <li class="toc__subitem"><a href="#filtering-search">Filtering &amp; Search</a></li>
+                  
+                    <li class="toc__subitem"><a href="#label-based-filtering">Label-based Filtering</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resource-management">Resource Management</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#common-resource-actions">Common Resource Actions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#resource-lifecycle">Resource Lifecycle</a></li>
+                  
+                    <li class="toc__subitem"><a href="#advanced-views">Advanced Views</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#configuration">Configuration</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#main-config-file">Main Config File</a></li>
+                  
+                    <li class="toc__subitem"><a href="#context-specific-configuration">Context-Specific Configuration</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#aliases">Aliases</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#creating-custom-aliases">Creating Custom Aliases</a></li>
+                  
+                    <li class="toc__subitem"><a href="#using-aliases">Using Aliases</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#hotkeys">HotKeys</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#creating-custom-hotkeys">Creating Custom HotKeys</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#advanced-features">Advanced Features</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#xray-views">XRay Views</a></li>
+                  
+                    <li class="toc__subitem"><a href="#pulses-dashboard">Pulses Dashboard</a></li>
+                  
+                    <li class="toc__subitem"><a href="#log-management">Log Management</a></li>
+                  
+                    <li class="toc__subitem"><a href="#port-forwarding">Port Forwarding</a></li>
+                  
+                    <li class="toc__subitem"><a href="#shell-access">Shell Access</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#environment-variables">Environment Variables</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#global-overrides">Global Overrides</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#practical-examples">Practical Examples</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#daily-workflow-examples">Daily Workflow Examples</a></li>
+                  
+                    <li class="toc__subitem"><a href="#troubleshooting-workflows">Troubleshooting Workflows</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#tips-best-practices">Tips &amp; Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#performance-tips">Performance Tips</a></li>
+                  
+                    <li class="toc__subitem"><a href="#security-tips">Security Tips</a></li>
+                  
+                    <li class="toc__subitem"><a href="#customization-tips">Customization Tips</a></li>
+                  
+                    <li class="toc__subitem"><a href="#efficiency-tips">Efficiency Tips</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#common-issues-solutions">Common Issues &amp; Solutions</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#terminal-issues">Terminal Issues</a></li>
+                  
+                    <li class="toc__subitem"><a href="#permission-issues">Permission Issues</a></li>
+                  
+                    <li class="toc__subitem"><a href="#configuration-issues">Configuration Issues</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

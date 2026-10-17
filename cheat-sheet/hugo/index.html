@@ -1,0 +1,1473 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Hugo · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/hugo/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/cheat-sheet/hugo/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/hugo/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">CheatSheet</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">CheatSheet</a>
+      
+    
+  </nav>
+
+  <h1>Hugo</h1>
+
+  <p class="page-meta">
+    
+    <span>2 min read</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>Hugo is the world’s fastest framework for building static websites, written in Go.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Extremely fast build times (&lt; 1ms per page)</li>
+<li>Simple and easy to use</li>
+<li>No dependencies (single binary)</li>
+<li>Flexible content organization</li>
+<li>Powerful templating system</li>
+<li>Built-in live reload</li>
+<li>Multilingual support</li>
+</ul>
+<h2 id="installation">Installation<a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">🔗</a></h2>
+<h3 id="macos">macOS<a class="zola-anchor" href="#macos" aria-label="Anchor link for: macos">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Using Homebrew</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">brew</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Extended version (with Sass/SCSS support)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">brew</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span></span></code></pre><h3 id="linux">Linux<a class="zola-anchor" href="#linux" aria-label="Anchor link for: linux">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Debian/Ubuntu</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> apt</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Arch Linux</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> pacman</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">S</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Snap</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> snap</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span></span></code></pre><h3 id="windows">Windows<a class="zola-anchor" href="#windows" aria-label="Anchor link for: windows">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Using Chocolatey</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">choco</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo-extended</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Using Scoop</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">scoop</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo-extended</span></span></code></pre><h3 id="from-binary">From Binary<a class="zola-anchor" href="#from-binary" aria-label="Anchor link for: from-binary">🔗</a></h3>
+<p>Download from https://github.com/gohugoio/hugo/releases</p>
+<h3 id="verify-installation">Verify Installation<a class="zola-anchor" href="#verify-installation" aria-label="Anchor link for: verify-installation">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> version</span></span></code></pre><h2 id="quick-start">Quick Start<a class="zola-anchor" href="#quick-start" aria-label="Anchor link for: quick-start">🔗</a></h2>
+<h3 id="create-new-site">Create New Site<a class="zola-anchor" href="#create-new-site" aria-label="Anchor link for: create-new-site">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> site</span><span style="color: light-dark(#40A02B, #A6DA95);"> mysite</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">cd</span><span style="color: light-dark(#40A02B, #A6DA95);"> mysite</span></span></code></pre><h3 id="initialize-git">Initialize Git<a class="zola-anchor" href="#initialize-git" aria-label="Anchor link for: initialize-git">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> init</span></span></code></pre><h3 id="add-a-theme">Add a Theme<a class="zola-anchor" href="#add-a-theme" aria-label="Anchor link for: add-a-theme">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add theme as Git submodule</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> submodule</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://github.com/theNewDynamic/gohugo-theme-ananke.git</span><span style="color: light-dark(#40A02B, #A6DA95);"> themes/ananke</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set theme in config</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">echo</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">theme = &#39;ananke&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);"> &gt;&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo.toml</span></span></code></pre><h3 id="create-content">Create Content<a class="zola-anchor" href="#create-content" aria-label="Anchor link for: create-content">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> posts/my-first-post.md</span></span></code></pre><h3 id="start-development-server">Start Development Server<a class="zola-anchor" href="#start-development-server" aria-label="Anchor link for: start-development-server">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> With drafts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">D</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> With custom port</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1313</span></span></code></pre><h3 id="build-site">Build Site<a class="zola-anchor" href="#build-site" aria-label="Anchor link for: build-site">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Include drafts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">D</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clean before build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-cleanDestinationDir</span></span></code></pre><h2 id="directory-structure">Directory Structure<a class="zola-anchor" href="#directory-structure" aria-label="Anchor link for: directory-structure">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>mysite/</span></span>
+<span class="giallo-l"><span>├── archetypes/          # Content templates</span></span>
+<span class="giallo-l"><span>│   └── default.md</span></span>
+<span class="giallo-l"><span>├── assets/              # Files to be processed (SCSS, JS)</span></span>
+<span class="giallo-l"><span>├── content/             # All content (markdown files)</span></span>
+<span class="giallo-l"><span>│   ├── posts/</span></span>
+<span class="giallo-l"><span>│   └── about.md</span></span>
+<span class="giallo-l"><span>├── data/                # Data files (JSON, YAML, TOML)</span></span>
+<span class="giallo-l"><span>├── layouts/             # Templates and views</span></span>
+<span class="giallo-l"><span>│   ├── _default/</span></span>
+<span class="giallo-l"><span>│   ├── partials/</span></span>
+<span class="giallo-l"><span>│   └── shortcodes/</span></span>
+<span class="giallo-l"><span>├── static/              # Static files (images, CSS, JS)</span></span>
+<span class="giallo-l"><span>│   ├── images/</span></span>
+<span class="giallo-l"><span>│   └── css/</span></span>
+<span class="giallo-l"><span>├── themes/              # Themes directory</span></span>
+<span class="giallo-l"><span>├── hugo.toml           # Main configuration file</span></span>
+<span class="giallo-l"><span>└── public/             # Generated site (gitignored)</span></span></code></pre><h2 id="configuration">Configuration<a class="zola-anchor" href="#configuration" aria-label="Anchor link for: configuration">🔗</a></h2>
+<h3 id="configuration-file-hugo-toml">Configuration File (hugo.toml)<a class="zola-anchor" href="#configuration-file-hugo-toml" aria-label="Anchor link for: configuration-file-hugo-toml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="toml"><span class="giallo-l"><span>baseURL</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://example.com/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>languageCode</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">en-us</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>title</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">My Hugo Site</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>theme</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">ananke</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>params</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  description</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">A Hugo site</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  author</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">John Doe</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>menu</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  [[</span><span>menu</span><span>.</span><span>main</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>    name</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">Home</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>    url</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>    weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  [[</span><span>menu</span><span>.</span><span>main</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>    name</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">Posts</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>    url</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/posts/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>    weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  [[</span><span>menu</span><span>.</span><span>main</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>    name</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">About</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>    url</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/about/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>    weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span></span></code></pre><h3 id="configuration-yaml">Configuration (YAML)<a class="zola-anchor" href="#configuration-yaml" aria-label="Anchor link for: configuration-yaml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">b</span><span style="color: light-dark(#1E66F5, #8AADF4);">aseURL</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttps://example.com/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">l</span><span style="color: light-dark(#1E66F5, #8AADF4);">anguageCode</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> e</span><span style="color: light-dark(#40A02B, #A6DA95);">n-us</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> M</span><span style="color: light-dark(#40A02B, #A6DA95);">y Hugo Site</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">heme</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">nanke</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#1E66F5, #8AADF4);">arams</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> A</span><span style="color: light-dark(#40A02B, #A6DA95);"> Hugo site</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  a</span><span style="color: light-dark(#1E66F5, #8AADF4);">uthor</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> J</span><span style="color: light-dark(#40A02B, #A6DA95);">ohn Doe</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">m</span><span style="color: light-dark(#1E66F5, #8AADF4);">enu</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  m</span><span style="color: light-dark(#1E66F5, #8AADF4);">ain</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> H</span><span style="color: light-dark(#40A02B, #A6DA95);">ome</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">rl</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eight</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> P</span><span style="color: light-dark(#40A02B, #A6DA95);">osts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">rl</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span><span style="color: light-dark(#40A02B, #A6DA95);">posts/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eight</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> A</span><span style="color: light-dark(#40A02B, #A6DA95);">bout</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">rl</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span><span style="color: light-dark(#40A02B, #A6DA95);">about/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eight</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span></span></code></pre><h3 id="important-configuration-options">Important Configuration Options<a class="zola-anchor" href="#important-configuration-options" aria-label="Anchor link for: important-configuration-options">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="toml"><span class="giallo-l"><span>baseURL</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://example.com/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>title</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">My Site</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>theme</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">mytheme</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>languageCode</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">en-us</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>defaultContentLanguage</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">en</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Content</span></span>
+<span class="giallo-l"><span>contentDir</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">content</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>dataDir</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">data</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>layoutDir</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">layouts</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>publishDir</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">public</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build</span></span>
+<span class="giallo-l"><span>buildDrafts</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>buildFuture</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>buildExpired</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Server</span></span>
+<span class="giallo-l"><span>disableLiveReload</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Permalinks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>permalinks</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  posts</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/:year/:month/:slug/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Taxonomies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>taxonomies</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  tag</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">tags</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  category</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">categories</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  series</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">series</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Markup</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>markup</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  [</span><span>markup</span><span>.</span><span>goldmark</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    [</span><span>markup</span><span>.</span><span>goldmark</span><span>.</span><span>renderer</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>      unsafe</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Allow HTML in markdown</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Params (custom variables)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>params</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  dateFormat</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">January 2, 2006</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  description</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">Site description</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  author</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">Author Name</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h2 id="front-matter">Front Matter<a class="zola-anchor" href="#front-matter" aria-label="Anchor link for: front-matter">🔗</a></h2>
+<h3 id="yaml-front-matter">YAML Front Matter<a class="zola-anchor" href="#yaml-front-matter" aria-label="Anchor link for: yaml-front-matter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">My First Post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">ate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span> 2025-01-15T10:00:00Z</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">raft</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">This is my first post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ags</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">blogging</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ategories</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tutorial</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">uthor</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">John Doe</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">i</span><span style="color: light-dark(#1E66F5, #8AADF4);">mage</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/images/post-1.jpg</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eight</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">Y</span><span style="color: light-dark(#40A02B, #A6DA95);">our content here...</span></span></code></pre><h3 id="toml-front-matter">TOML Front Matter<a class="zola-anchor" href="#toml-front-matter" aria-label="Anchor link for: toml-front-matter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="toml"><span class="giallo-l"><span>+++</span></span>
+<span class="giallo-l"><span>title</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">My First Post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>date</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span> 2025-01-15T10:00:00Z</span></span>
+<span class="giallo-l"><span>draft</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span>description</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">This is my first post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>tags</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">blogging</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>categories</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tutorial</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>author</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">John Doe</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>image</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/images/post-1.jpg</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span></span>
+<span class="giallo-l"><span>+++</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>Your </span><span>content </span><span>here...</span></span></code></pre><h3 id="json-front-matter">JSON Front Matter<a class="zola-anchor" href="#json-front-matter" aria-label="Anchor link for: json-front-matter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="json"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">title</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">My First Post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">date</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">2025-01-15T10:00:00Z</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">draft</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">description</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">This is my first post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">tags</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">blogging</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">categories</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tutorial</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">author</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">John Doe</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">image</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/images/post-1.jpg</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">weight</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>Your content here...</span></span></code></pre><h3 id="common-front-matter-variables">Common Front Matter Variables<a class="zola-anchor" href="#common-front-matter-variables" aria-label="Anchor link for: common-front-matter-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Required</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Post Title</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">ate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span> 2025-01-15</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Publishing</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">raft</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Don&#39;t publish if true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ublishDate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span> 2025-01-15</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Publish on this date</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpiryDate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span> 2026-01-15</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Unpublish after this date</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Organization</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eight</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 10</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Order in lists</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">lug</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">my-custom-url</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom URL slug</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">liases</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/old-url/</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> URL redirects</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Taxonomies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ags</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tag1</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tag2</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ategories</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">category1</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Display</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Meta description</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ummary</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Custom summary</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">i</span><span style="color: light-dark(#1E66F5, #8AADF4);">mages</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/img/cover.jpg</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom params</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">uthor</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Author Name</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">f</span><span style="color: light-dark(#1E66F5, #8AADF4);">eatured</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span></code></pre><h2 id="content-management">Content Management<a class="zola-anchor" href="#content-management" aria-label="Anchor link for: content-management">🔗</a></h2>
+<h3 id="create-content-1">Create Content<a class="zola-anchor" href="#create-content-1" aria-label="Anchor link for: create-content-1">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create post</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> posts/my-post.md</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create page</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> about.md</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create in section</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> blog/article-1.md</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use custom archetype</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-kind</span><span style="color: light-dark(#40A02B, #A6DA95);"> chapter</span><span style="color: light-dark(#40A02B, #A6DA95);"> docs/chapter1.md</span></span></code></pre><h3 id="content-organization">Content Organization<a class="zola-anchor" href="#content-organization" aria-label="Anchor link for: content-organization">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>content/</span></span>
+<span class="giallo-l"><span>├── _index.md              # Home page content</span></span>
+<span class="giallo-l"><span>├── about.md              # Single page</span></span>
+<span class="giallo-l"><span>├── posts/</span></span>
+<span class="giallo-l"><span>│   ├── _index.md         # Posts list page</span></span>
+<span class="giallo-l"><span>│   ├── post-1.md</span></span>
+<span class="giallo-l"><span>│   └── post-2.md</span></span>
+<span class="giallo-l"><span>└── docs/</span></span>
+<span class="giallo-l"><span>    ├── _index.md</span></span>
+<span class="giallo-l"><span>    ├── getting-started/</span></span>
+<span class="giallo-l"><span>    │   ├── _index.md</span></span>
+<span class="giallo-l"><span>    │   └── installation.md</span></span>
+<span class="giallo-l"><span>    └── advanced/</span></span>
+<span class="giallo-l"><span>        └── configuration.md</span></span></code></pre><h3 id="page-bundles">Page Bundles<a class="zola-anchor" href="#page-bundles" aria-label="Anchor link for: page-bundles">🔗</a></h3>
+<h4 id="leaf-bundle">Leaf Bundle<a class="zola-anchor" href="#leaf-bundle" aria-label="Anchor link for: leaf-bundle">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>content/</span></span>
+<span class="giallo-l"><span>└── posts/</span></span>
+<span class="giallo-l"><span>    └── my-post/</span></span>
+<span class="giallo-l"><span>        ├── index.md      # The content file</span></span>
+<span class="giallo-l"><span>        ├── image1.jpg</span></span>
+<span class="giallo-l"><span>        └── image2.jpg</span></span></code></pre><h4 id="branch-bundle">Branch Bundle<a class="zola-anchor" href="#branch-bundle" aria-label="Anchor link for: branch-bundle">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>content/</span></span>
+<span class="giallo-l"><span>└── posts/</span></span>
+<span class="giallo-l"><span>    ├── _index.md        # List page</span></span>
+<span class="giallo-l"><span>    ├── post-1.md</span></span>
+<span class="giallo-l"><span>    └── post-2.md</span></span></code></pre><h2 id="archetypes">Archetypes<a class="zola-anchor" href="#archetypes" aria-label="Anchor link for: archetypes">🔗</a></h2>
+<h3 id="default-archetype-archetypes-default-md">Default Archetype (archetypes/default.md)<a class="zola-anchor" href="#default-archetype-archetypes-default-md" aria-label="Anchor link for: default-archetype-archetypes-default-md">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ replace .File.ContentBaseName </span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">-&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot; &quot; | title }}&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">ate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span><span style="color: light-dark(#40A02B, #A6DA95);">Date</span><span style="color: light-dark(#7C7F93, #939AB7);"> }</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">raft</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ags</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ategories</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span></code></pre><h3 id="custom-archetype-archetypes-posts-md">Custom Archetype (archetypes/posts.md)<a class="zola-anchor" href="#custom-archetype-archetypes-posts-md" aria-label="Anchor link for: custom-archetype-archetypes-posts-md">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ replace .File.ContentBaseName </span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">-&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot; &quot; | title }}&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">ate</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span><span style="color: light-dark(#40A02B, #A6DA95);">Date</span><span style="color: light-dark(#7C7F93, #939AB7);"> }</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">raft</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">uthor</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Site.Params.author }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ags</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ategories</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">f</span><span style="color: light-dark(#1E66F5, #8AADF4);">eatured_image</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"># Introduction</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">Y</span><span style="color: light-dark(#40A02B, #A6DA95);">our content here...</span></span></code></pre><h3 id="use-custom-archetype">Use Custom Archetype<a class="zola-anchor" href="#use-custom-archetype" aria-label="Anchor link for: use-custom-archetype">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> posts/my-post.md</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-kind</span><span style="color: light-dark(#40A02B, #A6DA95);"> posts</span></span></code></pre><h2 id="templates">Templates<a class="zola-anchor" href="#templates" aria-label="Anchor link for: templates">🔗</a></h2>
+<h3 id="basic-template-structure">Basic Template Structure<a class="zola-anchor" href="#basic-template-structure" aria-label="Anchor link for: basic-template-structure">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>layouts/</span></span>
+<span class="giallo-l"><span>├── _default/</span></span>
+<span class="giallo-l"><span>│   ├── baseof.html      # Base template</span></span>
+<span class="giallo-l"><span>│   ├── list.html        # List pages</span></span>
+<span class="giallo-l"><span>│   ├── single.html      # Single pages</span></span>
+<span class="giallo-l"><span>│   └── index.html       # Home page</span></span>
+<span class="giallo-l"><span>├── partials/</span></span>
+<span class="giallo-l"><span>│   ├── header.html</span></span>
+<span class="giallo-l"><span>│   ├── footer.html</span></span>
+<span class="giallo-l"><span>│   └── head.html</span></span>
+<span class="giallo-l"><span>├── shortcodes/</span></span>
+<span class="giallo-l"><span>│   └── myshortcode.html</span></span>
+<span class="giallo-l"><span>└── index.html</span></span></code></pre><h3 id="base-template-baseof-html">Base Template (baseof.html)<a class="zola-anchor" href="#base-template-baseof-html" aria-label="Anchor link for: base-template-baseof-html">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">&lt;!</span><span style="color: light-dark(#8839EF, #C6A0F6);">DOCTYPE</span><span style="color: light-dark(#DF8E1D, #EED49F);"> html</span><span style="color: light-dark(#8839EF, #C6A0F6);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">html</span><span style="color: light-dark(#DF8E1D, #EED49F);"> lang</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Site.LanguageCode }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">head</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>    {{ partial &quot;head.html&quot; . }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">head</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">body</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>    {{ partial &quot;header.html&quot; . }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">main</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>        {{ block &quot;main&quot; . }}{{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">main</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    {{ partial &quot;footer.html&quot; . }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">body</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">html</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h3 id="single-page-template-single-html">Single Page Template (single.html)<a class="zola-anchor" href="#single-page-template-single-html" aria-label="Anchor link for: single-page-template-single-html">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ define &quot;main&quot; }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">article</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">h1</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">h1</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">time</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Date.Format &quot;January 2, 2006&quot; }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">time</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    {{ .Content }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tags</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>        {{ range .Params.tags }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ </span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span>/tags/&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> |</span><span style="color: light-dark(#DF8E1D, #EED49F);"> relURL</span><span style="color: light-dark(#DF8E1D, #EED49F);"> }}{{</span><span style="color: light-dark(#DF8E1D, #EED49F);"> .</span><span style="color: light-dark(#DF8E1D, #EED49F);"> |</span><span style="color: light-dark(#DF8E1D, #EED49F);"> urlize</span><span style="color: light-dark(#DF8E1D, #EED49F);"> }}</span><span>&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ . }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>        {{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">article</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span></code></pre><h3 id="list-template-list-html">List Template (list.html)<a class="zola-anchor" href="#list-template-list-html" aria-label="Anchor link for: list-template-list-html">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ define &quot;main&quot; }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">h1</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">h1</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ .Content }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">ul</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ range .Pages }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">li</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .RelPermalink }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">time</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Date.Format &quot;Jan 2, 2006&quot; }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">time</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Summary }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">li</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">ul</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span></code></pre><h3 id="home-page-template-index-html">Home Page Template (index.html)<a class="zola-anchor" href="#home-page-template-index-html" aria-label="Anchor link for: home-page-template-index-html">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ define &quot;main&quot; }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">h1</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>Welcome to {{ .Site.Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">h1</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">section</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">recent-posts</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">h2</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>Recent Posts</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">h2</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>    {{ range first 5 (where .Site.RegularPages &quot;Type&quot; &quot;posts&quot;) }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">article</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">h3</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .RelPermalink }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">h3</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">time</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Date.Format &quot;January 2, 2006&quot; }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">time</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Summary }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">article</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>    {{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">section</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span></code></pre><h3 id="partial-template-partials-header-html">Partial Template (partials/header.html)<a class="zola-anchor" href="#partial-template-partials-header-html" aria-label="Anchor link for: partial-template-partials-header-html">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">header</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">nav</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Site.BaseURL }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Site.Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>        {{ range .Site.Menus.main }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">        &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .URL }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Name }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>        {{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">nav</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">header</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h2 id="variables">Variables<a class="zola-anchor" href="#variables" aria-label="Anchor link for: variables">🔗</a></h2>
+<h3 id="site-variables">Site Variables<a class="zola-anchor" href="#site-variables" aria-label="Anchor link for: site-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ .Site.Title }}</span></span>
+<span class="giallo-l"><span>{{ .Site.BaseURL }}</span></span>
+<span class="giallo-l"><span>{{ .Site.Params.description }}</span></span>
+<span class="giallo-l"><span>{{ .Site.LanguageCode }}</span></span>
+<span class="giallo-l"><span>{{ .Site.LastChange }}</span></span>
+<span class="giallo-l"><span>{{ .Site.Pages }}</span></span>
+<span class="giallo-l"><span>{{ .Site.RegularPages }}</span></span></code></pre><h3 id="page-variables">Page Variables<a class="zola-anchor" href="#page-variables" aria-label="Anchor link for: page-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ .Content }}</span></span>
+<span class="giallo-l"><span>{{ .Summary }}</span></span>
+<span class="giallo-l"><span>{{ .Description }}</span></span>
+<span class="giallo-l"><span>{{ .Date }}</span></span>
+<span class="giallo-l"><span>{{ .PublishDate }}</span></span>
+<span class="giallo-l"><span>{{ .Permalink }}</span></span>
+<span class="giallo-l"><span>{{ .RelPermalink }}</span></span>
+<span class="giallo-l"><span>{{ .WordCount }}</span></span>
+<span class="giallo-l"><span>{{ .ReadingTime }}</span></span>
+<span class="giallo-l"><span>{{ .Params.author }}</span></span></code></pre><h3 id="page-collections">Page Collections<a class="zola-anchor" href="#page-collections" aria-label="Anchor link for: page-collections">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ range .Pages }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ range .Site.RegularPages }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ range first 5 .Site.RegularPages }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ range where .Site.RegularPages &quot;Type&quot; &quot;posts&quot; }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span></code></pre><h2 id="functions">Functions<a class="zola-anchor" href="#functions" aria-label="Anchor link for: functions">🔗</a></h2>
+<h3 id="common-functions">Common Functions<a class="zola-anchor" href="#common-functions" aria-label="Anchor link for: common-functions">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> String functions </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ upper &quot;hello&quot; }}          </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> HELLO </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ lower &quot;HELLO&quot; }}          </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> hello </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ title &quot;hello world&quot; }}    </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Hello World </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ replace &quot;hello&quot; &quot;l&quot; &quot;w&quot; }} </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> hewwo </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Math functions </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ add 1 2 }}                </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 3 </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ sub 5 3 }}                </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 2 </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ mul 2 3 }}                </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 6 </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ div 10 2 }}               </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 5 </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Date functions </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ .Date.Format &quot;January 2, 2006&quot; }}</span></span>
+<span class="giallo-l"><span>{{ now.Format &quot;2006-01-02&quot; }}</span></span>
+<span class="giallo-l"><span>{{ dateFormat &quot;2006-01-02&quot; .Date }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Conditionals </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ if .Params.featured }}</span></span>
+<span class="giallo-l"><span>    Featured post</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ if eq .Type &quot;posts&quot; }}</span></span>
+<span class="giallo-l"><span>    This is a post</span></span>
+<span class="giallo-l"><span>{{ else }}</span></span>
+<span class="giallo-l"><span>    This is a page</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Range </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ range .Pages }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> With </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ with .Params.author }}</span></span>
+<span class="giallo-l"><span>    Author: {{ . }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Slice functions </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ range first 5 .Pages }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ range after 5 .Pages }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Where </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ range where .Site.RegularPages &quot;Type&quot; &quot;posts&quot; }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>{{ range where .Pages &quot;.Params.featured&quot; true }}</span></span>
+<span class="giallo-l"><span>    {{ .Title }}</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> URLs </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ .Permalink }}</span></span>
+<span class="giallo-l"><span>{{ .RelPermalink }}</span></span>
+<span class="giallo-l"><span>{{ relURL &quot;about&quot; }}</span></span>
+<span class="giallo-l"><span>{{ absURL &quot;about&quot; }}</span></span></code></pre><h2 id="shortcodes">Shortcodes<a class="zola-anchor" href="#shortcodes" aria-label="Anchor link for: shortcodes">🔗</a></h2>
+<h3 id="built-in-shortcodes">Built-in Shortcodes<a class="zola-anchor" href="#built-in-shortcodes" aria-label="Anchor link for: built-in-shortcodes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="markdown"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> YouTube video </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> youtube VIDEO_ID &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Vimeo video </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> vimeo VIDEO_ID &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Tweet </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> twitter TWEET_ID &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Instagram </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> instagram POST_ID &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Gist </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> gist USERNAME GIST_ID &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Figure (image with caption) </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> figure src=&quot;/images/photo.jpg&quot; title=&quot;Photo Title&quot; &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Highlight (syntax highlighting) </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> highlight python &gt;}}</span></span>
+<span class="giallo-l"><span>def hello():</span></span>
+<span class="giallo-l"><span>    print(&quot;Hello&quot;)</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> /highlight &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Ref (reference to page) </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> ref &quot;about.md&quot; &gt;}}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Relref (relative reference) </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> relref &quot;posts/my-post.md&quot; &gt;}}</span></span></code></pre><h3 id="custom-shortcode-layouts-shortcodes-button-html">Custom Shortcode (layouts/shortcodes/button.html)<a class="zola-anchor" href="#custom-shortcode-layouts-shortcodes-button-html" aria-label="Anchor link for: custom-shortcode-layouts-shortcodes-button-html">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Get </span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);">url</span><span>&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> }}</span><span>&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">button</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>    {{ .Inner }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre>
+<p><strong>Usage:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="markdown"><span class="giallo-l"><span>{{</span><span>&lt;</span><span> button url=&quot;/contact&quot; &gt;}}Contact Us{{</span><span>&lt;</span><span> /button &gt;}}</span></span></code></pre><h3 id="shortcode-with-named-parameters">Shortcode with Named Parameters<a class="zola-anchor" href="#shortcode-with-named-parameters" aria-label="Anchor link for: shortcode-with-named-parameters">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> layouts/shortcodes/alert.html </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">alert alert-{{ .Get </span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);">type</span><span>&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> }}</span><span>&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>    {{ .Inner }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre>
+<p><strong>Usage:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="markdown"><span class="giallo-l"><span>{{</span><span>&lt;</span><span> alert type=&quot;warning&quot; &gt;}}</span></span>
+<span class="giallo-l"><span>This is a warning message!</span></span>
+<span class="giallo-l"><span>{{</span><span>&lt;</span><span> /alert &gt;}}</span></span></code></pre><h3 id="shortcode-with-positional-parameters">Shortcode with Positional Parameters<a class="zola-anchor" href="#shortcode-with-positional-parameters" aria-label="Anchor link for: shortcode-with-positional-parameters">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> layouts/shortcodes/image.html </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">img</span><span style="color: light-dark(#DF8E1D, #EED49F);"> src</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Get 0 }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> alt</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Get 1 }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre>
+<p><strong>Usage:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="markdown"><span class="giallo-l"><span>{{</span><span>&lt;</span><span> image &quot;/images/photo.jpg&quot; &quot;Photo description&quot; &gt;}}</span></span></code></pre><h2 id="taxonomies">Taxonomies<a class="zola-anchor" href="#taxonomies" aria-label="Anchor link for: taxonomies">🔗</a></h2>
+<h3 id="configure-taxonomies-hugo-toml">Configure Taxonomies (hugo.toml)<a class="zola-anchor" href="#configure-taxonomies-hugo-toml" aria-label="Anchor link for: configure-taxonomies-hugo-toml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="toml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>taxonomies</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  tag</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">tags</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  category</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">categories</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  author</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">authors</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h3 id="use-in-front-matter">Use in Front Matter<a class="zola-anchor" href="#use-in-front-matter" aria-label="Anchor link for: use-in-front-matter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">My Post</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ags</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">web</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ategories</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tutorial</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">uthors</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">john</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span></code></pre><h3 id="list-taxonomy-terms">List Taxonomy Terms<a class="zola-anchor" href="#list-taxonomy-terms" aria-label="Anchor link for: list-taxonomy-terms">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List all tags </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">ul</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ range .Site.Taxonomies.tags }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">li</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .Page.Permalink }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Page.Title }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span> ({{ .Count }})</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">li</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">ul</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h3 id="display-terms-on-page">Display Terms on Page<a class="zola-anchor" href="#display-terms-on-page" aria-label="Anchor link for: display-terms-on-page">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">tags</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ range .Params.tags }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ </span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);">tags</span><span>&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> |</span><span style="color: light-dark(#DF8E1D, #EED49F);"> relURL</span><span style="color: light-dark(#DF8E1D, #EED49F);"> }}</span><span>/{{</span><span style="color: light-dark(#DF8E1D, #EED49F);"> .</span><span style="color: light-dark(#DF8E1D, #EED49F);"> |</span><span style="color: light-dark(#DF8E1D, #EED49F);"> urlize</span><span style="color: light-dark(#DF8E1D, #EED49F);"> }}</span><span>&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ . }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h2 id="menus">Menus<a class="zola-anchor" href="#menus" aria-label="Anchor link for: menus">🔗</a></h2>
+<h3 id="configure-in-hugo-toml">Configure in hugo.toml<a class="zola-anchor" href="#configure-in-hugo-toml" aria-label="Anchor link for: configure-in-hugo-toml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="toml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[[</span><span>menu</span><span>.</span><span>main</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>  name</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">Home</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  url</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[[</span><span>menu</span><span>.</span><span>main</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>  name</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">Posts</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  url</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/posts/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[[</span><span>menu</span><span>.</span><span>main</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>  name</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">About</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  url</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/about/</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span>  weight</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span></span></code></pre><h3 id="configure-in-front-matter">Configure in Front Matter<a class="zola-anchor" href="#configure-in-front-matter" aria-label="Anchor link for: configure-in-front-matter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">itle</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">About</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">m</span><span style="color: light-dark(#1E66F5, #8AADF4);">enu</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  m</span><span style="color: light-dark(#1E66F5, #8AADF4);">ain</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">About</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    w</span><span style="color: light-dark(#1E66F5, #8AADF4);">eight</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span></code></pre><h3 id="render-menu">Render Menu<a class="zola-anchor" href="#render-menu" aria-label="Anchor link for: render-menu">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">nav</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ range .Site.Menus.main }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ .URL }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ .Name }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">nav</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h2 id="data-files">Data Files<a class="zola-anchor" href="#data-files" aria-label="Anchor link for: data-files">🔗</a></h2>
+<h3 id="json-data-file-data-authors-json">JSON Data File (data/authors.json)<a class="zola-anchor" href="#json-data-file-data-authors-json" aria-label="Anchor link for: json-data-file-data-authors-json">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="json"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">john</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">name</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">John Doe</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">bio</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Software Developer</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">twitter</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">@johndoe</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  }</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">jane</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">name</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Jane Smith</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">bio</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Designer</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">twitter</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">@janesmith</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="use-in-templates">Use in Templates<a class="zola-anchor" href="#use-in-templates" aria-label="Anchor link for: use-in-templates">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ $author := index .Site.Data.authors .Params.author }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">author</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">h3</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ $author.name }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">h3</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ $author.bio }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://twitter.com/{{ $author.twitter }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>Twitter</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h3 id="yaml-data-file-data-social-yaml">YAML Data File (data/social.yaml)<a class="zola-anchor" href="#yaml-data-file-data-social-yaml" aria-label="Anchor link for: yaml-data-file-data-social-yaml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">witter</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttps://twitter.com/username</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">g</span><span style="color: light-dark(#1E66F5, #8AADF4);">ithub</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttps://github.com/username</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">l</span><span style="color: light-dark(#1E66F5, #8AADF4);">inkedin</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttps://linkedin.com/in/username</span></span></code></pre><h3 id="use-in-templates-1">Use in Templates<a class="zola-anchor" href="#use-in-templates-1" aria-label="Anchor link for: use-in-templates-1">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#DF8E1D, #EED49F);"> class</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">social</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ range $name, $url := .Site.Data.social }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">    &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#DF8E1D, #EED49F);"> href</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ $url }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span>{{ $name }}</span><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">&lt;/</span><span style="color: light-dark(#1E66F5, #8AADF4);">div</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span></code></pre><h2 id="image-processing">Image Processing<a class="zola-anchor" href="#image-processing" aria-label="Anchor link for: image-processing">🔗</a></h2>
+<h3 id="using-page-resources">Using Page Resources<a class="zola-anchor" href="#using-page-resources" aria-label="Anchor link for: using-page-resources">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ with .Resources.GetMatch &quot;featured.jpg&quot; }}</span></span>
+<span class="giallo-l"><span>  {{ $image := .Resize &quot;600x&quot; }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">  &lt;</span><span style="color: light-dark(#1E66F5, #8AADF4);">img</span><span style="color: light-dark(#DF8E1D, #EED49F);"> src</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ $image.RelPermalink }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> width</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ $image.Width }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#DF8E1D, #EED49F);"> height</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ $image.Height }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span></span>
+<span class="giallo-l"><span>{{ end }}</span></span></code></pre><h3 id="image-operations">Image Operations<a class="zola-anchor" href="#image-operations" aria-label="Anchor link for: image-operations">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="html"><span class="giallo-l"><span>{{ $image := resources.Get &quot;images/photo.jpg&quot; }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Resize </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ $resized := $image.Resize &quot;600x&quot; }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fit (crop to exact dimensions) </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ $fitted := $image.Fit &quot;300x300&quot; }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fill (crop and resize) </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ $filled := $image.Fill &quot;400x300&quot; }}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">&lt;!--</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Filters </span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">--&gt;</span></span>
+<span class="giallo-l"><span>{{ $grayscale := $image | images.Grayscale }}</span></span>
+<span class="giallo-l"><span>{{ $blurred := $image | images.GaussianBlur 5 }}</span></span></code></pre><h2 id="deployment">Deployment<a class="zola-anchor" href="#deployment" aria-label="Anchor link for: deployment">🔗</a></h2>
+<h3 id="build-for-production">Build for Production<a class="zola-anchor" href="#build-for-production" aria-label="Anchor link for: build-for-production">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Basic build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build with minification</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-minify</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set base URL</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-baseURL</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/</span></span></code></pre><h3 id="deploy-to-netlify">Deploy to Netlify<a class="zola-anchor" href="#deploy-to-netlify" aria-label="Anchor link for: deploy-to-netlify">🔗</a></h3>
+<p><strong>netlify.toml:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="toml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>build</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  publish</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">public</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>  command</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">hugo --gc --minify</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[</span><span>build</span><span>.</span><span>environment</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span>  HUGO_VERSION</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.121.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>  HUGO_ENV</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">production</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">[[</span><span>redirects</span><span style="color: light-dark(#7C7F93, #939AB7);">]]</span></span>
+<span class="giallo-l"><span>  from</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/old-path</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>  to</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/new-path</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span>  status</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 301</span></span></code></pre><h3 id="deploy-to-github-pages">Deploy to GitHub Pages<a class="zola-anchor" href="#deploy-to-github-pages" aria-label="Anchor link for: deploy-to-github-pages">🔗</a></h3>
+<p><strong>.github/workflows/hugo.yml:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> D</span><span style="color: light-dark(#40A02B, #A6DA95);">eploy Hugo site to Pages</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#FE640B, #F5A97F);">on</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ush</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    b</span><span style="color: light-dark(#1E66F5, #8AADF4);">ranches</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">main</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  w</span><span style="color: light-dark(#1E66F5, #8AADF4);">orkflow_dispatch</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ermissions</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  c</span><span style="color: light-dark(#1E66F5, #8AADF4);">ontents</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> r</span><span style="color: light-dark(#40A02B, #A6DA95);">ead</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ages</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> w</span><span style="color: light-dark(#40A02B, #A6DA95);">rite</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  i</span><span style="color: light-dark(#1E66F5, #8AADF4);">d-token</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> w</span><span style="color: light-dark(#40A02B, #A6DA95);">rite</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">j</span><span style="color: light-dark(#1E66F5, #8AADF4);">obs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  b</span><span style="color: light-dark(#1E66F5, #8AADF4);">uild</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">uns-on</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> u</span><span style="color: light-dark(#40A02B, #A6DA95);">buntu-latest</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">teps</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> C</span><span style="color: light-dark(#40A02B, #A6DA95);">heckout</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ctions/checkout@v4</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        w</span><span style="color: light-dark(#1E66F5, #8AADF4);">ith</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ubmodules</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> r</span><span style="color: light-dark(#40A02B, #A6DA95);">ecursive</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">etup Hugo</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">eaceiris/actions-hugo@v2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        w</span><span style="color: light-dark(#1E66F5, #8AADF4);">ith</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          h</span><span style="color: light-dark(#1E66F5, #8AADF4);">ugo-version</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">latest</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xtended</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> B</span><span style="color: light-dark(#40A02B, #A6DA95);">uild</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        r</span><span style="color: light-dark(#1E66F5, #8AADF4);">un</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ugo --minify</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> U</span><span style="color: light-dark(#40A02B, #A6DA95);">pload artifact</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ctions/upload-pages-artifact@v3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        w</span><span style="color: light-dark(#1E66F5, #8AADF4);">ith</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ath</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span><span style="color: light-dark(#40A02B, #A6DA95);">/public</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  d</span><span style="color: light-dark(#1E66F5, #8AADF4);">eploy</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    e</span><span style="color: light-dark(#1E66F5, #8AADF4);">nvironment</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">ithub-pages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">rl</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> $</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ steps.deployment.outputs.page_url }}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">uns-on</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> u</span><span style="color: light-dark(#40A02B, #A6DA95);">buntu-latest</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    n</span><span style="color: light-dark(#1E66F5, #8AADF4);">eeds</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> b</span><span style="color: light-dark(#40A02B, #A6DA95);">uild</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">teps</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> D</span><span style="color: light-dark(#40A02B, #A6DA95);">eploy to GitHub Pages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        i</span><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> d</span><span style="color: light-dark(#40A02B, #A6DA95);">eployment</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ctions/deploy-pages@v4</span></span></code></pre><h3 id="deploy-to-vercel">Deploy to Vercel<a class="zola-anchor" href="#deploy-to-vercel" aria-label="Anchor link for: deploy-to-vercel">🔗</a></h3>
+<p><strong>vercel.json:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="json"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">build</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">env</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      &quot;</span><span style="color: light-dark(#1E66F5, #8AADF4);">HUGO_VERSION</span><span style="color: light-dark(#7C7F93, #939AB7);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.121.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="deploy-to-cloudflare-pages">Deploy to Cloudflare Pages<a class="zola-anchor" href="#deploy-to-cloudflare-pages" aria-label="Anchor link for: deploy-to-cloudflare-pages">🔗</a></h3>
+<p>Build settings:</p>
+<ul>
+<li>Build command: <code>hugo --minify</code></li>
+<li>Build output directory: <code>public</code></li>
+</ul>
+<h2 id="command-line">Command Line<a class="zola-anchor" href="#command-line" aria-label="Anchor link for: command-line">🔗</a></h2>
+<h3 id="common-commands">Common Commands<a class="zola-anchor" href="#common-commands" aria-label="Anchor link for: common-commands">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create new site</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> site</span><span style="color: light-dark(#40A02B, #A6DA95);"> mysite</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create new content</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> posts/my-post.md</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Start dev server</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Start with drafts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">D</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build site</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build with options</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-minify</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-gc</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List content</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> all</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> drafts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> future</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> config</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create new theme</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> theme</span><span style="color: light-dark(#40A02B, #A6DA95);"> mytheme</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Convert content</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> convert</span><span style="color: light-dark(#40A02B, #A6DA95);"> toTOML</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> convert</span><span style="color: light-dark(#40A02B, #A6DA95);"> toYAML</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> convert</span><span style="color: light-dark(#40A02B, #A6DA95);"> toJSON</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run benchmarks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> benchmark</span></span></code></pre><h3 id="environment-variables">Environment Variables<a class="zola-anchor" href="#environment-variables" aria-label="Anchor link for: environment-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set environment</span></span>
+<span class="giallo-l"><span>HUGO_ENV</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> hugo</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set log level</span></span>
+<span class="giallo-l"><span>HUGO_LOG_LEVEL</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">b</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);">g</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="content-organization-1">Content Organization<a class="zola-anchor" href="#content-organization-1" aria-label="Anchor link for: content-organization-1">🔗</a></h3>
+<ul>
+<li>Use page bundles for posts with images</li>
+<li>Organize content into logical sections</li>
+<li>Use consistent front matter</li>
+<li>Add descriptions for SEO</li>
+</ul>
+<h3 id="performance">Performance<a class="zola-anchor" href="#performance" aria-label="Anchor link for: performance">🔗</a></h3>
+<ul>
+<li>Optimize images before adding to <code>static/</code></li>
+<li>Use Hugo’s image processing for responsive images</li>
+<li>Minify output with <code>hugo --minify</code></li>
+<li>Use <code>--gc</code> flag to clean cache</li>
+</ul>
+<h3 id="development">Development<a class="zola-anchor" href="#development" aria-label="Anchor link for: development">🔗</a></h3>
+<ul>
+<li>Use <code>hugo server -D</code> during development</li>
+<li>Test with different base URLs</li>
+<li>Version control your theme</li>
+<li>Use <code>.gitignore</code> for <code>public/</code> and <code>resources/</code></li>
+</ul>
+<h3 id="templates-1">Templates<a class="zola-anchor" href="#templates-1" aria-label="Anchor link for: templates-1">🔗</a></h3>
+<ul>
+<li>Keep templates DRY (Don’t Repeat Yourself)</li>
+<li>Use partials for reusable components</li>
+<li>Cache partial results when possible</li>
+<li>Use <code>.Scratch</code> for complex operations</li>
+</ul>
+<h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li>Official documentation: https://gohugo.io/documentation/</li>
+<li>Themes: https://themes.gohugo.io/</li>
+<li>Community forum: https://discourse.gohugo.io/</li>
+<li>GitHub: https://github.com/gohugoio/hugo</li>
+<li>Quick start: https://gohugo.io/getting-started/quick-start/</li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">C# &amp; .NET</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/golang/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">Go (Golang)</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#installation">Installation</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#macos">macOS</a></li>
+                  
+                    <li class="toc__subitem"><a href="#linux">Linux</a></li>
+                  
+                    <li class="toc__subitem"><a href="#windows">Windows</a></li>
+                  
+                    <li class="toc__subitem"><a href="#from-binary">From Binary</a></li>
+                  
+                    <li class="toc__subitem"><a href="#verify-installation">Verify Installation</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#quick-start">Quick Start</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-new-site">Create New Site</a></li>
+                  
+                    <li class="toc__subitem"><a href="#initialize-git">Initialize Git</a></li>
+                  
+                    <li class="toc__subitem"><a href="#add-a-theme">Add a Theme</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-content">Create Content</a></li>
+                  
+                    <li class="toc__subitem"><a href="#start-development-server">Start Development Server</a></li>
+                  
+                    <li class="toc__subitem"><a href="#build-site">Build Site</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#directory-structure">Directory Structure</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#configuration">Configuration</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#configuration-file-hugo-toml">Configuration File (hugo.toml)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#configuration-yaml">Configuration (YAML)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#important-configuration-options">Important Configuration Options</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#front-matter">Front Matter</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#yaml-front-matter">YAML Front Matter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#toml-front-matter">TOML Front Matter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#json-front-matter">JSON Front Matter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#common-front-matter-variables">Common Front Matter Variables</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#content-management">Content Management</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-content-1">Create Content</a></li>
+                  
+                    <li class="toc__subitem"><a href="#content-organization">Content Organization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#page-bundles">Page Bundles</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#archetypes">Archetypes</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#default-archetype-archetypes-default-md">Default Archetype (archetypes/default.md)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#custom-archetype-archetypes-posts-md">Custom Archetype (archetypes/posts.md)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#use-custom-archetype">Use Custom Archetype</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#templates">Templates</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-template-structure">Basic Template Structure</a></li>
+                  
+                    <li class="toc__subitem"><a href="#base-template-baseof-html">Base Template (baseof.html)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#single-page-template-single-html">Single Page Template (single.html)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#list-template-list-html">List Template (list.html)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#home-page-template-index-html">Home Page Template (index.html)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#partial-template-partials-header-html">Partial Template (partials/header.html)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#variables">Variables</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#site-variables">Site Variables</a></li>
+                  
+                    <li class="toc__subitem"><a href="#page-variables">Page Variables</a></li>
+                  
+                    <li class="toc__subitem"><a href="#page-collections">Page Collections</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#functions">Functions</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#common-functions">Common Functions</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#shortcodes">Shortcodes</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#built-in-shortcodes">Built-in Shortcodes</a></li>
+                  
+                    <li class="toc__subitem"><a href="#custom-shortcode-layouts-shortcodes-button-html">Custom Shortcode (layouts/shortcodes/button.html)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#shortcode-with-named-parameters">Shortcode with Named Parameters</a></li>
+                  
+                    <li class="toc__subitem"><a href="#shortcode-with-positional-parameters">Shortcode with Positional Parameters</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#taxonomies">Taxonomies</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#configure-taxonomies-hugo-toml">Configure Taxonomies (hugo.toml)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#use-in-front-matter">Use in Front Matter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#list-taxonomy-terms">List Taxonomy Terms</a></li>
+                  
+                    <li class="toc__subitem"><a href="#display-terms-on-page">Display Terms on Page</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#menus">Menus</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#configure-in-hugo-toml">Configure in hugo.toml</a></li>
+                  
+                    <li class="toc__subitem"><a href="#configure-in-front-matter">Configure in Front Matter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#render-menu">Render Menu</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#data-files">Data Files</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#json-data-file-data-authors-json">JSON Data File (data/authors.json)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#use-in-templates">Use in Templates</a></li>
+                  
+                    <li class="toc__subitem"><a href="#yaml-data-file-data-social-yaml">YAML Data File (data/social.yaml)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#use-in-templates-1">Use in Templates</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#image-processing">Image Processing</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#using-page-resources">Using Page Resources</a></li>
+                  
+                    <li class="toc__subitem"><a href="#image-operations">Image Operations</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#deployment">Deployment</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#build-for-production">Build for Production</a></li>
+                  
+                    <li class="toc__subitem"><a href="#deploy-to-netlify">Deploy to Netlify</a></li>
+                  
+                    <li class="toc__subitem"><a href="#deploy-to-github-pages">Deploy to GitHub Pages</a></li>
+                  
+                    <li class="toc__subitem"><a href="#deploy-to-vercel">Deploy to Vercel</a></li>
+                  
+                    <li class="toc__subitem"><a href="#deploy-to-cloudflare-pages">Deploy to Cloudflare Pages</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#command-line">Command Line</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#common-commands">Common Commands</a></li>
+                  
+                    <li class="toc__subitem"><a href="#environment-variables">Environment Variables</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#content-organization-1">Content Organization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#performance">Performance</a></li>
+                  
+                    <li class="toc__subitem"><a href="#development">Development</a></li>
+                  
+                    <li class="toc__subitem"><a href="#templates-1">Templates</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

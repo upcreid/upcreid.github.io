@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>/void !</title>
+    <subtitle>Personal documentation - Guides, cheat sheets and technical resources</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://upcreid.github.io/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://upcreid.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-10-13T09:00:00+02:00</updated>
+    <id>https://upcreid.github.io/atom.xml</id>
+    <entry xml:lang="en">
+        <title>DeepSeek Flash 4.1: the open source model putting pressure on the American players</title>
+        <published>2026-10-13T09:00:00+02:00</published>
+        <updated>2026-10-13T09:00:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/deepseek-flash-4-1/"/>
+        <id>https://upcreid.github.io/blog/deepseek-flash-4-1/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/deepseek-flash-4-1/">&lt;p&gt;Let me be blunt: DeepSeek’s latest model, Flash 4.1, kind of blew my mind.&lt;/p&gt;
+&lt;p&gt;We’re used to DeepSeek shipping solid models at ridiculous prices. But this time, they went one step further, and not a small one.&lt;/p&gt;
+&lt;h3 id=&quot;open-source-for-real&quot;&gt;Open source, for real&lt;a class=&quot;zola-anchor&quot; href=&quot;#open-source-for-real&quot; aria-label=&quot;Anchor link for: open-source-for-real&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The first thing is that Flash 4.1 is &lt;strong&gt;open source&lt;/strong&gt;. Not “half open weights”, not “open but with a license that forbids you from using it for work”. No: the weights are there, you can download them, host them yourself, fine-tune them, run them on your own infra.&lt;/p&gt;
+&lt;p&gt;That’s a huge difference. When you depend on a closed API, you depend on someone else: their prices, their terms, their outages, their dumb model changes that break your production overnight. Here, you stay in control.&lt;/p&gt;
+&lt;h3 id=&quot;and-the-price&quot;&gt;And the price…&lt;a class=&quot;zola-anchor&quot; href=&quot;#and-the-price&quot; aria-label=&quot;Anchor link for: and-the-price&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;That’s the second point, and probably the most annoying one for the competition.&lt;/p&gt;
+&lt;p&gt;Flash 4.1 costs &lt;strong&gt;a fraction of what the American models charge&lt;/strong&gt;, for a level of quality that, honestly, has little left to envy them for on most everyday tasks. Generating code, writing, summarizing, extracting data, holding a conversation: for 90% of real use cases, the difference has become hard to justify.&lt;/p&gt;
+&lt;p&gt;When an open, nearly free model does the same job as a closed model billed ten times more, at some point you need a real reason to pay. “It’s a US model” is no longer one.&lt;/p&gt;
+&lt;h3 id=&quot;real-competition-for-the-american-models&quot;&gt;Real competition for the American models&lt;a class=&quot;zola-anchor&quot; href=&quot;#real-competition-for-the-american-models&quot; aria-label=&quot;Anchor link for: real-competition-for-the-american-models&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;That’s where it gets interesting. The big American players (OpenAI, Anthropic, Google) built their business on two pillars: performance, and being the only ones able to deliver it.&lt;/p&gt;
+&lt;p&gt;The first pillar still holds, but less and less. The second one is collapsing.&lt;/p&gt;
+&lt;p&gt;Because DeepSeek’s strategy is brutal: they publish openly, they slash prices, and they force everyone to go back to the drawing board. Other labs now have to either lower their rates or justify added value that no longer exists for most customers. That’s enormous pressure, and it comes from a player that, only a few years ago, wasn’t even in the race.&lt;/p&gt;
+&lt;h3 id=&quot;what-it-changes-for-us&quot;&gt;What it changes for us&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-it-changes-for-us&quot; aria-label=&quot;Anchor link for: what-it-changes-for-us&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Concretely, for someone like me who tinkers with projects, writes scripts, and uses AI to rough out work: it means we can stop counting every token as if it were gold.&lt;/p&gt;
+&lt;p&gt;We can test, make mistakes, iterate, and re-run generations without it hurting our wallet. We can also host the model ourselves if we have sensitive data and don’t want to send it off to a third-party provider. In short, we get control back.&lt;/p&gt;
+&lt;h3 id=&quot;fair-warning-though&quot;&gt;Fair warning, though&lt;a class=&quot;zola-anchor&quot; href=&quot;#fair-warning-though&quot; aria-label=&quot;Anchor link for: fair-warning-though&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I’m not going to fall into fanboyism either. An open source model means &lt;strong&gt;you&lt;/strong&gt; handle the infra, the updates, the security. It’s not magic. And on the most demanding tasks, the American frontier models still keep a lead.&lt;/p&gt;
+&lt;p&gt;But for everything else, the question is no longer “is open source good enough?”. The question has become “why would I pay full price for this?”.&lt;/p&gt;
+&lt;h3 id=&quot;in-short&quot;&gt;In short&lt;a class=&quot;zola-anchor&quot; href=&quot;#in-short&quot; aria-label=&quot;Anchor link for: in-short&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Flash 4.1 isn’t just a good model. It’s a signal: quality is becoming commoditized, prices are collapsing, and the closed American models are going to have to learn to live with competition they no longer control.&lt;/p&gt;
+&lt;p&gt;And honestly, that’s good news for everyone. Except for their margins.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>From « Code Monkey » to Systemic Orchestrator: how the developer job is changing</title>
+        <published>2026-09-19T15:30:00+02:00</published>
+        <updated>2026-09-19T15:30:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/code-monkey-to-systemic-orchestrator/"/>
+        <id>https://upcreid.github.io/blog/code-monkey-to-systemic-orchestrator/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/code-monkey-to-systemic-orchestrator/">&lt;p&gt;For a long time, a developer’s daily life often came down to one thing: turning an idea into lines of code by hand, loop by loop, semicolon by semicolon.&lt;/p&gt;
+&lt;p&gt;Today, any LLM can generate a function or a UI in three seconds. Typing code by the mile no longer has any value. The job isn’t dead, but its focus is shifting radically.&lt;/p&gt;
+&lt;h3 id=&quot;less-syntax-more-judgment&quot;&gt;Less syntax, more judgment&lt;a class=&quot;zola-anchor&quot; href=&quot;#less-syntax-more-judgment&quot; aria-label=&quot;Anchor link for: less-syntax-more-judgment&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Generating code has become free. Maintaining and understanding it remains costly. Day to day, our time no longer goes into hunting for syntax or boilerplate code, but into three essential topics:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Expressing the need clearly&lt;/strong&gt;: If the instruction is vague, the AI produces a bad solution in a flash. Precision in modeling and business rules matters more than ever.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reviewing with a critical eye&lt;/strong&gt;: Generated code often looks clean at first glance. That’s misleading: edge cases, security holes, or logical nonsense hide easily inside it. Our main role has become that of a ruthless reviewer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardening the tests&lt;/strong&gt;: To trust code you didn’t type yourself, you need solid tests (unit, integration, strict typing). The test harness becomes our safety net.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;the-big-picture-rather-than-the-isolated-brick&quot;&gt;The big picture rather than the isolated brick&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-big-picture-rather-than-the-isolated-brick&quot; aria-label=&quot;Anchor link for: the-big-picture-rather-than-the-isolated-brick&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;AI is good at coding one specific function, but it has a short memory and doesn’t see the big picture. Architecture choices, module breakdown, infra cost management, and database consistency remain purely human decisions.&lt;/p&gt;
+&lt;p&gt;If you let agents stack code without any control, you quickly end up with an unmanageable codebase that nobody masters: tech debt on autopilot.&lt;/p&gt;
+&lt;h3 id=&quot;what-about-beginners&quot;&gt;What about beginners?&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-about-beginners&quot; aria-label=&quot;Anchor link for: what-about-beginners&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;That’s probably the real pain point. You used to become senior by breaking things and spending nights hunting for a bug in your own code.&lt;/p&gt;
+&lt;p&gt;For a junior today, the trap is using AI as a crutch without ever understanding what runs under the hood. The key to learning is shifting: it’s less about writing from a blank page than about learning to read, debug, and challenge what gets generated.&lt;/p&gt;
+&lt;h3 id=&quot;in-short&quot;&gt;In short&lt;a class=&quot;zola-anchor&quot; href=&quot;#in-short&quot; aria-label=&quot;Anchor link for: in-short&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The job doesn’t disappear, it sheds its most mechanical part. Less time wasted on basic plumbing, more energy invested in design, robustness, and value for the user.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Alacritty: my everyday terminal ⚡</title>
+        <published>2026-09-19T15:00:00+02:00</published>
+        <updated>2026-09-19T15:00:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/alacritty-terminal/"/>
+        <id>https://upcreid.github.io/blog/alacritty-terminal/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/alacritty-terminal/">&lt;p&gt;I do more and more things from the terminal. For that everyday use, I needed an ultra-efficient tool: &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://alacritty.org/&quot;&gt;Alacritty&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Day to day, &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/alacritty/alacritty&quot;&gt;Alacritty&lt;/a&gt; has become indispensable. Written in Rust and GPU-accelerated, it goes straight to the point.&lt;/p&gt;
+&lt;p&gt;What wins me over:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;🛡️ &lt;strong&gt;Robustness&lt;/strong&gt;: Exemplary stability, it never crashes even under heavy load.&lt;/li&gt;
+&lt;li&gt;⚡ &lt;strong&gt;Speed&lt;/strong&gt;: GPU rendering means instant keystrokes.&lt;/li&gt;
+&lt;li&gt;⚙️ &lt;strong&gt;Simplicity&lt;/strong&gt;: A minimalistic, clear configuration file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A must-have when you live in the terminal!&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Herdr: the terminal multiplexer built for AI agents 🤖</title>
+        <published>2026-09-19T14:30:00+02:00</published>
+        <updated>2026-09-19T14:30:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/herdr-terminal-multiplexer/"/>
+        <id>https://upcreid.github.io/blog/herdr-terminal-multiplexer/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/herdr-terminal-multiplexer/">&lt;p&gt;With the rise of AI coding agents (Claude Code, GitHub Copilot CLI, Cursor Agent…), the way we work in the terminal is changing fast. Running several agents in parallel inside a classic multiplexer (like &lt;code&gt;tmux&lt;/code&gt; or &lt;code&gt;zellij&lt;/code&gt;) quickly becomes messy when you need to track who’s doing what. That’s where &lt;strong&gt;Herdr&lt;/strong&gt; comes in.&lt;/p&gt;
+&lt;h2 id=&quot;what-is-herdr&quot;&gt;What is Herdr?&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-is-herdr&quot; aria-label=&quot;Anchor link for: what-is-herdr&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Herdr&lt;/strong&gt; is a persistent terminal multiplexer built specifically for the age of AI agents. It runs as a background server and adds an &lt;em&gt;agent-aware&lt;/em&gt; management layer on top of your usual PTYs.&lt;/p&gt;
+&lt;h2 id=&quot;what-herdr-lets-you-do&quot;&gt;What Herdr lets you do&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-herdr-lets-you-do&quot; aria-label=&quot;Anchor link for: what-herdr-lets-you-do&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🚦 &lt;strong&gt;Real-time status tracking&lt;/strong&gt;: Herdr automatically detects each agent’s state and displays it clearly (&lt;em&gt;running&lt;/em&gt;, &lt;em&gt;waiting for input&lt;/em&gt;, &lt;em&gt;blocked&lt;/em&gt;, or &lt;em&gt;done&lt;/em&gt;). No more endless scrolling to figure out whether an agent needs you!&lt;/li&gt;
+&lt;li&gt;🔄 &lt;strong&gt;Absolute persistence&lt;/strong&gt;: Your tasks keep running even if you close your terminal window or disconnect an SSH session.&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;API &amp;amp; automation&lt;/strong&gt;: Through its CLI and socket API, agents can themselves interact with the multiplexer (open new tabs, launch sub-tasks).&lt;/li&gt;
+&lt;li&gt;🖥️ &lt;strong&gt;Native terminal&lt;/strong&gt;: It integrates seamlessly with your favorite terminal emulator using standard PTYs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;in-short&quot;&gt;In short&lt;a class=&quot;zola-anchor&quot; href=&quot;#in-short&quot; aria-label=&quot;Anchor link for: in-short&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you use AI agents in the CLI every day for your projects and want to maximize your productivity without losing track, &lt;strong&gt;Herdr&lt;/strong&gt; is a tool you should try right away.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Criteo — SRE</title>
+        <published>2022-01-01T00:00:00+00:00</published>
+        <updated>2022-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/criteo-sre/"/>
+        <id>https://upcreid.github.io/who/criteo-sre/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/criteo-sre/">&lt;p&gt;I joined the Criteo Webapps scope as an SRE. Keeping a large-scale platform reliable is a daily job, and most of it happens before anything breaks. Between two incidents, I write code, migrate systems and try to make deployments boring.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Keep the Criteo Client API available and healthy&lt;/li&gt;
+&lt;li&gt;Write and maintain services in C#, Go and Python&lt;/li&gt;
+&lt;li&gt;Take part in the Flink migration&lt;/li&gt;
+&lt;li&gt;Build continuous deployment so changes ship safely&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git, gerrit, chef, mesos, jenkins&lt;/li&gt;
+&lt;li&gt;grafana, kibana, ELK, opsgenie&lt;/li&gt;
+&lt;li&gt;Python (Flask, Django), Go, C#, Java, Scala&lt;/li&gt;
+&lt;li&gt;Couchbase, Memcached, Mssql, MariaDB&lt;/li&gt;
+&lt;li&gt;Hadoop, Hive, Kafka, protobuf, parquet&lt;/li&gt;
+&lt;li&gt;kerberos, ldap, slack, jira, confluence&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Rust app in terminal 🖥️</title>
+        <published>2021-07-08T09:19:42+01:00</published>
+        <updated>2021-07-08T09:19:42+01:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/rust-application-in-the-terminal/"/>
+        <id>https://upcreid.github.io/blog/rust-application-in-the-terminal/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/rust-application-in-the-terminal/">&lt;p&gt;Rust is awesome.&lt;/p&gt;
+&lt;p&gt;Recently i found some great application for the terminal.&lt;/p&gt;
+&lt;h2 id=&quot;fd&quot;&gt;&lt;code&gt;fd&lt;/code&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#fd&quot; aria-label=&quot;Anchor link for: fd&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/sharkdp/fd&quot;&gt;find alternative&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;exa&quot;&gt;&lt;code&gt;exa&lt;/code&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#exa&quot; aria-label=&quot;Anchor link for: exa&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/ogham/exa&quot;&gt;ls alternative&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;dust&quot;&gt;&lt;code&gt;dust&lt;/code&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#dust&quot; aria-label=&quot;Anchor link for: dust&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/bootandy/dust&quot;&gt;bored of du ?&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;alacritty&quot;&gt;&lt;code&gt;alacritty&lt;/code&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#alacritty&quot; aria-label=&quot;Anchor link for: alacritty&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/alacritty/alacritty&quot;&gt;quickTerm&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;spotify-tui&quot;&gt;&lt;code&gt;spotify-tui&lt;/code&gt;&lt;a class=&quot;zola-anchor&quot; href=&quot;#spotify-tui&quot; aria-label=&quot;Anchor link for: spotify-tui&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/Rigellute/spotify-tui&quot;&gt;Spotify in the terminal&lt;/a&gt;&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>🚧 Gitlab and Github pages handling the same code 🤓</title>
+        <published>2021-04-11T09:19:42+01:00</published>
+        <updated>2022-04-11T09:19:42+01:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/gitlab-and-github-push-the-same-time/"/>
+        <id>https://upcreid.github.io/blog/gitlab-and-github-push-the-same-time/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/gitlab-and-github-push-the-same-time/">&lt;p&gt;Hello,&lt;/p&gt;
+&lt;p&gt;A small trick to have your static website hosted on github + gitlab, with the same source code.&lt;/p&gt;
+&lt;p&gt;Why ? If one fall of course ! :D
+And also because it’s fun, at least i think it’s fun :)&lt;/p&gt;
+&lt;h2 id=&quot;gitlab-master&quot;&gt;Gitlab - Master&lt;a class=&quot;zola-anchor&quot; href=&quot;#gitlab-master&quot; aria-label=&quot;Anchor link for: gitlab-master&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;create our static website repo&lt;/li&gt;
+&lt;li&gt;add web stuff inside the repo&lt;/li&gt;
+&lt;li&gt;configure CI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;create-our-static-website-repo&quot;&gt;create our static website repo&lt;a class=&quot;zola-anchor&quot; href=&quot;#create-our-static-website-repo&quot; aria-label=&quot;Anchor link for: create-our-static-website-repo&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;let’s pretend our repo name is &lt;code&gt;upcreid.gitlab.io&lt;/code&gt; and it’s a &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://gohugo.io/&quot;&gt;hugo&lt;/a&gt; static website.
+Let’s create it and make it public&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/glrepocreation.png&quot; alt=&quot;glrepocreation&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;then the usual stuff:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; clone&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; git@gitlab.com:upcreid/upcreid.gitlab.io.git&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#D20F39, #ED8796);font-style: italic;&quot;&gt;cd&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; upcreid.gitlab.io&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;touch&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; README.md&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; README.md&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;add README&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;u&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; master&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;create-gh-pages-branch&quot;&gt;create gh-pages branch&lt;a class=&quot;zola-anchor&quot; href=&quot;#create-gh-pages-branch&quot; aria-label=&quot;Anchor link for: create-gh-pages-branch&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;before going further we’ll need to create a gh-pages branch on gitlab side, this in order to not break the CI when pushing without a gh-pages branch.&lt;/p&gt;
+&lt;p&gt;Go then !&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; checkout&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-orphan&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; gh-pages&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; rm&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-cached&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;r&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;new gh-pages branch&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-allow-empty&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; gh-pages&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;go back to master&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; checkout&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; master&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;add-web-stuff-inside-the-repo&quot;&gt;add web stuff inside the repo&lt;a class=&quot;zola-anchor&quot; href=&quot;#add-web-stuff-inside-the-repo&quot; aria-label=&quot;Anchor link for: add-web-stuff-inside-the-repo&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Ok, now let’s add some code inside to have some static shit in there.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://gohugo.io/getting-started/quick-start/&quot;&gt;hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create new site&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;hugo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; new&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; site&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-force&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Install a theme&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; submodule&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; https://github.com/theNewDynamic/gohugo-theme-ananke.git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; themes/ananke&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;add the theme, name and remove baseURL to the conf file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#D20F39, #ED8796);font-style: italic;&quot;&gt;echo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; $&amp;#39;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;languageCode = \&amp;quot;en-us\&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;\n&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;title = \&amp;quot;upcreid.gitlab.io\&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;\n&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;theme = \&amp;quot;ananke\&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt; &amp;gt;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; config.toml&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Start the server to verify if everythin goes ok&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;hugo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; server&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;add basic hugo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;configure-ci&quot;&gt;configure CI&lt;a class=&quot;zola-anchor&quot; href=&quot;#configure-ci&quot; aria-label=&quot;Anchor link for: configure-ci&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Complicated !&lt;/p&gt;
+&lt;p&gt;Just add one more file to the repo…&lt;/p&gt;
+&lt;p&gt;.gitlab-ci.yml&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;image:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; registry.gitlab.com/pages/hugo:latest&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;variables:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  GIT_SUBMODULE_STRATEGY:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; recursive&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;pages:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  script:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; hugo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;b&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;https://upcreid.gitlab.io&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  artifacts:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    paths:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; public&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  only:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; master&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Commit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;add basic hugo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and voila =&amp;gt; &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://upcreid.gitlab.io&quot;&gt;https://upcreid.gitlab.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now, let’s handle github.&lt;/p&gt;
+&lt;h2 id=&quot;github-mirror&quot;&gt;Github - Mirror&lt;a class=&quot;zola-anchor&quot; href=&quot;#github-mirror&quot; aria-label=&quot;Anchor link for: github-mirror&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;create our static website repo&lt;/li&gt;
+&lt;li&gt;branch configuration&lt;/li&gt;
+&lt;li&gt;git mirror&lt;/li&gt;
+&lt;li&gt;configure CI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;create-our-static-website-repo-1&quot;&gt;create our static website repo&lt;a class=&quot;zola-anchor&quot; href=&quot;#create-our-static-website-repo-1&quot; aria-label=&quot;Anchor link for: create-our-static-website-repo-1&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/images/ghrepocreation.png&quot; alt=&quot;ghrepocreation&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;branch-configuration&quot;&gt;Branch configuration&lt;a class=&quot;zola-anchor&quot; href=&quot;#branch-configuration&quot; aria-label=&quot;Anchor link for: branch-configuration&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;After creation, create a branch called master. To be in phase with gitlab&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#D20F39, #ED8796);font-style: italic;&quot;&gt;echo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;# upcreid.github.io&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt; &amp;gt;&amp;gt;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; README.md&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; init&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; README.md&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;first commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; branch&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;M&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; master&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; remote&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; git@github.com:upcreid/upcreid.github.io.git&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;u&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; master&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;git-mirror&quot;&gt;Git mirror&lt;a class=&quot;zola-anchor&quot; href=&quot;#git-mirror&quot; aria-label=&quot;Anchor link for: git-mirror&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Main part of this is to trigger the mirroring on gitlab side.
+So inside gitlab repo, simply launch&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; remote&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-mirror=push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; github&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; git@github.com:upcreid/upcreid.github.io.git&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So, we add a remote, and say it’s a mirror (–mirror) and we name it github.&lt;/p&gt;
+&lt;p&gt;Verify&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; remote&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;v&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;you should have something like:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;github&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;  git@github.com:upcreid/upcreid.github.io.git&lt;/span&gt;&lt;span&gt; (fetch&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;github&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;  git@github.com:upcreid/upcreid.github.io.git&lt;/span&gt;&lt;span&gt; (push&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;  git@gitlab.com:upcreid/upcreid.gitlab.io.git&lt;/span&gt;&lt;span&gt; (fetch&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;  git@gitlab.com:upcreid/upcreid.gitlab.io.git&lt;/span&gt;&lt;span&gt; (push&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;configure-ci-1&quot;&gt;configure CI&lt;a class=&quot;zola-anchor&quot; href=&quot;#configure-ci-1&quot; aria-label=&quot;Anchor link for: configure-ci-1&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Then create the github CI file, we’ll use the github actions.
+But we should commit those github action inside the gitlab repo.&lt;/p&gt;
+&lt;p&gt;So inside the gitlab repo aka master, create the following dir/file:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;mkdir&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .github/workflows&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;touch&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .github/workflows/gh-pages.yml&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And inside the gh-pages.yml&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;name:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; github&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; pages&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;on:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  push:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    branches:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;      -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; master&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#D20F39, #ED8796);font-style: italic;&quot;&gt;jobs&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;  deploy:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    runs-on:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; ubuntu-18.04&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    steps:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;      -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; uses:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; actions/checkout@v2&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;        with:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;          submodules:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#FE640B, #F5A97F);&quot;&gt; true&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt;  #&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt; Fetch Hugo themes (true OR recursive)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;          fetch-depth:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#FE640B, #F5A97F);&quot;&gt; 0&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt;    #&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt; Fetch all history for .GitInfo and .Lastmod&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;      -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; name:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; Setup&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; Hugo&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;        uses:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; peaceiris/actions-hugo@v2&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;        with:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;          hugo-version:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;#39;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;0.81.0&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;      -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; name:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; Build&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;        run:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; hugo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;b&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;https://upcreid.github.io&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;      -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; name:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; Deploy&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;        uses:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; peaceiris/actions-gh-pages@v3&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;        with:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;          github_token:&lt;/span&gt;&lt;span&gt; $&lt;/span&gt;&lt;span&gt;{&lt;/span&gt;&lt;span&gt;{ &lt;/span&gt;&lt;span&gt;secrets&lt;/span&gt;&lt;span&gt;.&lt;/span&gt;&lt;span&gt;GITHUB_TOKEN&lt;/span&gt;&lt;span&gt; }&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;          publish_dir:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; ./public&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And commit&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; add&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; .&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;add github CI&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt; &amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt; git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; github&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As you can see, last command is in fact 2 commands. in order to push on gitlab + github.
+Some tricks can be made here to push with one command =&amp;gt; &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://www.google.com&quot;&gt;google&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And that’s it =&amp;gt; &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://upcreid.github.io/&quot;&gt;https://upcreid.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;a class=&quot;zola-anchor&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Since you got 2 remote you’ll need to push to those remote after commiting.&lt;/p&gt;
+&lt;p&gt;you can do that simply with&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; origin&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt; &amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt; git&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; push&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; github&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, nothing more should be done and both CI will be triggered.&lt;/p&gt;
+&lt;p&gt;See you !&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>TheMove 🛴</title>
+        <published>2021-04-08T09:19:42+01:00</published>
+        <updated>2021-04-08T09:19:42+01:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/the-move/"/>
+        <id>https://upcreid.github.io/blog/the-move/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/the-move/">&lt;p&gt;I’ve quit Paris recently, to a more little City.&lt;/p&gt;
+&lt;p&gt;Because of the Covid stuff, but mainly to be closer to the nature.&lt;/p&gt;
+&lt;p&gt;It was in my mind since a long time, and the actual crisis, and my work, give me the opportunity to move away.&lt;/p&gt;
+&lt;p&gt;Remote Work is kind of OK.&lt;/p&gt;
+&lt;p&gt;I’m missing the office, and mainly the people, but since i’m not alone at home, it’s easier to handle.&lt;/p&gt;
+&lt;p&gt;I was kind of afraid at the beginning, but i think i found my rhythm.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Git two accounts alias</title>
+        <published>2019-05-09T00:00:00+00:00</published>
+        <updated>2019-05-09T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/blog/git-two-accounts-alias/"/>
+        <id>https://upcreid.github.io/blog/git-two-accounts-alias/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/blog/git-two-accounts-alias/">&lt;p&gt;Hello,&lt;/p&gt;
+&lt;p&gt;Recently, I was faced with a problem.
+How to manage two git accounts on the same computer?
+I explain myself, a “&lt;code&gt;personal&lt;/code&gt;” account and a “&lt;code&gt;work&lt;/code&gt;” account, on the same computer.
+Yes, I know that working on personal things with work materials is a bad habit … but that’s another question.&lt;/p&gt;
+&lt;p&gt;So, to get rid of just that (I did not invent anything, there are a lot of tutorials on the web), you will need to create a separate directory.
+One for work, one for the person.&lt;/p&gt;
+&lt;p&gt;Regarding git, you will have to manage your \ $ HOME .gitconfig like this:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;[&lt;/span&gt;&lt;span&gt;includeIf &lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;gitdir:~/perso/&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    path&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; ~/perso/.gitconfig&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;[&lt;/span&gt;&lt;span&gt;includeIf &lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;gitdir:~/work/&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    path&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; ~/work/.gitconfig&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;[&lt;/span&gt;&lt;span&gt;user&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So as you see, &lt;strong&gt;[user]&lt;/strong&gt; is not define. So you’ll have to define it in &lt;strong&gt;another&lt;/strong&gt; &lt;code&gt;.gitconfig&lt;/code&gt;.
+So in each directory, create a &lt;code&gt;.gitconfig&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;in the &lt;code&gt;/perso&lt;/code&gt; directory:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;[&lt;/span&gt;&lt;span&gt;user&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;   email&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; perso@perso.com&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;   name&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; name&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;in the &lt;code&gt;/work&lt;/code&gt; directory:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;[&lt;/span&gt;&lt;span&gt;user&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;   email&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; work@work.com&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;   name&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; name&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And that’s it. Each time you’ll go into the folder, your “&lt;code&gt;git user&lt;/code&gt;” will change.&lt;/p&gt;
+&lt;h2 id=&quot;bonus&quot;&gt;Bonus&lt;a class=&quot;zola-anchor&quot; href=&quot;#bonus&quot; aria-label=&quot;Anchor link for: bonus&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Here is my git alias for log:&lt;/p&gt;
+&lt;p&gt;yes there is 3, 3 differents view.&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;[&lt;/span&gt;&lt;span&gt;alias&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    lg1&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; log&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-pretty=format:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;%C(yellow)%h%Cred%d&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;\\&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; %Creset%s%Cblue&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;\\&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; [%cn]&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-decorate&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    lg2&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; log&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-pretty=format:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;%C(yellow)%h%Cred%d&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;\\&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; %Creset%s%Cblue&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;\\&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; [%cn]&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-decorate&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-numstat&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;    l&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; =&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; log&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-graph&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-pretty=tformat:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-abbrev-commit&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;-date=relative&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;See you !&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Criteo — Escalation Engineer</title>
+        <published>2018-02-11T00:00:00+00:00</published>
+        <updated>2018-02-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/criteo/"/>
+        <id>https://upcreid.github.io/who/criteo/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/criteo/">&lt;p&gt;Escalation Engineer is the last line before things go really wrong. The job was to stop the flood, protect the business, and keep developers, support and clients talking to each other — and to write code whenever it actually helped.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Stop the flood and contain incidents&lt;/li&gt;
+&lt;li&gt;Protect the business under pressure&lt;/li&gt;
+&lt;li&gt;Handle incidents end to end&lt;/li&gt;
+&lt;li&gt;Support the development teams&lt;/li&gt;
+&lt;li&gt;Connect the right people with each other&lt;/li&gt;
+&lt;li&gt;Write code whenever I could&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;interview&quot;&gt;Interview&lt;a class=&quot;zola-anchor&quot; href=&quot;#interview&quot; aria-label=&quot;Anchor link for: interview&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I talked about this role in a &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://medium.com/@s.lebreton/f11608526983&quot;&gt;Medium article&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git, gerrit, chef, mesos, jenkins&lt;/li&gt;
+&lt;li&gt;grafana, kibana, ELK, opsgenie&lt;/li&gt;
+&lt;li&gt;Python (Flask, Django), Go, C#, Java, Scala&lt;/li&gt;
+&lt;li&gt;Couchbase, Memcached, Mssql, MariaDB&lt;/li&gt;
+&lt;li&gt;Hadoop, Hive, Kafka, protobuf, parquet&lt;/li&gt;
+&lt;li&gt;kerberos, ldap, slack, jira, confluence&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Veolia — Treasury suite</title>
+        <published>2015-04-11T00:00:00+00:00</published>
+        <updated>2015-04-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/veolia-2017/"/>
+        <id>https://upcreid.github.io/who/veolia-2017/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/veolia-2017/">&lt;p&gt;I was the technical consultant on a treasury management suite (Wallstreet Systems). Over those two years, the platform moved out of its old hosting, got connected to more banks, and had to keep running the whole time.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;analysis-and-delivery&quot;&gt;Analysis and delivery&lt;a class=&quot;zola-anchor&quot; href=&quot;#analysis-and-delivery&quot; aria-label=&quot;Anchor link for: analysis-and-delivery&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Python tooling to inject bulk transactions from CSV for new entities&lt;/li&gt;
+&lt;li&gt;BugZilla migration from Windows to Linux (apache2, mysql, Bugzilla)&lt;/li&gt;
+&lt;li&gt;Accounting exports (xml, xsl) to SAP and SAGE&lt;/li&gt;
+&lt;li&gt;Support for outsourcing the back office (Next → Datalog): MT940, then MT101 / MT210 / MT300&lt;/li&gt;
+&lt;li&gt;Reference data export (banks, entities, accounts) to Datalog&lt;/li&gt;
+&lt;li&gt;FxAll rollout with Reuters and WSS&lt;/li&gt;
+&lt;li&gt;Hosting migration: HP-UX → Linux, ISO environment (PROD replica at D-1, RMAN), network setup (two datacenters, MPLS), operations review&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;continuous-improvement&quot;&gt;Continuous improvement&lt;a class=&quot;zola-anchor&quot; href=&quot;#continuous-improvement&quot; aria-label=&quot;Anchor link for: continuous-improvement&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Development, packaging, integration and delivery&lt;/li&gt;
+&lt;li&gt;Stored procedures to speed up reporting&lt;/li&gt;
+&lt;li&gt;XML framework for banking flows: AFB120, MT101, MT940&lt;/li&gt;
+&lt;li&gt;Change control in SVN&lt;/li&gt;
+&lt;li&gt;SQL tuning (views, indexes, triggers)&lt;/li&gt;
+&lt;li&gt;Reports and activity dashboards in the WSS suite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;HP-UX, Windows Server 2003, Citrix&lt;/li&gt;
+&lt;li&gt;Oracle, SQL Developer, PL/SQL&lt;/li&gt;
+&lt;li&gt;Weblogic, WSS Suite (CMM, TRM, ACM), activeMQ&lt;/li&gt;
+&lt;li&gt;SVN&lt;/li&gt;
+&lt;li&gt;shell, Python, Perl&lt;/li&gt;
+&lt;li&gt;SWIFT Alliance, esiadapter, FTP&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Caisse des dépôts</title>
+        <published>2013-09-11T00:00:00+00:00</published>
+        <updated>2013-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/caisse-des-depots/"/>
+        <id>https://upcreid.github.io/who/caisse-des-depots/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/caisse-des-depots/">&lt;p&gt;A data migration project for a public financial institution: take decades of data out of legacy systems and put it into a clean Oracle database, without losing a single row. Half engineer, half translator between the business and the systems.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;solutions-analyst&quot;&gt;Solutions analyst&lt;a class=&quot;zola-anchor&quot; href=&quot;#solutions-analyst&quot; aria-label=&quot;Anchor link for: solutions-analyst&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Shell scripts to recover legacy data (MVS, DB2, Oracle, Sybase, XML)&lt;/li&gt;
+&lt;li&gt;Clean, enrich and reshape the data before loading&lt;/li&gt;
+&lt;li&gt;Load it into Oracle (reference data, derivations, banking flows)&lt;/li&gt;
+&lt;li&gt;Reconcile counts between source and target&lt;/li&gt;
+&lt;li&gt;Update secure file transfers (CFT)&lt;/li&gt;
+&lt;li&gt;Batch scripting to format data automatically (WinSCP, Excel)&lt;/li&gt;
+&lt;li&gt;Orchestrate the jobs with Control-M&lt;/li&gt;
+&lt;li&gt;Write and tune SQL queries&lt;/li&gt;
+&lt;li&gt;Package everything in a dedicated SVN repository (KSH, SQL, ENV)&lt;/li&gt;
+&lt;li&gt;Train the team on SVN and continuous delivery habits&lt;/li&gt;
+&lt;li&gt;Build shell functions used across the CDC infrastructure&lt;/li&gt;
+&lt;li&gt;Validate deliverables (technical documents, product)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;business-analyst&quot;&gt;Business analyst&lt;a class=&quot;zola-anchor&quot; href=&quot;#business-analyst&quot; aria-label=&quot;Anchor link for: business-analyst&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Run workshops with business teams to define migration rules from source analysis&lt;/li&gt;
+&lt;li&gt;Analyse the data to migrate&lt;/li&gt;
+&lt;li&gt;Define the migration sequence and rules&lt;/li&gt;
+&lt;li&gt;Assist the business teams during acceptance testing&lt;/li&gt;
+&lt;li&gt;Define flow matrices and configure the transfer tools&lt;/li&gt;
+&lt;li&gt;Write documentation and communicate in French and English&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CFT (SOPRA)&lt;/li&gt;
+&lt;li&gt;Unix, KSH, Windows Server 2003, VBS, Citrix, Cisco&lt;/li&gt;
+&lt;li&gt;Oracle, Sybase, MVS, DB2&lt;/li&gt;
+&lt;li&gt;SVN, Quality Center, JIRA, Control-M&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Veolia — Next treasury project</title>
+        <published>2011-08-11T00:00:00+00:00</published>
+        <updated>2011-08-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/veolia-2013/"/>
+        <id>https://upcreid.github.io/who/veolia-2013/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/veolia-2013/">&lt;p&gt;Technical consultant on the Next treasury project (Wallstreet Systems, SwiftNet, Reuters). I owned the production environments and helped carry a major version upgrade all the way from integration to go-live, while keeping support and operations in the loop.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;integration-and-environments&quot;&gt;Integration and environments&lt;a class=&quot;zola-anchor&quot; href=&quot;#integration-and-environments&quot; aria-label=&quot;Anchor link for: integration-and-environments&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Integrate every vendor release across the integration platforms&lt;/li&gt;
+&lt;li&gt;Set up monitoring to see how each delivered version behaves&lt;/li&gt;
+&lt;li&gt;Shell scripts for filesystem checks, log purging and backups&lt;/li&gt;
+&lt;li&gt;Daily database refresh for the data warehouse (RMAN, SQL, shell)&lt;/li&gt;
+&lt;li&gt;Lead the setup of file transfers with other Veolia entities (Dalkia, transport, water…)&lt;/li&gt;
+&lt;li&gt;Build an analysis database from application logs&lt;/li&gt;
+&lt;li&gt;SQL reporting and control queries&lt;/li&gt;
+&lt;li&gt;Manage SVN configuration across INT / REC / VAL / PROD with the VEIT production teams&lt;/li&gt;
+&lt;li&gt;Create SVN branches to track each environment&lt;/li&gt;
+&lt;li&gt;Analyse and set up banking flows&lt;/li&gt;
+&lt;li&gt;Translate user needs into technical specs for the vendor&lt;/li&gt;
+&lt;li&gt;Write functional specs and operations runbooks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tma-l2-l3-support&quot;&gt;TMA / L2-L3 support&lt;a class=&quot;zola-anchor&quot; href=&quot;#tma-l2-l3-support&quot; aria-label=&quot;Anchor link for: tma-l2-l3-support&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Train L2 and L3 support on the new version&lt;/li&gt;
+&lt;li&gt;Write the installation procedure&lt;/li&gt;
+&lt;li&gt;Package deliverables for production&lt;/li&gt;
+&lt;li&gt;Optimise production (SQL analysis, vendor feedback, Oracle and server config)&lt;/li&gt;
+&lt;li&gt;Set up alerting and email notifications&lt;/li&gt;
+&lt;li&gt;Communicate and escalate on incidents&lt;/li&gt;
+&lt;li&gt;Manage disaster recovery plans&lt;/li&gt;
+&lt;li&gt;Adopt ITIL practices (change management)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;HP-UX, Windows Server 2003, Citrix, IIS&lt;/li&gt;
+&lt;li&gt;Oracle 10g, SQL, PL/SQL, SQL Developer&lt;/li&gt;
+&lt;li&gt;Weblogic, Apache, WSS Suite, activeMQ&lt;/li&gt;
+&lt;li&gt;Java, shell, Python, Perl&lt;/li&gt;
+&lt;li&gt;SWIFT Alliance, esiadapter, RMDS, CFT, FTP, Samba&lt;/li&gt;
+&lt;li&gt;SVN, Centreon, ServiceNow&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Accor</title>
+        <published>2007-09-11T00:00:00+00:00</published>
+        <updated>2007-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/accor/"/>
+        <id>https://upcreid.github.io/who/accor/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/accor/">&lt;p&gt;Production analyst in a busy operations cell. My days were about watching, fixing and shipping — making sure applications stayed up, batches ran on time, and the marketing team got its data.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Supervise production and partner interfaces&lt;/li&gt;
+&lt;li&gt;Write operations procedures&lt;/li&gt;
+&lt;li&gt;Test, validate and deploy applications every week&lt;/li&gt;
+&lt;li&gt;Watch, fix and launch daily batches&lt;/li&gt;
+&lt;li&gt;Configure and run Nagios&lt;/li&gt;
+&lt;li&gt;Pull SQL extracts from customer databases for marketing&lt;/li&gt;
+&lt;li&gt;Write and adapt SQL correction scripts&lt;/li&gt;
+&lt;li&gt;Transform and integrate flat files&lt;/li&gt;
+&lt;li&gt;Support users and the dev teams during releases&lt;/li&gt;
+&lt;li&gt;Onboard new members of the team&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Java, Struts, Hibernate, Eclipse, Maven, Archiva, Continuum&lt;/li&gt;
+&lt;li&gt;Debian, Red Hat, Tomcat, Apache, Resin, Joomla&lt;/li&gt;
+&lt;li&gt;Informix, Postgres, Talend, SQuirreL, pgAdmin&lt;/li&gt;
+&lt;li&gt;shell, XSD, XSL&lt;/li&gt;
+&lt;li&gt;CFT, SSH, GPG, SFTP, Crontab, Quartz, Squid&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Opéra National de Paris</title>
+        <published>2005-01-11T00:00:00+00:00</published>
+        <updated>2005-01-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/opera-national-de-paris/"/>
+        <id>https://upcreid.github.io/who/opera-national-de-paris/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/opera-national-de-paris/">&lt;p&gt;Operations technician at the Paris Opera. A small team, critical systems, and a lot of care: the shows had to go on, and the applications behind them had to keep running.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update, query and run recurring jobs on the Opera database&lt;/li&gt;
+&lt;li&gt;Check that applications were running on the servers&lt;/li&gt;
+&lt;li&gt;Manage production backups&lt;/li&gt;
+&lt;li&gt;Write operations procedures&lt;/li&gt;
+&lt;li&gt;Configure the PLEIADES package (requests, EDI, etc.)&lt;/li&gt;
+&lt;li&gt;Write and change SQL queries through Business Objects&lt;/li&gt;
+&lt;li&gt;Develop small Visual Basic applications&lt;/li&gt;
+&lt;li&gt;Support users on an Excel planning macro used by the Opera managers&lt;/li&gt;
+&lt;li&gt;Build mail-merge scripts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Business Objects, PLEIADES&lt;/li&gt;
+&lt;li&gt;Visual Basic, Excel, Word&lt;/li&gt;
+&lt;li&gt;telnet&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Bosch</title>
+        <published>2001-09-11T00:00:00+00:00</published>
+        <updated>2001-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/bosch/"/>
+        <id>https://upcreid.github.io/who/bosch/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/bosch/">&lt;p&gt;Embedded software technician on engine control units. I wrote and tested the engine functions that lived inside the Motronic ECU — code that had to be right long before it ever reached a car.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Analyse and develop engine functions in C/C++ for Motronic&lt;/li&gt;
+&lt;li&gt;Review code for performance&lt;/li&gt;
+&lt;li&gt;Write unit and integration tests&lt;/li&gt;
+&lt;li&gt;Freeze versions before series production&lt;/li&gt;
+&lt;li&gt;Validate on test benches and on vehicles&lt;/li&gt;
+&lt;li&gt;Document each function&lt;/li&gt;
+&lt;li&gt;Write the test methodology&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C, C++, ASM&lt;/li&gt;
+&lt;li&gt;CodeWright&lt;/li&gt;
+&lt;li&gt;Messplatz Labcar (bench lab)&lt;/li&gt;
+&lt;li&gt;in-house tools and software&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Towercast</title>
+        <published>2001-03-11T00:00:00+00:00</published>
+        <updated>2001-03-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/who/towercast/"/>
+        <id>https://upcreid.github.io/who/towercast/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/who/towercast/">&lt;p&gt;My first internship: building a small Windows application to read GPS data. It taught me a lot about serial links, data frames, and keeping an interface readable.&lt;/p&gt;
+&lt;h2 id=&quot;what-i-did&quot;&gt;What I did&lt;a class=&quot;zola-anchor&quot; href=&quot;#what-i-did&quot; aria-label=&quot;Anchor link for: what-i-did&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Understand how the GPS system works&lt;/li&gt;
+&lt;li&gt;Receive NMEA data from a GARMIN GPS over an RS232 serial link&lt;/li&gt;
+&lt;li&gt;Parse and transform the NMEA frames&lt;/li&gt;
+&lt;li&gt;Program the reception in Delphi&lt;/li&gt;
+&lt;li&gt;Build a GUI to make the receiver output readable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;tech-stack&quot;&gt;Tech stack&lt;a class=&quot;zola-anchor&quot; href=&quot;#tech-stack&quot; aria-label=&quot;Anchor link for: tech-stack&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Delphi, Visual Studio&lt;/li&gt;
+&lt;li&gt;RS232 serial link&lt;/li&gt;
+&lt;li&gt;GPS NMEA data&lt;/li&gt;
+&lt;li&gt;GPS technology&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+</feed>

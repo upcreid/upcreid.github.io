@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Macos File System · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/macos-filesystem/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">CheatSheet</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">CheatSheet</a>
+      
+    
+  </nav>
+
+  <h1>Macos File System</h1>
+
+  <p class="page-meta">
+    
+    <span>2 min read</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>macOS uses APFS (Apple File System) by default since macOS High Sierra (10.13). The filesystem structure combines Unix/BSD traditions with Apple-specific directories.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>APFS with snapshots, encryption, and space sharing</li>
+<li>Case-insensitive by default (case-preserving)</li>
+<li>Extended attributes for metadata</li>
+<li>Resource forks (legacy)</li>
+<li>Gatekeeper quarantine attributes</li>
+</ul>
+<h2 id="filesystem-hierarchy">Filesystem Hierarchy<a class="zola-anchor" href="#filesystem-hierarchy" aria-label="Anchor link for: filesystem-hierarchy">🔗</a></h2>
+<h3 id="root-directory">Root Directory (/)<a class="zola-anchor" href="#root-directory" aria-label="Anchor link for: root-directory">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Applications/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">         #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Installed applications</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Library/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System-wide libraries and support files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> System/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> macOS system files (read-only)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Users/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User home directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Volumes/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mounted volumes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> bin</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> usr/bin</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Essential binaries (symlink)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> dev/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Device files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> etc</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> private/etc</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System configuration (symlink)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> home</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> /System/Volumes/Data/home</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Legacy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> opt/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Optional software</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> private/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Private system files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> sbin</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> usr/sbin</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">     #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System binaries (symlink)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> tmp</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> private/tmp</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Temporary files (symlink)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> usr/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Unix system resources</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> var</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> private/var</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Variable data (symlink)</span></span></code></pre><h3 id="applications-installed-apps">/Applications - Installed Apps<a class="zola-anchor" href="#applications-installed-apps" aria-label="Anchor link for: applications-installed-apps">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Applications/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Safari.app</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Mail.app</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> TextEdit.app</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Utilities/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User-specific applications</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Applications/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View app bundle</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">la</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Applications/Safari.app/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Contents/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   MacOS/        # Executable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   Resources/    # Icons, nibs, etc.</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   Info.plist    # App metadata</span></span></code></pre><h3 id="library-system-libraries">/Library - System Libraries<a class="zola-anchor" href="#library-system-libraries" aria-label="Anchor link for: library-system-libraries">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Library/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Application</span><span style="color: light-dark(#40A02B, #A6DA95);"> Support/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> App support files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Caches/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System caches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Fonts/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System-wide fonts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Frameworks/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shared frameworks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> LaunchAgents/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User launch agents</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> LaunchDaemons/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System launch daemons</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Preferences/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">         #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System preferences</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Logs/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Developer/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Developer tools</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Examples</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Library/LaunchDaemons/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Library/Fonts/</span></span></code></pre><h3 id="system-macos-system">/System - macOS System<a class="zola-anchor" href="#system-macos-system" aria-label="Anchor link for: system-macos-system">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/System/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Applications/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System apps (Mail, Safari, etc.)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Library/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">            #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System libraries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Frameworks/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">     #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System frameworks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> CoreServices/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">   #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Core system services</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Extensions/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">     #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Kernel extensions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> LaunchDaemons/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System daemons</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Volumes/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Data/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User data volume</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Read-only system volume (macOS Catalina 10.15+)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mounted separately from user data</span></span></code></pre><h3 id="users-user-home-directories">/Users - User Home Directories<a class="zola-anchor" href="#users-user-home-directories" aria-label="Anchor link for: users-user-home-directories">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Users/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Shared/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shared files between users</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> username/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Desktop/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Documents/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Downloads/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Library/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User-specific library</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    │</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Application</span><span style="color: light-dark(#40A02B, #A6DA95);"> Support/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    │</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Caches/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    │</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Preferences/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    │</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Logs/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    │</span><span style="color: light-dark(#40A02B, #A6DA95);">   └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Mobile</span><span style="color: light-dark(#40A02B, #A6DA95);"> Documents/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> iCloud Drive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Movies/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Music/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Pictures/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Public/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shortcuts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">echo</span><span> $</span><span>HOME</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> /Users/username</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">cd</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Go to home directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">cd</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Documents</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Go to Documents</span></span></code></pre><h3 id="library-user-library">~/Library - User Library<a class="zola-anchor" href="#library-user-library" aria-label="Anchor link for: library-user-library">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Application</span><span style="color: light-dark(#40A02B, #A6DA95);"> Support/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> App data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.Safari/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Google/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Code/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Caches/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User caches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Containers/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Sandboxed app data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Group</span><span style="color: light-dark(#40A02B, #A6DA95);"> Containers/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shared containers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Keychains/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Keychain files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Preferences/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">         #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User preferences (.plist files)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Safari/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Safari data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Mail/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mail data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Messages/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">            #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Messages data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Logs/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Saved</span><span style="color: light-dark(#40A02B, #A6DA95);"> Application</span><span style="color: light-dark(#40A02B, #A6DA95);"> State/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Developer/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Xcode data</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View preferences</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">defaults</span><span style="color: light-dark(#40A02B, #A6DA95);"> read</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.finder</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Library/Preferences/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Hidden by default (since macOS Lion)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chflags</span><span style="color: light-dark(#40A02B, #A6DA95);"> nohidden</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Library</span></span></code></pre><h3 id="volumes-mounted-volumes">/Volumes - Mounted Volumes<a class="zola-anchor" href="#volumes-mounted-volumes" aria-label="Anchor link for: volumes-mounted-volumes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Volumes/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Macintosh</span><span style="color: light-dark(#40A02B, #A6DA95);"> HD/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Main volume (symlinked to /)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Time</span><span style="color: light-dark(#40A02B, #A6DA95);"> Machine/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Time Machine backup</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> USB</span><span style="color: light-dark(#40A02B, #A6DA95);"> Drive/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> External drives</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Network</span><span style="color: light-dark(#40A02B, #A6DA95);"> Shares/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Network mounts</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List volumes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Volumes/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span></span></code></pre><h3 id="private-private-system-files">/private - Private System Files<a class="zola-anchor" href="#private-private-system-files" aria-label="Anchor link for: private-private-system-files">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/private/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> etc/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> hosts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> ssh/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> apache2/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> paths</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> tmp/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Temporary files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> var/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Variable data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> log/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System logs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> db/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">              #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Databases</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> folders/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">         #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Temporary folders</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> root/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">            #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Root user home</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Symlinks point here</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/etc</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> /private/etc</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/tmp</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> /private/tmp</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/var</span><span> -</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> /private/var</span></span></code></pre><h3 id="usr-unix-system-resources">/usr - Unix System Resources<a class="zola-anchor" href="#usr-unix-system-resources" aria-label="Anchor link for: usr-unix-system-resources">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/usr/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> bin/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> lib/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                 #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Libraries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> local/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Locally installed software</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> bin/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> lib/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> Cellar/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Homebrew packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> sbin/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> share/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shared data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   ├──</span><span style="color: light-dark(#40A02B, #A6DA95);"> man/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">             #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Manual pages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">│</span><span style="color: light-dark(#40A02B, #A6DA95);">   └──</span><span style="color: light-dark(#40A02B, #A6DA95);"> doc/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">└──</span><span style="color: light-dark(#40A02B, #A6DA95);"> standalone/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Standalone tools</span></span></code></pre><h2 id="file-permissions">File Permissions<a class="zola-anchor" href="#file-permissions" aria-label="Anchor link for: file-permissions">🔗</a></h2>
+<h3 id="standard-unix-permissions">Standard Unix Permissions<a class="zola-anchor" href="#standard-unix-permissions" aria-label="Anchor link for: standard-unix-permissions">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> -rw-r--r--  1 user  staff  1234 Jan 15 10:00 file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Change permissions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chmod</span><span style="color: light-dark(#FE640B, #F5A97F);"> 755</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.sh</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chmod</span><span style="color: light-dark(#40A02B, #A6DA95);"> u+x</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.sh</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chmod</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">R</span><span style="color: light-dark(#FE640B, #F5A97F);"> 755</span><span style="color: light-dark(#40A02B, #A6DA95);"> directory/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Change ownership</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> chown</span><span style="color: light-dark(#40A02B, #A6DA95);"> user:staff</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> chown</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">R</span><span style="color: light-dark(#40A02B, #A6DA95);"> user:staff</span><span style="color: light-dark(#40A02B, #A6DA95);"> directory/</span></span></code></pre><h3 id="macos-specific-flags">macOS-Specific Flags<a class="zola-anchor" href="#macos-specific-flags" aria-label="Anchor link for: macos-specific-flags">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View flags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">lO</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> -rw-r--r--  1 user staff hidden 1234 Jan 15 10:00 file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set hidden flag</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chflags</span><span style="color: light-dark(#40A02B, #A6DA95);"> hidden</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chflags</span><span style="color: light-dark(#40A02B, #A6DA95);"> nohidden</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set locked flag</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chflags</span><span style="color: light-dark(#40A02B, #A6DA95);"> uchg</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User immutable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chflags</span><span style="color: light-dark(#40A02B, #A6DA95);"> schg</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System immutable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">chflags</span><span style="color: light-dark(#40A02B, #A6DA95);"> nouchg</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Remove immutable</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Common flags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> hidden      - Hide from Finder</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> uchg        - User immutable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> schg        - System immutable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> nodump      - Exclude from Time Machine</span></span></code></pre><h2 id="extended-attributes-xattr">Extended Attributes (xattr)<a class="zola-anchor" href="#extended-attributes-xattr" aria-label="Anchor link for: extended-attributes-xattr">🔗</a></h2>
+<h3 id="view-extended-attributes">View Extended Attributes<a class="zola-anchor" href="#view-extended-attributes" aria-label="Anchor link for: view-extended-attributes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List files with extended attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">l@</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> -rw-r--r--@ 1 user staff 1234 Jan 15 10:00 file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List all extended attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View specific attribute</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.quarantine</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show all attributes with values</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span></code></pre><h3 id="common-extended-attributes">Common Extended Attributes<a class="zola-anchor" href="#common-extended-attributes" aria-label="Anchor link for: common-extended-attributes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Quarantine (Gatekeeper)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">com.apple.quarantine</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Downloaded from internet</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Finder info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">com.apple.FinderInfo</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Finder metadata</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Metadata</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">com.apple.metadata:kMDItemWhereFroms</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download source</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Resource fork</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">com.apple.ResourceFork</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">     #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Legacy resource fork</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Text encoding</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">com.apple.TextEncoding</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">     #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Text file encoding</span></span></code></pre><h3 id="manage-extended-attributes">Manage Extended Attributes<a class="zola-anchor" href="#manage-extended-attributes" aria-label="Anchor link for: manage-extended-attributes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Remove specific attribute</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.quarantine</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Remove all extended attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Recursively remove quarantine</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">dr</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.quarantine</span><span style="color: light-dark(#40A02B, #A6DA95);"> /path/to/app.app</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Copy with attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">cp</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> file1.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> file2.txt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Preserve attributes when archiving</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tar</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-xattrs</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">f</span><span style="color: light-dark(#40A02B, #A6DA95);"> archive.tar</span><span style="color: light-dark(#40A02B, #A6DA95);"> directory/</span></span></code></pre><h3 id="gatekeeper-quarantine">Gatekeeper Quarantine<a class="zola-anchor" href="#gatekeeper-quarantine" aria-label="Anchor link for: gatekeeper-quarantine">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View quarantine attribute</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.quarantine</span><span style="color: light-dark(#40A02B, #A6DA95);"> downloaded-file</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Remove quarantine (allow app to run)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.quarantine</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Applications/App.app</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Alternative: remove recursively</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> xattr</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">rd</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.quarantine</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Applications/App.app</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verify removal</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">spctl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-assess</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-verbose</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Applications/App.app</span></span></code></pre><h2 id="apfs-apple-file-system">APFS (Apple File System)<a class="zola-anchor" href="#apfs-apple-file-system" aria-label="Anchor link for: apfs-apple-file-system">🔗</a></h2>
+<h3 id="apfs-features">APFS Features<a class="zola-anchor" href="#apfs-features" aria-label="Anchor link for: apfs-features">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Space sharing between volumes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Copy-on-write (CoW) cloning</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Snapshots</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Encryption (FileVault)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Crash protection</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View APFS containers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> apfs</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Container structure</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> /dev/disk1 (synthesized):</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    0: APFS Container         disk1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    1: APFS Volume ⁨Macintosh HD⁩</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    2: APFS Volume ⁨Preboot⁩</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    3: APFS Volume ⁨Recovery⁩</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    4: APFS Volume ⁨Data⁩</span></span></code></pre><h3 id="apfs-snapshots">APFS Snapshots<a class="zola-anchor" href="#apfs-snapshots" aria-label="Anchor link for: apfs-snapshots">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List snapshots</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tmutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> listlocalsnapshots</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create snapshot</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tmutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> localsnapshot</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Delete snapshot</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tmutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> deletelocalsnapshots</span><span style="color: light-dark(#40A02B, #A6DA95);"> 2025-01-15-123456</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mount snapshot</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mkdir</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/snapshot</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mount_apfs</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.TimeMachine.2025-01-15-123456</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/snapshot</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Unmount</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">umount</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/snapshot</span></span></code></pre><h3 id="apfs-clones-instant-copy">APFS Clones (Instant Copy)<a class="zola-anchor" href="#apfs-clones-instant-copy" aria-label="Anchor link for: apfs-clones-instant-copy">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clone file (instant, space-efficient)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">cp</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> original.file</span><span style="color: light-dark(#40A02B, #A6DA95);"> cloned.file</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> or</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">cp</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">cpR</span><span style="color: light-dark(#40A02B, #A6DA95);"> original/</span><span style="color: light-dark(#40A02B, #A6DA95);"> cloned/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verify clone</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">li</span><span style="color: light-dark(#40A02B, #A6DA95);"> original.file</span><span style="color: light-dark(#40A02B, #A6DA95);"> cloned.file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Different inodes, but shared data blocks</span></span></code></pre><h2 id="disk-management">Disk Management<a class="zola-anchor" href="#disk-management" aria-label="Anchor link for: disk-management">🔗</a></h2>
+<h3 id="disk-utility-commands">Disk Utility Commands<a class="zola-anchor" href="#disk-utility-commands" aria-label="Anchor link for: disk-utility-commands">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List all disks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Information about disk</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> info</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> info</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Erase disk</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> eraseDisk</span><span style="color: light-dark(#40A02B, #A6DA95);"> APFS</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">New Volume</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Partition disk</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> partitionDisk</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk2</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);"> GPT</span><span style="color: light-dark(#40A02B, #A6DA95);"> APFS</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Data</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> 100%</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mount/Unmount</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> mount</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk2s1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> unmount</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk2s1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> unmountDisk</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Repair disk</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> verifyVolume</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> repairVolume</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span></code></pre><h3 id="disk-usage">Disk Usage<a class="zola-anchor" href="#disk-usage" aria-label="Anchor link for: disk-usage">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Disk usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">df</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">h</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> info</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> grep</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Volume Free Space</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Directory size</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">du</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">sh</span><span style="color: light-dark(#40A02B, #A6DA95);"> directory/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">du</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">h</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Largest directories</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">du</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">hd</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> sort</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">rh</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> head</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">20</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Storage management</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System Preferences &gt; General &gt; Storage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> or</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">open</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Library/Messages</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check iMessage storage</span></span></code></pre><h2 id="spotlight-and-metadata">Spotlight and Metadata<a class="zola-anchor" href="#spotlight-and-metadata" aria-label="Anchor link for: spotlight-and-metadata">🔗</a></h2>
+<h3 id="spotlight">Spotlight<a class="zola-anchor" href="#spotlight" aria-label="Anchor link for: spotlight">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Search with Spotlight</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mdfind</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">kind:image</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mdfind</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">kind:pdf date:today</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mdfind</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">name</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">document.pdf</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mdfind</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">onlyin</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Documents</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">project</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Metadata query</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mdls</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.pdf</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Common attributes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">kMDItemKind</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">kMDItemContentType</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">kMDItemWhereFroms</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">kMDItemDateAdded</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Rebuild Spotlight index</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> mdutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">E</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> mdutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);"> on</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span></code></pre><h3 id="disable-spotlight">Disable Spotlight<a class="zola-anchor" href="#disable-spotlight" aria-label="Anchor link for: disable-spotlight">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Disable indexing</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> mdutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);"> off</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Delete index</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> mdutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">E</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Prevent indexing (create .metadata_never_index)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">touch</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Volumes/Drive/.metadata_never_index</span></span></code></pre><h2 id="file-system-case-sensitivity">File System Case Sensitivity<a class="zola-anchor" href="#file-system-case-sensitivity" aria-label="Anchor link for: file-system-case-sensitivity">🔗</a></h2>
+<h3 id="default-case-insensitive">Default: Case-Insensitive<a class="zola-anchor" href="#default-case-insensitive" aria-label="Anchor link for: default-case-insensitive">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> macOS default is case-insensitive but case-preserving</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> FILE.txt and file.txt are the same file</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Test</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">touch</span><span style="color: light-dark(#40A02B, #A6DA95);"> FILE.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> FILE.txt (can access with any case)</span></span></code></pre><h3 id="case-sensitive-apfs">Case-Sensitive APFS<a class="zola-anchor" href="#case-sensitive-apfs" aria-label="Anchor link for: case-sensitive-apfs">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create case-sensitive volume</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">diskutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> apfs</span><span style="color: light-dark(#40A02B, #A6DA95);"> addVolume</span><span style="color: light-dark(#40A02B, #A6DA95);"> disk1</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Case-sensitive APFS</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">CaseSensitive</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Format options</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> APFS                    - Case-insensitive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> &quot;Case-sensitive APFS&quot;   - Case-sensitive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> &quot;APFS (Encrypted)&quot;      - Encrypted, case-insensitive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> &quot;Case-sensitive APFS (Encrypted)&quot;  - Encrypted, case-sensitive</span></span></code></pre><h2 id="special-directories">Special Directories<a class="zola-anchor" href="#special-directories" aria-label="Anchor link for: special-directories">🔗</a></h2>
+<h3 id="application-support">Application Support<a class="zola-anchor" href="#application-support" aria-label="Anchor link for: application-support">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Library/Application</span><span style="color: light-dark(#40A02B, #A6DA95);"> Support/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Application Support/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example paths</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Application Support/Code/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Application Support/Google/Chrome/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Application Support/Sublime Text/</span></span></code></pre><h3 id="preferences">Preferences<a class="zola-anchor" href="#preferences" aria-label="Anchor link for: preferences">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Stored as .plist files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Preferences/com.apple.Safari.plist</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Preferences/com.apple.finder.plist</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Read preferences</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">defaults</span><span style="color: light-dark(#40A02B, #A6DA95);"> read</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.finder</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Write preferences</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">defaults</span><span style="color: light-dark(#40A02B, #A6DA95);"> write</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.finder</span><span style="color: light-dark(#40A02B, #A6DA95);"> AppleShowAllFiles</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Delete preference</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">defaults</span><span style="color: light-dark(#40A02B, #A6DA95);"> delete</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.finder</span><span style="color: light-dark(#40A02B, #A6DA95);"> AppleShowAllFiles</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Reload Finder</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">killall</span><span style="color: light-dark(#40A02B, #A6DA95);"> Finder</span></span></code></pre><h3 id="caches">Caches<a class="zola-anchor" href="#caches" aria-label="Anchor link for: caches">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Library/Caches/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/System/Library/Caches/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/Library/Caches/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clear user caches</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">rm</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">rf</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Library/Caches/</span><span>*</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clear system caches (requires sudo)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> rm</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">rf</span><span style="color: light-dark(#40A02B, #A6DA95);"> /Library/Caches/</span><span>*</span></span></code></pre><h2 id="hidden-files">Hidden Files<a class="zola-anchor" href="#hidden-files" aria-label="Anchor link for: hidden-files">🔗</a></h2>
+<h3 id="view-hidden-files">View Hidden Files<a class="zola-anchor" href="#view-hidden-files" aria-label="Anchor link for: view-hidden-files">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> In Finder</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Press: Cmd + Shift + .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> In Terminal (always visible)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ls</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">la</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show all files in Finder (permanently)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">defaults</span><span style="color: light-dark(#40A02B, #A6DA95);"> write</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.finder</span><span style="color: light-dark(#40A02B, #A6DA95);"> AppleShowAllFiles</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">killall</span><span style="color: light-dark(#40A02B, #A6DA95);"> Finder</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Hide again</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">defaults</span><span style="color: light-dark(#40A02B, #A6DA95);"> write</span><span style="color: light-dark(#40A02B, #A6DA95);"> com.apple.finder</span><span style="color: light-dark(#40A02B, #A6DA95);"> AppleShowAllFiles</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">killall</span><span style="color: light-dark(#40A02B, #A6DA95);"> Finder</span></span></code></pre><h3 id="common-hidden-files">Common Hidden Files<a class="zola-anchor" href="#common-hidden-files" aria-label="Anchor link for: common-hidden-files">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/.bashrc, </span><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/.zshrc</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Shell configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/.ssh/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> SSH keys</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/.config/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> XDG config</span></span>
+<span class="giallo-l"><span style="color: light-dark(#179299, #8BD5CA);">~</span><span>/.Trash/</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User trash</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">.DS_Store</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">                #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Finder metadata</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">.localized</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">               #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Localization hint</span></span></code></pre><h2 id="system-integrity-protection-sip">System Integrity Protection (SIP)<a class="zola-anchor" href="#system-integrity-protection-sip" aria-label="Anchor link for: system-integrity-protection-sip">🔗</a></h2>
+<h3 id="check-sip-status">Check SIP Status<a class="zola-anchor" href="#check-sip-status" aria-label="Anchor link for: check-sip-status">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">csrutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> status</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> System Integrity Protection status: enabled</span></span></code></pre><h3 id="protected-directories">Protected Directories<a class="zola-anchor" href="#protected-directories" aria-label="Anchor link for: protected-directories">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> SIP protects these even from root:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/System</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/usr</span><span> (except</span><span style="color: light-dark(#40A02B, #A6DA95);"> /usr/local</span><span>)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/bin</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/sbin</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/var</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Can&#39;t modify even with sudo</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> rm</span><span style="color: light-dark(#40A02B, #A6DA95);"> /System/Library/SomeFile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Operation not permitted</span></span></code></pre><h3 id="disable-sip-not-recommended">Disable SIP (not recommended)<a class="zola-anchor" href="#disable-sip-not-recommended" aria-label="Anchor link for: disable-sip-not-recommended">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 1. Boot into Recovery Mode (Cmd+R)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 2. Open Terminal</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">csrutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> disable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> 3. Reboot</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Re-enable</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">csrutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> enable</span></span></code></pre><h2 id="finder-integration">Finder Integration<a class="zola-anchor" href="#finder-integration" aria-label="Anchor link for: finder-integration">🔗</a></h2>
+<h3 id="open-in-finder">Open in Finder<a class="zola-anchor" href="#open-in-finder" aria-label="Anchor link for: open-in-finder">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Open current directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">open</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Open specific directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">open</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/Documents</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Open with application</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">open</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Visual Studio Code</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">open</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);"> Safari</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Reveal in Finder</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">open</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">R</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.txt</span></span></code></pre><h3 id="quick-look">Quick Look<a class="zola-anchor" href="#quick-look" aria-label="Anchor link for: quick-look">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Preview file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">qlmanage</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> file.pdf</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clear Quick Look cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">qlmanage</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">qlmanage</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);"> cache</span></span></code></pre><h2 id="time-machine">Time Machine<a class="zola-anchor" href="#time-machine" aria-label="Anchor link for: time-machine">🔗</a></h2>
+<h3 id="time-machine-directories">Time Machine Directories<a class="zola-anchor" href="#time-machine-directories" aria-label="Anchor link for: time-machine-directories">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Local snapshots</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/.MobileBackups/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Backups on external drive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">/Volumes/Time</span><span style="color: light-dark(#40A02B, #A6DA95);"> Machine/Backups.backupdb/ComputerName/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Exclude from backup</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tmutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> addexclusion</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/large-directory/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tmutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> removeexclusion</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/large-directory/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List exclusions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tmutil</span><span style="color: light-dark(#40A02B, #A6DA95);"> isexcluded</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/directory/</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="organization">Organization<a class="zola-anchor" href="#organization" aria-label="Anchor link for: organization">🔗</a></h3>
+<ul>
+<li>Store user files in ~/Documents, ~/Downloads, etc.</li>
+<li>Use ~/Library/Application Support for app data</li>
+<li>Keep ~/Library clean (many apps don’t clean up)</li>
+<li>Use iCloud Drive for cloud storage</li>
+</ul>
+<h3 id="security">Security<a class="zola-anchor" href="#security" aria-label="Anchor link for: security">🔗</a></h3>
+<ul>
+<li>Remove quarantine only from trusted apps</li>
+<li>Be cautious with sudo commands</li>
+<li>Keep SIP enabled</li>
+<li>Use FileVault for disk encryption</li>
+<li>Regular Time Machine backups</li>
+</ul>
+<h3 id="performance">Performance<a class="zola-anchor" href="#performance" aria-label="Anchor link for: performance">🔗</a></h3>
+<ul>
+<li>Clear caches periodically</li>
+<li>Use APFS snapshots before major changes</li>
+<li>Monitor disk space</li>
+<li>Disable Spotlight on external drives if not needed</li>
+</ul>
+<h3 id="maintenance">Maintenance<a class="zola-anchor" href="#maintenance" aria-label="Anchor link for: maintenance">🔗</a></h3>
+<ul>
+<li>Clean ~/Library/Caches regularly</li>
+<li>Remove old iOS backups from ~/Library/Application Support/MobileSync/</li>
+<li>Check ~/Downloads for old files</li>
+<li>Use Storage Management (About This Mac &gt; Storage)</li>
+</ul>
+<h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li>Apple File System Reference: https://developer.apple.com/documentation/foundation/file_system</li>
+<li>File System Programming Guide: https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/</li>
+<li>man pages: <code>man xattr</code>, <code>man diskutil</code>, <code>man tmutil</code></li>
+<li>APFS documentation: https://support.apple.com/guide/disk-utility/</li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/vim/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">Vim</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#filesystem-hierarchy">Filesystem Hierarchy</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#root-directory">Root Directory (/)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#applications-installed-apps">/Applications - Installed Apps</a></li>
+                  
+                    <li class="toc__subitem"><a href="#library-system-libraries">/Library - System Libraries</a></li>
+                  
+                    <li class="toc__subitem"><a href="#system-macos-system">/System - macOS System</a></li>
+                  
+                    <li class="toc__subitem"><a href="#users-user-home-directories">/Users - User Home Directories</a></li>
+                  
+                    <li class="toc__subitem"><a href="#library-user-library">~/Library - User Library</a></li>
+                  
+                    <li class="toc__subitem"><a href="#volumes-mounted-volumes">/Volumes - Mounted Volumes</a></li>
+                  
+                    <li class="toc__subitem"><a href="#private-private-system-files">/private - Private System Files</a></li>
+                  
+                    <li class="toc__subitem"><a href="#usr-unix-system-resources">/usr - Unix System Resources</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#file-permissions">File Permissions</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#standard-unix-permissions">Standard Unix Permissions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#macos-specific-flags">macOS-Specific Flags</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#extended-attributes-xattr">Extended Attributes (xattr)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#view-extended-attributes">View Extended Attributes</a></li>
+                  
+                    <li class="toc__subitem"><a href="#common-extended-attributes">Common Extended Attributes</a></li>
+                  
+                    <li class="toc__subitem"><a href="#manage-extended-attributes">Manage Extended Attributes</a></li>
+                  
+                    <li class="toc__subitem"><a href="#gatekeeper-quarantine">Gatekeeper Quarantine</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#apfs-apple-file-system">APFS (Apple File System)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#apfs-features">APFS Features</a></li>
+                  
+                    <li class="toc__subitem"><a href="#apfs-snapshots">APFS Snapshots</a></li>
+                  
+                    <li class="toc__subitem"><a href="#apfs-clones-instant-copy">APFS Clones (Instant Copy)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#disk-management">Disk Management</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#disk-utility-commands">Disk Utility Commands</a></li>
+                  
+                    <li class="toc__subitem"><a href="#disk-usage">Disk Usage</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#spotlight-and-metadata">Spotlight and Metadata</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#spotlight">Spotlight</a></li>
+                  
+                    <li class="toc__subitem"><a href="#disable-spotlight">Disable Spotlight</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#file-system-case-sensitivity">File System Case Sensitivity</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#default-case-insensitive">Default: Case-Insensitive</a></li>
+                  
+                    <li class="toc__subitem"><a href="#case-sensitive-apfs">Case-Sensitive APFS</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#special-directories">Special Directories</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#application-support">Application Support</a></li>
+                  
+                    <li class="toc__subitem"><a href="#preferences">Preferences</a></li>
+                  
+                    <li class="toc__subitem"><a href="#caches">Caches</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#hidden-files">Hidden Files</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#view-hidden-files">View Hidden Files</a></li>
+                  
+                    <li class="toc__subitem"><a href="#common-hidden-files">Common Hidden Files</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#system-integrity-protection-sip">System Integrity Protection (SIP)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#check-sip-status">Check SIP Status</a></li>
+                  
+                    <li class="toc__subitem"><a href="#protected-directories">Protected Directories</a></li>
+                  
+                    <li class="toc__subitem"><a href="#disable-sip-not-recommended">Disable SIP (not recommended)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#finder-integration">Finder Integration</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#open-in-finder">Open in Finder</a></li>
+                  
+                    <li class="toc__subitem"><a href="#quick-look">Quick Look</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#time-machine">Time Machine</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#time-machine-directories">Time Machine Directories</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#organization">Organization</a></li>
+                  
+                    <li class="toc__subitem"><a href="#security">Security</a></li>
+                  
+                    <li class="toc__subitem"><a href="#performance">Performance</a></li>
+                  
+                    <li class="toc__subitem"><a href="#maintenance">Maintenance</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>
