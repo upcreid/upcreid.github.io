@@ -1,0 +1,1472 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Go (Golang) · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/golang/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/cheat-sheet/golang/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/golang/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">CheatSheet</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">CheatSheet</a>
+      
+    
+  </nav>
+
+  <h1>Go (Golang)</h1>
+
+  <p class="page-meta">
+    
+    <span>2 min read</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>Go (Golang) is a statically typed, compiled programming language designed at Google. This cheat sheet focuses on the Go ecosystem: build, test, modules, and tooling.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Fast compilation</li>
+<li>Built-in concurrency</li>
+<li>Garbage collection</li>
+<li>Static typing with type inference</li>
+<li>Comprehensive standard library</li>
+<li>Built-in testing and benchmarking</li>
+<li>Cross-platform compilation</li>
+</ul>
+<h2 id="installation">Installation<a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">🔗</a></h2>
+<h3 id="macos">macOS<a class="zola-anchor" href="#macos" aria-label="Anchor link for: macos">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Using Homebrew</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">brew</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> go</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verify installation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> version</span></span></code></pre><h3 id="linux">Linux<a class="zola-anchor" href="#linux" aria-label="Anchor link for: linux">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download from go.dev</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">wget</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://go.dev/dl/go1.24.0.linux-amd64.tar.gz</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Extract</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> tar</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">C</span><span style="color: light-dark(#40A02B, #A6DA95);"> /usr/local</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">xzf</span><span style="color: light-dark(#40A02B, #A6DA95);"> go1.24.0.linux-amd64.tar.gz</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add to PATH in ~/.profile or ~/.bashrc</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> PATH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>$</span><span>PATH</span><span>:/</span><span>usr</span><span>/</span><span>local</span><span>/</span><span>go</span><span>/</span><span>bin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verify</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> version</span></span></code></pre><h3 id="windows">Windows<a class="zola-anchor" href="#windows" aria-label="Anchor link for: windows">🔗</a></h3>
+<p>Download installer from https://go.dev/dl/ and run it.</p>
+<h3 id="environment-variables">Environment Variables<a class="zola-anchor" href="#environment-variables" aria-label="Anchor link for: environment-variables">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GOPATH - workspace directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> GOPATH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>$</span><span>HOME</span><span>/</span><span>go</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GOBIN - where &#39;go install&#39; will place binaries</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> GOBIN</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>$</span><span>GOPATH</span><span>/</span><span>bin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add GOBIN to PATH</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> PATH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>$</span><span>PATH</span><span>:</span><span>$</span><span>GOBIN</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GOOS and GOARCH for cross-compilation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> GOOS</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>linux</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">export</span><span> GOARCH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span>amd64</span></span></code></pre><h2 id="go-modules">Go Modules<a class="zola-anchor" href="#go-modules" aria-label="Anchor link for: go-modules">🔗</a></h2>
+<h3 id="initialize-module">Initialize Module<a class="zola-anchor" href="#initialize-module" aria-label="Anchor link for: initialize-module">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create new module</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> init</span><span style="color: light-dark(#40A02B, #A6DA95);"> example.com/myproject</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Creates go.mod file</span></span></code></pre><h3 id="go-mod-file">go.mod File<a class="zola-anchor" href="#go-mod-file" aria-label="Anchor link for: go-mod-file">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span>module</span><span> example</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>myproject</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">go</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">24</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>require</span><span style="color: light-dark(#7C7F93, #939AB7);"> (</span></span>
+<span class="giallo-l"><span>    github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>gin</span><span style="color: light-dark(#179299, #8BD5CA);">-</span><span>gonic</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>gin</span><span> v1</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">9</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">1</span></span>
+<span class="giallo-l"><span>    github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>stretchr</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>testify</span><span> v1</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">8</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">4</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>require</span><span style="color: light-dark(#7C7F93, #939AB7);"> (</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Indirect dependencies</span></span>
+<span class="giallo-l"><span>    github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>bytedance</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>sonic</span><span> v1</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">9</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">1</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> indirect</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>replace</span><span> github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>old</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>repo</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span> github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>new</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>repo</span><span> v1</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">0</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">0</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>exclude</span><span> github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>broken</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span style="color: light-dark(#8839EF, #C6A0F6);">package</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> v0</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">1</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">0</span></span></code></pre><h3 id="module-commands">Module Commands<a class="zola-anchor" href="#module-commands" aria-label="Anchor link for: module-commands">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add dependencies and remove unused</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> tidy</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download modules to local cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> download</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Copy dependencies to vendor directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> vendor</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Print module dependency graph</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> graph</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verify dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> verify</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Explain why packages are needed</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> why</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/some/package</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Edit go.mod file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> edit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">require=github.com/new/package@v1.2.3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> edit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">droprequire=github.com/old/package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> mod</span><span style="color: light-dark(#40A02B, #A6DA95);"> edit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">replace=github.com/old/repo=github.com/new/repo@v1.0.0</span></span></code></pre><h3 id="adding-dependencies">Adding Dependencies<a class="zola-anchor" href="#adding-dependencies" aria-label="Anchor link for: adding-dependencies">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add/upgrade dependency</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> get</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/gin-gonic/gin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get specific version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> get</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/gin-gonic/gin@v1.9.1</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get latest version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> get</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/gin-gonic/gin@latest</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Upgrade all dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> get</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Upgrade minor/patch versions</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> get</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u=patch</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h3 id="go-sum-file">go.sum File<a class="zola-anchor" href="#go-sum-file" aria-label="Anchor link for: go-sum-file">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>github.com/gin-gonic/gin v1.9.1 h1:4idEAncQnU5cB7BeOkPtxjfCSye0AAm1R0RVIqJ+Jmg=</span></span>
+<span class="giallo-l"><span>github.com/gin-gonic/gin v1.9.1/go.mod h1:hPrL7YrpYKXt5YId3A/Tnip5kqbEAP+KLuI3SUcPTeU=</span></span></code></pre>
+<p><strong>Always commit go.sum to version control!</strong></p>
+<h2 id="workspaces-go-1-18">Workspaces (Go 1.18+)<a class="zola-anchor" href="#workspaces-go-1-18" aria-label="Anchor link for: workspaces-go-1-18">🔗</a></h2>
+<h3 id="initialize-workspace">Initialize Workspace<a class="zola-anchor" href="#initialize-workspace" aria-label="Anchor link for: initialize-workspace">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create workspace with modules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> work</span><span style="color: light-dark(#40A02B, #A6DA95);"> init</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./module1</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./module2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Creates go.work file</span></span></code></pre><h3 id="go-work-file">go.work File<a class="zola-anchor" href="#go-work-file" aria-label="Anchor link for: go-work-file">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">go</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">24</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>use</span><span style="color: light-dark(#7C7F93, #939AB7);"> (</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    .</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>module1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    .</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>module2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    .</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>shared</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>replace</span><span> github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>external</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span style="color: light-dark(#8839EF, #C6A0F6);">package</span><span> =</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;</span><span style="color: light-dark(#7C7F93, #939AB7);"> .</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>local</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span style="color: light-dark(#8839EF, #C6A0F6);">package</span></span></code></pre><h3 id="workspace-commands">Workspace Commands<a class="zola-anchor" href="#workspace-commands" aria-label="Anchor link for: workspace-commands">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add module to workspace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> work</span><span style="color: light-dark(#40A02B, #A6DA95);"> use</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./module3</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Remove module from workspace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> work</span><span style="color: light-dark(#40A02B, #A6DA95);"> edit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">dropuse=./module3</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Sync workspace dependencies to modules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> work</span><span style="color: light-dark(#40A02B, #A6DA95);"> sync</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Print workspace info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> env</span><span style="color: light-dark(#40A02B, #A6DA95);"> GOWORK</span></span></code></pre><h2 id="building">Building<a class="zola-anchor" href="#building" aria-label="Anchor link for: building">🔗</a></h2>
+<h3 id="basic-build">Basic Build<a class="zola-anchor" href="#basic-build" aria-label="Anchor link for: basic-build">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build current package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build with output name</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> myapp</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build specific package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./cmd/myapp</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build all packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h3 id="build-options">Build Options<a class="zola-anchor" href="#build-options" aria-label="Anchor link for: build-options">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verbose output</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Print commands</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">x</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Disable optimizations (for debugging)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">gcflags=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">all=-N -l</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Static linking</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">ldflags=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">-extldflags=-static</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Strip debug info (smaller binary)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">ldflags=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">-s -w</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set version info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">ldflags=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">-X main.version=1.0.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Race detector</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">race</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Memory sanitizer</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">msan</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build tags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">tags=integration,prod</span></span></code></pre><h3 id="cross-compilation">Cross-Compilation<a class="zola-anchor" href="#cross-compilation" aria-label="Anchor link for: cross-compilation">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Linux</span></span>
+<span class="giallo-l"><span>GOOS</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);">x</span><span> GOARCH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">6</span><span style="color: light-dark(#40A02B, #A6DA95);">4</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Windows</span></span>
+<span class="giallo-l"><span>GOOS</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span> GOARCH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">6</span><span style="color: light-dark(#40A02B, #A6DA95);">4</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> macOS</span></span>
+<span class="giallo-l"><span>GOOS</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span> GOARCH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">6</span><span style="color: light-dark(#40A02B, #A6DA95);">4</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> ARM64</span></span>
+<span class="giallo-l"><span>GOARCH</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">6</span><span style="color: light-dark(#40A02B, #A6DA95);">4</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List supported platforms</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> dist</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span></span></code></pre><h3 id="install">Install<a class="zola-anchor" href="#install" aria-label="Anchor link for: install">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build and install to $GOBIN</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Install specific version</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/user/tool@latest</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/user/tool@v1.2.3</span></span></code></pre><h2 id="running">Running<a class="zola-anchor" href="#running" aria-label="Anchor link for: running">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> main.go</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run with arguments</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> main.go</span><span style="color: light-dark(#40A02B, #A6DA95);"> arg1</span><span style="color: light-dark(#40A02B, #A6DA95);"> arg2</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run package in directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./cmd/myapp</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run with build flags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">race</span><span style="color: light-dark(#40A02B, #A6DA95);"> main.go</span></span></code></pre><h2 id="testing">Testing<a class="zola-anchor" href="#testing" aria-label="Anchor link for: testing">🔗</a></h2>
+<h3 id="test-file-structure">Test File Structure<a class="zola-anchor" href="#test-file-structure" aria-label="Anchor link for: test-file-structure">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> main.go</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">package</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">a</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;"> b</span><span style="color: light-dark(#8839EF, #C6A0F6);"> int</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#8839EF, #C6A0F6);"> int</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">    return</span><span> a</span><span style="color: light-dark(#179299, #8BD5CA);"> +</span><span> b</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> main_test.go</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">package</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">import</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">testing</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> TestAdd</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    result</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span>    expected</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#FE640B, #F5A97F);"> 5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">    if</span><span> result</span><span style="color: light-dark(#179299, #8BD5CA);"> !=</span><span> expected</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>        t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Errorf</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Add(2, 3) = </span><span style="color: light-dark(#40A02B, #A6DA95);">%d</span><span style="color: light-dark(#40A02B, #A6DA95);">; want </span><span style="color: light-dark(#40A02B, #A6DA95);">%d</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> result</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> expected</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="running-tests">Running Tests<a class="zola-anchor" href="#running-tests" aria-label="Anchor link for: running-tests">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run all tests in current directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run all tests in project</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verbose output</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run specific test</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">run</span><span style="color: light-dark(#40A02B, #A6DA95);"> TestAdd</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run tests matching pattern</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">run</span><span style="color: light-dark(#40A02B, #A6DA95);"> TestAdd.</span><span>*</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Short mode (skip long tests)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">short</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Parallel tests</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">parallel</span><span style="color: light-dark(#FE640B, #F5A97F);"> 4</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Timeout</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">timeout</span><span style="color: light-dark(#40A02B, #A6DA95);"> 30s</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run tests multiple times</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">count</span><span style="color: light-dark(#FE640B, #F5A97F);"> 5</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fail fast (stop on first failure)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">failfast</span></span></code></pre><h3 id="table-driven-tests">Table-Driven Tests<a class="zola-anchor" href="#table-driven-tests" aria-label="Anchor link for: table-driven-tests">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> TestAdd</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    tests</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span><span style="color: light-dark(#8839EF, #C6A0F6);">struct</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>        name</span><span style="color: light-dark(#8839EF, #C6A0F6);">     string</span></span>
+<span class="giallo-l"><span>        a</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> b</span><span style="color: light-dark(#8839EF, #C6A0F6);">     int</span></span>
+<span class="giallo-l"><span>        expected</span><span style="color: light-dark(#8839EF, #C6A0F6);"> int</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        {</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">positive numbers</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 5</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        {</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">negative numbers</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#179299, #8BD5CA);"> -</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#179299, #8BD5CA);"> -</span><span style="color: light-dark(#FE640B, #F5A97F);">3</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#179299, #8BD5CA);"> -</span><span style="color: light-dark(#FE640B, #F5A97F);">5</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        {</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">mixed</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#179299, #8BD5CA);"> -</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        {</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">zeros</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">    for</span><span> _</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> tt</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#8839EF, #C6A0F6);"> range</span><span> tests</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>        t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Run</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span>tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>name</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#8839EF, #C6A0F6);"> func</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>            result</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span>tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>a</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>b</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">            if</span><span> result</span><span style="color: light-dark(#179299, #8BD5CA);"> !=</span><span> tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>expected</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>                t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Errorf</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Add(</span><span style="color: light-dark(#40A02B, #A6DA95);">%d</span><span style="color: light-dark(#40A02B, #A6DA95);">, </span><span style="color: light-dark(#40A02B, #A6DA95);">%d</span><span style="color: light-dark(#40A02B, #A6DA95);">) = </span><span style="color: light-dark(#40A02B, #A6DA95);">%d</span><span style="color: light-dark(#40A02B, #A6DA95);">; want </span><span style="color: light-dark(#40A02B, #A6DA95);">%d</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span></span>
+<span class="giallo-l"><span>                    tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>a</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>b</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> result</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> tt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>expected</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">            }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        }</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="test-coverage">Test Coverage<a class="zola-anchor" href="#test-coverage" aria-label="Anchor link for: test-coverage">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run tests with coverage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">cover</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Generate coverage profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">coverprofile=coverage.out</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View coverage in HTML</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> cover</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">html=coverage.out</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Coverage for all packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">coverprofile=coverage.out</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Coverage with details</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">coverprofile=coverage.out</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">covermode=count</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Set coverage threshold</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">cover</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">coverpkg=./...</span></span></code></pre><h3 id="benchmarking">Benchmarking<a class="zola-anchor" href="#benchmarking" aria-label="Anchor link for: benchmarking">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> BenchmarkAdd</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">b</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">B</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">    for</span><span> i</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0</span><span style="color: light-dark(#7C7F93, #939AB7);">;</span><span> i</span><span style="color: light-dark(#179299, #8BD5CA);"> &lt;</span><span> b</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>N</span><span style="color: light-dark(#7C7F93, #939AB7);">;</span><span> i</span><span style="color: light-dark(#179299, #8BD5CA);">++</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> BenchmarkAddParallel</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">b</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">B</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    b</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">RunParallel</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">pb</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">PB</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">        for</span><span> pb</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Next</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">            Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre>
+<p><strong>Run benchmarks:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run all benchmarks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run specific benchmark</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=BenchmarkAdd</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> With memory stats</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">benchmem</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run for longer duration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">benchtime=10s</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Number of iterations</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">benchtime=1000000x</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Compare benchmarks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span><span style="color: light-dark(#179299, #8BD5CA);"> &gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> old.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Make changes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span><span style="color: light-dark(#179299, #8BD5CA);"> &gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> new.txt</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">benchstat</span><span style="color: light-dark(#40A02B, #A6DA95);"> old.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> new.txt</span></span></code></pre><h3 id="testing-examples">Testing Examples<a class="zola-anchor" href="#testing-examples" aria-label="Anchor link for: testing-examples">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> ExampleAdd</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    result</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span>    fmt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Println</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span>result</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Output: 5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> ExampleAdd_negative</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    result</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> Add</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#179299, #8BD5CA);">-</span><span style="color: light-dark(#FE640B, #F5A97F);">2</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#179299, #8BD5CA);"> -</span><span style="color: light-dark(#FE640B, #F5A97F);">3</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span>    fmt</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Println</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span>result</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Output: -5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="test-helpers">Test Helpers<a class="zola-anchor" href="#test-helpers" aria-label="Anchor link for: test-helpers">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> TestHelper</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    helper</span><span style="color: light-dark(#179299, #8BD5CA);"> :=</span><span style="color: light-dark(#8839EF, #C6A0F6);"> func</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;"> input</span><span style="color: light-dark(#8839EF, #C6A0F6);"> int</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>        t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Helper</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mark as helper</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">        if</span><span> input</span><span style="color: light-dark(#179299, #8BD5CA);"> &lt;</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>            t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Fatal</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">input must be positive</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        }</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    helper</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span>t</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#FE640B, #F5A97F);"> 5</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="subtests">Subtests<a class="zola-anchor" href="#subtests" aria-label="Anchor link for: subtests">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> TestFoo</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>    t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Run</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">subtest1</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#8839EF, #C6A0F6);"> func</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Test logic</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    t</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Run</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">subtest2</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#8839EF, #C6A0F6);"> func</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#E64553, #EE99A0);font-style: italic;">t</span><span style="color: light-dark(#179299, #8BD5CA);"> *</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">testing</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;">T</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Test logic</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h2 id="profiling">Profiling<a class="zola-anchor" href="#profiling" aria-label="Anchor link for: profiling">🔗</a></h2>
+<h3 id="cpu-profiling">CPU Profiling<a class="zola-anchor" href="#cpu-profiling" aria-label="Anchor link for: cpu-profiling">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Generate CPU profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">cpuprofile=cpu.prof</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Analyze profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> cpu.prof</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Web interface</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">http=:8080</span><span style="color: light-dark(#40A02B, #A6DA95);"> cpu.prof</span></span></code></pre><h3 id="memory-profiling">Memory Profiling<a class="zola-anchor" href="#memory-profiling" aria-label="Anchor link for: memory-profiling">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Generate memory profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">memprofile=mem.prof</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Analyze</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> mem.prof</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">http=:8080</span><span style="color: light-dark(#40A02B, #A6DA95);"> mem.prof</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Allocation profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">memprofile=mem.prof</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">memprofilerate=1</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span></span></code></pre><h3 id="http-profiling">HTTP Profiling<a class="zola-anchor" href="#http-profiling" aria-label="Anchor link for: http-profiling">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">import</span><span> _</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">net/http/pprof</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> main</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">    go</span><span style="color: light-dark(#8839EF, #C6A0F6);"> func</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span>        log</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">Println</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span>http</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">ListenAndServe</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">localhost:6060</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#D20F39, #ED8796);"> nil</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    }</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Your application code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre>
+<p><strong>View profiles:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> CPU profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:6060/debug/pprof/profile?seconds=</span><span style="color: light-dark(#FE640B, #F5A97F);">30</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Heap profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:6060/debug/pprof/heap</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Goroutine profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:6060/debug/pprof/goroutine</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Block profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:6060/debug/pprof/block</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Mutex profile</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> pprof</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:6060/debug/pprof/mutex</span></span></code></pre><h3 id="trace">Trace<a class="zola-anchor" href="#trace" aria-label="Anchor link for: trace">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Generate trace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">trace=trace.out</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">bench=.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View trace</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> trace</span><span style="color: light-dark(#40A02B, #A6DA95);"> trace.out</span></span></code></pre><h2 id="go-tools">Go Tools<a class="zola-anchor" href="#go-tools" aria-label="Anchor link for: go-tools">🔗</a></h2>
+<h3 id="go-fmt">go fmt<a class="zola-anchor" href="#go-fmt" aria-label="Anchor link for: go-fmt">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Format current directory</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> fmt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Format all packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> fmt</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check without modifying (returns non-zero if changes needed)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">gofmt</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Write changes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">gofmt</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Diff without modifying</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">gofmt</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span></code></pre><h3 id="go-vet">go vet<a class="zola-anchor" href="#go-vet" aria-label="Anchor link for: go-vet">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Vet current package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> vet</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Vet all packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> vet</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Specific checks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> vet</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">printf</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List available checks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> vet</span><span style="color: light-dark(#40A02B, #A6DA95);"> help</span></span></code></pre><h3 id="go-fix">go fix<a class="zola-anchor" href="#go-fix" aria-label="Anchor link for: go-fix">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Update code to use newer APIs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> fix</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> fix</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h3 id="go-doc">go doc<a class="zola-anchor" href="#go-doc" aria-label="Anchor link for: go-doc">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View package documentation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> doc</span><span style="color: light-dark(#40A02B, #A6DA95);"> fmt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View function documentation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> doc</span><span style="color: light-dark(#40A02B, #A6DA95);"> fmt.Println</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> View all documentation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> doc</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">all</span><span style="color: light-dark(#40A02B, #A6DA95);"> fmt</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Start documentation server</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">godoc</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">http=:6060</span></span></code></pre><h3 id="go-list">go list<a class="zola-anchor" href="#go-list" aria-label="Anchor link for: go-list">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List with format</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">f</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{}</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> all</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List module info</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">json</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/gin-gonic/gin</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Find outdated dependencies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> list</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> all</span></span></code></pre><h3 id="go-generate">go generate<a class="zola-anchor" href="#go-generate" aria-label="Anchor link for: go-generate">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:generate stringer -type=Status</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">type</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> Status</span><span style="color: light-dark(#8839EF, #C6A0F6);"> int</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">const</span><span style="color: light-dark(#7C7F93, #939AB7);"> (</span></span>
+<span class="giallo-l"><span style="color: light-dark(#FE640B, #F5A97F);">    Pending</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> Status</span><span style="color: light-dark(#179299, #8BD5CA);"> =</span><span style="color: light-dark(#D20F39, #ED8796);"> iota</span></span>
+<span class="giallo-l"><span style="color: light-dark(#FE640B, #F5A97F);">    Active</span></span>
+<span class="giallo-l"><span style="color: light-dark(#FE640B, #F5A97F);">    Completed</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span></code></pre><pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run generate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> generate</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> With verbose output</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> generate</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h3 id="go-clean">go clean<a class="zola-anchor" href="#go-clean" aria-label="Anchor link for: go-clean">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clean build cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> clean</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clean test cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> clean</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">testcache</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clean module cache</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> clean</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">modcache</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Clean everything</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> clean</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">cache</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">modcache</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">testcache</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Dry run</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> clean</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span></span></code></pre><h2 id="linters-and-static-analysis">Linters and Static Analysis<a class="zola-anchor" href="#linters-and-static-analysis" aria-label="Anchor link for: linters-and-static-analysis">🔗</a></h2>
+<h3 id="staticcheck">staticcheck<a class="zola-anchor" href="#staticcheck" aria-label="Anchor link for: staticcheck">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Install</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> honnef.co/go/tools/cmd/staticcheck@latest</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run on current package</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">staticcheck</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run on all packages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">staticcheck</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Specific checks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">staticcheck</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">checks=SA1000</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Exclude checks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">staticcheck</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">checks=all,-ST1000</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h3 id="golangci-lint">golangci-lint<a class="zola-anchor" href="#golangci-lint" aria-label="Anchor link for: golangci-lint">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Install</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/golangci/golangci-lint/cmd/golangci-lint@latest</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">golangci-lint</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run with all linters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">golangci-lint</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-enable-all</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Configuration file (.golangci.yml)</span></span></code></pre>
+<p><strong>.golangci.yml example:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">l</span><span style="color: light-dark(#1E66F5, #8AADF4);">inters</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  e</span><span style="color: light-dark(#1E66F5, #8AADF4);">nable</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">ovet</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> e</span><span style="color: light-dark(#40A02B, #A6DA95);">rrcheck</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> s</span><span style="color: light-dark(#40A02B, #A6DA95);">taticcheck</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> u</span><span style="color: light-dark(#40A02B, #A6DA95);">nused</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">osimple</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> s</span><span style="color: light-dark(#40A02B, #A6DA95);">tructcheck</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> v</span><span style="color: light-dark(#40A02B, #A6DA95);">archeck</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> i</span><span style="color: light-dark(#40A02B, #A6DA95);">neffassign</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> d</span><span style="color: light-dark(#40A02B, #A6DA95);">eadcode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> t</span><span style="color: light-dark(#40A02B, #A6DA95);">ypecheck</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">l</span><span style="color: light-dark(#1E66F5, #8AADF4);">inters-settings</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  g</span><span style="color: light-dark(#1E66F5, #8AADF4);">ovet</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">heck-shadowing</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  g</span><span style="color: light-dark(#1E66F5, #8AADF4);">ocyclo</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    m</span><span style="color: light-dark(#1E66F5, #8AADF4);">in-complexity</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 15</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">r</span><span style="color: light-dark(#1E66F5, #8AADF4);">un</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  t</span><span style="color: light-dark(#1E66F5, #8AADF4);">imeout</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 5</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ests</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">i</span><span style="color: light-dark(#1E66F5, #8AADF4);">ssues</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xclude-use-default</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#FE640B, #F5A97F);"> false</span></span></code></pre><h3 id="go-critic">go-critic<a class="zola-anchor" href="#go-critic" aria-label="Anchor link for: go-critic">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Install</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> github.com/go-critic/go-critic/cmd/gocritic@latest</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">gocritic</span><span style="color: light-dark(#40A02B, #A6DA95);"> check</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List checks</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">gocritic</span><span style="color: light-dark(#40A02B, #A6DA95);"> check</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">help</span></span></code></pre><h2 id="build-tags">Build Tags<a class="zola-anchor" href="#build-tags" aria-label="Anchor link for: build-tags">🔗</a></h2>
+<h3 id="define-build-tags">Define Build Tags<a class="zola-anchor" href="#define-build-tags" aria-label="Anchor link for: define-build-tags">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build linux &amp;&amp; amd64</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> +build linux,amd64</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">package</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> platformSpecific</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Linux AMD64 specific code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build !windows</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> +build !windows</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">package</span><span style="color: light-dark(#DF8E1D, #EED49F);font-style: italic;"> main</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">func</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> unixOnly</span><span style="color: light-dark(#7C7F93, #939AB7);">(</span><span style="color: light-dark(#7C7F93, #939AB7);">)</span><span style="color: light-dark(#7C7F93, #939AB7);"> {</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    //</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Non-Windows code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">}</span></span></code></pre><h3 id="build-with-tags">Build with Tags<a class="zola-anchor" href="#build-with-tags" aria-label="Anchor link for: build-with-tags">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build with tag</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">tags=integration</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Multiple tags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> build</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">tags=</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">integration e2e</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Test with tags</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> test</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">tags=integration</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h3 id="common-build-tags">Common Build Tags<a class="zola-anchor" href="#common-build-tags" aria-label="Anchor link for: common-build-tags">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build integration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build unit</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build e2e</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build prod</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build dev</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build linux</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build darwin</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build windows</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build amd64</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">//</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">go:build arm64</span></span></code></pre><h2 id="project-structure">Project Structure<a class="zola-anchor" href="#project-structure" aria-label="Anchor link for: project-structure">🔗</a></h2>
+<h3 id="standard-layout">Standard Layout<a class="zola-anchor" href="#standard-layout" aria-label="Anchor link for: standard-layout">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>myproject/</span></span>
+<span class="giallo-l"><span>├── cmd/</span></span>
+<span class="giallo-l"><span>│   ├── myapp/</span></span>
+<span class="giallo-l"><span>│   │   └── main.go</span></span>
+<span class="giallo-l"><span>│   └── tool/</span></span>
+<span class="giallo-l"><span>│       └── main.go</span></span>
+<span class="giallo-l"><span>├── internal/</span></span>
+<span class="giallo-l"><span>│   ├── auth/</span></span>
+<span class="giallo-l"><span>│   │   ├── auth.go</span></span>
+<span class="giallo-l"><span>│   │   └── auth_test.go</span></span>
+<span class="giallo-l"><span>│   └── database/</span></span>
+<span class="giallo-l"><span>│       ├── db.go</span></span>
+<span class="giallo-l"><span>│       └── db_test.go</span></span>
+<span class="giallo-l"><span>├── pkg/</span></span>
+<span class="giallo-l"><span>│   └── utils/</span></span>
+<span class="giallo-l"><span>│       ├── utils.go</span></span>
+<span class="giallo-l"><span>│       └── utils_test.go</span></span>
+<span class="giallo-l"><span>├── api/</span></span>
+<span class="giallo-l"><span>│   └── openapi.yaml</span></span>
+<span class="giallo-l"><span>├── web/</span></span>
+<span class="giallo-l"><span>│   └── templates/</span></span>
+<span class="giallo-l"><span>├── configs/</span></span>
+<span class="giallo-l"><span>│   └── config.yaml</span></span>
+<span class="giallo-l"><span>├── scripts/</span></span>
+<span class="giallo-l"><span>│   └── build.sh</span></span>
+<span class="giallo-l"><span>├── test/</span></span>
+<span class="giallo-l"><span>│   └── integration/</span></span>
+<span class="giallo-l"><span>├── docs/</span></span>
+<span class="giallo-l"><span>├── go.mod</span></span>
+<span class="giallo-l"><span>├── go.sum</span></span>
+<span class="giallo-l"><span>├── Makefile</span></span>
+<span class="giallo-l"><span>├── Dockerfile</span></span>
+<span class="giallo-l"><span>└── README.md</span></span></code></pre><h3 id="makefile-example">Makefile Example<a class="zola-anchor" href="#makefile-example" aria-label="Anchor link for: makefile-example">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="make"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">.PHONY</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span> build test clean install lint fmt vet</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">build</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go build -o bin/myapp ./cmd/myap</span><span>p</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">test</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go test -v -race -coverprofile=coverage.out ./..</span><span>.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">coverage</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go tool cover -html=coverage.ou</span><span>t</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">bench</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go test -bench=. -benchmem ./..</span><span>.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">clean</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go clea</span><span>n</span></span>
+<span class="giallo-l"><span>	rm -rf bin</span><span>/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">install</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go install ./cmd/myap</span><span>p</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">lint</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	golangci-lint ru</span><span>n</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">fmt</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go fmt ./..</span><span>.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">vet</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go vet ./..</span><span>.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tidy</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go mod tid</span><span>y</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">run</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	go run ./cmd/myap</span><span>p</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker-build</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span>	docker build -t myapp:latest </span><span>.</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">all</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span> fmt vet lint test build</span></span></code></pre><h2 id="docker">Docker<a class="zola-anchor" href="#docker" aria-label="Anchor link for: docker">🔗</a></h2>
+<h3 id="dockerfile-multi-stage">Dockerfile (Multi-stage)<a class="zola-anchor" href="#dockerfile-multi-stage" aria-label="Anchor link for: dockerfile-multi-stage">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="docker"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build stage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">FROM</span><span> golang:1.24-alpine </span><span style="color: light-dark(#8839EF, #C6A0F6);">AS</span><span> builder</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">WORKDIR</span><span> /app</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Copy go mod files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">COPY</span><span> go.mod go.sum ./</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">RUN</span><span> go mod download</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Copy source code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">COPY</span><span> . .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">RUN</span><span> CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/myapp</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Final stage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">FROM</span><span> alpine:latest</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">RUN</span><span> apk --no-cache add ca-certificates</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">WORKDIR</span><span> /root/</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">COPY</span><span> --from=builder /app/main .</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">EXPOSE</span><span> 8080</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">CMD</span><span> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">./main</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span>]</span></span></code></pre><h3 id="dockerignore">.dockerignore<a class="zola-anchor" href="#dockerignore" aria-label="Anchor link for: dockerignore">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>.git</span></span>
+<span class="giallo-l"><span>.gitignore</span></span>
+<span class="giallo-l"><span>README.md</span></span>
+<span class="giallo-l"><span>Makefile</span></span>
+<span class="giallo-l"><span>*.md</span></span>
+<span class="giallo-l"><span>bin/</span></span>
+<span class="giallo-l"><span>vendor/</span></span>
+<span class="giallo-l"><span>.env</span></span></code></pre><h2 id="ci-cd-examples">CI/CD Examples<a class="zola-anchor" href="#ci-cd-examples" aria-label="Anchor link for: ci-cd-examples">🔗</a></h2>
+<h3 id="github-actions">GitHub Actions<a class="zola-anchor" href="#github-actions" aria-label="Anchor link for: github-actions">🔗</a></h3>
+<p><strong>.github/workflows/go.yml:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> G</span><span style="color: light-dark(#40A02B, #A6DA95);">o CI</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#FE640B, #F5A97F);">on</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ush</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    b</span><span style="color: light-dark(#1E66F5, #8AADF4);">ranches</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">ain</span><span style="color: light-dark(#7C7F93, #939AB7);"> ]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  p</span><span style="color: light-dark(#1E66F5, #8AADF4);">ull_request</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    b</span><span style="color: light-dark(#1E66F5, #8AADF4);">ranches</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">ain</span><span style="color: light-dark(#7C7F93, #939AB7);"> ]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">j</span><span style="color: light-dark(#1E66F5, #8AADF4);">obs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  b</span><span style="color: light-dark(#1E66F5, #8AADF4);">uild</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">uns-on</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> u</span><span style="color: light-dark(#40A02B, #A6DA95);">buntu-latest</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">teps</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ctions/checkout@v4</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> S</span><span style="color: light-dark(#40A02B, #A6DA95);">et up Go</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ctions/setup-go@v5</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">ith</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        g</span><span style="color: light-dark(#1E66F5, #8AADF4);">o-version</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">1.24</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> B</span><span style="color: light-dark(#40A02B, #A6DA95);">uild</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      r</span><span style="color: light-dark(#1E66F5, #8AADF4);">un</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o build -v ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> T</span><span style="color: light-dark(#40A02B, #A6DA95);">est</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      r</span><span style="color: light-dark(#1E66F5, #8AADF4);">un</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o test -v -race -coverprofile=coverage.out ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> U</span><span style="color: light-dark(#40A02B, #A6DA95);">pload coverage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> c</span><span style="color: light-dark(#40A02B, #A6DA95);">odecov/codecov-action@v3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">ith</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        f</span><span style="color: light-dark(#1E66F5, #8AADF4);">iles</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span><span style="color: light-dark(#40A02B, #A6DA95);">/coverage.out</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> V</span><span style="color: light-dark(#40A02B, #A6DA95);">et</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      r</span><span style="color: light-dark(#1E66F5, #8AADF4);">un</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o vet ./...</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> s</span><span style="color: light-dark(#40A02B, #A6DA95);">taticcheck</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">ses</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> d</span><span style="color: light-dark(#40A02B, #A6DA95);">ominikh/staticcheck-action@v1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      w</span><span style="color: light-dark(#1E66F5, #8AADF4);">ith</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        v</span><span style="color: light-dark(#1E66F5, #8AADF4);">ersion</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">latest</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h3 id="gitlab-ci">GitLab CI<a class="zola-anchor" href="#gitlab-ci" aria-label="Anchor link for: gitlab-ci">🔗</a></h3>
+<p><strong>.gitlab-ci.yml:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">i</span><span style="color: light-dark(#1E66F5, #8AADF4);">mage</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">olang:1.24</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tages</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> t</span><span style="color: light-dark(#40A02B, #A6DA95);">est</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> b</span><span style="color: light-dark(#40A02B, #A6DA95);">uild</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">b</span><span style="color: light-dark(#1E66F5, #8AADF4);">efore_script</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o mod download</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">est</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tage</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> t</span><span style="color: light-dark(#40A02B, #A6DA95);">est</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">cript</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o fmt ./...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o vet ./...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o test -race -coverprofile=coverage.out ./...</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o tool cover -func=coverage.out</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">b</span><span style="color: light-dark(#1E66F5, #8AADF4);">uild</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tage</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> b</span><span style="color: light-dark(#40A02B, #A6DA95);">uild</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">cript</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> g</span><span style="color: light-dark(#40A02B, #A6DA95);">o build -o myapp ./cmd/myapp</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  a</span><span style="color: light-dark(#1E66F5, #8AADF4);">rtifacts</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    p</span><span style="color: light-dark(#1E66F5, #8AADF4);">aths</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">yapp</span></span></code></pre><h2 id="go-tool-dependencies-go-1-24">Go Tool Dependencies (Go 1.24+)<a class="zola-anchor" href="#go-tool-dependencies-go-1-24" aria-label="Anchor link for: go-tool-dependencies-go-1-24">🔗</a></h2>
+<h3 id="manage-tool-dependencies">Manage Tool Dependencies<a class="zola-anchor" href="#manage-tool-dependencies" aria-label="Anchor link for: manage-tool-dependencies">🔗</a></h3>
+<p><strong>go.mod:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="go"><span class="giallo-l"><span>module</span><span> example</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>myproject</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">go</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">24</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>require</span><span style="color: light-dark(#7C7F93, #939AB7);"> (</span></span>
+<span class="giallo-l"><span>    github</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>com</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>gin</span><span style="color: light-dark(#179299, #8BD5CA);">-</span><span>gonic</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>gin</span><span> v1</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">9</span><span style="color: light-dark(#FE640B, #F5A97F);">.</span><span style="color: light-dark(#FE640B, #F5A97F);">1</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>tool</span><span style="color: light-dark(#7C7F93, #939AB7);"> (</span></span>
+<span class="giallo-l"><span>    golang</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>org</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>x</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>tools</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>cmd</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>goimports</span></span>
+<span class="giallo-l"><span>    honnef</span><span style="color: light-dark(#7C7F93, #939AB7);">.</span><span>co</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span style="color: light-dark(#8839EF, #C6A0F6);">go</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>tools</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>cmd</span><span style="color: light-dark(#179299, #8BD5CA);">/</span><span>staticcheck</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">)</span></span></code></pre>
+<p><strong>Run tools:</strong></p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Run tool from go.mod</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> goimports</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">go</span><span style="color: light-dark(#40A02B, #A6DA95);"> tool</span><span style="color: light-dark(#40A02B, #A6DA95);"> staticcheck</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./...</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="module-management">Module Management<a class="zola-anchor" href="#module-management" aria-label="Anchor link for: module-management">🔗</a></h3>
+<ul>
+<li>Always run <code>go mod tidy</code> before committing</li>
+<li>Commit both <code>go.mod</code> and <code>go.sum</code></li>
+<li>Use <code>go mod vendor</code> for reproducible builds</li>
+<li>Pin tool versions in <code>go.mod</code> (Go 1.24+)</li>
+</ul>
+<h3 id="testing-1">Testing<a class="zola-anchor" href="#testing-1" aria-label="Anchor link for: testing-1">🔗</a></h3>
+<ul>
+<li>Write table-driven tests</li>
+<li>Use subtests for better organization</li>
+<li>Aim for &gt;80% code coverage</li>
+<li>Use <code>-race</code> flag regularly</li>
+<li>Write benchmarks for performance-critical code</li>
+</ul>
+<h3 id="code-quality">Code Quality<a class="zola-anchor" href="#code-quality" aria-label="Anchor link for: code-quality">🔗</a></h3>
+<ul>
+<li>Run <code>go fmt</code> before committing</li>
+<li>Use <code>go vet</code> to catch common mistakes</li>
+<li>Use static analyzers (<code>staticcheck</code>, <code>golangci-lint</code>)</li>
+<li>Keep functions small and focused</li>
+<li>Use meaningful names</li>
+</ul>
+<h3 id="build-deploy">Build &amp; Deploy<a class="zola-anchor" href="#build-deploy" aria-label="Anchor link for: build-deploy">🔗</a></h3>
+<ul>
+<li>Use multi-stage Docker builds</li>
+<li>Build with <code>-ldflags="-s -w"</code> for smaller binaries</li>
+<li>Cross-compile for target platforms</li>
+<li>Use build tags for environment-specific code</li>
+<li>Version your releases</li>
+</ul>
+<h3 id="performance">Performance<a class="zola-anchor" href="#performance" aria-label="Anchor link for: performance">🔗</a></h3>
+<ul>
+<li>Profile before optimizing</li>
+<li>Use <code>pprof</code> for CPU and memory profiling</li>
+<li>Use <code>-benchmem</code> to track allocations</li>
+<li>Avoid premature optimization</li>
+<li>Use sync.Pool for frequent allocations</li>
+</ul>
+<h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li>Official documentation: https://go.dev/doc/</li>
+<li>Go modules reference: https://go.dev/ref/mod</li>
+<li>Effective Go: https://go.dev/doc/effective_go</li>
+<li>Go wiki: https://go.dev/wiki/</li>
+<li>Standard library: https://pkg.go.dev/std</li>
+<li>Go playground: https://go.dev/play/</li>
+<li>Go by Example: https://gobyexample.com/</li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/hugo/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">Hugo</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/fastapi/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">FastAPI</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#installation">Installation</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#macos">macOS</a></li>
+                  
+                    <li class="toc__subitem"><a href="#linux">Linux</a></li>
+                  
+                    <li class="toc__subitem"><a href="#windows">Windows</a></li>
+                  
+                    <li class="toc__subitem"><a href="#environment-variables">Environment Variables</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#go-modules">Go Modules</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#initialize-module">Initialize Module</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-mod-file">go.mod File</a></li>
+                  
+                    <li class="toc__subitem"><a href="#module-commands">Module Commands</a></li>
+                  
+                    <li class="toc__subitem"><a href="#adding-dependencies">Adding Dependencies</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-sum-file">go.sum File</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#workspaces-go-1-18">Workspaces (Go 1.18+)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#initialize-workspace">Initialize Workspace</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-work-file">go.work File</a></li>
+                  
+                    <li class="toc__subitem"><a href="#workspace-commands">Workspace Commands</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#building">Building</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-build">Basic Build</a></li>
+                  
+                    <li class="toc__subitem"><a href="#build-options">Build Options</a></li>
+                  
+                    <li class="toc__subitem"><a href="#cross-compilation">Cross-Compilation</a></li>
+                  
+                    <li class="toc__subitem"><a href="#install">Install</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#running">Running</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#testing">Testing</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#test-file-structure">Test File Structure</a></li>
+                  
+                    <li class="toc__subitem"><a href="#running-tests">Running Tests</a></li>
+                  
+                    <li class="toc__subitem"><a href="#table-driven-tests">Table-Driven Tests</a></li>
+                  
+                    <li class="toc__subitem"><a href="#test-coverage">Test Coverage</a></li>
+                  
+                    <li class="toc__subitem"><a href="#benchmarking">Benchmarking</a></li>
+                  
+                    <li class="toc__subitem"><a href="#testing-examples">Testing Examples</a></li>
+                  
+                    <li class="toc__subitem"><a href="#test-helpers">Test Helpers</a></li>
+                  
+                    <li class="toc__subitem"><a href="#subtests">Subtests</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#profiling">Profiling</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#cpu-profiling">CPU Profiling</a></li>
+                  
+                    <li class="toc__subitem"><a href="#memory-profiling">Memory Profiling</a></li>
+                  
+                    <li class="toc__subitem"><a href="#http-profiling">HTTP Profiling</a></li>
+                  
+                    <li class="toc__subitem"><a href="#trace">Trace</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#go-tools">Go Tools</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#go-fmt">go fmt</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-vet">go vet</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-fix">go fix</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-doc">go doc</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-list">go list</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-generate">go generate</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-clean">go clean</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#linters-and-static-analysis">Linters and Static Analysis</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#staticcheck">staticcheck</a></li>
+                  
+                    <li class="toc__subitem"><a href="#golangci-lint">golangci-lint</a></li>
+                  
+                    <li class="toc__subitem"><a href="#go-critic">go-critic</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#build-tags">Build Tags</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#define-build-tags">Define Build Tags</a></li>
+                  
+                    <li class="toc__subitem"><a href="#build-with-tags">Build with Tags</a></li>
+                  
+                    <li class="toc__subitem"><a href="#common-build-tags">Common Build Tags</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#project-structure">Project Structure</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#standard-layout">Standard Layout</a></li>
+                  
+                    <li class="toc__subitem"><a href="#makefile-example">Makefile Example</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#docker">Docker</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#dockerfile-multi-stage">Dockerfile (Multi-stage)</a></li>
+                  
+                    <li class="toc__subitem"><a href="#dockerignore">.dockerignore</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#ci-cd-examples">CI/CD Examples</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#github-actions">GitHub Actions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#gitlab-ci">GitLab CI</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#go-tool-dependencies-go-1-24">Go Tool Dependencies (Go 1.24+)</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#manage-tool-dependencies">Manage Tool Dependencies</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#module-management">Module Management</a></li>
+                  
+                    <li class="toc__subitem"><a href="#testing-1">Testing</a></li>
+                  
+                    <li class="toc__subitem"><a href="#code-quality">Code Quality</a></li>
+                  
+                    <li class="toc__subitem"><a href="#build-deploy">Build &amp; Deploy</a></li>
+                  
+                    <li class="toc__subitem"><a href="#performance">Performance</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

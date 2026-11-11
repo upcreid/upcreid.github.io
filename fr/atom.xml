@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="fr">
+    <title>/void !</title>
+    <subtitle>Documentation personnelle - Guides, aide-memoire et ressources techniques</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://upcreid.github.io/fr/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://upcreid.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-11-11T09:00:00+01:00</updated>
+    <id>https://upcreid.github.io/fr/atom.xml</id>
+    <entry xml:lang="fr">
+        <title>T3 Code : une seule surface de contrôle pour tous vos agents</title>
+        <published>2026-11-11T09:00:00+01:00</published>
+        <updated>2026-11-11T09:00:00+01:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/blog/t3-code-agent-control-surface/"/>
+        <id>https://upcreid.github.io/fr/blog/t3-code-agent-control-surface/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/blog/t3-code-agent-control-surface/">&lt;p&gt;Claude Code dans un terminal, Codex dans un autre, Cursor ailleurs : les agents sont bons, la façon de jongler entre eux ne l’est pas. &lt;strong&gt;T3 Code&lt;/strong&gt; (MIT, ~56k étoiles GitHub) s’attaque exactement à ce manque, et reste précis sur ce qu’il est.&lt;/p&gt;
+&lt;h2 id=&quot;pas-un-harness&quot;&gt;Pas un harness&lt;a class=&quot;zola-anchor&quot; href=&quot;#pas-un-harness&quot; aria-label=&quot;Anchor link for: pas-un-harness&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Le README parle d’une &lt;em&gt;agent harness control surface&lt;/em&gt;. La nuance compte : T3 Code ne fournit aucun outil aux modèles et n’exécute rien lui-même. Claude Code, Codex, Cursor, Grok Build, OpenCode, Antigravity et d’autres le font déjà. T3 Code lance ces CLI, les enveloppe dans une vraie interface et les rend accessibles à distance. Votre abonnement reste le vôtre ; T3 est gratuit, et il n’y a rien à acheter.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-vous-obtenez&quot;&gt;Ce que vous obtenez&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-vous-obtenez&quot; aria-label=&quot;Anchor link for: ce-que-vous-obtenez&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tous les clients&lt;/strong&gt; : application Electron, web (app.t3.codes), iOS et Android.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pensé pour le distant&lt;/strong&gt; : les agents tournent sur la machine qui héberge le serveur. &lt;code&gt;t3 up&lt;/code&gt; l’expose via T3 Connect, l’appairage LAN ou Tailscale. Fermez le portable, le VPS ou le fixe continue, et le téléphone n’est qu’une télécommande.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modes de permission&lt;/strong&gt;, par fil : Supervised, Auto-accept edits, Auto, Full access. Les demandes des sous-agents arrivent dans la conversation parente.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Worktrees&lt;/strong&gt; pour isoler chaque tâche, avec un écran de nettoyage, car ils remplissent vite le disque.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;a class=&quot;zola-anchor&quot; href=&quot;#installation&quot; aria-label=&quot;Anchor link for: installation&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;fsSL&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; https://t3.codes/install.sh&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt; sh&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;t3&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Aussi via Homebrew (cask &lt;code&gt;t3-code&lt;/code&gt;), l’AUR (&lt;code&gt;t3code-bin&lt;/code&gt;), winget, scoop et nixpkgs.&lt;/p&gt;
+&lt;h2 id=&quot;a-savoir-avant-de-vous-lancer&quot;&gt;À savoir avant de vous lancer&lt;a class=&quot;zola-anchor&quot; href=&quot;#a-savoir-avant-de-vous-lancer&quot; aria-label=&quot;Anchor link for: a-savoir-avant-de-vous-lancer&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C’est &lt;strong&gt;jeune&lt;/strong&gt; : attendez-vous à des bugs, et les grosses contributions ne sont pas encore acceptées.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pas de modèles locaux&lt;/strong&gt;, par choix assumé.&lt;/li&gt;
+&lt;li&gt;Claude passe par l’Agent SDK d’Anthropic : la limite de 5 heures se vide plus vite qu’avec Claude Code directement. Les limites hebdomadaires ne bougent pas, et le bug vient d’Anthropic.&lt;/li&gt;
+&lt;li&gt;Le code part chez votre fournisseur, pas chez T3. La télémétrie ne couvre que l’usage produit et se désactive.&lt;/li&gt;
+&lt;li&gt;T3 Connect est gratuit pour trois machines ; au-delà, il faut un compte T3 Chat payant, sauf à auto-héberger ou passer par Tailscale.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;verdict&quot;&gt;Verdict&lt;a class=&quot;zola-anchor&quot; href=&quot;#verdict&quot; aria-label=&quot;Anchor link for: verdict&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;T3 Code ne rend pas vos agents plus intelligents. Il les rend joignables, comparables et correctement supervisés, ce qui couvre l’essentiel du travail quotidien avec des agents. Si vous jonglez entre deux harness ou voulez prompter depuis le canapé, c’est la meilleure option gratuite que j’aie essayée. Si un seul CLI vous suffit, votre terminal fait encore très bien le travail.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>ThinkRail : JetBrains construit un vrai IDE autour de l&#39;agent pi</title>
+        <published>2026-11-10T10:00:00+01:00</published>
+        <updated>2026-11-10T10:00:00+01:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/blog/thinkrail-agentic-ide/"/>
+        <id>https://upcreid.github.io/fr/blog/thinkrail-agentic-ide/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/blog/thinkrail-agentic-ide/">&lt;p&gt;Il y a un moment, après quelques semaines de vibe coding dans un terminal, où l’on réalise qu’on ne programme plus. On regarde un transcript défiler, on remonte pour retrouver quel fichier l’agent a touché, et on tape &lt;code&gt;git diff&lt;/code&gt; en panique. L’agent va bien. C’est notre façon de travailler qui ne va pas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ThinkRail&lt;/strong&gt; est la réponse de JetBrains à ce problème. C’est un &lt;em&gt;IDE agentique&lt;/em&gt; : un vrai éditeur, un vrai terminal, un vrai diff, enveloppés autour de l’agent de code &lt;strong&gt;pi&lt;/strong&gt;. Le projet vient de l’incubateur &lt;strong&gt;InnovationHub&lt;/strong&gt; de JetBrains, pas de l’équipe IntelliJ, et il est &lt;strong&gt;open source (Apache-2.0), gratuit et sans compte&lt;/strong&gt;. Ce dernier point compte plus qu’il n’y paraît : pas de login, pas de licence par siège, pas de vente incrémentale pilotée par la télémétrie.&lt;/p&gt;
+&lt;h2 id=&quot;ce-qu-est-reellement-thinkrail&quot;&gt;Ce qu’est réellement ThinkRail&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-qu-est-reellement-thinkrail&quot; aria-label=&quot;Anchor link for: ce-qu-est-reellement-thinkrail&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ThinkRail n’est pas un plugin IntelliJ, et ce n’est pas non plus un fork de VS Code. C’est un hôte mince : le moteur &lt;code&gt;pi&lt;/code&gt; tourne &lt;strong&gt;dans le même processus&lt;/strong&gt; que ThinkRail et possède les parties difficiles (modèles, skills, compactage du contexte, coût en tokens, état de session). ThinkRail possède tout ce qu’il y a autour : les workspaces, l’interface, et le contrat typé entre le moteur et l’UI.&lt;/p&gt;
+&lt;p&gt;Sous le capot, l’architecture est rafraîchissante de banalité, dans le bon sens :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;un hôte HTTP + WebSocket (Bun) avec une session &lt;code&gt;pi&lt;/code&gt; par chat ;&lt;/li&gt;
+&lt;li&gt;un protocole typé et versionné entre l’hôte et l’UI ;&lt;/li&gt;
+&lt;li&gt;un client web React, livré indépendamment ;&lt;/li&gt;
+&lt;li&gt;deux façades pour le même moteur : une application de bureau native (empaquetée avec Electrobun) et une CLI &lt;code&gt;thinkrail&lt;/code&gt; qui ouvre la même UI dans le navigateur.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Parce que c’est un &lt;em&gt;hôte&lt;/em&gt;, ThinkRail ne fabrique jamais de prompts dans votre dos. Votre configuration &lt;code&gt;~/.pi&lt;/code&gt; fait foi : providers, modèles, skills, extensions, historique des chats. On peut démarrer une session dans ThinkRail et la reprendre dans la CLI pi, ou l’inverse. C’est l’exact opposé du verrouillage propriétaire habituel, et c’est la décision de conception la plus importante du produit.&lt;/p&gt;
+&lt;h2 id=&quot;les-workspaces-les-agents-meritent-des-worktrees-pas-votre-arbre-de-travail&quot;&gt;Les workspaces : les agents méritent des worktrees, pas votre arbre de travail&lt;a class=&quot;zola-anchor&quot; href=&quot;#les-workspaces-les-agents-meritent-des-worktrees-pas-votre-arbre-de-travail&quot; aria-label=&quot;Anchor link for: les-workspaces-les-agents-meritent-des-worktrees-pas-votre-arbre-de-travail&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;L’idée centrale est simple : un &lt;strong&gt;projet&lt;/strong&gt; est n’importe quel dépôt git local, et un &lt;strong&gt;workspace&lt;/strong&gt; est un &lt;code&gt;git worktree&lt;/code&gt; découpé dedans. Chaque workspace a sa branche, son répertoire de travail, ses fichiers, ses terminaux, ses diffs et ses chats.&lt;/p&gt;
+&lt;p&gt;Concrètement, on clique sur « Start building », on choisit une branche de base, on écrit une description (qui sert aussi de premier prompt), et l’agent commence à travailler dans &lt;code&gt;~/.thinkrail/worktrees/&amp;lt;projet&amp;gt;/workspace-1&lt;/code&gt;. Votre checkout n’est pas touché. Si l’agent réécrit un fichier, supprime quelque chose ou lance un formateur non demandé, les dégâts restent confinés à cette branche. On fusionne ce qui plaît, on supprime le reste.&lt;/p&gt;
+&lt;p&gt;La conséquence que tout le monde sous-estime : &lt;strong&gt;le parallélisme devient sûr&lt;/strong&gt;. Trois agents sur trois worktrees ne peuvent pas se battre pour les mêmes fichiers, puisqu’ils ne sont pas dans le même répertoire. L’un peut refactoriser un module pendant qu’un autre réécrit les specs, sans que ni l’un ni l’autre ne tombe sur un fichier à moitié écrit.&lt;/p&gt;
+&lt;p&gt;Les petits détails qui prouvent que la fonctionnalité a été utilisée : les workspaces terminés se rangent tout seuls sur une étagère &lt;strong&gt;Settled&lt;/strong&gt; quand leur PR est fusionnée ou fermée, ou après une période d’inactivité configurable (un, trois, sept ou quatorze jours, ou jamais) ; et ils reviennent dès qu’on y retouche.&lt;/p&gt;
+&lt;h2 id=&quot;le-developpement-pilote-par-les-specs-sans-la-ceremonie&quot;&gt;Le développement piloté par les specs, sans la cérémonie&lt;a class=&quot;zola-anchor&quot; href=&quot;#le-developpement-pilote-par-les-specs-sans-la-ceremonie&quot; aria-label=&quot;Anchor link for: le-developpement-pilote-par-les-specs-sans-la-ceremonie&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Le deuxième pilier, c’est le &lt;strong&gt;graphe de specs&lt;/strong&gt;. Chaque module peut porter un fichier &lt;code&gt;SPEC.md&lt;/code&gt; avec un en-tête YAML qui le relie aux autres :&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;---&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;i&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;d&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;odule-server&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;t&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;ype&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; m&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;odule-design&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;s&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;tatus&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; a&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;ctive&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;p&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;arent&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; a&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;rchitecture&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;d&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;epends-on&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;g&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;oal-and-requirements&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;t&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);&quot;&gt;ags&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt;:&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;e&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;ngine&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;,&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; c&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;ontracts&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt;---&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Le champ &lt;code&gt;status&lt;/code&gt; à lui seul (&lt;code&gt;draft&lt;/code&gt;, &lt;code&gt;active&lt;/code&gt;, &lt;code&gt;stale&lt;/code&gt;, &lt;code&gt;done&lt;/code&gt;, &lt;code&gt;deprecated&lt;/code&gt;) vaut le détour : une spec ne peut pas pourrir en silence, puisque sa péremption est écrite noir sur blanc. À la racine du dépôt, on garde &lt;code&gt;goal-and-requirements.md&lt;/code&gt; et &lt;code&gt;architecture.md&lt;/code&gt; ; en dessous, un &lt;code&gt;SPEC.md&lt;/code&gt; par véritable module.&lt;/p&gt;
+&lt;p&gt;Le point crucial n’est pas le format, c’est celui qui le maintient. ThinkRail embarque une extension &lt;code&gt;pi-spec-graph&lt;/code&gt; qui donne à l’agent des outils &lt;code&gt;spec_*&lt;/code&gt; dédiés pour chercher, naviguer et mettre à jour le graphe. Quand un changement déplace une frontière ou casse un contrat, la spec est censée être mise à jour &lt;strong&gt;dans le même tour&lt;/strong&gt;, jamais après. L’agent lit la spec la plus proche au lieu de tout le code, ce qui garde son contexte petit et ses réponses ancrées.&lt;/p&gt;
+&lt;p&gt;C’est le Spec-Driven Development tel que JetBrains le présente : la documentation revient non pas parce qu’un manager l’a exigée, mais parce que c’est le moyen le moins cher de garder un agent sur les rails d’une session à l’autre. Les specs sont les garde-fous — toujours présents, jamais gênants quand tout se passe bien.&lt;/p&gt;
+&lt;h2 id=&quot;la-partie-ide-n-est-pas-decorative&quot;&gt;La partie IDE n’est pas décorative&lt;a class=&quot;zola-anchor&quot; href=&quot;#la-partie-ide-n-est-pas-decorative&quot; aria-label=&quot;Anchor link for: la-partie-ide-n-est-pas-decorative&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Un panneau de chat n’est pas un IDE. ThinkRail fournit les briques indispensables et ennuyeuses :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;des &lt;strong&gt;onglets Monaco&lt;/strong&gt; (le moteur d’édition de VS Code), avec coloration syntaxique, Markdown rendu et bascule vers la source ;&lt;/li&gt;
+&lt;li&gt;une &lt;strong&gt;arborescence de fichiers&lt;/strong&gt; limitée au worktree actif, avec filtre sur les fichiers modifiés ;&lt;/li&gt;
+&lt;li&gt;un &lt;strong&gt;panneau de changements git&lt;/strong&gt; qui affiche le diff de la branche en direct, pendant que l’agent tape encore ;&lt;/li&gt;
+&lt;li&gt;de &lt;strong&gt;vrais PTY&lt;/strong&gt;, pour lancer ses tests soi-même pendant que l’agent continue ;&lt;/li&gt;
+&lt;li&gt;un &lt;strong&gt;panneau de revue&lt;/strong&gt; où l’on collecte des commentaires ligne à ligne et où on les renvoie à l’agent en un seul message.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Le flux de revue est la fonctionnalité dont je ne pensais pas avoir besoin. Quand un tour modifie des fichiers, il se termine par un reçu du type &lt;code&gt;3 files changed · +27 −4&lt;/code&gt; et un bouton &lt;strong&gt;Review turn&lt;/strong&gt;. Ces chiffres ne viennent pas des déclarations de l’agent : l’hôte prend un instantané du worktree au début et à la fin du run, donc un formateur ou un &lt;code&gt;sed&lt;/code&gt; lancé dans le shell compte aussi. On lit ensuite tout d’un seul défilement, avec &lt;code&gt;Keep&lt;/code&gt;, &lt;code&gt;Revert&lt;/code&gt; et &lt;code&gt;Ask agent about this hunk&lt;/code&gt; sur chaque hunk, et &lt;code&gt;J&lt;/code&gt; pour passer au fichier non relu suivant. &lt;code&gt;Keep&lt;/code&gt; est indexé sur le contenu du hunk, donc il survit aux décalages de lignes.&lt;/p&gt;
+&lt;p&gt;Ce seul changement de conception — &lt;em&gt;relire le tour, pas le journal de chat&lt;/em&gt; — est ce qui transforme un agent en collègue plutôt qu’en jouet.&lt;/p&gt;
+&lt;h2 id=&quot;chat-modeles-et-petits-details-qui-comptent&quot;&gt;Chat, modèles et petits détails qui comptent&lt;a class=&quot;zola-anchor&quot; href=&quot;#chat-modeles-et-petits-details-qui-comptent&quot; aria-label=&quot;Anchor link for: chat-modeles-et-petits-details-qui-comptent&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Le chat est conçu pour le vrai travail, pas pour la démo :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;plusieurs sessions simultanées par workspace, &lt;strong&gt;chacune avec son modèle et son effort de raisonnement&lt;/strong&gt; ;&lt;/li&gt;
+&lt;li&gt;on peut &lt;strong&gt;infléchir un tour en cours&lt;/strong&gt; ou mettre une suite en file d’attente au lieu d’attendre la fin ;&lt;/li&gt;
+&lt;li&gt;comptabilité des tokens en direct : entrée, sortie, lectures et écritures de cache, coût, et remplissage de la fenêtre de contexte ;&lt;/li&gt;
+&lt;li&gt;un &lt;strong&gt;plan&lt;/strong&gt; partagé entre vous et l’agent, avec une page complète montrant, pour chaque étape terminée, son résumé et sa vérification ;&lt;/li&gt;
+&lt;li&gt;les ressources d’arrière-plan (commandes, sous-agents, serveurs MCP) dans un seul popup ;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;⌘K&lt;/code&gt; / &lt;code&gt;Ctrl+K&lt;/code&gt; / double appui sur Shift&lt;/strong&gt; ouvre une boîte unique qui trouve les chats &lt;em&gt;et les messages qu’ils contiennent&lt;/em&gt;, les workspaces, les projets, les fichiers, les specs et les plans, lance les commandes de l’application et — quand elle est vide — liste tous les chats qui vous attendent, tous projets confondus. Ce dernier tour de passe-passe règle le vrai goulot d’étranglement des agents parallèles : remarquer lequel est bloqué sur une question.&lt;/li&gt;
+&lt;li&gt;des outils interactifs : l’agent peut vous poser des questions à choix multiples dans le chat au lieu de deviner, dessiner des diagrammes Mermaid, et afficher des maquettes avant/après commentables comme un diff.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Côté modèles, ThinkRail n’a &lt;strong&gt;aucun compte à lui&lt;/strong&gt;. On se connecte avec JetBrains AI ou on branche n’importe quel provider via l’authentification de pi. On peut aussi viser une passerelle d’entreprise ou un serveur local — Ollama, LM Studio, vLLM, llama.cpp, LiteLLM, sglang — via Settings → Providers → Add server : coller une adresse, cliquer sur &lt;em&gt;Find models&lt;/em&gt;, sauvegarder. Le tout atterrit dans le &lt;code&gt;models.json&lt;/code&gt; de pi, donc la CLI pi profite de la même configuration, et la clé API ne transite jamais par le navigateur.&lt;/p&gt;
+&lt;p&gt;Les extensions suivent la même philosophie. On peut installer n’importe quel paquet pi par nom npm, URL git ou dossier local, voir ce qu’il apporte avant de l’activer, et basculer individuellement les paquets, extensions, skills ou fonctions internes de pi. Les extensions embarquées incluent &lt;code&gt;pi-web-access&lt;/code&gt;, &lt;code&gt;pi-visualize&lt;/code&gt;, &lt;code&gt;pi-spec-graph&lt;/code&gt;, &lt;code&gt;pi-thinkrail-workflow&lt;/code&gt; et &lt;code&gt;pi-todos&lt;/code&gt;. Les skills sont découverts dans &lt;code&gt;~/.pi&lt;/code&gt;, &lt;code&gt;~/.claude&lt;/code&gt;, &lt;code&gt;~/.codex&lt;/code&gt;, &lt;code&gt;~/.copilot&lt;/code&gt; et &lt;code&gt;~/.gemini&lt;/code&gt;, plus leurs équivalents locaux au projet — une installation Claude Code existante n’est donc pas perdue.&lt;/p&gt;
+&lt;p&gt;MCP est pris en charge sans les pièges habituels : les serveurs viennent de votre &lt;code&gt;mcp.json&lt;/code&gt; ou des réglages, les secrets doivent être des références &lt;code&gt;${VAR}&lt;/code&gt; ou &lt;code&gt;!command&lt;/code&gt; (coller un identifiant dans une URL est refusé), les serveurs fournis par un dépôt restent éteints tant que vous n’avez pas approuvé précisément ce qu’ils vont exécuter, et tout appel susceptible de modifier des données demande d’abord : &lt;code&gt;Deny&lt;/code&gt;, &lt;code&gt;Allow once&lt;/code&gt;, &lt;code&gt;Allow in this chat&lt;/code&gt;, &lt;code&gt;Always allow&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;installation-et-premiere-tache&quot;&gt;Installation et première tâche&lt;a class=&quot;zola-anchor&quot; href=&quot;#installation-et-premiere-tache&quot; aria-label=&quot;Anchor link for: installation-et-premiere-tache&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Récupérez la version bureau sur &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://thinkrail.ai/&quot;&gt;thinkrail.ai&lt;/a&gt; (macOS Apple Silicon ou Intel, Windows x64, Linux x64/ARM64), ou passez par la CLI :&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt; macOS, Linux, WSL (et Windows sous Git Bash)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; -&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;fsSL&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; https://raw.githubusercontent.com/JetBrains/thinkrail/main/install.sh&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt; bash&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt;#&lt;/span&gt;&lt;span style=&quot;color: light-dark(#7C7F93, #939AB7);font-style: italic;&quot;&gt; Windows PowerShell&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;irm&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; https://raw.githubusercontent.com/JetBrains/thinkrail/main/install.ps1&lt;/span&gt;&lt;span style=&quot;color: light-dark(#179299, #8BD5CA);&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt; iex&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;thinkrail&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; ~/code/mon-depot&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sous Linux, la version bureau est la plus capricieuse : il faut glibc 2.38+ et GTK 3 / WebKitGTK 4.1 / Ayatana AppIndicator 3 / librsvg 2, ce qui signifie en pratique Ubuntu 24.04 ou plus récent :&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#1E66F5, #8AADF4);font-style: italic;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; apt&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; install&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; libgtk-3-0&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; libwebkit2gtk-4.1-0&lt;/span&gt;&lt;span style=&quot;color: light-dark(#EA76CB, #F5BDE6);&quot;&gt; \&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt;  libayatana-appindicator3-1&lt;/span&gt;&lt;span style=&quot;color: light-dark(#40A02B, #A6DA95);&quot;&gt; librsvg2-2&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ensuite, une première session raisonnable ressemble à ceci :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ouvrez un dépôt. Si vous n’en avez pas sous la main, &lt;em&gt;Start a new project&lt;/em&gt; crée un dépôt git vide.&lt;/li&gt;
+&lt;li&gt;Allez dans Settings, connectez un provider (JetBrains AI ou votre propre clé), puis choisissez un modèle par défaut.&lt;/li&gt;
+&lt;li&gt;Créez un workspace depuis &lt;code&gt;main&lt;/code&gt; et décrivez la tâche en une phrase — cette description est le premier prompt.&lt;/li&gt;
+&lt;li&gt;Laissez l’agent travailler. Regardez le diff arriver dans le panneau Changes ; ouvrez un terminal si vous voulez lancer les tests vous-même.&lt;/li&gt;
+&lt;li&gt;Appuyez sur &lt;strong&gt;Review turn&lt;/strong&gt;, lisez l’ensemble du changement, gardez ou annulez des hunks, et renvoyez des commentaires si quelque chose cloche.&lt;/li&gt;
+&lt;li&gt;Publiez la branche et ouvrez une pull request depuis la barre supérieure. ThinkRail affiche les checks CI et la décision de revue, et permet de marquer prête, fusionner ou supprimer la branche distante.&lt;/li&gt;
+&lt;li&gt;Fusionnez ou fermez la PR : le workspace se range tout seul.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Pour le travail piloté par les specs, ajoutez une cinquième étape : demandez à l’agent d’écrire ou de mettre à jour le &lt;code&gt;SPEC.md&lt;/code&gt; du module touché, et vérifiez le graphe dans le panneau Specs. Après quelques tâches, les specs deviennent ce que l’on lit avant d’ouvrir le code.&lt;/p&gt;
+&lt;h2 id=&quot;ce-qu-il-fait-bien&quot;&gt;Ce qu’il fait bien&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-qu-il-fait-bien&quot; aria-label=&quot;Anchor link for: ce-qu-il-fait-bien&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;L’isolation est réelle.&lt;/strong&gt; Les worktrees ne sont pas un gadget : c’est le seul mécanisme que je connaisse qui rende des agents parallèles réellement sûrs sur un dépôt partagé, sans copier tout le dépôt ni inventer un format de workspace propriétaire.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;L’agent garde la mémoire de l’intention.&lt;/strong&gt; Specs, skills et plan partagé font qu’une nouvelle session ne repart pas de zéro. Le graphe garde le contexte petit, et les outils &lt;code&gt;spec_*&lt;/code&gt; rendent l’agent responsable de sa propre documentation.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rien n’est verrouillé.&lt;/strong&gt; Apache-2.0, pas de compte, vos providers, votre &lt;code&gt;~/.pi&lt;/code&gt;, votre &lt;code&gt;models.json&lt;/code&gt;, votre git. On peut quitter ThinkRail en gardant sa configuration, ou lancer la CLI dans un navigateur via SSH sur une machine distante.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;L’interface est honnête sur l’agent.&lt;/strong&gt; Diffs pris par instantané, revue hunk par hunk, coût en tokens dans l’en-tête, ressources et sous-agents visibles : on sait toujours ce qui s’est passé, combien ça a coûté, et ce qui tourne encore.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;C’est gratuit.&lt;/strong&gt; L’application ne coûte rien ; vous payez votre fournisseur de modèles, point.&lt;/p&gt;
+&lt;h2 id=&quot;la-ou-ca-coince-encore&quot;&gt;Là où ça coince encore&lt;a class=&quot;zola-anchor&quot; href=&quot;#la-ou-ca-coince-encore&quot; aria-label=&quot;Anchor link for: la-ou-ca-coince-encore&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;C’est un produit 0.x.&lt;/strong&gt; Version 0.3.1 au moment d’écrire ces lignes (novembre 2026). Attendez-vous à des aspérités, à des canaux nightly, et à des fonctionnalités qui bougent d’une release à l’autre. Les notes de version listent elles-mêmes les limites — par exemple, keep/revert ne fonctionne que sur le diff de branche, pas sur la vue d’un seul tour, et les très gros diffs s’ouvrent repliés.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;C’est pi, et seulement pi.&lt;/strong&gt; ThinkRail est un hôte pour un moteur. Si votre flux de travail est bâti autour de Claude Code, Cursor ou Codex, ce n’est pas un remplacement direct — des forks communautaires explorent la piste, mais le produit officiel assume pi. Le pari : un harnais minimal et extensible plus une bonne interface bat un monolithe.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;L’empaquetage Linux est le point faible.&lt;/strong&gt; Ubuntu 24.04+ en pratique, builds non signés, CLI macOS signée mais non notariée. La CLI Windows et les binaires de bureau sont signés, les DMG macOS sont signés et notariés. Sous Linux, prévoyez de vérifier les sommes de contrôle vous-même.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Il téléphone à la maison par défaut.&lt;/strong&gt; Les lancements, créations de chat, envois de messages et connexions de providers sont collectés sous un identifiant d’installation aléatoire ; les rapports d’erreur sont toujours envoyés, avec le type d’erreur et l’endroit dans le code de ThinkRail, jamais les prompts ni les chemins de fichiers. On peut désactiver le partage supplémentaire avec &lt;code&gt;thinkrail --no-analytics&lt;/code&gt; ou &lt;code&gt;THINKRAIL_NO_ANALYTICS=1&lt;/code&gt;. C’est modéré pour de la télémétrie, mais c’est actif par défaut : décidez consciemment.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Le développement piloté par les specs est une discipline, pas un interrupteur.&lt;/strong&gt; Si vous et l’agent ne maintenez pas les &lt;code&gt;SPEC.md&lt;/code&gt;, le graphe devient de l’archéologie. L’outillage aide ; il ne remplace pas l’habitude.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Il faut quand même relire.&lt;/strong&gt; Tout l’intérêt est de rendre la revue bon marché, pas facultative. Un agent avec un shell, un worktree et le droit de fusionner finira par produire quelque chose de plausible et de faux ; le reçu et la revue hunk par hunk existent précisément parce que la confiance se vérifie.&lt;/p&gt;
+&lt;h2 id=&quot;verdict&quot;&gt;Verdict&lt;a class=&quot;zola-anchor&quot; href=&quot;#verdict&quot; aria-label=&quot;Anchor link for: verdict&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ThinkRail est la réponse la plus cohérente que j’aie vue à une question que l’industrie cherche encore : &lt;em&gt;à quoi ressemble un IDE quand le code est écrit par un agent ?&lt;/em&gt; Pas une barre latérale de chat collée sur l’éditeur d’hier, pas un bac à sable navigateur qui cache le système de fichiers, mais un gestionnaire de workspaces où l’unité de travail est une branche isolée, l’unité de revue un tour, et l’unité de mémoire un graphe de specs.&lt;/p&gt;
+&lt;p&gt;C’est jeune, c’est pi-only, et son empaquetage Linux agacera certains. Mais les idées sont justes, l’implémentation est rafraîchissante de simplicité, et le prix — gratuit, open source, sans compte, avec votre propre modèle — en fait une expérimentation très peu coûteuse. Si vous vivez déjà dans pi, installez-le aujourd’hui. Sinon, c’est la meilleure excuse que je connaisse pour essayer pi.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>DeepSeek Flash 4.1 : l&#39;open source qui met la pression sur les Américains</title>
+        <published>2026-10-13T09:00:00+02:00</published>
+        <updated>2026-10-13T09:00:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/blog/deepseek-flash-4-1/"/>
+        <id>https://upcreid.github.io/fr/blog/deepseek-flash-4-1/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/blog/deepseek-flash-4-1/">&lt;p&gt;Je vais être direct : le dernier modèle de DeepSeek, Flash 4.1, me laisse un peu sur le cul.&lt;/p&gt;
+&lt;p&gt;On est habitués à voir DeepSeek sortir des modèles solides à des prix ridicules. Mais là, ils ont remis une couche, et pas des moindres.&lt;/p&gt;
+&lt;h3 id=&quot;open-source-vraiment&quot;&gt;Open source, vraiment&lt;a class=&quot;zola-anchor&quot; href=&quot;#open-source-vraiment&quot; aria-label=&quot;Anchor link for: open-source-vraiment&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Le premier point, c’est que Flash 4.1 est &lt;strong&gt;open source&lt;/strong&gt;. Pas « open weights à moitié », pas « open mais avec une licence qui t’interdit de t’en servir pour bosser ». Non : les poids sont là, tu peux le télécharger, l’héberger toi-même, le fine-tuner, le faire tourner sur ta propre infra.&lt;/p&gt;
+&lt;p&gt;C’est une différence énorme. Quand tu dépends d’une API fermée, tu dépends de quelqu’un d’autre : ses prix, ses conditions, ses coupures, ses changements de modèle à la con qui te pètent ta prod du jour au lendemain. Là, tu gardes la main.&lt;/p&gt;
+&lt;h3 id=&quot;et-le-prix&quot;&gt;Et le prix…&lt;a class=&quot;zola-anchor&quot; href=&quot;#et-le-prix&quot; aria-label=&quot;Anchor link for: et-le-prix&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;C’est le deuxième point, et c’est sans doute le plus gênant pour la concurrence.&lt;/p&gt;
+&lt;p&gt;Flash 4.1 coûte &lt;strong&gt;une fraction de ce que facturent les modèles américains&lt;/strong&gt; pour un niveau de qualité qui, franchement, n’a plus grand-chose à leur envier sur la plupart des tâches du quotidien. Générer du code, rédiger, résumer, extraire des données, tenir une conversation : pour 90 % des usages réels, la différence est devenue difficile à justifier.&lt;/p&gt;
+&lt;p&gt;Quand un modèle ouvert et quasiment gratuit fait le même boulot qu’un modèle fermé facturé dix fois plus cher, à un moment il faut avoir une vraie raison de payer. « C’est un modèle US » n’en est plus une.&lt;/p&gt;
+&lt;h3 id=&quot;une-vraie-concurrence-pour-les-modeles-americains&quot;&gt;Une vraie concurrence pour les modèles américains&lt;a class=&quot;zola-anchor&quot; href=&quot;#une-vraie-concurrence-pour-les-modeles-americains&quot; aria-label=&quot;Anchor link for: une-vraie-concurrence-pour-les-modeles-americains&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;C’est là que ça devient intéressant. Les gros acteurs américains (OpenAI, Anthropic, Google) ont construit leur business sur deux piliers : la performance, et le fait d’être les seuls à pouvoir la fournir.&lt;/p&gt;
+&lt;p&gt;Le premier pilier tient encore, mais de moins en moins. Le second, lui, est en train de tomber.&lt;/p&gt;
+&lt;p&gt;Parce que la stratégie de DeepSeek est redoutable : ils publient ouvertement, ils cassent les prix, et ils obligent tout le monde à revoir sa copie. Les autres labos doivent soit baisser leurs tarifs, soit justifier une valeur ajoutée qui n’existe plus pour la majorité des clients. C’est une pression énorme, et elle vient d’un acteur qui, il y a encore quelques années, n’était même pas dans la course.&lt;/p&gt;
+&lt;h3 id=&quot;ce-que-ca-change-pour-nous&quot;&gt;Ce que ça change pour nous&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-ca-change-pour-nous&quot; aria-label=&quot;Anchor link for: ce-que-ca-change-pour-nous&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Concrètement, pour quelqu’un comme moi qui bricole des projets, qui écrit des scripts, qui se sert de l’IA pour dégrossir du boulot : ça veut dire qu’on peut arrêter de compter chaque token comme si c’était de l’or.&lt;/p&gt;
+&lt;p&gt;On peut tester, se tromper, itérer, relancer des générations sans avoir mal au portefeuille. On peut aussi héberger le modèle soi-même si on a des données sensibles et qu’on ne veut pas les envoyer balader chez un fournisseur tiers. Bref, on récupère du contrôle.&lt;/p&gt;
+&lt;h3 id=&quot;attention-quand-meme&quot;&gt;Attention, quand même&lt;a class=&quot;zola-anchor&quot; href=&quot;#attention-quand-meme&quot; aria-label=&quot;Anchor link for: attention-quand-meme&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Je ne vais pas non plus tomber dans le fanboyisme. Un modèle open source, ça veut dire que c’est &lt;strong&gt;à toi&lt;/strong&gt; de gérer l’infra, les mises à jour, la sécurité. Ce n’est pas magique. Et sur les tâches les plus pointues, les modèles frontière américains gardent encore une longueur d’avance.&lt;/p&gt;
+&lt;p&gt;Mais pour tout le reste, la question n’est plus « est-ce que l’open source est au niveau ? ». La question est devenue « pourquoi je paierais plein pot pour ça ? ».&lt;/p&gt;
+&lt;h3 id=&quot;en-resume&quot;&gt;En résumé&lt;a class=&quot;zola-anchor&quot; href=&quot;#en-resume&quot; aria-label=&quot;Anchor link for: en-resume&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Flash 4.1 n’est pas juste un bon modèle. C’est un signal : la qualité se démocratise, les prix s’effondrent, et les modèles fermés américains vont devoir apprendre à vivre avec une concurrence qu’ils ne contrôlent plus.&lt;/p&gt;
+&lt;p&gt;Et franchement, c’est une bonne nouvelle pour tout le monde. Sauf pour leurs marges.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Du « Code Monkey » à l’Orchestrateur Systémique : La mutation du métier de développeur</title>
+        <published>2026-09-19T15:30:00+02:00</published>
+        <updated>2026-09-19T15:30:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/blog/code-monkey-to-systemic-orchestrator/"/>
+        <id>https://upcreid.github.io/fr/blog/code-monkey-to-systemic-orchestrator/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/blog/code-monkey-to-systemic-orchestrator/">&lt;p&gt;Pendant longtemps, le quotidien d’un dev se résumait souvent à une chose : transformer une idée en lignes de code à la main, boucle par boucle, point-virgule par point-virgule.&lt;/p&gt;
+&lt;p&gt;Aujourd’hui, n’importe quel LLM peut générer une fonction ou une interface en trois secondes. Taper du code au kilomètre n’a plus de valeur. Le métier n’est pas mort pour autant, mais il change radicalement de focus.&lt;/p&gt;
+&lt;h3 id=&quot;moins-de-syntaxe-plus-de-discernement&quot;&gt;Moins de syntaxe, plus de discernement&lt;a class=&quot;zola-anchor&quot; href=&quot;#moins-de-syntaxe-plus-de-discernement&quot; aria-label=&quot;Anchor link for: moins-de-syntaxe-plus-de-discernement&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Générer du code est devenu gratuit. Le maintenir et le comprendre reste coûteux. Au quotidien, notre temps ne passe plus dans la recherche de syntaxe ou le code boilerplate, mais sur trois sujets essentiels :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Exprimer clairement le besoin&lt;/strong&gt; : Si la consigne est floue, l’IA produit une mauvaise solution en un éclair. La précision dans la modélisation et les règles métier est plus cruciale que jamais.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relire avec un œil critique&lt;/strong&gt; : Le code généré a souvent l’air propre au premier abord. C’est trompeur : les cas limites, les trous de sécurité ou les aberrations logiques s’y cachent facilement. Notre rôle principal est devenu celui d’un relecteur impitoyable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bétonner les tests&lt;/strong&gt; : Pour faire confiance à du code qu’on n’a pas tapé soi-même, il faut des tests solides (unitaires, intégration, typage strict). Le harnais de test devient notre filet de sécurité.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;la-vision-d-ensemble-plutot-que-la-brique-isolee&quot;&gt;La vision d’ensemble plutôt que la brique isolée&lt;a class=&quot;zola-anchor&quot; href=&quot;#la-vision-d-ensemble-plutot-que-la-brique-isolee&quot; aria-label=&quot;Anchor link for: la-vision-d-ensemble-plutot-que-la-brique-isolee&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;L’IA est forte pour coder une fonction précise, mais elle a une mémoire courte et ne voit pas la photo d’ensemble. Le choix de l’architecture, la découpe des modules, la gestion des coûts d’infra et la cohérence de la base de données restent des décisions purement humaines.&lt;/p&gt;
+&lt;p&gt;Si on laisse des agents empiler du code sans contrôle, on se retrouve très vite avec une base de code ingérable que personne ne maîtrise : de la dette technique en pilote automatique.&lt;/p&gt;
+&lt;h3 id=&quot;et-pour-les-debutants&quot;&gt;Et pour les débutants ?&lt;a class=&quot;zola-anchor&quot; href=&quot;#et-pour-les-debutants&quot; aria-label=&quot;Anchor link for: et-pour-les-debutants&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;C’est sans doute le vrai point de friction. On devenait senior en cassant des choses et en passant des nuits à chercher un bug dans son propre code.&lt;/p&gt;
+&lt;p&gt;Pour un junior aujourd’hui, le piège est d’utiliser l’IA comme une béquille sans jamais comprendre ce qui tourne sous le capot. La clé de l’apprentissage se déplace : il s’agit moins d’écrire depuis une page blanche que d’apprendre à lire, débugger et challenger ce qui est généré.&lt;/p&gt;
+&lt;h3 id=&quot;en-resume&quot;&gt;En résumé&lt;a class=&quot;zola-anchor&quot; href=&quot;#en-resume&quot; aria-label=&quot;Anchor link for: en-resume&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Le métier ne disparaît pas, il se débarrasse de sa partie la plus mécanique. Moins de temps perdu sur la tuyauterie de base, plus d’énergie investie dans la conception, la robustesse et la valeur pour l’utilisateur.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Alacritty : mon terminal au quotidien ⚡</title>
+        <published>2026-09-19T15:00:00+02:00</published>
+        <updated>2026-09-19T15:00:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/blog/alacritty-terminal/"/>
+        <id>https://upcreid.github.io/fr/blog/alacritty-terminal/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/blog/alacritty-terminal/">&lt;p&gt;Je fais de plus en plus de choses depuis le terminal. Pour cet usage quotidien, il me fallait un outil ultra performant : &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://alacritty.org/&quot;&gt;Alacritty&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Au quotidien, &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/alacritty/alacritty&quot;&gt;Alacritty&lt;/a&gt; est devenu indispensable. Écrit en Rust et accéléré par GPU, il va droit à l’essentiel.&lt;/p&gt;
+&lt;p&gt;Ce qui me séduit :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;🛡️ &lt;strong&gt;Robustesse&lt;/strong&gt; : Stabilité exemplaire, il ne plante jamais même sous fort flux.&lt;/li&gt;
+&lt;li&gt;⚡ &lt;strong&gt;Vitesse&lt;/strong&gt; : Le rendu GPU garantit une frappe instantanée.&lt;/li&gt;
+&lt;li&gt;⚙️ &lt;strong&gt;Simplicité&lt;/strong&gt; : Fichier de configuration minimaliste et clair.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Un must-have quand on vit dans le terminal !&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Herdr : le multiplexeur de terminal pour les agents IA 🤖</title>
+        <published>2026-09-19T14:30:00+02:00</published>
+        <updated>2026-09-19T14:30:00+02:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/blog/herdr-terminal-multiplexer/"/>
+        <id>https://upcreid.github.io/fr/blog/herdr-terminal-multiplexer/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/blog/herdr-terminal-multiplexer/">&lt;p&gt;Avec l’avènement des agents de code IA (Claude Code, GitHub Copilot CLI, Cursor Agent…), la façon de travailler dans le terminal évolue rapidement. Faire tourner plusieurs agents en parallèle dans un multiplexeur classique (comme &lt;code&gt;tmux&lt;/code&gt; ou &lt;code&gt;zellij&lt;/code&gt;) peut vite devenir complexe quand il s’agit de suivre qui fait quoi. C’est là qu’intervient &lt;strong&gt;Herdr&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;qu-est-ce-que-herdr&quot;&gt;Qu’est-ce que Herdr ?&lt;a class=&quot;zola-anchor&quot; href=&quot;#qu-est-ce-que-herdr&quot; aria-label=&quot;Anchor link for: qu-est-ce-que-herdr&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Herdr&lt;/strong&gt; est un multiplexeur de terminal persistant spécialement pensé pour l’ère des agents IA. Il s’exécute sous forme de serveur en arrière-plan et apporte une couche de gestion intelligente (&lt;em&gt;agent-aware&lt;/em&gt;) au-dessus de vos PTY habituels.&lt;/p&gt;
+&lt;h2 id=&quot;les-possibilites-offertes-par-herdr&quot;&gt;Les possibilités offertes par Herdr&lt;a class=&quot;zola-anchor&quot; href=&quot;#les-possibilites-offertes-par-herdr&quot; aria-label=&quot;Anchor link for: les-possibilites-offertes-par-herdr&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🚦 &lt;strong&gt;Suivi d’état en temps réel&lt;/strong&gt; : Herdr détecte automatiquement l’état de chaque agent et l’affiche clairement (&lt;em&gt;en cours&lt;/em&gt;, &lt;em&gt;en attente d’input&lt;/em&gt;, &lt;em&gt;bloqué&lt;/em&gt;, ou &lt;em&gt;terminé&lt;/em&gt;). Plus besoin de scroller sans fin pour savoir si l’agent a besoin de votre intervention !&lt;/li&gt;
+&lt;li&gt;🔄 &lt;strong&gt;Persistance absolue&lt;/strong&gt; : Vos tâches continuent de tourner même si vous fermez votre fenêtre de terminal ou déconnectez une session SSH.&lt;/li&gt;
+&lt;li&gt;🔌 &lt;strong&gt;API &amp;amp; Automatisation&lt;/strong&gt; : Via sa CLI et son API socket, les agents peuvent eux-mêmes interagir avec le multiplexeur (ouvrir de nouveaux onglets, lancer des sous-tâches).&lt;/li&gt;
+&lt;li&gt;🖥️ &lt;strong&gt;Terminal Natif&lt;/strong&gt; : S’intègre harmonieusement avec votre émulateur de terminal favori en utilisant des PTY standard.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;en-resume&quot;&gt;En résumé&lt;a class=&quot;zola-anchor&quot; href=&quot;#en-resume&quot; aria-label=&quot;Anchor link for: en-resume&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Si vous utilisez quotidiennement des agents IA en CLI pour vos projets et souhaitez maximiser votre productivité sans perdre le fil, &lt;strong&gt;Herdr&lt;/strong&gt; est un outil à tester d’urgence.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Criteo — SRE</title>
+        <published>2022-01-01T00:00:00+00:00</published>
+        <updated>2022-01-01T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/criteo-sre/"/>
+        <id>https://upcreid.github.io/fr/who/criteo-sre/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/criteo-sre/">&lt;p&gt;J’ai rejoint le périmètre Criteo Webapps comme SRE. Garder une plateforme à grande échelle fiable, c’est un travail de tous les jours, et l’essentiel se joue avant que quoi que ce soit ne casse. Entre deux incidents, j’écris du code, je migre des systèmes et j’essaie de rendre les déploiements ennuyeux.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Garder la Criteo Client API disponible et en bonne santé&lt;/li&gt;
+&lt;li&gt;Écrire et maintenir des services en C#, Go et Python&lt;/li&gt;
+&lt;li&gt;Participer à la migration Flink&lt;/li&gt;
+&lt;li&gt;Mettre en place le déploiement continu pour livrer sereinement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git, gerrit, chef, mesos, jenkins&lt;/li&gt;
+&lt;li&gt;grafana, kibana, ELK, opsgenie&lt;/li&gt;
+&lt;li&gt;Python (Flask, Django), Go, C#, Java, Scala&lt;/li&gt;
+&lt;li&gt;Couchbase, Memcached, Mssql, MariaDB&lt;/li&gt;
+&lt;li&gt;Hadoop, Hive, Kafka, protobuf, parquet&lt;/li&gt;
+&lt;li&gt;kerberos, ldap, slack, jira, confluence&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Criteo — Escalation Engineer</title>
+        <published>2018-02-11T00:00:00+00:00</published>
+        <updated>2018-02-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/criteo/"/>
+        <id>https://upcreid.github.io/fr/who/criteo/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/criteo/">&lt;p&gt;Escalation Engineer, c’est la dernière ligne avant que tout parte vraiment de travers. Mon rôle : stopper l’hémorragie, protéger le business, et faire dialoguer dev, support et clients — tout en codant dès que ça pouvait aider.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Stopper l’hémorragie et contenir les incidents&lt;/li&gt;
+&lt;li&gt;Protéger le business sous pression&lt;/li&gt;
+&lt;li&gt;Gérer les incidents de bout en bout&lt;/li&gt;
+&lt;li&gt;Supporter les équipes de développement&lt;/li&gt;
+&lt;li&gt;Connecter les bonnes personnes entre elles&lt;/li&gt;
+&lt;li&gt;Coder dès que possible&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;interview&quot;&gt;Interview&lt;a class=&quot;zola-anchor&quot; href=&quot;#interview&quot; aria-label=&quot;Anchor link for: interview&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;J’ai raconté ce rôle dans un &lt;a rel=&quot;noopener noreferrer external&quot; target=&quot;_blank&quot; href=&quot;https://medium.com/@s.lebreton/f11608526983&quot;&gt;article Medium&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;git, gerrit, chef, mesos, jenkins&lt;/li&gt;
+&lt;li&gt;grafana, kibana, ELK, opsgenie&lt;/li&gt;
+&lt;li&gt;Python (Flask, Django), Go, C#, Java, Scala&lt;/li&gt;
+&lt;li&gt;Couchbase, Memcached, Mssql, MariaDB&lt;/li&gt;
+&lt;li&gt;Hadoop, Hive, Kafka, protobuf, parquet&lt;/li&gt;
+&lt;li&gt;kerberos, ldap, slack, jira, confluence&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Veolia — Progiciel de trésorerie</title>
+        <published>2015-04-11T00:00:00+00:00</published>
+        <updated>2015-04-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/veolia-2017/"/>
+        <id>https://upcreid.github.io/fr/who/veolia-2017/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/veolia-2017/">&lt;p&gt;J’étais le consultant technique d’un progiciel de gestion de trésorerie (Wallstreet Systems). En deux ans, la plateforme a changé d’hébergement, s’est connectée à toujours plus de banques, et a dû continuer de tourner sans interruption.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;analyse-et-mise-en-oeuvre&quot;&gt;Analyse et mise en œuvre&lt;a class=&quot;zola-anchor&quot; href=&quot;#analyse-et-mise-en-oeuvre&quot; aria-label=&quot;Anchor link for: analyse-et-mise-en-oeuvre&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Outillage Python pour injecter des transactions en masse depuis un CSV, pour déployer de nouvelles entités&lt;/li&gt;
+&lt;li&gt;Migration de BugZilla de Windows vers Linux (apache2, mysql, Bugzilla)&lt;/li&gt;
+&lt;li&gt;Exports comptables (xml, xsl) vers SAP et SAGE&lt;/li&gt;
+&lt;li&gt;Accompagnement à l’externalisation du service bureau (Next → Datalog) : MT940, puis MT101 / MT210 / MT300&lt;/li&gt;
+&lt;li&gt;Export du référentiel (banques, entités, comptes) vers Datalog&lt;/li&gt;
+&lt;li&gt;Mise en place de FxAll avec Reuters et WSS&lt;/li&gt;
+&lt;li&gt;Migration de l’hébergement : HP-UX → Linux, environnement ISO (réplique de la PROD à J-1, RMAN), réseau (deux datacenters, MPLS), revue de l’exploitation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;amelioration-continue&quot;&gt;Amélioration continue&lt;a class=&quot;zola-anchor&quot; href=&quot;#amelioration-continue&quot; aria-label=&quot;Anchor link for: amelioration-continue&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Développement, packaging, intégration et livraison&lt;/li&gt;
+&lt;li&gt;Procédures stockées pour accélérer les rapports&lt;/li&gt;
+&lt;li&gt;Framework XML pour les flux bancaires : AFB120, MT101, MT940&lt;/li&gt;
+&lt;li&gt;Change control sous SVN&lt;/li&gt;
+&lt;li&gt;Optimisation SQL (vues, index, triggers)&lt;/li&gt;
+&lt;li&gt;Rapports et tableaux d’activité dans la suite WSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;HP-UX, Windows Server 2003, Citrix&lt;/li&gt;
+&lt;li&gt;Oracle, SQL Developer, PL/SQL&lt;/li&gt;
+&lt;li&gt;Weblogic, WSS Suite (CMM, TRM, ACM), activeMQ&lt;/li&gt;
+&lt;li&gt;SVN&lt;/li&gt;
+&lt;li&gt;shell, Python, Perl&lt;/li&gt;
+&lt;li&gt;SWIFT Alliance, esiadapter, FTP&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Caisse des dépôts</title>
+        <published>2013-09-11T00:00:00+00:00</published>
+        <updated>2013-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/caisse-des-depots/"/>
+        <id>https://upcreid.github.io/fr/who/caisse-des-depots/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/caisse-des-depots/">&lt;p&gt;Un projet de migration de données pour une institution financière publique : sortir des décennies de données de systèmes legacy et les remettre dans une base Oracle propre, sans perdre une seule ligne. Moitié ingénieur, moitié traducteur entre le métier et les systèmes.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;solutions-analyst&quot;&gt;Solutions analyst&lt;a class=&quot;zola-anchor&quot; href=&quot;#solutions-analyst&quot; aria-label=&quot;Anchor link for: solutions-analyst&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Scripts shell pour récupérer les données legacy (MVS, DB2, Oracle, Sybase, XML)&lt;/li&gt;
+&lt;li&gt;Épurer, bonifier et remettre en forme les données avant chargement&lt;/li&gt;
+&lt;li&gt;Les intégrer dans Oracle (référentiel, dérivations, flux bancaires)&lt;/li&gt;
+&lt;li&gt;Compter et vérifier les données intégrées par rapport à la source&lt;/li&gt;
+&lt;li&gt;Faire évoluer les transferts de fichiers sécurisés (CFT)&lt;/li&gt;
+&lt;li&gt;Scripting batch pour mettre en forme les données automatiquement (WinSCP, Excel)&lt;/li&gt;
+&lt;li&gt;Orchestrer les traitements avec Control-M&lt;/li&gt;
+&lt;li&gt;Écrire et optimiser les requêtes SQL&lt;/li&gt;
+&lt;li&gt;Packager le tout dans un repository SVN dédié (KSH, SQL, ENV)&lt;/li&gt;
+&lt;li&gt;Former l’équipe à SVN et aux habitudes de livraison continue&lt;/li&gt;
+&lt;li&gt;Créer des fonctions shell utilisées dans l’infrastructure CDC&lt;/li&gt;
+&lt;li&gt;Valider les livrables (documents techniques, produit)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;business-analyst&quot;&gt;Business analyst&lt;a class=&quot;zola-anchor&quot; href=&quot;#business-analyst&quot; aria-label=&quot;Anchor link for: business-analyst&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Animer des ateliers avec les équipes métier pour définir les règles de migration à partir de l’analyse de la source&lt;/li&gt;
+&lt;li&gt;Analyser les données à migrer&lt;/li&gt;
+&lt;li&gt;Définir la cinématique et les règles de migration&lt;/li&gt;
+&lt;li&gt;Assister les équipes métier pendant la recette&lt;/li&gt;
+&lt;li&gt;Définir les matrices de flux et configurer les outils de transfert&lt;/li&gt;
+&lt;li&gt;Documenter et communiquer en français et en anglais&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CFT (SOPRA)&lt;/li&gt;
+&lt;li&gt;Unix, KSH, Windows Server 2003, VBS, Citrix, Cisco&lt;/li&gt;
+&lt;li&gt;Oracle, Sybase, MVS, DB2&lt;/li&gt;
+&lt;li&gt;SVN, Quality Center, JIRA, Control-M&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Veolia — Projet Next</title>
+        <published>2011-08-11T00:00:00+00:00</published>
+        <updated>2011-08-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/veolia-2013/"/>
+        <id>https://upcreid.github.io/fr/who/veolia-2013/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/veolia-2013/">&lt;p&gt;Consultant technique sur le projet Next (Wallstreet Systems, SwiftNet, Reuters). J’avais la charge des environnements de production et j’ai accompagné une montée de version majeure, de l’intégration jusqu’à la mise en production, en gardant le support et l’exploitation dans la boucle.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;integration-et-environnements&quot;&gt;Intégration et environnements&lt;a class=&quot;zola-anchor&quot; href=&quot;#integration-et-environnements&quot; aria-label=&quot;Anchor link for: integration-et-environnements&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Intégrer chaque version livrée par l’éditeur sur les plateformes d’intégration&lt;/li&gt;
+&lt;li&gt;Mettre en place le monitoring pour voir comment chaque version se comporte&lt;/li&gt;
+&lt;li&gt;Scripts shell : contrôle de File System, purge de logs, backups&lt;/li&gt;
+&lt;li&gt;Rafraîchissement quotidien de la base pour le datawarehouse (RMAN, SQL, shell)&lt;/li&gt;
+&lt;li&gt;Conduire la mise en place des transferts de flux avec les autres entités Veolia (Dalkia, transport, eau…)&lt;/li&gt;
+&lt;li&gt;Construire une base d’analyse à partir des logs applicatifs&lt;/li&gt;
+&lt;li&gt;Requêtes SQL de reporting et de contrôle&lt;/li&gt;
+&lt;li&gt;Gérer la configuration SVN sur INT / REC / VAL / PROD avec les équipes de production VEIT&lt;/li&gt;
+&lt;li&gt;Créer des branches SVN pour suivre chaque environnement&lt;/li&gt;
+&lt;li&gt;Analyser et mettre en place les flux bancaires&lt;/li&gt;
+&lt;li&gt;Traduire les besoins utilisateurs en spécifications techniques pour l’éditeur&lt;/li&gt;
+&lt;li&gt;Rédiger les spécifications fonctionnelles et les documents d’exploitation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;tma-support-niveaux-2-et-3&quot;&gt;TMA / Support niveaux 2 et 3&lt;a class=&quot;zola-anchor&quot; href=&quot;#tma-support-niveaux-2-et-3&quot; aria-label=&quot;Anchor link for: tma-support-niveaux-2-et-3&quot;&gt;🔗&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Former le support niveaux 2 et 3 sur la nouvelle version&lt;/li&gt;
+&lt;li&gt;Rédiger la procédure d’installation&lt;/li&gt;
+&lt;li&gt;Packager les livrables pour la production&lt;/li&gt;
+&lt;li&gt;Optimiser la production (analyse SQL, retours éditeur, config Oracle et serveur)&lt;/li&gt;
+&lt;li&gt;Mettre en place les alertes et les notifications par email&lt;/li&gt;
+&lt;li&gt;Communiquer et escalader sur les incidents&lt;/li&gt;
+&lt;li&gt;Gérer les plans de secours et de reprise d’activité&lt;/li&gt;
+&lt;li&gt;Adopter les pratiques ITIL (gestion du changement)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;HP-UX, Windows Server 2003, Citrix, IIS&lt;/li&gt;
+&lt;li&gt;Oracle 10g, SQL, PL/SQL, SQL Developer&lt;/li&gt;
+&lt;li&gt;Weblogic, Apache, WSS Suite, activeMQ&lt;/li&gt;
+&lt;li&gt;Java, shell, Python, Perl&lt;/li&gt;
+&lt;li&gt;SWIFT Alliance, esiadapter, RMDS, CFT, FTP, Samba&lt;/li&gt;
+&lt;li&gt;SVN, Centreon, ServiceNow&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Accor</title>
+        <published>2007-09-11T00:00:00+00:00</published>
+        <updated>2007-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/accor/"/>
+        <id>https://upcreid.github.io/fr/who/accor/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/accor/">&lt;p&gt;Analyste en exploitation production dans une cellule bien chargée. Mes journées consistaient à surveiller, corriger et livrer — s’assurer que les applications tiennent, que les batchs partent à l’heure, et que le marketing reçoive ses données.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Superviser l’exploitation et les interfaces partenaires&lt;/li&gt;
+&lt;li&gt;Rédiger les procédures d’exploitation&lt;/li&gt;
+&lt;li&gt;Tester, recetter et intégrer les applications chaque semaine&lt;/li&gt;
+&lt;li&gt;Surveiller, corriger et lancer les batchs au quotidien&lt;/li&gt;
+&lt;li&gt;Configurer et exploiter Nagios&lt;/li&gt;
+&lt;li&gt;Extraire des données SQL des bases clients pour le marketing&lt;/li&gt;
+&lt;li&gt;Écrire et adapter les scripts SQL de correction&lt;/li&gt;
+&lt;li&gt;Transformer et intégrer des fichiers plats&lt;/li&gt;
+&lt;li&gt;Supporter les utilisateurs et les équipes de dev lors des livraisons&lt;/li&gt;
+&lt;li&gt;Accueillir les nouveaux arrivants dans l’équipe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Java, Struts, Hibernate, Eclipse, Maven, Archiva, Continuum&lt;/li&gt;
+&lt;li&gt;Debian, Red Hat, Tomcat, Apache, Resin, Joomla&lt;/li&gt;
+&lt;li&gt;Informix, Postgres, Talend, SQuirreL, pgAdmin&lt;/li&gt;
+&lt;li&gt;shell, XSD, XSL&lt;/li&gt;
+&lt;li&gt;CFT, SSH, GPG, SFTP, Crontab, Quartz, Squid&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Opéra National de Paris</title>
+        <published>2005-01-11T00:00:00+00:00</published>
+        <updated>2005-01-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/opera-national-de-paris/"/>
+        <id>https://upcreid.github.io/fr/who/opera-national-de-paris/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/opera-national-de-paris/">&lt;p&gt;Technicien d’exploitation à l’Opéra National de Paris. Petite équipe, systèmes critiques, et beaucoup de soin : les spectacles devaient continuer, et les applications derrière devaient tourner.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mettre à jour, interroger et lancer les jobs récurrents de la base Opéra&lt;/li&gt;
+&lt;li&gt;Contrôler que les applications tournaient bien sur les serveurs&lt;/li&gt;
+&lt;li&gt;Gérer les sauvegardes de production&lt;/li&gt;
+&lt;li&gt;Rédiger les procédures d’exploitation&lt;/li&gt;
+&lt;li&gt;Paramétrer le progiciel PLEIADES (demandes, EDI, etc.)&lt;/li&gt;
+&lt;li&gt;Écrire et modifier des requêtes SQL via Business Objects&lt;/li&gt;
+&lt;li&gt;Développer de petites applications en Visual Basic&lt;/li&gt;
+&lt;li&gt;Supporter les utilisateurs sur une macro Excel de planification utilisée par les cadres de l’Opéra&lt;/li&gt;
+&lt;li&gt;Créer des scripts de publipostage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Business Objects, PLEIADES&lt;/li&gt;
+&lt;li&gt;Visual Basic, Excel, Word&lt;/li&gt;
+&lt;li&gt;telnet&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Bosch</title>
+        <published>2001-09-11T00:00:00+00:00</published>
+        <updated>2001-09-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/bosch/"/>
+        <id>https://upcreid.github.io/fr/who/bosch/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/bosch/">&lt;p&gt;Technicien logiciel embarqué sur calculateurs moteur. J’écrivais et testais les fonctions moteur qui vivaient dans le calculateur Motronic — du code qui devait être juste bien avant d’atteindre une voiture.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Analyser et développer les fonctions moteur en C/C++ pour le Motronic&lt;/li&gt;
+&lt;li&gt;Relire le code pour l’optimiser&lt;/li&gt;
+&lt;li&gt;Écrire les tests unitaires et d’intégration&lt;/li&gt;
+&lt;li&gt;Figer les versions avant la production en série&lt;/li&gt;
+&lt;li&gt;Valider sur bancs d’essai et sur véhicules&lt;/li&gt;
+&lt;li&gt;Documenter chaque fonction&lt;/li&gt;
+&lt;li&gt;Rédiger la méthodologie des tests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C, C++, ASM&lt;/li&gt;
+&lt;li&gt;CodeWright&lt;/li&gt;
+&lt;li&gt;Messplatz Labcar (labo banc)&lt;/li&gt;
+&lt;li&gt;outils et logiciels maison&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="fr">
+        <title>Towercast</title>
+        <published>2001-03-11T00:00:00+00:00</published>
+        <updated>2001-03-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>upcreid</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://upcreid.github.io/fr/who/towercast/"/>
+        <id>https://upcreid.github.io/fr/who/towercast/</id>
+        
+        <content type="html" xml:base="https://upcreid.github.io/fr/who/towercast/">&lt;p&gt;Mon premier stage : une petite application Windows pour lire des données GPS. Ça m’a beaucoup appris sur les liaisons série, les trames de données, et l’art de garder une interface lisible.&lt;/p&gt;
+&lt;h2 id=&quot;ce-que-j-y-faisais&quot;&gt;Ce que j’y faisais&lt;a class=&quot;zola-anchor&quot; href=&quot;#ce-que-j-y-faisais&quot; aria-label=&quot;Anchor link for: ce-que-j-y-faisais&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Comprendre le fonctionnement du système GPS&lt;/li&gt;
+&lt;li&gt;Recevoir les données NMEA d’un GPS GARMIN via une liaison série RS232&lt;/li&gt;
+&lt;li&gt;Analyser et transformer les trames NMEA&lt;/li&gt;
+&lt;li&gt;Programmer la réception en Delphi&lt;/li&gt;
+&lt;li&gt;Créer une interface graphique pour rendre les données du récepteur lisibles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;environnement-technique&quot;&gt;Environnement technique&lt;a class=&quot;zola-anchor&quot; href=&quot;#environnement-technique&quot; aria-label=&quot;Anchor link for: environnement-technique&quot;&gt;🔗&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Delphi, Visual Studio&lt;/li&gt;
+&lt;li&gt;Liaison série RS232&lt;/li&gt;
+&lt;li&gt;Données GPS NMEA&lt;/li&gt;
+&lt;li&gt;Technologie GPS&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+</feed>

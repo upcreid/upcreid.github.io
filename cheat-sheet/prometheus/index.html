@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>Prometheus · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/prometheus/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/cheat-sheet/prometheus/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/prometheus/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">CheatSheet</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">CheatSheet</a>
+      
+    
+  </nav>
+
+  <h1>Prometheus</h1>
+
+  <p class="page-meta">
+    
+    <span>2 min read</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>Prometheus is an open-source monitoring and alerting toolkit designed for reliability and quick problem diagnosis.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Multi-dimensional data model with time series</li>
+<li>Flexible PromQL query language</li>
+<li>Pull-based metrics collection</li>
+<li>Service discovery support</li>
+<li>No dependency on distributed storage</li>
+<li>Multiple modes of graphing and dashboarding</li>
+</ul>
+<h2 id="installation">Installation<a class="zola-anchor" href="#installation" aria-label="Anchor link for: installation">🔗</a></h2>
+<h3 id="docker">Docker<a class="zola-anchor" href="#docker" aria-label="Anchor link for: docker">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> 9090:9090</span><span style="color: light-dark(#40A02B, #A6DA95);"> prom/prometheus</span></span></code></pre><h3 id="docker-with-custom-config">Docker with custom config<a class="zola-anchor" href="#docker-with-custom-config" aria-label="Anchor link for: docker-with-custom-config">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> 9090:9090</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> /path/to/prometheus.yml:/etc/prometheus/prometheus.yml</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  prom/prometheus</span></span></code></pre><h3 id="binary">Binary<a class="zola-anchor" href="#binary" aria-label="Anchor link for: binary">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download from https://prometheus.io/download/</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">tar</span><span style="color: light-dark(#40A02B, #A6DA95);"> xvfz</span><span style="color: light-dark(#40A02B, #A6DA95);"> prometheus-</span><span>*</span><span style="color: light-dark(#40A02B, #A6DA95);">.tar.gz</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">cd</span><span style="color: light-dark(#40A02B, #A6DA95);"> prometheus-</span><span>*</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">./prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-config.file=prometheus.yml</span></span></code></pre><h3 id="kubernetes-with-helm">Kubernetes (with Helm)<a class="zola-anchor" href="#kubernetes-with-helm" aria-label="Anchor link for: kubernetes-with-helm">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">helm</span><span style="color: light-dark(#40A02B, #A6DA95);"> repo</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> prometheus-community</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://prometheus-community.github.io/helm-charts</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">helm</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> prometheus-community/prometheus</span></span></code></pre><h2 id="configuration">Configuration<a class="zola-anchor" href="#configuration" aria-label="Anchor link for: configuration">🔗</a></h2>
+<h3 id="basic-prometheus-yml">Basic prometheus.yml<a class="zola-anchor" href="#basic-prometheus-yml" aria-label="Anchor link for: basic-prometheus-yml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">g</span><span style="color: light-dark(#1E66F5, #8AADF4);">lobal</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_interval</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">5s</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> How often to scrape targets</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  e</span><span style="color: light-dark(#1E66F5, #8AADF4);">valuation_interval</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">5s</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> How often to evaluate rules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xternal_labels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    c</span><span style="color: light-dark(#1E66F5, #8AADF4);">luster</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">production</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Labels to attach to any time series</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Alertmanager configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lerting</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">  a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lertmanagers</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">    -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatic_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">        -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">argets</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">localhost:9093</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Rule files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ule_files</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">alert_rules.yml</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">recording_rules.yml</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Scrape configurations</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatic_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">argets</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">localhost:9090</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span></code></pre><h3 id="scrape-configuration-examples">Scrape Configuration Examples<a class="zola-anchor" href="#scrape-configuration-examples" aria-label="Anchor link for: scrape-configuration-examples">🔗</a></h3>
+<h4 id="static-targets">Static targets<a class="zola-anchor" href="#static-targets" aria-label="Anchor link for: static-targets">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">node</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatic_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">argets</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">          -</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">localhost:9100</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">          -</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">server1:9100</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">          -</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">server2:9100</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        l</span><span style="color: light-dark(#1E66F5, #8AADF4);">abels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          e</span><span style="color: light-dark(#1E66F5, #8AADF4);">nvironment</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">production</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h4 id="custom-metrics-path">Custom metrics path<a class="zola-anchor" href="#custom-metrics-path" aria-label="Anchor link for: custom-metrics-path">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">app</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    m</span><span style="color: light-dark(#1E66F5, #8AADF4);">etrics_path</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/custom/metrics</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatic_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">argets</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">app-server:8080</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span></code></pre><h4 id="with-authentication">With authentication<a class="zola-anchor" href="#with-authentication" aria-label="Anchor link for: with-authentication">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">secure-app</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    b</span><span style="color: light-dark(#1E66F5, #8AADF4);">asic_auth</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      u</span><span style="color: light-dark(#1E66F5, #8AADF4);">sername</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">admin</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      p</span><span style="color: light-dark(#1E66F5, #8AADF4);">assword</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">secret</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatic_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">argets</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">secure-app:8080</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span></code></pre><h4 id="kubernetes-service-discovery">Kubernetes service discovery<a class="zola-anchor" href="#kubernetes-service-discovery" aria-label="Anchor link for: kubernetes-service-discovery">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">kubernetes-pods</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    k</span><span style="color: light-dark(#1E66F5, #8AADF4);">ubernetes_sd_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ole</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">od</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">elabel_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ource_labels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">_meta_kubernetes_pod_label_app</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        a</span><span style="color: light-dark(#1E66F5, #8AADF4);">ction</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> k</span><span style="color: light-dark(#40A02B, #A6DA95);">eep</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        r</span><span style="color: light-dark(#1E66F5, #8AADF4);">egex</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">yapp</span></span></code></pre><h4 id="file-based-service-discovery">File-based service discovery<a class="zola-anchor" href="#file-based-service-discovery" aria-label="Anchor link for: file-based-service-discovery">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">dynamic-services</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    f</span><span style="color: light-dark(#1E66F5, #8AADF4);">ile_sd_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> f</span><span style="color: light-dark(#1E66F5, #8AADF4);">iles</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">          -</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">/etc/prometheus/targets/*.json</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        r</span><span style="color: light-dark(#1E66F5, #8AADF4);">efresh_interval</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 3</span><span style="color: light-dark(#40A02B, #A6DA95);">0s</span></span></code></pre><h2 id="metric-types">Metric Types<a class="zola-anchor" href="#metric-types" aria-label="Anchor link for: metric-types">🔗</a></h2>
+<h3 id="counter">Counter<a class="zola-anchor" href="#counter" aria-label="Anchor link for: counter">🔗</a></h3>
+<p>A cumulative metric that only increases.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example: Total HTTP requests</span></span>
+<span class="giallo-l"><span>http_requests_total</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>method</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">GET</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span> endpoint</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/api/users</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1234</span></span></code></pre><h3 id="gauge">Gauge<a class="zola-anchor" href="#gauge" aria-label="Anchor link for: gauge">🔗</a></h3>
+<p>A metric that can go up and down.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example: Current memory usage</span></span>
+<span class="giallo-l"><span>memory_usage_bytes</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>instance</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">server1</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 524288000</span></span></code></pre><h3 id="histogram">Histogram<a class="zola-anchor" href="#histogram" aria-label="Anchor link for: histogram">🔗</a></h3>
+<p>Samples observations and counts them in configurable buckets.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example: Request duration</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_bucket</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>le</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.1</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 100</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_bucket</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>le</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.5</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 250</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_bucket</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>le</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">1.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 300</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_sum</span><span style="color: light-dark(#FE640B, #F5A97F);"> 280.5</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_count</span><span style="color: light-dark(#FE640B, #F5A97F);"> 300</span></span></code></pre><h3 id="summary">Summary<a class="zola-anchor" href="#summary" aria-label="Anchor link for: summary">🔗</a></h3>
+<p>Similar to histogram but calculates quantiles on the client side.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="python"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example: Request duration summary</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>quantile</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.5</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0.23</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>quantile</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.9</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0.87</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds</span><span style="color: light-dark(#7C7F93, #939AB7);">{</span><span>quantile</span><span>=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.99</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#7C7F93, #939AB7);">}</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1.2</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_sum</span><span style="color: light-dark(#FE640B, #F5A97F);"> 280.5</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_count</span><span style="color: light-dark(#FE640B, #F5A97F);"> 300</span></span></code></pre><h2 id="promql-query-language">PromQL - Query Language<a class="zola-anchor" href="#promql-query-language" aria-label="Anchor link for: promql-query-language">🔗</a></h2>
+<h3 id="basic-selectors">Basic Selectors<a class="zola-anchor" href="#basic-selectors" aria-label="Anchor link for: basic-selectors">🔗</a></h3>
+<h4 id="select-all-time-series-for-a-metric">Select all time series for a metric<a class="zola-anchor" href="#select-all-time-series-for-a-metric" aria-label="Anchor link for: select-all-time-series-for-a-metric">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>http_requests_total</span></span></code></pre><h4 id="filter-by-label">Filter by label<a class="zola-anchor" href="#filter-by-label" aria-label="Anchor link for: filter-by-label">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>http_requests_total{job=&quot;prometheus&quot;}</span></span></code></pre><h4 id="multiple-label-filters">Multiple label filters<a class="zola-anchor" href="#multiple-label-filters" aria-label="Anchor link for: multiple-label-filters">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>http_requests_total{job=&quot;api&quot;, method=&quot;GET&quot;, status=&quot;200&quot;}</span></span></code></pre><h4 id="label-matching-operators">Label matching operators<a class="zola-anchor" href="#label-matching-operators" aria-label="Anchor link for: label-matching-operators">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Equality</span></span>
+<span class="giallo-l"><span>http_requests_total{job=&quot;api&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Inequality</span></span>
+<span class="giallo-l"><span>http_requests_total{job!=&quot;api&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Regex match</span></span>
+<span class="giallo-l"><span>http_requests_total{job=~&quot;api.*&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Regex non-match</span></span>
+<span class="giallo-l"><span>http_requests_total{job!~&quot;test.*&quot;}</span></span></code></pre><h3 id="range-vectors">Range Vectors<a class="zola-anchor" href="#range-vectors" aria-label="Anchor link for: range-vectors">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Last 5 minutes</span></span>
+<span class="giallo-l"><span>http_requests_total[5m]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Last 1 hour</span></span>
+<span class="giallo-l"><span>http_requests_total[1h]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Time units: s (seconds), m (minutes), h (hours), d (days), w (weeks), y (years)</span></span></code></pre><h3 id="offset-modifier">Offset Modifier<a class="zola-anchor" href="#offset-modifier" aria-label="Anchor link for: offset-modifier">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Current value</span></span>
+<span class="giallo-l"><span>http_requests_total</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Value from 5 minutes ago</span></span>
+<span class="giallo-l"><span>http_requests_total offset 5m</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Range from 1 hour ago</span></span>
+<span class="giallo-l"><span>http_requests_total[5m] offset 1h</span></span></code></pre><h3 id="operators">Operators<a class="zola-anchor" href="#operators" aria-label="Anchor link for: operators">🔗</a></h3>
+<h4 id="arithmetic-operators">Arithmetic operators<a class="zola-anchor" href="#arithmetic-operators" aria-label="Anchor link for: arithmetic-operators">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Addition</span></span>
+<span class="giallo-l"><span>node_memory_total_bytes + node_memory_cached_bytes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Subtraction</span></span>
+<span class="giallo-l"><span>node_memory_total_bytes - node_memory_used_bytes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Multiplication</span></span>
+<span class="giallo-l"><span>rate(http_requests_total[5m]) * 60</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Division</span></span>
+<span class="giallo-l"><span>node_memory_used_bytes / node_memory_total_bytes * 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Modulo</span></span>
+<span class="giallo-l"><span>node_cpu_seconds_total % 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Power</span></span>
+<span class="giallo-l"><span>node_memory_bytes ^ 2</span></span></code></pre><h4 id="comparison-operators">Comparison operators<a class="zola-anchor" href="#comparison-operators" aria-label="Anchor link for: comparison-operators">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Equal</span></span>
+<span class="giallo-l"><span>http_requests_total == 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Not equal</span></span>
+<span class="giallo-l"><span>http_requests_total != 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Greater than</span></span>
+<span class="giallo-l"><span>http_requests_total &gt; 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Less than</span></span>
+<span class="giallo-l"><span>http_requests_total &lt; 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Greater or equal</span></span>
+<span class="giallo-l"><span>http_requests_total &gt;= 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Less or equal</span></span>
+<span class="giallo-l"><span>http_requests_total &lt;= 100</span></span></code></pre><h4 id="logical-operators">Logical operators<a class="zola-anchor" href="#logical-operators" aria-label="Anchor link for: logical-operators">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># AND</span></span>
+<span class="giallo-l"><span>(http_requests_total &gt; 100) and (http_errors_total &gt; 10)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># OR</span></span>
+<span class="giallo-l"><span>(http_requests_total &gt; 100) or (http_errors_total &gt; 10)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># UNLESS (exclude)</span></span>
+<span class="giallo-l"><span>http_requests_total unless http_errors_total</span></span></code></pre><h3 id="aggregation-operators">Aggregation Operators<a class="zola-anchor" href="#aggregation-operators" aria-label="Anchor link for: aggregation-operators">🔗</a></h3>
+<h4 id="sum">sum<a class="zola-anchor" href="#sum" aria-label="Anchor link for: sum">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Total requests across all instances</span></span>
+<span class="giallo-l"><span>sum(http_requests_total)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Sum by job</span></span>
+<span class="giallo-l"><span>sum(http_requests_total) by (job)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Sum without specific labels</span></span>
+<span class="giallo-l"><span>sum(http_requests_total) without (instance)</span></span></code></pre><h4 id="avg">avg<a class="zola-anchor" href="#avg" aria-label="Anchor link for: avg">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Average CPU usage</span></span>
+<span class="giallo-l"><span>avg(cpu_usage_percent)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Average by environment</span></span>
+<span class="giallo-l"><span>avg(cpu_usage_percent) by (environment)</span></span></code></pre><h4 id="min-max">min / max<a class="zola-anchor" href="#min-max" aria-label="Anchor link for: min-max">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Minimum memory across instances</span></span>
+<span class="giallo-l"><span>min(node_memory_available_bytes)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Maximum response time</span></span>
+<span class="giallo-l"><span>max(http_request_duration_seconds)</span></span></code></pre><h4 id="count">count<a class="zola-anchor" href="#count" aria-label="Anchor link for: count">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Number of instances</span></span>
+<span class="giallo-l"><span>count(up)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Number of instances by job</span></span>
+<span class="giallo-l"><span>count(up) by (job)</span></span></code></pre><h4 id="stddev-stdvar">stddev / stdvar<a class="zola-anchor" href="#stddev-stdvar" aria-label="Anchor link for: stddev-stdvar">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Standard deviation of response time</span></span>
+<span class="giallo-l"><span>stddev(http_request_duration_seconds)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Standard variance</span></span>
+<span class="giallo-l"><span>stdvar(http_request_duration_seconds)</span></span></code></pre><h4 id="topk-bottomk">topk / bottomk<a class="zola-anchor" href="#topk-bottomk" aria-label="Anchor link for: topk-bottomk">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Top 5 instances by CPU usage</span></span>
+<span class="giallo-l"><span>topk(5, cpu_usage_percent)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Bottom 3 instances by memory</span></span>
+<span class="giallo-l"><span>bottomk(3, node_memory_available_bytes)</span></span></code></pre><h4 id="quantile">quantile<a class="zola-anchor" href="#quantile" aria-label="Anchor link for: quantile">🔗</a></h4>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># 95th percentile response time</span></span>
+<span class="giallo-l"><span>quantile(0.95, http_request_duration_seconds)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># 50th percentile (median) by service</span></span>
+<span class="giallo-l"><span>quantile(0.5, http_request_duration_seconds) by (service)</span></span></code></pre><h3 id="functions">Functions<a class="zola-anchor" href="#functions" aria-label="Anchor link for: functions">🔗</a></h3>
+<h4 id="rate">rate()<a class="zola-anchor" href="#rate" aria-label="Anchor link for: rate">🔗</a></h4>
+<p>Calculate per-second rate (for counters).</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Requests per second over last 5 minutes</span></span>
+<span class="giallo-l"><span>rate(http_requests_total[5m])</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Network bytes received per second</span></span>
+<span class="giallo-l"><span>rate(node_network_receive_bytes_total[1m])</span></span></code></pre><h4 id="irate">irate()<a class="zola-anchor" href="#irate" aria-label="Anchor link for: irate">🔗</a></h4>
+<p>Calculate instant rate (using last two points).</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Instant requests per second</span></span>
+<span class="giallo-l"><span>irate(http_requests_total[5m])</span></span></code></pre><h4 id="increase">increase()<a class="zola-anchor" href="#increase" aria-label="Anchor link for: increase">🔗</a></h4>
+<p>Calculate increase over time range.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Total increase in requests over 1 hour</span></span>
+<span class="giallo-l"><span>increase(http_requests_total[1h])</span></span></code></pre><h4 id="delta">delta()<a class="zola-anchor" href="#delta" aria-label="Anchor link for: delta">🔗</a></h4>
+<p>Calculate difference between first and last value.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Change in CPU temperature</span></span>
+<span class="giallo-l"><span>delta(cpu_temperature_celsius[10m])</span></span></code></pre><h4 id="deriv">deriv()<a class="zola-anchor" href="#deriv" aria-label="Anchor link for: deriv">🔗</a></h4>
+<p>Calculate per-second derivative.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Rate of change in memory usage</span></span>
+<span class="giallo-l"><span>deriv(node_memory_used_bytes[5m])</span></span></code></pre><h4 id="predict-linear">predict_linear()<a class="zola-anchor" href="#predict-linear" aria-label="Anchor link for: predict-linear">🔗</a></h4>
+<p>Predict future value using linear regression.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Predict disk usage in 4 hours</span></span>
+<span class="giallo-l"><span>predict_linear(node_filesystem_free_bytes[1h], 4*3600)</span></span></code></pre><h4 id="histogram-quantile">histogram_quantile()<a class="zola-anchor" href="#histogram-quantile" aria-label="Anchor link for: histogram-quantile">🔗</a></h4>
+<p>Calculate quantile from histogram.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># 95th percentile request duration</span></span>
+<span class="giallo-l"><span>histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># 50th percentile by service</span></span>
+<span class="giallo-l"><span>histogram_quantile(0.5, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service))</span></span></code></pre><h4 id="abs">abs()<a class="zola-anchor" href="#abs" aria-label="Anchor link for: abs">🔗</a></h4>
+<p>Absolute value.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span>abs(delta(metric[5m]))</span></span></code></pre><h4 id="ceil-floor-round">ceil() / floor() / round()<a class="zola-anchor" href="#ceil-floor-round" aria-label="Anchor link for: ceil-floor-round">🔗</a></h4>
+<p>Rounding functions.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Round up</span></span>
+<span class="giallo-l"><span>ceil(node_memory_used_bytes / 1024 / 1024)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Round down</span></span>
+<span class="giallo-l"><span>floor(cpu_usage_percent)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Round to nearest</span></span>
+<span class="giallo-l"><span>round(response_time_seconds, 0.1)</span></span></code></pre><h4 id="clamp-max-clamp-min">clamp_max() / clamp_min()<a class="zola-anchor" href="#clamp-max-clamp-min" aria-label="Anchor link for: clamp-max-clamp-min">🔗</a></h4>
+<p>Limit values to a range.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Cap at maximum of 100</span></span>
+<span class="giallo-l"><span>clamp_max(cpu_usage_percent, 100)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Ensure minimum of 0</span></span>
+<span class="giallo-l"><span>clamp_min(available_connections, 0)</span></span></code></pre><h4 id="sort-sort-desc">sort() / sort_desc()<a class="zola-anchor" href="#sort-sort-desc" aria-label="Anchor link for: sort-sort-desc">🔗</a></h4>
+<p>Sort results.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Sort ascending</span></span>
+<span class="giallo-l"><span>sort(http_requests_total)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Sort descending</span></span>
+<span class="giallo-l"><span>sort_desc(http_requests_total)</span></span></code></pre><h4 id="time">time()<a class="zola-anchor" href="#time" aria-label="Anchor link for: time">🔗</a></h4>
+<p>Current Unix timestamp.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Seconds since metric was last updated</span></span>
+<span class="giallo-l"><span>time() - timestamp(metric)</span></span></code></pre><h4 id="label-replace">label_replace()<a class="zola-anchor" href="#label-replace" aria-label="Anchor link for: label-replace">🔗</a></h4>
+<p>Add or modify labels.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Add new label based on existing label</span></span>
+<span class="giallo-l"><span>label_replace(up, &quot;env&quot;, &quot;$1&quot;, &quot;instance&quot;, &quot;(.*):(.*)&quot;)</span></span></code></pre><h4 id="label-join">label_join()<a class="zola-anchor" href="#label-join" aria-label="Anchor link for: label-join">🔗</a></h4>
+<p>Join multiple labels into one.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Combine labels</span></span>
+<span class="giallo-l"><span>label_join(up, &quot;full_instance&quot;, &quot;-&quot;, &quot;instance&quot;, &quot;job&quot;)</span></span></code></pre><h2 id="common-query-examples">Common Query Examples<a class="zola-anchor" href="#common-query-examples" aria-label="Anchor link for: common-query-examples">🔗</a></h2>
+<h3 id="http-api-metrics">HTTP/API Metrics<a class="zola-anchor" href="#http-api-metrics" aria-label="Anchor link for: http-api-metrics">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Request rate by status code</span></span>
+<span class="giallo-l"><span>sum(rate(http_requests_total[5m])) by (status_code)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Error rate (4xx and 5xx)</span></span>
+<span class="giallo-l"><span>sum(rate(http_requests_total{status_code=~&quot;4..|5..&quot;}[5m]))</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Error percentage</span></span>
+<span class="giallo-l"><span>sum(rate(http_requests_total{status_code=~&quot;4..|5..&quot;}[5m]))</span></span>
+<span class="giallo-l"><span>/</span></span>
+<span class="giallo-l"><span>sum(rate(http_requests_total[5m])) * 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># 95th percentile latency</span></span>
+<span class="giallo-l"><span>histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le))</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Requests per minute</span></span>
+<span class="giallo-l"><span>sum(rate(http_requests_total[1m])) * 60</span></span></code></pre><h3 id="system-metrics">System Metrics<a class="zola-anchor" href="#system-metrics" aria-label="Anchor link for: system-metrics">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># CPU usage percentage</span></span>
+<span class="giallo-l"><span>100 - (avg(rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Memory usage percentage</span></span>
+<span class="giallo-l"><span>(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Disk usage percentage</span></span>
+<span class="giallo-l"><span>(1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Network traffic (bytes/sec)</span></span>
+<span class="giallo-l"><span>rate(node_network_receive_bytes_total[5m])</span></span>
+<span class="giallo-l"><span>rate(node_network_transmit_bytes_total[5m])</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Load average</span></span>
+<span class="giallo-l"><span>node_load1</span></span>
+<span class="giallo-l"><span>node_load5</span></span>
+<span class="giallo-l"><span>node_load15</span></span></code></pre><h3 id="database-metrics">Database Metrics<a class="zola-anchor" href="#database-metrics" aria-label="Anchor link for: database-metrics">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># MySQL queries per second</span></span>
+<span class="giallo-l"><span>rate(mysql_global_status_queries[5m])</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># PostgreSQL active connections</span></span>
+<span class="giallo-l"><span>pg_stat_activity_count</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Redis memory usage</span></span>
+<span class="giallo-l"><span>redis_memory_used_bytes / redis_memory_max_bytes * 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Slow queries</span></span>
+<span class="giallo-l"><span>rate(mysql_global_status_slow_queries[5m])</span></span></code></pre><h3 id="container-metrics">Container Metrics<a class="zola-anchor" href="#container-metrics" aria-label="Anchor link for: container-metrics">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Container CPU usage</span></span>
+<span class="giallo-l"><span>rate(container_cpu_usage_seconds_total[5m])</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Container memory usage</span></span>
+<span class="giallo-l"><span>container_memory_usage_bytes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Container network traffic</span></span>
+<span class="giallo-l"><span>rate(container_network_receive_bytes_total[5m])</span></span>
+<span class="giallo-l"><span>rate(container_network_transmit_bytes_total[5m])</span></span></code></pre><h3 id="availability-uptime">Availability &amp; Uptime<a class="zola-anchor" href="#availability-uptime" aria-label="Anchor link for: availability-uptime">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Instance up/down</span></span>
+<span class="giallo-l"><span>up</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Instances down</span></span>
+<span class="giallo-l"><span>count(up == 0)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Uptime percentage (last 24h)</span></span>
+<span class="giallo-l"><span>avg_over_time(up[24h]) * 100</span></span></code></pre><h2 id="alerting-rules">Alerting Rules<a class="zola-anchor" href="#alerting-rules" aria-label="Anchor link for: alerting-rules">🔗</a></h2>
+<h3 id="alert-rule-file-alert-rules-yml">Alert Rule File (alert_rules.yml)<a class="zola-anchor" href="#alert-rule-file-alert-rules-yml" aria-label="Anchor link for: alert-rule-file-alert-rules-yml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">g</span><span style="color: light-dark(#1E66F5, #8AADF4);">roups</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> e</span><span style="color: light-dark(#40A02B, #A6DA95);">xample</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    i</span><span style="color: light-dark(#1E66F5, #8AADF4);">nterval</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 3</span><span style="color: light-dark(#40A02B, #A6DA95);">0s</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ules</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lert</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> H</span><span style="color: light-dark(#40A02B, #A6DA95);">ighErrorRate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#8839EF, #C6A0F6);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          sum(rate(http_requests_total{status_code=~&quot;5..&quot;}[5m]))</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          /</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          sum(rate(http_requests_total[5m])) &gt; 0.05</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        f</span><span style="color: light-dark(#1E66F5, #8AADF4);">or</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">0m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        l</span><span style="color: light-dark(#1E66F5, #8AADF4);">abels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">everity</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> c</span><span style="color: light-dark(#40A02B, #A6DA95);">ritical</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          t</span><span style="color: light-dark(#1E66F5, #8AADF4);">eam</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> b</span><span style="color: light-dark(#40A02B, #A6DA95);">ackend</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        a</span><span style="color: light-dark(#1E66F5, #8AADF4);">nnotations</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ummary</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">High error rate detected</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Error rate is {{ $value | humanizePercentage }} on {{ $labels.instance }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lert</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> I</span><span style="color: light-dark(#40A02B, #A6DA95);">nstanceDown</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> u</span><span style="color: light-dark(#40A02B, #A6DA95);">p == 0</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        f</span><span style="color: light-dark(#1E66F5, #8AADF4);">or</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 5</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        l</span><span style="color: light-dark(#1E66F5, #8AADF4);">abels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">everity</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> c</span><span style="color: light-dark(#40A02B, #A6DA95);">ritical</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        a</span><span style="color: light-dark(#1E66F5, #8AADF4);">nnotations</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ummary</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Instance {{ $labels.instance }} down</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lert</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> H</span><span style="color: light-dark(#40A02B, #A6DA95);">ighMemoryUsage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#8839EF, #C6A0F6);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 &gt; 90</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        f</span><span style="color: light-dark(#1E66F5, #8AADF4);">or</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 5</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        l</span><span style="color: light-dark(#1E66F5, #8AADF4);">abels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">everity</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> w</span><span style="color: light-dark(#40A02B, #A6DA95);">arning</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        a</span><span style="color: light-dark(#1E66F5, #8AADF4);">nnotations</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ummary</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">High memory usage on {{ $labels.instance }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Memory usage is {{ $value | humanize }}% on {{ $labels.instance }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lert</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> D</span><span style="color: light-dark(#40A02B, #A6DA95);">iskSpaceLow</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#8839EF, #C6A0F6);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          (1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100 &gt; 85</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        f</span><span style="color: light-dark(#1E66F5, #8AADF4);">or</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">0m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        l</span><span style="color: light-dark(#1E66F5, #8AADF4);">abels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">everity</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> w</span><span style="color: light-dark(#40A02B, #A6DA95);">arning</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        a</span><span style="color: light-dark(#1E66F5, #8AADF4);">nnotations</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ummary</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Disk space low on {{ $labels.instance }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Disk {{ $labels.mountpoint }} is {{ $value | humanize }}% full</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> a</span><span style="color: light-dark(#1E66F5, #8AADF4);">lert</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> H</span><span style="color: light-dark(#40A02B, #A6DA95);">ighCPUUsage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#8839EF, #C6A0F6);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          100 - (avg(rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100) &gt; 80</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        f</span><span style="color: light-dark(#1E66F5, #8AADF4);">or</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">0m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        l</span><span style="color: light-dark(#1E66F5, #8AADF4);">abels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">everity</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> w</span><span style="color: light-dark(#40A02B, #A6DA95);">arning</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        a</span><span style="color: light-dark(#1E66F5, #8AADF4);">nnotations</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ummary</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">High CPU usage on {{ $labels.instance }}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">          d</span><span style="color: light-dark(#1E66F5, #8AADF4);">escription</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">CPU usage is {{ $value | humanize }}%</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h2 id="recording-rules">Recording Rules<a class="zola-anchor" href="#recording-rules" aria-label="Anchor link for: recording-rules">🔗</a></h2>
+<h3 id="recording-rule-file-recording-rules-yml">Recording Rule File (recording_rules.yml)<a class="zola-anchor" href="#recording-rule-file-recording-rules-yml" aria-label="Anchor link for: recording-rule-file-recording-rules-yml">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">g</span><span style="color: light-dark(#1E66F5, #8AADF4);">roups</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> n</span><span style="color: light-dark(#1E66F5, #8AADF4);">ame</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> p</span><span style="color: light-dark(#40A02B, #A6DA95);">erformance</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    i</span><span style="color: light-dark(#1E66F5, #8AADF4);">nterval</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 3</span><span style="color: light-dark(#40A02B, #A6DA95);">0s</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ules</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pre-calculate request rate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ecord</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> j</span><span style="color: light-dark(#40A02B, #A6DA95);">ob:http_requests:rate5m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> s</span><span style="color: light-dark(#40A02B, #A6DA95);">um(rate(http_requests_total[5m])) by (job)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pre-calculate error rate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ecord</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> j</span><span style="color: light-dark(#40A02B, #A6DA95);">ob:http_errors:rate5m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> s</span><span style="color: light-dark(#40A02B, #A6DA95);">um(rate(http_requests_total{status_code=~&quot;5..&quot;}[5m])) by (job)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pre-calculate error percentage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ecord</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> j</span><span style="color: light-dark(#40A02B, #A6DA95);">ob:http_error_percentage:rate5m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#8839EF, #C6A0F6);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          job:http_errors:rate5m</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          /</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          job:http_requests:rate5m * 100</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pre-calculate CPU usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ecord</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> i</span><span style="color: light-dark(#40A02B, #A6DA95);">nstance:node_cpu:usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);">00 - (avg(rate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) by (instance) * 100)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pre-calculate memory usage percentage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> r</span><span style="color: light-dark(#1E66F5, #8AADF4);">ecord</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> i</span><span style="color: light-dark(#40A02B, #A6DA95);">nstance:node_memory:usage_percent</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        e</span><span style="color: light-dark(#1E66F5, #8AADF4);">xpr</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#8839EF, #C6A0F6);"> |</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">          (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100</span></span></code></pre><h2 id="common-exporters">Common Exporters<a class="zola-anchor" href="#common-exporters" aria-label="Anchor link for: common-exporters">🔗</a></h2>
+<h3 id="node-exporter">Node Exporter<a class="zola-anchor" href="#node-exporter" aria-label="Anchor link for: node-exporter">🔗</a></h3>
+<p>Exports hardware and OS metrics.</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Docker</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> 9100:9100</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">-name</span><span style="color: light-dark(#40A02B, #A6DA95);"> node-exporter</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/proc:/host/proc:ro</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/sys:/host/sys:ro</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">/:/rootfs:ro</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  prom/node-exporter</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">-path.procfs=/host/proc</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">-path.sysfs=/host/sys</span></span></code></pre>
+<p><strong>Common metrics:</strong></p>
+<ul>
+<li><code>node_cpu_seconds_total</code></li>
+<li><code>node_memory_MemTotal_bytes</code></li>
+<li><code>node_memory_MemAvailable_bytes</code></li>
+<li><code>node_filesystem_size_bytes</code></li>
+<li><code>node_network_receive_bytes_total</code></li>
+</ul>
+<h3 id="blackbox-exporter">Blackbox Exporter<a class="zola-anchor" href="#blackbox-exporter" aria-label="Anchor link for: blackbox-exporter">🔗</a></h3>
+<p>Probes endpoints (HTTP, TCP, DNS, ICMP).</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> prometheus.yml</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">crape_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">  -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> j</span><span style="color: light-dark(#1E66F5, #8AADF4);">ob_name</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">blackbox</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    m</span><span style="color: light-dark(#1E66F5, #8AADF4);">etrics_path</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> /</span><span style="color: light-dark(#40A02B, #A6DA95);">probe</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    p</span><span style="color: light-dark(#1E66F5, #8AADF4);">arams</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">      m</span><span style="color: light-dark(#1E66F5, #8AADF4);">odule</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttp_2xx</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatic_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">argets</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">          -</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttps://example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">          -</span><span style="color: light-dark(#40A02B, #A6DA95);"> h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttps://api.example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">    r</span><span style="color: light-dark(#1E66F5, #8AADF4);">elabel_configs</span><span style="color: light-dark(#179299, #8BD5CA);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ource_labels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">_address__</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        t</span><span style="color: light-dark(#1E66F5, #8AADF4);">arget_label</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> _</span><span style="color: light-dark(#40A02B, #A6DA95);">_param_target</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> s</span><span style="color: light-dark(#1E66F5, #8AADF4);">ource_labels</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">_param_target</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        t</span><span style="color: light-dark(#1E66F5, #8AADF4);">arget_label</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> i</span><span style="color: light-dark(#40A02B, #A6DA95);">nstance</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);">      -</span><span style="color: light-dark(#1E66F5, #8AADF4);"> t</span><span style="color: light-dark(#1E66F5, #8AADF4);">arget_label</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> _</span><span style="color: light-dark(#40A02B, #A6DA95);">_address__</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">        r</span><span style="color: light-dark(#1E66F5, #8AADF4);">eplacement</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> b</span><span style="color: light-dark(#40A02B, #A6DA95);">lackbox-exporter:9115</span></span></code></pre><h3 id="mysql-exporter">MySQL Exporter<a class="zola-anchor" href="#mysql-exporter" aria-label="Anchor link for: mysql-exporter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> 9104:9104</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);"> DATA_SOURCE_NAME=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">user:password@(mysql:3306)/</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  prom/mysqld-exporter</span></span></code></pre><h3 id="postgresql-exporter">PostgreSQL Exporter<a class="zola-anchor" href="#postgresql-exporter" aria-label="Anchor link for: postgresql-exporter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> 9187:9187</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);"> DATA_SOURCE_NAME=</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">postgresql://user:password@postgres:5432/database?sslmode=disable</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  prometheuscommunity/postgres-exporter</span></span></code></pre><h3 id="redis-exporter">Redis Exporter<a class="zola-anchor" href="#redis-exporter" aria-label="Anchor link for: redis-exporter">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">docker</span><span style="color: light-dark(#40A02B, #A6DA95);"> run</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);"> 9121:9121</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  oliver006/redis_exporter</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">-redis.addr=redis://redis:6379</span></span></code></pre><h2 id="http-api">HTTP API<a class="zola-anchor" href="#http-api" aria-label="Anchor link for: http-api">🔗</a></h2>
+<h3 id="query-api">Query API<a class="zola-anchor" href="#query-api" aria-label="Anchor link for: query-api">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Instant query</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/query?query=up</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Range query</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/query_range?query=up&amp;start=2024-01-01T00:00:00Z&amp;end=2024-01-01T01:00:00Z&amp;step=15s</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Query with time parameter</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/query?query=up&amp;time=2024-01-01T12:00:00Z</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h3 id="metadata-api">Metadata API<a class="zola-anchor" href="#metadata-api" aria-label="Anchor link for: metadata-api">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> List all metric names</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/label/__name__/values</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get label values</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/label/job/values</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get series</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/series?match[]=up</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get targets</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/targets</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get alertmanagers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/alertmanagers</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get rules</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">http://localhost:9090/api/v1/rules</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h3 id="admin-api">Admin API<a class="zola-anchor" href="#admin-api" aria-label="Anchor link for: admin-api">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Reload configuration</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:9090/-/reload</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Quit Prometheus</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:9090/-/quit</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Health check</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:9090/-/healthy</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Ready check</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://localhost:9090/-/ready</span></span></code></pre><h2 id="command-line-flags">Command Line Flags<a class="zola-anchor" href="#command-line-flags" aria-label="Anchor link for: command-line-flags">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom config file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-config.file=/path/to/prometheus.yml</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom storage path</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-storage.tsdb.path=/data</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Custom port</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-web.listen-address=:9091</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Enable admin API</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-web.enable-admin-api</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Enable lifecycle API (reload)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-web.enable-lifecycle</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Log level</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-log.level=debug</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Retention time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-storage.tsdb.retention.time=30d</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Retention size</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">prometheus</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-storage.tsdb.retention.size=50GB</span></span></code></pre><h2 id="best-practices">Best Practices<a class="zola-anchor" href="#best-practices" aria-label="Anchor link for: best-practices">🔗</a></h2>
+<h3 id="naming-conventions">Naming Conventions<a class="zola-anchor" href="#naming-conventions" aria-label="Anchor link for: naming-conventions">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Counter: Use _total suffix</span></span>
+<span class="giallo-l"><span>http_requests_total</span></span>
+<span class="giallo-l"><span>errors_total</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Gauge: Use descriptive name</span></span>
+<span class="giallo-l"><span>current_connections</span></span>
+<span class="giallo-l"><span>memory_usage_bytes</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Histogram: Use _bucket, _sum, _count</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_bucket</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_sum</span></span>
+<span class="giallo-l"><span>http_request_duration_seconds_count</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Use base units</span></span>
+<span class="giallo-l"><span>- seconds (not milliseconds)</span></span>
+<span class="giallo-l"><span>- bytes (not kilobytes)</span></span>
+<span class="giallo-l"><span>- ratio 0-1 (not percentage)</span></span></code></pre><h3 id="label-best-practices">Label Best Practices<a class="zola-anchor" href="#label-best-practices" aria-label="Anchor link for: label-best-practices">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Good labels</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">h</span><span style="color: light-dark(#40A02B, #A6DA95);">ttp_requests_total{method=&quot;GET&quot;, status=&quot;200&quot;, endpoint=&quot;/api/users&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Avoid high cardinality labels</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Bad: user_id, request_id, timestamp</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Good: method, status, endpoint, service</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use consistent label names</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">nstance, job, environment, region</span></span></code></pre><h3 id="query-optimization">Query Optimization<a class="zola-anchor" href="#query-optimization" aria-label="Anchor link for: query-optimization">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="plain"><span class="giallo-l"><span># Use recording rules for expensive queries</span></span>
+<span class="giallo-l"><span># Pre-calculate aggregations</span></span>
+<span class="giallo-l"><span># Avoid regex when possible</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Good</span></span>
+<span class="giallo-l"><span>http_requests_total{job=&quot;api&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Less efficient</span></span>
+<span class="giallo-l"><span>http_requests_total{job=~&quot;api&quot;}</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span># Use appropriate time ranges</span></span>
+<span class="giallo-l"><span>rate(metric[5m])  # Good for most cases</span></span>
+<span class="giallo-l"><span>rate(metric[1h])  # For long-term trends</span></span></code></pre><h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li>Official documentation: https://prometheus.io/docs/</li>
+<li>PromQL guide: https://prometheus.io/docs/prometheus/latest/querying/basics/</li>
+<li>Exporters list: https://prometheus.io/docs/instrumenting/exporters/</li>
+<li>Best practices: https://prometheus.io/docs/practices/naming/</li>
+<li>Community: https://prometheus.io/community/</li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">Linux File System</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/grafana/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">Grafana</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#installation">Installation</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#docker">Docker</a></li>
+                  
+                    <li class="toc__subitem"><a href="#docker-with-custom-config">Docker with custom config</a></li>
+                  
+                    <li class="toc__subitem"><a href="#binary">Binary</a></li>
+                  
+                    <li class="toc__subitem"><a href="#kubernetes-with-helm">Kubernetes (with Helm)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#configuration">Configuration</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-prometheus-yml">Basic prometheus.yml</a></li>
+                  
+                    <li class="toc__subitem"><a href="#scrape-configuration-examples">Scrape Configuration Examples</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#metric-types">Metric Types</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#counter">Counter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#gauge">Gauge</a></li>
+                  
+                    <li class="toc__subitem"><a href="#histogram">Histogram</a></li>
+                  
+                    <li class="toc__subitem"><a href="#summary">Summary</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#promql-query-language">PromQL - Query Language</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-selectors">Basic Selectors</a></li>
+                  
+                    <li class="toc__subitem"><a href="#range-vectors">Range Vectors</a></li>
+                  
+                    <li class="toc__subitem"><a href="#offset-modifier">Offset Modifier</a></li>
+                  
+                    <li class="toc__subitem"><a href="#operators">Operators</a></li>
+                  
+                    <li class="toc__subitem"><a href="#aggregation-operators">Aggregation Operators</a></li>
+                  
+                    <li class="toc__subitem"><a href="#functions">Functions</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#common-query-examples">Common Query Examples</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#http-api-metrics">HTTP/API Metrics</a></li>
+                  
+                    <li class="toc__subitem"><a href="#system-metrics">System Metrics</a></li>
+                  
+                    <li class="toc__subitem"><a href="#database-metrics">Database Metrics</a></li>
+                  
+                    <li class="toc__subitem"><a href="#container-metrics">Container Metrics</a></li>
+                  
+                    <li class="toc__subitem"><a href="#availability-uptime">Availability &amp; Uptime</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#alerting-rules">Alerting Rules</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#alert-rule-file-alert-rules-yml">Alert Rule File (alert_rules.yml)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#recording-rules">Recording Rules</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#recording-rule-file-recording-rules-yml">Recording Rule File (recording_rules.yml)</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#common-exporters">Common Exporters</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#node-exporter">Node Exporter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#blackbox-exporter">Blackbox Exporter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#mysql-exporter">MySQL Exporter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#postgresql-exporter">PostgreSQL Exporter</a></li>
+                  
+                    <li class="toc__subitem"><a href="#redis-exporter">Redis Exporter</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#http-api">HTTP API</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#query-api">Query API</a></li>
+                  
+                    <li class="toc__subitem"><a href="#metadata-api">Metadata API</a></li>
+                  
+                    <li class="toc__subitem"><a href="#admin-api">Admin API</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#command-line-flags">Command Line Flags</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#best-practices">Best Practices</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#naming-conventions">Naming Conventions</a></li>
+                  
+                    <li class="toc__subitem"><a href="#label-best-practices">Label Best Practices</a></li>
+                  
+                    <li class="toc__subitem"><a href="#query-optimization">Query Optimization</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

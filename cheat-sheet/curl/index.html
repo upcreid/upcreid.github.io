@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>curl · /void !</title>
+  
+  <meta name="description" content="">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/cheat-sheet/curl/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/cheat-sheet/curl/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/blog/"
+             >Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/cheat-sheet/"
+             aria-current="page">CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/cheat-sheet/curl/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-sidebar layout--with-toc">
+      
+  
+  
+    
+    
+      <aside class="sidebar">
+        <nav class="sidebar__nav">
+          <p class="sidebar__title">CheatSheet</p>
+          <ul class="sidebar__list">
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/python-build/">Python Build</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/fastapi/">FastAPI</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/golang/">Go (Golang)</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/hugo/">Hugo</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/csharp-dotnet/">C# &amp; .NET</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/docker/">Docker</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/kubectl/">Kubectl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/k9s/">K9s</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/git/">Git</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/grafana/">Grafana</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/prometheus/">Prometheus</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/linux-filesystem/">Linux File System</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/shell/">Shell</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link sidebar__link--active"
+                   href="https://upcreid.github.io/cheat-sheet/curl/">curl</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/netcat/">netcat</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/ansible/">Ansible</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/slidev/">Slidev</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/sql/">SQL</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/tmux/">Tmux</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vagrant/">Vagrant</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/terraform/">Terraform</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/vim/">Vim</a>
+              </li>
+            
+              <li>
+                <a class="sidebar__link"
+                   href="https://upcreid.github.io/cheat-sheet/macos-filesystem/">Macos File System</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </aside>
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/cheat-sheet/">CheatSheet</a>
+      
+    
+  </nav>
+
+  <h1>curl</h1>
+
+  <p class="page-meta">
+    
+    <span>1 min read</span>
+    
+    
+  </p>
+
+  
+
+  <div class="prose" lang="en">
+    <h2 id="overview">Overview<a class="zola-anchor" href="#overview" aria-label="Anchor link for: overview">🔗</a></h2>
+<p>curl (Client URL) is a command-line tool for transferring data using various protocols (HTTP, HTTPS, FTP, etc.). It’s one of the most versatile tools for testing APIs and downloading files.</p>
+<h2 id="basic-usage">Basic Usage<a class="zola-anchor" href="#basic-usage" aria-label="Anchor link for: basic-usage">🔗</a></h2>
+<h3 id="simple-get-request">Simple GET Request<a class="zola-anchor" href="#simple-get-request" aria-label="Anchor link for: simple-get-request">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Basic GET request</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GET with output to file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> page.html</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-output</span><span style="color: light-dark(#40A02B, #A6DA95);"> page.html</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download with original filename</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/file.zip</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Follow redirects</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">L</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com</span></span></code></pre><h3 id="verbose-and-silent-modes">Verbose and Silent Modes<a class="zola-anchor" href="#verbose-and-silent-modes" aria-label="Anchor link for: verbose-and-silent-modes">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verbose mode (show detailed info)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Silent mode (no progress bar)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show only HTTP headers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">I</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-head</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h2 id="http-methods">HTTP Methods<a class="zola-anchor" href="#http-methods" aria-label="Anchor link for: http-methods">🔗</a></h2>
+<h3 id="get-request">GET Request<a class="zola-anchor" href="#get-request" aria-label="Anchor link for: get-request">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Simple GET</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GET with query parameters</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://api.example.com/users?page=1&amp;limit=10</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GET with headers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Authorization: Bearer TOKEN</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span></span></code></pre><h3 id="post-request">POST Request<a class="zola-anchor" href="#post-request" aria-label="Anchor link for: post-request">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> POST with JSON data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{&quot;name&quot;:&quot;John&quot;,&quot;email&quot;:&quot;john@example.com&quot;}</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> POST with data from file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> @data.json</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> POST form data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/login</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">username=john</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">password=secret</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> POST multipart form (file upload)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/upload</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">file=@document.pdf</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">description=My document</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h3 id="put-request">PUT Request<a class="zola-anchor" href="#put-request" aria-label="Anchor link for: put-request">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> PUT to update a resource</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> PUT</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users/123</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{&quot;name&quot;:&quot;John Doe&quot;,&quot;email&quot;:&quot;john@example.com&quot;}</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h3 id="patch-request">PATCH Request<a class="zola-anchor" href="#patch-request" aria-label="Anchor link for: patch-request">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> PATCH to partially update</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> PATCH</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users/123</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{&quot;email&quot;:&quot;newemail@example.com&quot;}</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h3 id="delete-request">DELETE Request<a class="zola-anchor" href="#delete-request" aria-label="Anchor link for: delete-request">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> DELETE a resource</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> DELETE</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users/123</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> DELETE with authentication</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> DELETE</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users/123</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Authorization: Bearer TOKEN</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h2 id="headers">Headers<a class="zola-anchor" href="#headers" aria-label="Anchor link for: headers">🔗</a></h2>
+<h3 id="setting-headers">Setting Headers<a class="zola-anchor" href="#setting-headers" aria-label="Anchor link for: setting-headers">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Single header</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Authorization: Bearer TOKEN</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Multiple headers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Authorization: Bearer TOKEN</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">     -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">     -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Accept: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">     https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> User-Agent</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">A</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">MyApp/1.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-user-agent</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">MyApp/1.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="viewing-response-headers">Viewing Response Headers<a class="zola-anchor" href="#viewing-response-headers" aria-label="Anchor link for: viewing-response-headers">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Headers only</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">I</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Headers + body</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Verbose (request + response headers)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h2 id="authentication">Authentication<a class="zola-anchor" href="#authentication" aria-label="Anchor link for: authentication">🔗</a></h2>
+<h3 id="basic-authentication">Basic Authentication<a class="zola-anchor" href="#basic-authentication" aria-label="Anchor link for: basic-authentication">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Basic auth</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);"> username:password</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Basic auth (interactive password prompt)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);"> username</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="bearer-token">Bearer Token<a class="zola-anchor" href="#bearer-token" aria-label="Anchor link for: bearer-token">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Bearer token</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Authorization: Bearer YOUR_TOKEN</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="api-key">API Key<a class="zola-anchor" href="#api-key" aria-label="Anchor link for: api-key">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> API key in header</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">X-API-Key: YOUR_API_KEY</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> API key in query parameter</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://api.example.com/data?api_key=YOUR_API_KEY</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h2 id="data-formats">Data Formats<a class="zola-anchor" href="#data-formats" aria-label="Anchor link for: data-formats">🔗</a></h2>
+<h3 id="json">JSON<a class="zola-anchor" href="#json" aria-label="Anchor link for: json">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Send JSON data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{&quot;name&quot;:&quot;John&quot;,&quot;age&quot;:30}</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> JSON from file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> @user.json</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Pretty print JSON response (with jq)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> jq</span></span></code></pre><h3 id="form-data">Form Data<a class="zola-anchor" href="#form-data" aria-label="Anchor link for: form-data">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> URL-encoded form data</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/login</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">username=john</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">password=secret</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Equivalent with --data-urlencode</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/search</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">-data-urlencode</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">query=hello world</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">-data-urlencode</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">page=1</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h3 id="file-upload">File Upload<a class="zola-anchor" href="#file-upload" aria-label="Anchor link for: file-upload">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Upload a file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/upload</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">file=@document.pdf</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Upload with additional fields</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/upload</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">file=@image.jpg</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">title=My Image</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">description=A beautiful sunset</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Multiple files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/upload</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">file1=@doc1.pdf</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">F</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">file2=@doc2.pdf</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h2 id="response-handling">Response Handling<a class="zola-anchor" href="#response-handling" aria-label="Anchor link for: response-handling">🔗</a></h2>
+<h3 id="save-response">Save Response<a class="zola-anchor" href="#save-response" aria-label="Anchor link for: save-response">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Save to file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/data</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> data.json</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use remote filename</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/file.zip</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Save headers to file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">D</span><span style="color: light-dark(#40A02B, #A6DA95);"> headers.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="filter-response">Filter Response<a class="zola-anchor" href="#filter-response" aria-label="Anchor link for: filter-response">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get only HTTP status code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> /dev/null</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">%{http_code}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Get response time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> /dev/null</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">%{time_total}</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Multiple format variables</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> /dev/null</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Status: %{http_code}\nTime: %{time_total}s\n</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  https://api.example.com</span></span></code></pre><h2 id="cookies">Cookies<a class="zola-anchor" href="#cookies" aria-label="Anchor link for: cookies">🔗</a></h2>
+<h3 id="send-cookies">Send Cookies<a class="zola-anchor" href="#send-cookies" aria-label="Anchor link for: send-cookies">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Send cookie</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">b</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">session=abc123</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Send from cookie file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">b</span><span style="color: light-dark(#40A02B, #A6DA95);"> cookies.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="save-cookies">Save Cookies<a class="zola-anchor" href="#save-cookies" aria-label="Anchor link for: save-cookies">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Save cookies to file</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> cookies.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use and update cookies</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">b</span><span style="color: light-dark(#40A02B, #A6DA95);"> cookies.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);"> cookies.txt</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/login</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">username=john&amp;password=secret</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h2 id="advanced-options">Advanced Options<a class="zola-anchor" href="#advanced-options" aria-label="Anchor link for: advanced-options">🔗</a></h2>
+<h3 id="timeout">Timeout<a class="zola-anchor" href="#timeout" aria-label="Anchor link for: timeout">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Connection timeout (seconds)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-connect-timeout</span><span style="color: light-dark(#FE640B, #F5A97F);"> 10</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Max time for entire operation</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-max-time</span><span style="color: light-dark(#FE640B, #F5A97F);"> 30</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Both</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-connect-timeout</span><span style="color: light-dark(#FE640B, #F5A97F);"> 10</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-max-time</span><span style="color: light-dark(#FE640B, #F5A97F);"> 30</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="retry">Retry<a class="zola-anchor" href="#retry" aria-label="Anchor link for: retry">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Retry on failure</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-retry</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Retry with delay</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-retry</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-retry-delay</span><span style="color: light-dark(#FE640B, #F5A97F);"> 2</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Retry on specific HTTP codes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-retry</span><span style="color: light-dark(#FE640B, #F5A97F);"> 3</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-retry-connrefused</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="proxy">Proxy<a class="zola-anchor" href="#proxy" aria-label="Anchor link for: proxy">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use HTTP proxy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">x</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://proxy.example.com:8080</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Proxy with authentication</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">x</span><span style="color: light-dark(#40A02B, #A6DA95);"> http://user:pass@proxy.example.com:8080</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> SOCKS5 proxy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-socks5</span><span style="color: light-dark(#40A02B, #A6DA95);"> localhost:1080</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h3 id="ssl-tls">SSL/TLS<a class="zola-anchor" href="#ssl-tls" aria-label="Anchor link for: ssl-tls">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Ignore SSL certificate verification (insecure!)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">k</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://self-signed.example.com</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-insecure</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://self-signed.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Specify CA certificate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-cacert</span><span style="color: light-dark(#40A02B, #A6DA95);"> ca-bundle.crt</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Use client certificate</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-cert</span><span style="color: light-dark(#40A02B, #A6DA95);"> client.pem</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-key</span><span style="color: light-dark(#40A02B, #A6DA95);"> client-key.pem</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h2 id="common-use-cases">Common Use Cases<a class="zola-anchor" href="#common-use-cases" aria-label="Anchor link for: common-use-cases">🔗</a></h2>
+<h3 id="test-api-endpoint">Test API Endpoint<a class="zola-anchor" href="#test-api-endpoint" aria-label="Anchor link for: test-api-endpoint">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Check if API is up</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">I</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/health</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Test with authentication</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Authorization: Bearer TOKEN</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">     -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Accept: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">     https://api.example.com/users</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> jq</span></span></code></pre><h3 id="download-file">Download File<a class="zola-anchor" href="#download-file" aria-label="Anchor link for: download-file">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download with progress bar</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/file.zip</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Resume interrupted download</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">C</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/largefile.zip</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download multiple files</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/file1.zip</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://example.com/file2.zip</span></span></code></pre><h3 id="debug-api-call">Debug API Call<a class="zola-anchor" href="#debug-api-call" aria-label="Anchor link for: debug-api-call">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Full verbose output</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show only request headers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#179299, #8BD5CA);"> 2</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;&amp;1</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> grep</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">^&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Show only response headers</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#179299, #8BD5CA);"> 2</span><span style="color: light-dark(#179299, #8BD5CA);">&gt;&amp;1</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> grep</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">^&lt;</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span></code></pre><h3 id="performance-testing">Performance Testing<a class="zola-anchor" href="#performance-testing" aria-label="Anchor link for: performance-testing">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Measure request time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">@curl-format.txt</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> /dev/null</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create curl-format.txt:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">cat</span><span style="color: light-dark(#179299, #8BD5CA);"> &gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> curl-format.txt</span><span style="color: light-dark(#179299, #8BD5CA);"> &lt;&lt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">EOF</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">    time_namelookup:  %{time_namelookup}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">       time_connect:  %{time_connect}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">    time_appconnect:  %{time_appconnect}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">   time_pretransfer:  %{time_pretransfer}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">      time_redirect:  %{time_redirect}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);"> time_starttransfer:  %{time_starttransfer}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">                    ----------\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">         time_total:  %{time_total}s\n</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">EOF</span></span></code></pre><h3 id="graphql-query">GraphQL Query<a class="zola-anchor" href="#graphql-query" aria-label="Anchor link for: graphql-query">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> GraphQL request</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/graphql</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">    &quot;query&quot;: &quot;{ users { id name email } }&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  }</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> With variables</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">X</span><span style="color: light-dark(#40A02B, #A6DA95);"> POST</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/graphql</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">H</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Content-Type: application/json</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">    &quot;query&quot;: &quot;query GetUser($id: ID!) { user(id: $id) { name email } }&quot;,</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">    &quot;variables&quot;: {&quot;id&quot;: &quot;123&quot;}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  }</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h2 id="useful-format-variables">Useful Format Variables<a class="zola-anchor" href="#useful-format-variables" aria-label="Anchor link for: useful-format-variables">🔗</a></h2>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Common format variables for -w option:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">h</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">           #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> HTTP status code</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">          #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Total time in seconds</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">k</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">     #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> DNS lookup time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">        #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> TCP connect time</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);">f</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Time to first byte</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">z</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Downloaded bytes</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);">p</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);">a</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">      #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Download speed (bytes/sec)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">%</span><span style="color: light-dark(#40A02B, #A6DA95);">{</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);">l</span><span style="color: light-dark(#40A02B, #A6DA95);">_</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">f</span><span style="color: light-dark(#40A02B, #A6DA95);">f</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">c</span><span style="color: light-dark(#40A02B, #A6DA95);">t</span><span style="color: light-dark(#40A02B, #A6DA95);">i</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">       #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Final URL after redirects</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example usage:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">w</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">Status: %{http_code}\nTime: %{time_total}s\n</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  -</span><span style="color: light-dark(#40A02B, #A6DA95);">o</span><span style="color: light-dark(#40A02B, #A6DA95);"> /dev/null</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">s</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com</span></span></code></pre><h2 id="tips-tricks">Tips &amp; Tricks<a class="zola-anchor" href="#tips-tricks" aria-label="Anchor link for: tips-tricks">🔗</a></h2>
+<h3 id="create-alias">Create Alias<a class="zola-anchor" href="#create-alias" aria-label="Anchor link for: create-alias">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Add to ~/.bashrc or ~/.zshrc</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">alias</span><span> curljson</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">curl -H &quot;Content-Type: application/json&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#8839EF, #C6A0F6);">alias</span><span> curlpost</span><span style="color: light-dark(#179299, #8BD5CA);">=</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">curl -X POST -H &quot;Content-Type: application/json&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Usage</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curljson</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curlpost</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://api.example.com/users</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">d</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">{&quot;name&quot;:&quot;John&quot;}</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span></code></pre><h3 id="config-file">Config File<a class="zola-anchor" href="#config-file" aria-label="Anchor link for: config-file">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Create ~/.curlrc with default options</span></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Example ~/.curlrc:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">user-agent</span><span style="color: light-dark(#40A02B, #A6DA95);"> =</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">MyApp/1.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">connect-timeout</span><span style="color: light-dark(#40A02B, #A6DA95);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 10</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">max-time</span><span style="color: light-dark(#40A02B, #A6DA95);"> =</span><span style="color: light-dark(#FE640B, #F5A97F);"> 30</span></span></code></pre><h3 id="parallel-requests">Parallel Requests<a class="zola-anchor" href="#parallel-requests" aria-label="Anchor link for: parallel-requests">🔗</a></h3>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Multiple requests in parallel (with GNU parallel)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">cat</span><span style="color: light-dark(#40A02B, #A6DA95);"> urls.txt</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> parallel</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">j</span><span style="color: light-dark(#FE640B, #F5A97F);"> 10</span><span style="color: light-dark(#40A02B, #A6DA95);"> curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Or with xargs</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">cat</span><span style="color: light-dark(#40A02B, #A6DA95);"> urls.txt</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> xargs</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">P</span><span style="color: light-dark(#FE640B, #F5A97F);"> 10</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">n</span><span style="color: light-dark(#FE640B, #F5A97F);"> 1</span><span style="color: light-dark(#40A02B, #A6DA95);"> curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">O</span></span></code></pre><h2 id="common-options-summary">Common Options Summary<a class="zola-anchor" href="#common-options-summary" aria-label="Anchor link for: common-options-summary">🔗</a></h2>
+<table><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>-X, --request</code></td><td>HTTP method (GET, POST, PUT, DELETE, etc.)</td></tr>
+<tr><td><code>-d, --data</code></td><td>Send data in POST request</td></tr>
+<tr><td><code>-H, --header</code></td><td>Add custom header</td></tr>
+<tr><td><code>-o, --output</code></td><td>Write output to file</td></tr>
+<tr><td><code>-O, --remote-name</code></td><td>Save with remote filename</td></tr>
+<tr><td><code>-i, --include</code></td><td>Include response headers in output</td></tr>
+<tr><td><code>-I, --head</code></td><td>Show headers only</td></tr>
+<tr><td><code>-v, --verbose</code></td><td>Verbose mode</td></tr>
+<tr><td><code>-s, --silent</code></td><td>Silent mode</td></tr>
+<tr><td><code>-L, --location</code></td><td>Follow redirects</td></tr>
+<tr><td><code>-u, --user</code></td><td>User authentication</td></tr>
+<tr><td><code>-b, --cookie</code></td><td>Send cookies</td></tr>
+<tr><td><code>-c, --cookie-jar</code></td><td>Save cookies</td></tr>
+<tr><td><code>-A, --user-agent</code></td><td>Set user agent</td></tr>
+<tr><td><code>-F, --form</code></td><td>Multipart form data</td></tr>
+<tr><td><code>-w, --write-out</code></td><td>Format output</td></tr>
+<tr><td><code>-k, --insecure</code></td><td>Skip SSL verification</td></tr>
+</tbody></table>
+<h2 id="resources">Resources<a class="zola-anchor" href="#resources" aria-label="Anchor link for: resources">🔗</a></h2>
+<ul>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://curl.se/docs/">curl Documentation</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://curl.se/docs/manpage.html">curl Manual</a></li>
+<li><a rel="noopener noreferrer external" target="_blank" href="https://everything.curl.dev/">Everything curl Book</a></li>
+</ul>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/cheat-sheet/netcat/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">netcat</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/cheat-sheet/shell/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">Shell</span>
+        </a>
+      
+    </nav>
+  
+
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#overview">Overview</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#basic-usage">Basic Usage</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#simple-get-request">Simple GET Request</a></li>
+                  
+                    <li class="toc__subitem"><a href="#verbose-and-silent-modes">Verbose and Silent Modes</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#http-methods">HTTP Methods</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#get-request">GET Request</a></li>
+                  
+                    <li class="toc__subitem"><a href="#post-request">POST Request</a></li>
+                  
+                    <li class="toc__subitem"><a href="#put-request">PUT Request</a></li>
+                  
+                    <li class="toc__subitem"><a href="#patch-request">PATCH Request</a></li>
+                  
+                    <li class="toc__subitem"><a href="#delete-request">DELETE Request</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#headers">Headers</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#setting-headers">Setting Headers</a></li>
+                  
+                    <li class="toc__subitem"><a href="#viewing-response-headers">Viewing Response Headers</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#authentication">Authentication</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#basic-authentication">Basic Authentication</a></li>
+                  
+                    <li class="toc__subitem"><a href="#bearer-token">Bearer Token</a></li>
+                  
+                    <li class="toc__subitem"><a href="#api-key">API Key</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#data-formats">Data Formats</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#json">JSON</a></li>
+                  
+                    <li class="toc__subitem"><a href="#form-data">Form Data</a></li>
+                  
+                    <li class="toc__subitem"><a href="#file-upload">File Upload</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#response-handling">Response Handling</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#save-response">Save Response</a></li>
+                  
+                    <li class="toc__subitem"><a href="#filter-response">Filter Response</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#cookies">Cookies</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#send-cookies">Send Cookies</a></li>
+                  
+                    <li class="toc__subitem"><a href="#save-cookies">Save Cookies</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#advanced-options">Advanced Options</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#timeout">Timeout</a></li>
+                  
+                    <li class="toc__subitem"><a href="#retry">Retry</a></li>
+                  
+                    <li class="toc__subitem"><a href="#proxy">Proxy</a></li>
+                  
+                    <li class="toc__subitem"><a href="#ssl-tls">SSL/TLS</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#common-use-cases">Common Use Cases</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#test-api-endpoint">Test API Endpoint</a></li>
+                  
+                    <li class="toc__subitem"><a href="#download-file">Download File</a></li>
+                  
+                    <li class="toc__subitem"><a href="#debug-api-call">Debug API Call</a></li>
+                  
+                    <li class="toc__subitem"><a href="#performance-testing">Performance Testing</a></li>
+                  
+                    <li class="toc__subitem"><a href="#graphql-query">GraphQL Query</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#useful-format-variables">Useful Format Variables</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#tips-tricks">Tips &amp; Tricks</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-alias">Create Alias</a></li>
+                  
+                    <li class="toc__subitem"><a href="#config-file">Config File</a></li>
+                  
+                    <li class="toc__subitem"><a href="#parallel-requests">Parallel Requests</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#common-options-summary">Common Options Summary</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#resources">Resources</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

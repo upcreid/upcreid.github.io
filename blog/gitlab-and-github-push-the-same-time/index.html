@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>🚧 Gitlab and Github pages handling the same code 🤓 · /void !</title>
+  
+  <meta name="description" content="Automatisation">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/blog/gitlab-and-github-push-the-same-time/">
+  
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/blog/gitlab-and-github-push-the-same-time/">
+  
+    
+    
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="/fr/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/blog/"
+             aria-current="page">Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/cheat-sheet/"
+             >CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/blog/gitlab-and-github-push-the-same-time/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="/fr/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-toc">
+      
+  
+  
+    
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/blog/">Blog</a>
+      
+    
+  </nav>
+
+  <h1>🚧 Gitlab and Github pages handling the same code 🤓</h1>
+
+  <p class="page-meta">
+    
+      <time datetime="2021-04-11T09:19:42+01:00">April 11, 2021</time>
+      <span class="card__sep">·</span>
+    
+    <span>2 min read</span>
+    
+      <span class="card__sep">·</span>
+      <span>UpCreid</span>
+    
+    
+      <span class="card__sep">·</span>
+      <span>Updated on April 11, 2022</span>
+    
+  </p>
+
+  
+    <p class="page-lead">🚧 Gitlab and Github pages handling the same code 🤓</p>
+  
+
+  <div class="prose" lang="en">
+    <p>Hello,</p>
+<p>A small trick to have your static website hosted on github + gitlab, with the same source code.</p>
+<p>Why ? If one fall of course ! :D
+And also because it’s fun, at least i think it’s fun :)</p>
+<h2 id="gitlab-master">Gitlab - Master<a class="zola-anchor" href="#gitlab-master" aria-label="Anchor link for: gitlab-master">🔗</a></h2>
+<ul>
+<li>create our static website repo</li>
+<li>add web stuff inside the repo</li>
+<li>configure CI</li>
+</ul>
+<h3 id="create-our-static-website-repo">create our static website repo<a class="zola-anchor" href="#create-our-static-website-repo" aria-label="Anchor link for: create-our-static-website-repo">🔗</a></h3>
+<p>let’s pretend our repo name is <code>upcreid.gitlab.io</code> and it’s a <a rel="noopener noreferrer external" target="_blank" href="https://gohugo.io/">hugo</a> static website.
+Let’s create it and make it public</p>
+<p><img src="/images/glrepocreation.png" alt="glrepocreation" loading="lazy" decoding="async" /></p>
+<p>then the usual stuff:</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> clone</span><span style="color: light-dark(#40A02B, #A6DA95);"> git@gitlab.com:upcreid/upcreid.gitlab.io.git</span></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">cd</span><span style="color: light-dark(#40A02B, #A6DA95);"> upcreid.gitlab.io</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">touch</span><span style="color: light-dark(#40A02B, #A6DA95);"> README.md</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> README.md</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> commit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">add README</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);"> origin</span><span style="color: light-dark(#40A02B, #A6DA95);"> master</span></span></code></pre><h3 id="create-gh-pages-branch">create gh-pages branch<a class="zola-anchor" href="#create-gh-pages-branch" aria-label="Anchor link for: create-gh-pages-branch">🔗</a></h3>
+<p>before going further we’ll need to create a gh-pages branch on gitlab side, this in order to not break the CI when pushing without a gh-pages branch.</p>
+<p>Go then !</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> checkout</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-orphan</span><span style="color: light-dark(#40A02B, #A6DA95);"> gh-pages</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> rm</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-cached</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">r</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> commit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">new gh-pages branch</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-allow-empty</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> origin</span><span style="color: light-dark(#40A02B, #A6DA95);"> gh-pages</span></span></code></pre>
+<p>go back to master</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> checkout</span><span style="color: light-dark(#40A02B, #A6DA95);"> master</span></span></code></pre><h3 id="add-web-stuff-inside-the-repo">add web stuff inside the repo<a class="zola-anchor" href="#add-web-stuff-inside-the-repo" aria-label="Anchor link for: add-web-stuff-inside-the-repo">🔗</a></h3>
+<p>Ok, now let’s add some code inside to have some static shit in there.</p>
+<ul>
+<li>Install <a rel="noopener noreferrer external" target="_blank" href="https://gohugo.io/getting-started/quick-start/">hugo</a></li>
+<li>Create new site</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> new</span><span style="color: light-dark(#40A02B, #A6DA95);"> site</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-force</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span></code></pre>
+<ul>
+<li>Install a theme</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> submodule</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://github.com/theNewDynamic/gohugo-theme-ananke.git</span><span style="color: light-dark(#40A02B, #A6DA95);"> themes/ananke</span></span></code></pre>
+<ul>
+<li>add the theme, name and remove baseURL to the conf file</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">echo</span><span style="color: light-dark(#40A02B, #A6DA95);"> $&#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">languageCode = \&quot;en-us\&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);">\n</span><span style="color: light-dark(#40A02B, #A6DA95);">title = \&quot;upcreid.gitlab.io\&quot;</span><span style="color: light-dark(#EA76CB, #F5BDE6);">\n</span><span style="color: light-dark(#40A02B, #A6DA95);">theme = \&quot;ananke\&quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span><span style="color: light-dark(#179299, #8BD5CA);"> &gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> config.toml</span></span></code></pre>
+<ul>
+<li>Start the server to verify if everythin goes ok</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> server</span></span></code></pre>
+<ul>
+<li>Commit</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> commit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">add basic hugo</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span></span></code></pre><h3 id="configure-ci">configure CI<a class="zola-anchor" href="#configure-ci" aria-label="Anchor link for: configure-ci">🔗</a></h3>
+<p>Complicated !</p>
+<p>Just add one more file to the repo…</p>
+<p>.gitlab-ci.yml</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">image:</span><span style="color: light-dark(#40A02B, #A6DA95);"> registry.gitlab.com/pages/hugo:latest</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">variables:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  GIT_SUBMODULE_STRATEGY:</span><span style="color: light-dark(#40A02B, #A6DA95);"> recursive</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">pages:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  script:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">b</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://upcreid.gitlab.io</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  artifacts:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    paths:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    -</span><span style="color: light-dark(#40A02B, #A6DA95);"> public</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  only:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  -</span><span style="color: light-dark(#40A02B, #A6DA95);"> master</span></span></code></pre>
+<ul>
+<li>Commit</li>
+</ul>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> commit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">add basic hugo</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span></span></code></pre>
+<p>and voila =&gt; <a rel="noopener noreferrer external" target="_blank" href="https://upcreid.gitlab.io">https://upcreid.gitlab.io</a></p>
+<p>Now, let’s handle github.</p>
+<h2 id="github-mirror">Github - Mirror<a class="zola-anchor" href="#github-mirror" aria-label="Anchor link for: github-mirror">🔗</a></h2>
+<ul>
+<li>create our static website repo</li>
+<li>branch configuration</li>
+<li>git mirror</li>
+<li>configure CI</li>
+</ul>
+<h3 id="create-our-static-website-repo-1">create our static website repo<a class="zola-anchor" href="#create-our-static-website-repo-1" aria-label="Anchor link for: create-our-static-website-repo-1">🔗</a></h3>
+<p><img src="/images/ghrepocreation.png" alt="ghrepocreation" loading="lazy" decoding="async" /></p>
+<h3 id="branch-configuration">Branch configuration<a class="zola-anchor" href="#branch-configuration" aria-label="Anchor link for: branch-configuration">🔗</a></h3>
+<p>After creation, create a branch called master. To be in phase with gitlab</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">echo</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);"># upcreid.github.io</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span><span style="color: light-dark(#179299, #8BD5CA);"> &gt;&gt;</span><span style="color: light-dark(#40A02B, #A6DA95);"> README.md</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> init</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> README.md</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> commit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">first commit</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> branch</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">M</span><span style="color: light-dark(#40A02B, #A6DA95);"> master</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> remote</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> origin</span><span style="color: light-dark(#40A02B, #A6DA95);"> git@github.com:upcreid/upcreid.github.io.git</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">u</span><span style="color: light-dark(#40A02B, #A6DA95);"> origin</span><span style="color: light-dark(#40A02B, #A6DA95);"> master</span></span></code></pre><h3 id="git-mirror">Git mirror<a class="zola-anchor" href="#git-mirror" aria-label="Anchor link for: git-mirror">🔗</a></h3>
+<p>Main part of this is to trigger the mirroring on gitlab side.
+So inside gitlab repo, simply launch</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> remote</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">-mirror=push</span><span style="color: light-dark(#40A02B, #A6DA95);"> github</span><span style="color: light-dark(#40A02B, #A6DA95);"> git@github.com:upcreid/upcreid.github.io.git</span></span></code></pre>
+<p>So, we add a remote, and say it’s a mirror (–mirror) and we name it github.</p>
+<p>Verify</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> remote</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">v</span></span></code></pre>
+<p>you should have something like:</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">github</span><span style="color: light-dark(#40A02B, #A6DA95);">  git@github.com:upcreid/upcreid.github.io.git</span><span> (fetch</span><span>)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">github</span><span style="color: light-dark(#40A02B, #A6DA95);">  git@github.com:upcreid/upcreid.github.io.git</span><span> (push</span><span>)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">origin</span><span style="color: light-dark(#40A02B, #A6DA95);">  git@gitlab.com:upcreid/upcreid.gitlab.io.git</span><span> (fetch</span><span>)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">origin</span><span style="color: light-dark(#40A02B, #A6DA95);">  git@gitlab.com:upcreid/upcreid.gitlab.io.git</span><span> (push</span><span>)</span></span></code></pre><h3 id="configure-ci-1">configure CI<a class="zola-anchor" href="#configure-ci-1" aria-label="Anchor link for: configure-ci-1">🔗</a></h3>
+<p>Then create the github CI file, we’ll use the github actions.
+But we should commit those github action inside the gitlab repo.</p>
+<p>So inside the gitlab repo aka master, create the following dir/file:</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">mkdir</span><span style="color: light-dark(#40A02B, #A6DA95);"> .github/workflows</span></span></code></pre><pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">touch</span><span style="color: light-dark(#40A02B, #A6DA95);"> .github/workflows/gh-pages.yml</span></span></code></pre>
+<p>And inside the gh-pages.yml</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">name:</span><span style="color: light-dark(#40A02B, #A6DA95);"> github</span><span style="color: light-dark(#40A02B, #A6DA95);"> pages</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">on:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  push:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    branches:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> master</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#D20F39, #ED8796);font-style: italic;">jobs</span><span style="color: light-dark(#40A02B, #A6DA95);">:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">  deploy:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    runs-on:</span><span style="color: light-dark(#40A02B, #A6DA95);"> ubuntu-18.04</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">    steps:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> uses:</span><span style="color: light-dark(#40A02B, #A6DA95);"> actions/checkout@v2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        with:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">          submodules:</span><span style="color: light-dark(#FE640B, #F5A97F);"> true</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">  #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fetch Hugo themes (true OR recursive)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">          fetch-depth:</span><span style="color: light-dark(#FE640B, #F5A97F);"> 0</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">    #</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Fetch all history for .GitInfo and .Lastmod</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> name:</span><span style="color: light-dark(#40A02B, #A6DA95);"> Setup</span><span style="color: light-dark(#40A02B, #A6DA95);"> Hugo</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        uses:</span><span style="color: light-dark(#40A02B, #A6DA95);"> peaceiris/actions-hugo@v2</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        with:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">          hugo-version:</span><span style="color: light-dark(#40A02B, #A6DA95);"> &#39;</span><span style="color: light-dark(#40A02B, #A6DA95);">0.81.0</span><span style="color: light-dark(#40A02B, #A6DA95);">&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> name:</span><span style="color: light-dark(#40A02B, #A6DA95);"> Build</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        run:</span><span style="color: light-dark(#40A02B, #A6DA95);"> hugo</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">b</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">https://upcreid.github.io</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">      -</span><span style="color: light-dark(#40A02B, #A6DA95);"> name:</span><span style="color: light-dark(#40A02B, #A6DA95);"> Deploy</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        uses:</span><span style="color: light-dark(#40A02B, #A6DA95);"> peaceiris/actions-gh-pages@v3</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">        with:</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">          github_token:</span><span> $</span><span>{</span><span>{ </span><span>secrets</span><span>.</span><span>GITHUB_TOKEN</span><span> }</span><span style="color: light-dark(#40A02B, #A6DA95);">}</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">          publish_dir:</span><span style="color: light-dark(#40A02B, #A6DA95);"> ./public</span></span></code></pre>
+<p>And commit</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> add</span><span style="color: light-dark(#40A02B, #A6DA95);"> .</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> commit</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">m</span><span style="color: light-dark(#40A02B, #A6DA95);"> &quot;</span><span style="color: light-dark(#40A02B, #A6DA95);">add github CI</span><span style="color: light-dark(#40A02B, #A6DA95);">&quot;</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> origin</span><span style="color: light-dark(#7C7F93, #939AB7);"> &amp;&amp;</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> github</span></span></code></pre>
+<p>As you can see, last command is in fact 2 commands. in order to push on gitlab + github.
+Some tricks can be made here to push with one command =&gt; <a rel="noopener noreferrer external" target="_blank" href="https://www.google.com">google</a></p>
+<p>And that’s it =&gt; <a rel="noopener noreferrer external" target="_blank" href="https://upcreid.github.io/">https://upcreid.github.io/</a></p>
+<h2 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">🔗</a></h2>
+<p>Since you got 2 remote you’ll need to push to those remote after commiting.</p>
+<p>you can do that simply with</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> origin</span><span style="color: light-dark(#7C7F93, #939AB7);"> &amp;&amp;</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> git</span><span style="color: light-dark(#40A02B, #A6DA95);"> push</span><span style="color: light-dark(#40A02B, #A6DA95);"> github</span></span></code></pre>
+<p>Then, nothing more should be done and both CI will be triggered.</p>
+<p>See you !</p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/blog/the-move/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">TheMove 🛴</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/blog/rust-application-in-the-terminal/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">Rust app in terminal 🖥️</span>
+        </a>
+      
+    </nav>
+  
+
+  
+    <p class="page-back"><a href="https://upcreid.github.io/blog/">← Back to blog</a></p>
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#gitlab-master">Gitlab - Master</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-our-static-website-repo">create our static website repo</a></li>
+                  
+                    <li class="toc__subitem"><a href="#create-gh-pages-branch">create gh-pages branch</a></li>
+                  
+                    <li class="toc__subitem"><a href="#add-web-stuff-inside-the-repo">add web stuff inside the repo</a></li>
+                  
+                    <li class="toc__subitem"><a href="#configure-ci">configure CI</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#github-mirror">Github - Mirror</a>
+              
+                <ul class="toc__sublist">
+                  
+                    <li class="toc__subitem"><a href="#create-our-static-website-repo-1">create our static website repo</a></li>
+                  
+                    <li class="toc__subitem"><a href="#branch-configuration">Branch configuration</a></li>
+                  
+                    <li class="toc__subitem"><a href="#git-mirror">Git mirror</a></li>
+                  
+                    <li class="toc__subitem"><a href="#configure-ci-1">configure CI</a></li>
+                  
+                </ul>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#conclusion">Conclusion</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>

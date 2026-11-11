@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  
+    
+  
+    
+  
+  <title>ThinkRail: JetBrains builds a real IDE around the pi coding agent · /void !</title>
+  
+  <meta name="description" content="ThinkRail wraps the pi coding agent in a desktop-class IDE: isolated git worktrees, a spec graph the agent actually reads, and turn-by-turn code review. Here is what it does, how to install it, and where it still hurts.">
+
+  
+    <link rel="canonical" href="https://upcreid.github.io/blog/thinkrail-agentic-ide/">
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    <link rel="alternate" hreflang="en" href="https://upcreid.github.io/blog/thinkrail-agentic-ide/">
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    <link rel="alternate" hreflang="fr" href="https://upcreid.github.io/fr/blog/thinkrail-agentic-ide/">
+  
+  <link rel="icon" href="https://upcreid.github.io/images/logo.png">
+  <meta name="theme-color" content="#24273a" data-theme-color>
+  <link rel="stylesheet" href="https://upcreid.github.io/css/style.css">
+  <link rel="alternate" type="application/atom+xml" title="/void !" href="https://upcreid.github.io/atom.xml">
+  <script>
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      document.documentElement.dataset.theme = stored || 'dark';
+      var themeColor = document.querySelector('[data-theme-color]');
+      if (themeColor) {
+        themeColor.content = document.documentElement.dataset.theme === 'dark' ? '#24273a' : '#eff1f5';
+      }
+    })();
+  </script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a class="brand" href="/">
+        <img class="brand__logo" src="https://upcreid.github.io/images/logo.png" alt="" width="32" height="32">
+        <span class="brand__name">/void !</span>
+      </a>
+
+      <nav class="tabs" aria-label="Menu">
+        
+        
+          
+        
+          
+        
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/"
+             >Home</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link tabs__link--active" href="https://upcreid.github.io/blog/"
+             aria-current="page">Blog</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/cheat-sheet/"
+             >CheatSheet</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/games/"
+             >Games</a>
+        
+          
+          
+          
+            
+            
+              
+            
+          
+          <a class="tabs__link" href="https://upcreid.github.io/who/"
+             >Who?</a>
+        
+      </nav>
+
+      <div class="header__tools">
+        <button class="icon-button" type="button" data-search-toggle aria-label="Search" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.5 6.5 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2A4.5 4.5 0 0 0 5 9.5 4.5 4.5 0 0 0 9.5 14 4.5 4.5 0 0 0 14 9.5 4.5 4.5 0 0 0 9.5 5Z"/></svg>
+        </button>
+
+        <button class="icon-button" type="button" data-theme-toggle aria-label="Change theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3.55 19.09 2.46 18l1.79-1.8 1.1 1.1zM12 23a1 1 0 0 1-1-1v-3a1 1 0 0 1 2 0v3a1 1 0 0 1-1 1m7.45-3.91-1.1-1.1 1.8-1.79 1.09 1.09zM20 13h3v-2h-3zm-8-2a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 6a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2M1 13v-2h3v2zm3.55-8.09L2.46 6l1.79 1.8 1.1-1.1zM12 1a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V2a1 1 0 0 1 1-1m7.45 6.91-1.1-1.1 1.8-1.79 1.09 1.09z"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M17.75 4.09l-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.19-3L14.82 4zm5.91 12.91-1.97 1.66.69 2.33-2.01-1.38-2 1.38.69-2.33-1.67-1.31 2.24-.15L20.8 14l.94 2.35zm-15.44.98L6.25 19.4l.98 3.48-2.79-2-2.79 2 .98-3.48-1.97-1.42h2.26L4.18 15zM5.5 2.5l1.06 2.62 2.44.1-1.9 1.5.61 2.38L5.5 7.86 3.79 9.1l.61-2.38-1.9-1.5 2.44-.1z"/></svg>
+        </button>
+
+        <div class="lang-switch" data-lang-switch>
+          <button class="lang-switch__button" type="button" aria-label="Language" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+          </button>
+          <div class="lang-switch__menu">
+            
+              
+              
+                
+                  
+                
+                  
+                
+              
+              <a class="lang-switch__item lang-switch__item--active" href="https://upcreid.github.io/blog/thinkrail-agentic-ide/"
+                 hreflang="en" aria-current="true">English</a>
+            
+              
+              
+                
+                  
+                
+                  
+                
+              
+              <a class="lang-switch__item" href="https://upcreid.github.io/fr/blog/thinkrail-agentic-ide/"
+                 hreflang="fr" >Français</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel" data-search-panel data-search-sources="/search_index.en.json,/search_index.fr.json"
+         data-search-empty="No results" hidden>
+      <div class="search-panel__inner">
+        <input class="search-panel__input" type="search" data-search-input
+               placeholder="Search…" autocomplete="off" aria-label="Search">
+        <ul class="search-panel__results" data-search-results></ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="main" class="main">
+    
+    <div class="layout layout--with-toc">
+      
+  
+  
+    
+    
+  
+
+      <article class="content">
+        
+  
+  
+  
+    
+    
+  
+  
+    
+    
+  
+    
+    
+  
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="https://upcreid.github.io/">Home</a>
+    
+      
+      
+    
+      
+      
+        <span class="breadcrumbs__sep">/</span>
+        <a href="https://upcreid.github.io/blog/">Blog</a>
+      
+    
+  </nav>
+
+  <h1>ThinkRail: JetBrains builds a real IDE around the pi coding agent</h1>
+
+  <p class="page-meta">
+    
+      <time datetime="2026-11-10T10:00:00+01:00">November 10, 2026</time>
+      <span class="card__sep">·</span>
+    
+    <span>10 min read</span>
+    
+      <span class="card__sep">·</span>
+      <span>UpCreid</span>
+    
+    
+  </p>
+
+  
+    <p class="page-lead">Not another chat panel bolted onto an editor: a thin GUI around pi, where every task gets its own worktree and every project keeps its specs.</p>
+  
+
+  <div class="prose" lang="en">
+    <p>There is a moment, after a few weeks of vibe coding in a terminal, when you notice you are no longer programming. You are watching a transcript scroll, scrolling back to figure out which file the agent touched, and typing <code>git diff</code> in a panic. The agent is fine. Your workflow is not.</p>
+<p><strong>ThinkRail</strong> is JetBrains’ answer to that. It is an <em>agentic IDE</em>: a real editor, a real terminal, a real diff viewer, wrapped around the <strong>pi</strong> coding agent. It comes from the JetBrains <strong>InnovationHub</strong> incubator, not from the IntelliJ team, and it is <strong>open source (Apache-2.0), free, and account-less</strong>. That last part matters more than it sounds: no login, no seat, no telemetry-driven upsell for the app itself.</p>
+<h2 id="what-thinkrail-actually-is">What ThinkRail actually is<a class="zola-anchor" href="#what-thinkrail-actually-is" aria-label="Anchor link for: what-thinkrail-actually-is">🔗</a></h2>
+<p>ThinkRail is not an IntelliJ plugin, and it is not another fork of VS Code. It is a thin host: the <code>pi</code> engine runs <strong>in-process</strong> inside ThinkRail and owns the hard parts (models, skills, context compaction, token cost, session state). ThinkRail owns everything around it: workspaces, the GUI, and the typed contract between the engine and the UI.</p>
+<p>Under the hood, the architecture is refreshingly boring, in the best sense:</p>
+<ul>
+<li>an HTTP + WebSocket host (Bun) with one <code>pi</code> session per chat;</li>
+<li>a versioned, typed protocol between host and UI;</li>
+<li>a React web client, shipped independently;</li>
+<li>two front-ends for the same engine: a native desktop app (packaged with Electrobun) and a <code>thinkrail</code> CLI that opens the same UI in your browser.</li>
+</ul>
+<p>Because it is a <em>host</em>, ThinkRail never assembles prompts behind your back. Your <code>~/.pi</code> configuration is the source of truth: providers, models, skills, extensions, chat history. You can start a session in ThinkRail and continue it from the pi CLI, or the other way round. This is the opposite of the usual vendor lock-in play, and it is the single most important design decision in the product.</p>
+<h2 id="workspaces-agents-deserve-worktrees-not-your-working-tree">Workspaces: agents deserve worktrees, not your working tree<a class="zola-anchor" href="#workspaces-agents-deserve-worktrees-not-your-working-tree" aria-label="Anchor link for: workspaces-agents-deserve-worktrees-not-your-working-tree">🔗</a></h2>
+<p>The core idea is simple: a <strong>project</strong> is any local git repo, and a <strong>workspace</strong> is a <code>git worktree</code> cut from it. Each workspace gets its own branch, its own working directory, its own files, terminals, diffs and chats.</p>
+<p>In practice, you click “Start building”, pick a base branch, write a description (which doubles as the first prompt), and the agent starts working in <code>~/.thinkrail/worktrees/&lt;project&gt;/workspace-1</code>. Your checkout is untouched. If the agent rewrites a file, deletes something, or runs a formatter you did not ask for, the damage is contained to that branch. You merge what you like and delete the rest.</p>
+<p>The consequence everyone underestimates: <strong>parallelism becomes safe</strong>. Three agents on three worktrees cannot fight over the same files, because they are not in the same directory. One can refactor a module while another rewrites the specs, and neither will discover a half-written file from the other.</p>
+<p>Small details that show the feature was actually used: workspaces that are finished park themselves on a <strong>Settled</strong> shelf when their PR merges or closes, or after a configurable idle period (one, three, seven or fourteen days, or never); and they come back the moment you touch them again.</p>
+<h2 id="spec-driven-development-without-the-ceremony">Spec-driven development, without the ceremony<a class="zola-anchor" href="#spec-driven-development-without-the-ceremony" aria-label="Anchor link for: spec-driven-development-without-the-ceremony">🔗</a></h2>
+<p>The second pillar is the <strong>spec graph</strong>. Every module can carry a <code>SPEC.md</code> file with a YAML header that links it to the others:</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="yaml"><span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">i</span><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">odule-server</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ype</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> m</span><span style="color: light-dark(#40A02B, #A6DA95);">odule-design</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">s</span><span style="color: light-dark(#1E66F5, #8AADF4);">tatus</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">ctive</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">p</span><span style="color: light-dark(#1E66F5, #8AADF4);">arent</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#40A02B, #A6DA95);"> a</span><span style="color: light-dark(#40A02B, #A6DA95);">rchitecture</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">d</span><span style="color: light-dark(#1E66F5, #8AADF4);">epends-on</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">g</span><span style="color: light-dark(#40A02B, #A6DA95);">oal-and-requirements</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);">t</span><span style="color: light-dark(#1E66F5, #8AADF4);">ags</span><span style="color: light-dark(#179299, #8BD5CA);">:</span><span style="color: light-dark(#7C7F93, #939AB7);"> [</span><span style="color: light-dark(#40A02B, #A6DA95);">e</span><span style="color: light-dark(#40A02B, #A6DA95);">ngine</span><span style="color: light-dark(#7C7F93, #939AB7);">,</span><span style="color: light-dark(#40A02B, #A6DA95);"> c</span><span style="color: light-dark(#40A02B, #A6DA95);">ontracts</span><span style="color: light-dark(#7C7F93, #939AB7);">]</span></span>
+<span class="giallo-l"><span style="color: light-dark(#EA76CB, #F5BDE6);">---</span></span></code></pre>
+<p>The <code>status</code> field alone (<code>draft</code>, <code>active</code>, <code>stale</code>, <code>done</code>, <code>deprecated</code>) is worth the price of admission: a spec cannot silently rot, because its staleness is written down. At the root of the repo you keep <code>goal-and-requirements.md</code> and <code>architecture.md</code>; below, one <code>SPEC.md</code> per genuine module.</p>
+<p>The crucial part is not the format, it is who maintains it. ThinkRail bundles a <code>pi-spec-graph</code> extension that gives the agent dedicated <code>spec_*</code> tools to search, navigate and update the graph. When a change moves a boundary or breaks a contract, the spec is supposed to be updated <strong>in the same turn</strong>, never after. The agent reads the nearest spec instead of the whole codebase, which keeps its context small and its answers grounded.</p>
+<p>This is Spec-Driven Development as JetBrains frames it: documentation comes back not because managers asked for it, but because it is the cheapest way to keep an agent on course across sessions. The specs are the guardrails — always present, never in the way when things go well.</p>
+<h2 id="the-ide-part-is-not-decorative">The IDE part is not decorative<a class="zola-anchor" href="#the-ide-part-is-not-decorative" aria-label="Anchor link for: the-ide-part-is-not-decorative">🔗</a></h2>
+<p>A chat panel is not an IDE. ThinkRail ships the boring, indispensable pieces:</p>
+<ul>
+<li><strong>Monaco tabs</strong> (the VS Code editor engine), with syntax highlighting, rendered Markdown and a source toggle;</li>
+<li>a <strong>file tree</strong> scoped to the active worktree, with a changed-files filter;</li>
+<li>a <strong>git changes panel</strong> that diffs the workspace branch live, while the agent is still typing;</li>
+<li><strong>real PTYs</strong>, so you can run your tests yourself while the agent keeps working;</li>
+<li>a <strong>review panel</strong> where you collect line comments and send them back to the agent in one message.</li>
+</ul>
+<p>The review flow is the feature I did not expect to care about. When a turn changes files, it ends with a receipt like <code>3 files changed · +27 −4</code> and a <strong>Review turn</strong> button. Those numbers do not come from the agent’s own claims: the host snapshots the worktree at the start and at the end of the run, so a formatter or a shell <code>sed</code> counts too. You then read everything in one scroll, with <code>Keep</code>, <code>Revert</code>, and <code>Ask agent about this hunk</code> on each hunk, and <code>J</code> to jump to the next unreviewed file. <code>Keep</code> is keyed to the hunk content, so it survives line shifts.</p>
+<p>That single design change — <em>review the turn, not the chat log</em> — is what turns an agent from a toy into a colleague.</p>
+<h2 id="chat-models-and-the-small-things-that-matter">Chat, models, and the small things that matter<a class="zola-anchor" href="#chat-models-and-the-small-things-that-matter" aria-label="Anchor link for: chat-models-and-the-small-things-that-matter">🔗</a></h2>
+<p>The chat is built for real work rather than demos:</p>
+<ul>
+<li>several concurrent sessions per workspace, <strong>each with its own model and reasoning effort</strong>;</li>
+<li>you can <strong>steer a running turn</strong> or queue a follow-up instead of waiting for the agent to finish;</li>
+<li>live token accounting: input, output, cache reads and writes, cost, and how full the context window is;</li>
+<li>a <strong>plan</strong> shared between you and the agent, with a full page showing each finished step’s summary and verification;</li>
+<li>background resources (commands, subagents, MCP servers) in one popup;</li>
+<li><strong><code>⌘K</code> / <code>Ctrl+K</code> / double-tap Shift</strong> opens one box that finds chats <em>and messages inside them</em>, workspaces, projects, files, specs and plans, runs app commands, and — when empty — lists every chat waiting on you across all projects. That last trick fixes the real bottleneck of parallel agents: noticing which one is blocked on a question.</li>
+<li>interactive tools: the agent can ask you structured multiple-choice questions in the chat instead of guessing, draw Mermaid diagrams, and show before/after mockups you can comment on like a diff.</li>
+</ul>
+<p>On the model side, ThinkRail has <strong>no accounts of its own</strong>. You sign in with JetBrains AI or connect any provider through pi’s auth. You can also point it at a company gateway or a local model server — Ollama, LM Studio, vLLM, llama.cpp, LiteLLM, sglang — through Settings → Providers → Add server: paste an address, click <em>Find models</em>, save. It lands in pi’s <code>models.json</code>, so the pi CLI benefits from the same configuration, and the API key never reaches the browser.</p>
+<p>Extensions follow the same philosophy. You can install any pi package by npm name, git URL or local folder, see what it adds before enabling it, and switch individual packages, extensions, skills or pi built-ins on and off. Bundled extensions include <code>pi-web-access</code>, <code>pi-visualize</code>, <code>pi-spec-graph</code>, <code>pi-thinkrail-workflow</code> and <code>pi-todos</code>. Skills are discovered from <code>~/.pi</code>, <code>~/.claude</code>, <code>~/.codex</code>, <code>~/.copilot</code> and <code>~/.gemini</code>, plus the project-local equivalents — so an existing Claude Code setup is not wasted.</p>
+<p>MCP is supported without the usual footguns: servers come from your <code>mcp.json</code> or from Settings, secrets must be <code>${VAR}</code> or <code>!command</code> references (pasting credentials into a URL is refused), servers shipped by a repository stay off until you approve exactly what they will run, and any call that may change data asks first — <code>Deny</code>, <code>Allow once</code>, <code>Allow in this chat</code>, <code>Always allow</code>.</p>
+<h2 id="installing-it-and-doing-a-first-task">Installing it and doing a first task<a class="zola-anchor" href="#installing-it-and-doing-a-first-task" aria-label="Anchor link for: installing-it-and-doing-a-first-task">🔗</a></h2>
+<p>Get the desktop build from <a rel="noopener noreferrer external" target="_blank" href="https://thinkrail.ai/">thinkrail.ai</a> (macOS Apple Silicon or Intel, Windows x64, Linux x64/ARM64), or use the CLI:</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> macOS, Linux, WSL (and Windows under Git Bash)</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">curl</span><span style="color: light-dark(#40A02B, #A6DA95);"> -</span><span style="color: light-dark(#40A02B, #A6DA95);">fsSL</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://raw.githubusercontent.com/JetBrains/thinkrail/main/install.sh</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> bash</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;">#</span><span style="color: light-dark(#7C7F93, #939AB7);font-style: italic;"> Windows PowerShell</span></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">irm</span><span style="color: light-dark(#40A02B, #A6DA95);"> https://raw.githubusercontent.com/JetBrains/thinkrail/main/install.ps1</span><span style="color: light-dark(#179299, #8BD5CA);"> |</span><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;"> iex</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">thinkrail</span><span style="color: light-dark(#40A02B, #A6DA95);"> ~/code/my-repo</span></span></code></pre>
+<p>On Linux, the desktop build is the fussy one: you need glibc 2.38+ and GTK 3 / WebKitGTK 4.1 / Ayatana AppIndicator 3 / librsvg 2, which in practice means Ubuntu 24.04 or newer:</p>
+<pre class="giallo" style="color: light-dark(#4C4F69, #CAD3F5); background-color: light-dark(#EFF1F5, #24273A);" ><code data-lang="shellscript"><span class="giallo-l"><span style="color: light-dark(#1E66F5, #8AADF4);font-style: italic;">sudo</span><span style="color: light-dark(#40A02B, #A6DA95);"> apt</span><span style="color: light-dark(#40A02B, #A6DA95);"> install</span><span style="color: light-dark(#40A02B, #A6DA95);"> libgtk-3-0</span><span style="color: light-dark(#40A02B, #A6DA95);"> libwebkit2gtk-4.1-0</span><span style="color: light-dark(#EA76CB, #F5BDE6);"> \</span></span>
+<span class="giallo-l"><span style="color: light-dark(#40A02B, #A6DA95);">  libayatana-appindicator3-1</span><span style="color: light-dark(#40A02B, #A6DA95);"> librsvg2-2</span></span></code></pre>
+<p>Then a sane first session looks like this:</p>
+<ol>
+<li>Open a repo. If you have none ready, <em>Start a new project</em> creates an empty git repository.</li>
+<li>Go to Settings and connect a provider (JetBrains AI or your own key), then pick a default model.</li>
+<li>Create a workspace from <code>main</code> and describe the task in one sentence — that description is the first prompt.</li>
+<li>Let the agent work. Watch the diff land in the Changes panel; open a terminal if you want to run the tests yourself.</li>
+<li>Press <strong>Review turn</strong>, read the whole change, keep or revert hunks, and send comments back if something is off.</li>
+<li>Publish the branch and open a pull request from the top bar. ThinkRail shows the CI checks and the review decision, and lets you mark ready, merge, or delete the remote branch.</li>
+<li>Merge or close the PR, and the workspace settles itself.</li>
+</ol>
+<p>For spec-driven work, add a fifth step: ask the agent to write or update the <code>SPEC.md</code> of the module it touched, and check the Specs panel to see the graph. After a few tasks, the specs become the thing you read before opening the code.</p>
+<h2 id="what-it-does-well">What it does well<a class="zola-anchor" href="#what-it-does-well" aria-label="Anchor link for: what-it-does-well">🔗</a></h2>
+<p><strong>Isolation is real.</strong> Worktrees are not a gimmick: they are the only mechanism I have seen that makes parallel agents genuinely safe with a shared repository, without copying the whole repo or inventing a proprietary workspace format.</p>
+<p><strong>The agent keeps its memory of intent.</strong> Specs plus skills plus a shared plan mean a new session does not restart from zero. The graph keeps context small, and the <code>spec_*</code> tools make the agent responsible for its own documentation.</p>
+<p><strong>Nothing is locked in.</strong> Apache-2.0, no account, your providers, your <code>~/.pi</code>, your <code>models.json</code>, your git. You can leave ThinkRail and keep your setup, or run the CLI in a browser over SSH on a remote machine.</p>
+<p><strong>The GUI is honest about the agent.</strong> Snapshotted diffs, per-hunk review, token cost in the header, resources and subagents visible: you always know what happened, how much it cost, and what is still running.</p>
+<p><strong>It is free.</strong> The app costs nothing; you pay your model provider, and that is it.</p>
+<h2 id="where-it-still-hurts">Where it still hurts<a class="zola-anchor" href="#where-it-still-hurts" aria-label="Anchor link for: where-it-still-hurts">🔗</a></h2>
+<p><strong>It is a 0.x product.</strong> Version 0.3.1 at the time of writing (November 2026). Expect rough edges, nightly channels, and features that move between releases. The release notes themselves list caveats — for instance, keep/revert only works on the branch diff, not on the single-turn view, and very large diffs start collapsed.</p>
+<p><strong>It is pi-only.</strong> ThinkRail is a host for one engine. If your workflow is built around Claude Code, Cursor or Codex, this is not a drop-in replacement — there are community forks experimenting with that, but the official product is deliberately about pi. The bet is that a minimal, extensible harness plus a good GUI beats a monolith.</p>
+<p><strong>Linux packaging is the weak spot.</strong> Ubuntu 24.04+ effectively, unsigned builds, no notarized macOS CLI. The Windows CLI and desktop binaries are signed, macOS desktop DMGs are signed and notarized, macOS CLI is signed but not notarized. On Linux, expect to verify checksums yourself.</p>
+<p><strong>It phones home by default.</strong> Launches, chat creation, message sends and provider connections are collected under a random installation ID; error reports are always sent, with the error type and location in ThinkRail’s own code, never prompts or file paths. You can opt out of the additional sharing with <code>thinkrail --no-analytics</code> or <code>THINKRAIL_NO_ANALYTICS=1</code>. It is mild as telemetry goes, but it is on by default, so decide deliberately.</p>
+<p><strong>Spec-driven development is a discipline, not a switch.</strong> If you and the agent do not maintain the <code>SPEC.md</code> files, the graph becomes archaeology. The tooling helps; it does not replace the habit.</p>
+<p><strong>You still have to review.</strong> The whole point is to make review cheap, not optional. An agent with a shell, a worktree and merge rights will eventually produce something plausible and wrong; the receipt and the per-hunk review exist precisely because trust must be verified.</p>
+<h2 id="verdict">Verdict<a class="zola-anchor" href="#verdict" aria-label="Anchor link for: verdict">🔗</a></h2>
+<p>ThinkRail is the most coherent answer I have seen to a question the industry is still fumbling: <em>what does an IDE look like when the code is written by an agent?</em> Not a chat sidebar glued to the old editor, not a browser sandbox that hides the filesystem, but a workspace manager where the unit of work is an isolated branch, the unit of review is a turn, and the unit of memory is a spec graph.</p>
+<p>It is early, it is pi-only, and its Linux packaging will annoy some people. But the ideas are right, the implementation is refreshingly small, and the price — free, open source, no account, bring your own model — makes it a very cheap experiment. If you already live in pi, install it today. If you do not, it is the best excuse I know to try pi.</p>
+
+  </div>
+
+  
+
+  
+    <nav class="siblings" aria-label="Pagination">
+      
+        <a class="siblings__link siblings__link--prev" href="https://upcreid.github.io/blog/deepseek-flash-4-1/">
+          <span class="siblings__label">← Previous</span>
+          <span class="siblings__title">DeepSeek Flash 4.1: the open source model putting pressure on the American players</span>
+        </a>
+      
+      
+        <a class="siblings__link siblings__link--next" href="https://upcreid.github.io/blog/t3-code-agent-control-surface/">
+          <span class="siblings__label">Next →</span>
+          <span class="siblings__title">T3 Code: one control surface for all your coding agents</span>
+        </a>
+      
+    </nav>
+  
+
+  
+    <p class="page-back"><a href="https://upcreid.github.io/blog/">← Back to blog</a></p>
+  
+
+      </article>
+      
+  
+    <aside class="toc">
+      <nav class="toc__nav">
+        <p class="toc__title">On this page</p>
+        <ul class="toc__list">
+          
+            <li class="toc__item">
+              <a href="#what-thinkrail-actually-is">What ThinkRail actually is</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#workspaces-agents-deserve-worktrees-not-your-working-tree">Workspaces: agents deserve worktrees, not your working tree</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#spec-driven-development-without-the-ceremony">Spec-driven development, without the ceremony</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#the-ide-part-is-not-decorative">The IDE part is not decorative</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#chat-models-and-the-small-things-that-matter">Chat, models, and the small things that matter</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#installing-it-and-doing-a-first-task">Installing it and doing a first task</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#what-it-does-well">What it does well</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#where-it-still-hurts">Where it still hurts</a>
+              
+            </li>
+          
+            <li class="toc__item">
+              <a href="#verdict">Verdict</a>
+              
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
+  
+
+    </div>
+  </main>
+  
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__meta">/void ! — 2026</p>
+      
+        <a class="footer__link" href="https://github.com/upcreid/upcreid.github.io">GitHub</a>
+      
+      <a class="footer__link" href="https://upcreid.github.io/atom.xml">RSS</a>
+    </div>
+  </footer>
+
+  <script src="https://upcreid.github.io/js/main.js" defer></script>
+  <script src="https://upcreid.github.io/js/search.js" defer></script>
+  
+  
+  
+
+</body>
+</html>
